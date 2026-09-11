@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>TernaryLLM</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Отдельная инференс-программа: компилируется ТОЛЬКО из core/ и ternary/.
+    Классы обучения (train/, Program.cs) сюда НЕ попадают.
+    InferenceMain.cs включается из каталога проекта автоматически (default items).
+  -->
+  <ItemGroup>
+    <Compile Include="../training/core/**/*.cs" />
+    <Compile Include="../training/ternary/**/*.cs" />
+  </ItemGroup>
+
+</Project>
