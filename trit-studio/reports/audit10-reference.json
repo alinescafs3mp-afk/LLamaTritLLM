@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "Independent Python encoding specification, NOT C# execution, native speed or real-process fault evidence",
+  "corpus_encoding_pairs": 2290,
+  "random_encoding_pairs_including_trimmed_histories": 4992,
+  "buffer_boundaries": 21,
+  "max_corpus_sequence": 437,
+  "frozen_baseline_and_eight_holdouts": true,
+  "not_executed": [
+    "C# byte encoder",
+    "C# pipe timeouts",
+    "worker fail-closed mode persistence",
+    "native reload avoidance",
+    "C# benchmarks",
+    "GUI",
+    "CUDA"
+  ]
+}

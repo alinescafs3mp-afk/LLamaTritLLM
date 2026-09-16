@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TorchBackend Condition="'$(TorchBackend)' == ''">cpu</TorchBackend></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../TritStudio.Core/TritStudio.Core.csproj" /></ItemGroup>
+  <ItemGroup Condition="'$(TorchBackend)' == 'cpu'"><PackageReference Include="TorchSharp-cpu" Version="0.107.0" /></ItemGroup>
+  <ItemGroup Condition="'$(TorchBackend)' == 'cuda-windows'"><PackageReference Include="TorchSharp-cuda-windows" Version="0.107.0" /></ItemGroup>
+  <ItemGroup Condition="'$(TorchBackend)' == 'cuda-linux'"><PackageReference Include="TorchSharp-cuda-linux" Version="0.107.0" /></ItemGroup>
+  <Target Name="ValidateBackend" BeforeTargets="Restore;Build" Condition="'$(TorchBackend)' != 'cpu' and '$(TorchBackend)' != 'cuda-windows' and '$(TorchBackend)' != 'cuda-linux'">
+    <Error Text="TorchBackend must be cpu, cuda-windows, or cuda-linux." />
+  </Target>
+  <ItemGroup><Content Include="../../data/*.jsonl" Link="data/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Content Include="../../data/DATASET_MANIFEST.json" Link="data/DATASET_MANIFEST.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+</Project>

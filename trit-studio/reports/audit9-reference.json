@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "Independent Python algorithm/policy checks; NOT C#, native GPU, concurrency, disk durability or performance measurement",
+  "checks": {
+    "bounded_capture_cases": 12,
+    "valid_utf8_cases": 4,
+    "invalid_utf8_cases": 6,
+    "batch_statistic_equivalence_cases": 1200,
+    "changed_count_cases": 15,
+    "changed_count_signed_zero": 1,
+    "checkpoint_semantics_cases": 10
+  },
+  "checkpoint_cache_payload_cap_per_slot": 4194304,
+  "unchanged_payload_serializations_for_8_writes_after_warmup": {
+    "uncached": 8,
+    "cached": 0
+  },
+  "corpus_jsonl_bytes": 610132,
+  "limitations": [
+    "JSONL input bytes are a simulation payload, not the C# TrainingExample JSON serialization format.",
+    "Python random exercises preserved sampling call order; C# tests compare the actual persisted SamplerRandom state.",
+    "No measured C# speedup or peak-memory claim."
+  ]
+}

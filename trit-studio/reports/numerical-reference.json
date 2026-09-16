@@ -1,0 +1,18 @@
+{
+  "scope": "Independent Python numerical specification tests; C# build/runtime NOT executed",
+  "status": "passed",
+  "torch_version": "2.10.0+cpu",
+  "forward_max_abs_error": 1.6391277313232422e-07,
+  "quantizer_max_abs_error": 0.0,
+  "fitting_loss_before": 5.621358871459961,
+  "fitting_loss_after": 4.263103485107422,
+  "changed_parameter_values": 6544,
+  "parameter_count": 6544,
+  "max_bundled_example_sequence_length": 453,
+  "checks": [
+    "dense Torch vs incremental NumPy causal GQA forward",
+    "Torch QAT vs portable-quantizer specification",
+    "actual gradient update and toy fitting",
+    "bundled examples fit default sequence length"
+  ]
+}

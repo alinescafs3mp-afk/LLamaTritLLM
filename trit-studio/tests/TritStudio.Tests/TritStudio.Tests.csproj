@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../src/TritStudio.Core/TritStudio.Core.csproj" /></ItemGroup>
+  <ItemGroup><Content Include="../fixtures/reference.json" Link="reference.json" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Content Include="../../data/*.jsonl" Link="data/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Content Include="../../data/DATASET_MANIFEST.json" Link="data/DATASET_MANIFEST.json" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+</Project>

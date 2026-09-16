@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "scope": "Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation",
+  "corpus_version": "conversation-ru-v4",
+  "splits": {
+    "seed": {
+      "count": 746,
+      "kinds": {
+        "single-turn": 474,
+        "multi-turn": 168,
+        "plain-text": 104
+      },
+      "families": 219,
+      "max_sequence_bytes_with_roles": 279,
+      "mean_sequence_bytes_with_roles": 163.81,
+      "sha256": "7e4d3a2d4c16f8a99989a401f9cde3cd69756f4ddae341dd5e834804946927fb"
+    },
+    "validation": {
+      "count": 88,
+      "kinds": {
+        "single-turn": 62,
+        "multi-turn": 26
+      },
+      "families": 25,
+      "max_sequence_bytes_with_roles": 257,
+      "mean_sequence_bytes_with_roles": 154.17,
+      "sha256": "eb159b679403282c489ceea6c3f434ec14dd4f7bcf4386c125f17207897a5c61"
+    },
+    "test": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 21,
+      "max_sequence_bytes_with_roles": 258,
+      "mean_sequence_bytes_with_roles": 158.22,
+      "sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb"
+    },
+    "challenge": {
+      "count": 24,
+      "kinds": {
+        "single-turn": 16,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 221,
+      "mean_sequence_bytes_with_roles": 153.88,
+      "sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550"
+    },
+    "challenge-v4": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 215,
+      "mean_sequence_bytes_with_roles": 169.06,
+      "sha256": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf"
+    }
+  },
+  "cross_split_normalized_duplicates": 0,
+  "cross_split_exact_single_turn_prompts": 0,
+  "semantic_generalization": "Unmeasured. Related everyday topics intentionally occur across splits.",
+  "frozen_v2_test_unchanged": true,
+  "frozen_v3_challenge_unchanged": true,
+  "cross_split_input_context_duplicates": 0,
+  "total_examples": 914
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Project/source/script structure and selected invariants, NOT compilation or execution",
+  "projects": 7,
+  "solution_projects": 6,
+  "csharp_source_files": 72,
+  "core_test_cases_defined": 294,
+  "python_modules_parsed": 26,
+  "bash_scripts_syntax_checked": 4,
+  "dotnet_available": false,
+  "csharp_build": "NOT_RUN",
+  "headless_ui": "NOT_RUN",
+  "cuda": "NOT_RUN"
+}

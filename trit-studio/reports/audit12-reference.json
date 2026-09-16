@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "scope": "Independent Python numerical, split-key, framing and state-machine specifications. NOT C# compilation, TPL/GUI tasks, OS IO, native TorchSharp, CUDA or application throughput.",
+  "projection_schedule_cases": 24,
+  "projection_rows_verified": 4074,
+  "rope_configurations": 15,
+  "rope_float32_angles_checked": 194432,
+  "split_key_pairs": 4082,
+  "split_decisions": 4082,
+  "trimmed_history_cases": 902,
+  "split_hash_operation_counts": [
+    {
+      "sequence": 32,
+      "legacy_hashes": 8,
+      "optimized_hashes": 8
+    },
+    {
+      "sequence": 64,
+      "legacy_hashes": 601,
+      "optimized_hashes": 561
+    },
+    {
+      "sequence": 128,
+      "legacy_hashes": 1995,
+      "optimized_hashes": 1604
+    },
+    {
+      "sequence": 512,
+      "legacy_hashes": 5100,
+      "optimized_hashes": 2690
+    }
+  ],
+  "event_envelope_cases": 14,
+  "snapshot_state_specifications": 5,
+  "corpus_version": "conversation-ru-v12",
+  "csharp": "NOT_RUN",
+  "performance_timing": "NOT_MEASURED"
+}

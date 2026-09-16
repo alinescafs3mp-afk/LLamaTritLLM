@@ -1,0 +1,799 @@
+{
+  "status": "passed",
+  "scope": "Independent Python/NumPy/PyTorch numerical and algorithm specification; NOT C# execution or measured application speedup",
+  "group_local_packing": {
+    "cases": [
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 1,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 3,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 8,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 32,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 1,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 2,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 0,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 0.5,
+        "kind": "boundaries",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "random",
+        "bytes_identical": true
+      },
+      {
+        "group": 128,
+        "planes": 3,
+        "threshold": 1,
+        "kind": "boundaries",
+        "bytes_identical": true
+      }
+    ],
+    "large_weights": 65664,
+    "large_bytes_identical": true,
+    "scope": "Sequential independent float32 algorithms; real C# parallel scheduling requires native tests.",
+    "residual_memory_formula": {
+      "v5_bytes_per_tensor": "4*N",
+      "v6_stack_bytes_per_active_worker": 512,
+      "packed_outputs_unchanged": true
+    }
+  },
+  "qat_temporaries": [
+    {
+      "group": 8,
+      "planes": 1,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 1,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 1,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 2,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 2,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 2,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 3,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 3,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 8,
+      "planes": 3,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 1,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 1,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 1,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 2,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 2,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 2,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 3,
+      "threshold": 0,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 3,
+      "threshold": 0.5,
+      "values_identical": true,
+      "identity_gradient": true
+    },
+    {
+      "group": 32,
+      "planes": 3,
+      "threshold": 1,
+      "values_identical": true,
+      "identity_gradient": true
+    }
+  ],
+  "gradient_norm": [
+    {
+      "matrices": 1,
+      "value": 0.01152110192924738,
+      "values_identical": true
+    },
+    {
+      "matrices": 8,
+      "value": 0.5892202258110046,
+      "values_identical": true
+    },
+    {
+      "matrices": 24,
+      "value": 4.4994378089904785,
+      "values_identical": true
+    }
+  ],
+  "generation_loop": {
+    "cases": 36,
+    "tokens_unchanged": true,
+    "unused_final_forward_removed": true,
+    "scope": "Loop/limit simulation only"
+  },
+  "csharp_build": "NOT_RUN",
+  "cuda": "NOT_RUN"
+}

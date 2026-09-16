@@ -1,0 +1,21 @@
+**/bin/
+**/obj/
+dist/
+workspaces/
+*.user
+*.log
+*.tmp
+__pycache__/
+# Never commit the owner's conversations or weights.
+*.tritmodel
+*.weights
+optimizer.bin
+replay.json
+chat.jsonl
+
+artifacts/
+.packages/
+startup.log*
+preferences.json
+chat-state.json
+runtime.json

@@ -1,0 +1,48 @@
+{"text": "Я читаю короткую фразу.", "family": "v7_baseline_000", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-75c71356f3c67ce3663b"}
+{"text": "Ты видишь написанное слово.", "family": "v7_baseline_001", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-df985fa83751bd6c4be3"}
+{"text": "Мы начинаем с простого текста.", "family": "v7_baseline_002", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-e736da363c0b68a1c881"}
+{"text": "Это слово состоит из букв.", "family": "v7_baseline_003", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-e0b277ba5b3f07d3c530"}
+{"text": "После точки начинается новое предложение.", "family": "v7_baseline_004", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-655434030d566d6d5648"}
+{"text": "Вопрос можно закончить вопросительным знаком.", "family": "v7_baseline_005", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-060c2a3306244ec796fa"}
+{"text": "Утром бывает светло.", "family": "v7_baseline_006", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-2dc9b966fe078b007d67"}
+{"text": "Вечером люди возвращаются домой.", "family": "v7_baseline_007", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-7b880007742dd92687a8"}
+{"text": "На столе стоит пустая тарелка.", "family": "v7_baseline_008", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-78fe590f0eec1ac72513"}
+{"text": "В комнате есть дверь и окно.", "family": "v7_baseline_009", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-7e8fba5fe44d8f6fb16e"}
+{"text": "У книги бывают страницы и обложка.", "family": "v7_baseline_010", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-7e18aa3ada1d757069ca"}
+{"text": "В тетради можно делать записи.", "family": "v7_baseline_011", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-96bbf6a6e03eeb4e4ac1"}
+{"text": "Карандаш оставляет след на бумаге.", "family": "v7_baseline_012", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-e6c883b4475351d8ab62"}
+{"text": "Белый лист пока не заполнен.", "family": "v7_baseline_013", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-29ca8516853355bfa0a2"}
+{"text": "Вода находится в стакане.", "family": "v7_baseline_014", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-7dbe550ce2bb2406ce2e"}
+{"text": "На полке лежит маленькая коробка.", "family": "v7_baseline_015", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-9d5139d0a6e535229d9b"}
+{"text": "Один предмет лежит слева, другой справа.", "family": "v7_baseline_016", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-336399ad7af782474eda"}
+{"text": "Сначала я открыл книгу, потом закрыл.", "family": "v7_baseline_017", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-e7341a6cc2c01ab21f24"}
+{"text": "Большая коробка больше маленькой.", "family": "v7_baseline_018", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-5f5bc3ceabfec25fcd0b"}
+{"text": "Тёплая чашка постепенно остывает.", "family": "v7_baseline_019", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-fd0a4bb4e1e68a310695"}
+{"text": "Короткий текст занимает мало места.", "family": "v7_baseline_020", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-42aa81a8ac2d976817bd"}
+{"text": "Длинная строка содержит больше символов.", "family": "v7_baseline_021", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-c06a8c83636f0fbcd1e9"}
+{"text": "Я могу прочитать начало ещё раз.", "family": "v7_baseline_022", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-b2e1fa270d0e779d8d93"}
+{"text": "Первое слово находится перед вторым.", "family": "v7_baseline_023", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-4d67caba46586de312e4"}
+{"text": "В слове «кот» три буквы.", "family": "v7_baseline_024", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-5293ff78473b4b9b4214"}
+{"text": "Два предмета и ещё один дают три предмета.", "family": "v7_baseline_025", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-45a842224445a8092493"}
+{"text": "Если убрать один из двух предметов, останется один.", "family": "v7_baseline_026", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-891dcf130ec1d41d634d"}
+{"text": "Красный и синий являются названиями цветов.", "family": "v7_baseline_027", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-97f99971acf1824ddc5f"}
+{"text": "Круг и квадрат являются названиями фигур.", "family": "v7_baseline_028", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-41df8e67f1fad0f2ec54"}
+{"text": "Кошка сидит рядом со стулом.", "family": "v7_baseline_029", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-5a3d91b1aaec36d88857"}
+{"text": "Птица находится на ветке дерева.", "family": "v7_baseline_030", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-658f49e4ef265115c130"}
+{"text": "На улице стоит деревянная скамья.", "family": "v7_baseline_031", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-6df9d5366439569d6170"}
+{"text": "Ветер двигает листья на дереве.", "family": "v7_baseline_032", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-7d38d21ef30b35649187"}
+{"text": "Дождевые капли падают на крышу.", "family": "v7_baseline_033", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-48fa579261b0eebacd42"}
+{"text": "Сухая ткань может намокнуть от воды.", "family": "v7_baseline_034", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-421c837a2c8cbabddbcd"}
+{"text": "Мы различаем начало, середину и конец.", "family": "v7_baseline_035", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-033d26a9dc47d5a68189"}
+{"text": "Слова помогают описывать предметы и события.", "family": "v7_baseline_036", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-e25167479d163d28e3a5"}
+{"text": "Можно написать «да», а можно написать «нет».", "family": "v7_baseline_037", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-d96ac71014af4799e179"}
+{"text": "Ответ «не знаю» сообщает, что информации недостаточно.", "family": "v7_baseline_038", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-529f0d6541d1ddbfdcbe"}
+{"text": "Просьба и вопрос могут звучать по-разному.", "family": "v7_baseline_039", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-361d1072b30800cc67b6"}
+{"text": "Новая строчка находится ниже предыдущей.", "family": "v7_baseline_040", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-29caf23debd380486eea"}
+{"text": "Пустой ящик не содержит вещей.", "family": "v7_baseline_041", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-ce4d99bb14165ac2c9b1"}
+{"text": "Открытую дверь можно закрыть.", "family": "v7_baseline_042", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-ec29a8f0437568b895f8"}
+{"text": "Закрытую книгу можно открыть.", "family": "v7_baseline_043", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-d820316ae1fc40003162"}
+{"text": "Я сначала смотрю, а затем описываю увиденное.", "family": "v7_baseline_044", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-646ffa15d1f6e9dc616e"}
+{"text": "Не всякое предположение оказывается верным.", "family": "v7_baseline_045", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-80a59b45efcc3d99d3eb"}
+{"text": "Одна и та же мысль может быть выражена разными словами.", "family": "v7_baseline_046", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-b3a4339e8620cf615d6a"}
+{"text": "На этом короткий учебный текст заканчивается.", "family": "v7_baseline_047", "split": "train", "origin": "authored-synthetic-v7", "id": "ru-v7-b99ca95524841f36b279"}

@@ -1,0 +1,154 @@
+{
+  "status": "passed",
+  "scope": "Independent Python algorithm/data specification; NOT C# compilation, runtime, GUI or CUDA",
+  "completion": {
+    "cases": 10,
+    "all_requests_settled_in_reference": true,
+    "native_evidence": "Defined real broken-child C# fixtures, not run here"
+  },
+  "validation_preparation": {
+    "scope": "Independent CPU array-preparation/weighted-objective check. No timing claims.",
+    "shapes": [
+      {
+        "batch": 1,
+        "budget_bytes": 0,
+        "retained_array_bytes": 0,
+        "builds": 82,
+        "hits": 0,
+        "loss_before": 6.09157898151769,
+        "loss_after": 6.091728827946306
+      },
+      {
+        "batch": 1,
+        "budget_bytes": 128,
+        "retained_array_bytes": 56,
+        "builds": 81,
+        "hits": 1,
+        "loss_before": 6.09157898151769,
+        "loss_after": 6.091728827946306
+      },
+      {
+        "batch": 1,
+        "budget_bytes": 16777216,
+        "retained_array_bytes": 21528,
+        "builds": 41,
+        "hits": 41,
+        "loss_before": 6.09157898151769,
+        "loss_after": 6.091728827946306
+      },
+      {
+        "batch": 4,
+        "budget_bytes": 0,
+        "retained_array_bytes": 0,
+        "builds": 22,
+        "hits": 0,
+        "loss_before": 6.091579234705562,
+        "loss_after": 6.091728761836139
+      },
+      {
+        "batch": 4,
+        "budget_bytes": 128,
+        "retained_array_bytes": 0,
+        "builds": 22,
+        "hits": 0,
+        "loss_before": 6.091579234705562,
+        "loss_after": 6.091728761836139
+      },
+      {
+        "batch": 4,
+        "budget_bytes": 16777216,
+        "retained_array_bytes": 22232,
+        "builds": 11,
+        "hits": 11,
+        "loss_before": 6.091579234705562,
+        "loss_after": 6.091728761836139
+      },
+      {
+        "batch": 8,
+        "budget_bytes": 0,
+        "retained_array_bytes": 0,
+        "builds": 12,
+        "hits": 0,
+        "loss_before": 6.091579200947179,
+        "loss_after": 6.091728593044225
+      },
+      {
+        "batch": 8,
+        "budget_bytes": 128,
+        "retained_array_bytes": 0,
+        "builds": 12,
+        "hits": 0,
+        "loss_before": 6.091579200947179,
+        "loss_after": 6.091728593044225
+      },
+      {
+        "batch": 8,
+        "budget_bytes": 16777216,
+        "retained_array_bytes": 23192,
+        "builds": 6,
+        "hits": 6,
+        "loss_before": 6.091579200947179,
+        "loss_after": 6.091728593044225
+      }
+    ],
+    "inputs_and_targets_equal": true,
+    "updated_weights_recomputed": true
+  },
+  "rollback": {
+    "scope": "Independent state-ordering simulation, not filesystem durability or real native rollback",
+    "cases": [
+      {
+        "failure": "verify",
+        "active": "current",
+        "session": "current",
+        "queue_warning": false
+      },
+      {
+        "failure": "decode",
+        "active": "current",
+        "session": "current",
+        "queue_warning": false
+      },
+      {
+        "failure": "optimizer",
+        "active": "current",
+        "session": "current",
+        "queue_warning": false
+      },
+      {
+        "failure": "activate",
+        "active": "current",
+        "session": "current",
+        "queue_warning": false
+      },
+      {
+        "failure": "replay",
+        "active": "parent",
+        "session": "parent",
+        "queue_warning": true
+      },
+      {
+        "failure": null,
+        "active": "parent",
+        "session": "parent",
+        "queue_warning": false
+      }
+    ]
+  },
+  "baseline_bytes_unchanged": true,
+  "baseline_sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973",
+  "records": {
+    "seed": 1514,
+    "validation": 184,
+    "test": 40,
+    "challenge": 24,
+    "challenge-v4": 16,
+    "challenge-v5": 16,
+    "challenge-v6": 16,
+    "challenge-v7": 16,
+    "challenge-v8": 16,
+    "pretrain": 48
+  },
+  "measured_CSharp_speedup": null,
+  "real_CSharp_tests": "NOT_RUN"
+}

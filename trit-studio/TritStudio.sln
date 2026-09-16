@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.Core", "src\TritStudio.Core\TritStudio.Core.csproj", "{B9E6CC22-E200-5A58-8CEC-BFF61C2557CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.App", "src\TritStudio.App\TritStudio.App.csproj", "{15D63DD2-C694-5495-9AAF-9D465E0FF7B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.Trainer", "src\TritStudio.Trainer\TritStudio.Trainer.csproj", "{E1750777-71BF-586B-964F-1A48B826AFE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.Runner", "src\TritStudio.Runner\TritStudio.Runner.csproj", "{E7B18D09-D37C-578D-A2E7-27DAE4BC3B7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.Tests", "tests\TritStudio.Tests\TritStudio.Tests.csproj", "{6996E5FA-49C5-529F-9978-61B6EC6FB50D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TritStudio.UiTests", "tests\TritStudio.UiTests\TritStudio.UiTests.csproj", "{A5986888-3881-4A68-96B7-6D3E6CE84202}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5986888-3881-4A68-96B7-6D3E6CE84202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5986888-3881-4A68-96B7-6D3E6CE84202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5986888-3881-4A68-96B7-6D3E6CE84202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5986888-3881-4A68-96B7-6D3E6CE84202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E6CC22-E200-5A58-8CEC-BFF61C2557CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E6CC22-E200-5A58-8CEC-BFF61C2557CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E6CC22-E200-5A58-8CEC-BFF61C2557CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E6CC22-E200-5A58-8CEC-BFF61C2557CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D63DD2-C694-5495-9AAF-9D465E0FF7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D63DD2-C694-5495-9AAF-9D465E0FF7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D63DD2-C694-5495-9AAF-9D465E0FF7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D63DD2-C694-5495-9AAF-9D465E0FF7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1750777-71BF-586B-964F-1A48B826AFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1750777-71BF-586B-964F-1A48B826AFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1750777-71BF-586B-964F-1A48B826AFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1750777-71BF-586B-964F-1A48B826AFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B18D09-D37C-578D-A2E7-27DAE4BC3B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B18D09-D37C-578D-A2E7-27DAE4BC3B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B18D09-D37C-578D-A2E7-27DAE4BC3B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B18D09-D37C-578D-A2E7-27DAE4BC3B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6996E5FA-49C5-529F-9978-61B6EC6FB50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6996E5FA-49C5-529F-9978-61B6EC6FB50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6996E5FA-49C5-529F-9978-61B6EC6FB50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6996E5FA-49C5-529F-9978-61B6EC6FB50D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

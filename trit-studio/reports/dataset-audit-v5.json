@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "scope": "Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation",
+  "corpus_version": "conversation-ru-v5",
+  "splits": {
+    "seed": {
+      "count": 970,
+      "kinds": {
+        "single-turn": 602,
+        "multi-turn": 232,
+        "plain-text": 136
+      },
+      "families": 275,
+      "max_sequence_bytes_with_roles": 279,
+      "mean_sequence_bytes_with_roles": 167.69,
+      "sha256": "6e5548bc7e2b8b80591847b6a50fad4c97cfa64e46085f4fb29dd7642b34b832"
+    },
+    "validation": {
+      "count": 112,
+      "kinds": {
+        "single-turn": 78,
+        "multi-turn": 34
+      },
+      "families": 31,
+      "max_sequence_bytes_with_roles": 257,
+      "mean_sequence_bytes_with_roles": 156.01,
+      "sha256": "f507cf9183975c5bd7845af81a3519171fbcb3bdf265144088d1487585dbbae5"
+    },
+    "test": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 21,
+      "max_sequence_bytes_with_roles": 258,
+      "mean_sequence_bytes_with_roles": 158.22,
+      "sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb"
+    },
+    "challenge": {
+      "count": 24,
+      "kinds": {
+        "single-turn": 16,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 221,
+      "mean_sequence_bytes_with_roles": 153.88,
+      "sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550"
+    },
+    "challenge-v4": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 215,
+      "mean_sequence_bytes_with_roles": 169.06,
+      "sha256": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf"
+    },
+    "challenge-v5": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 4,
+      "max_sequence_bytes_with_roles": 227,
+      "mean_sequence_bytes_with_roles": 157.75,
+      "sha256": "3493915e807d59feb388d7dff814cd6910db20d5f797c324dca5319bacf8223e"
+    }
+  },
+  "cross_split_normalized_duplicates": 0,
+  "cross_split_exact_single_turn_prompts": 0,
+  "semantic_generalization": "Unmeasured. Related everyday topics intentionally occur across splits.",
+  "frozen_v2_test_unchanged": true,
+  "frozen_v3_challenge_unchanged": true,
+  "frozen_v4_challenge_unchanged": true,
+  "cross_split_input_context_duplicates": 0,
+  "total_examples": 1178
+}

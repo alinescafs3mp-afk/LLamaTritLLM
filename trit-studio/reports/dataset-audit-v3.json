@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "scope": "Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation",
+  "corpus_version": "conversation-ru-v3",
+  "splits": {
+    "seed": {
+      "count": 522,
+      "kinds": {
+        "single-turn": 346,
+        "multi-turn": 104,
+        "plain-text": 72
+      },
+      "families": 163,
+      "max_sequence_bytes_with_roles": 270,
+      "mean_sequence_bytes_with_roles": 157.81,
+      "sha256": "3c2002f77669f23a7e7d3d91c19e3a9204c3748981157559fd143fb3e8c10c4c"
+    },
+    "validation": {
+      "count": 64,
+      "kinds": {
+        "single-turn": 46,
+        "multi-turn": 18
+      },
+      "families": 22,
+      "max_sequence_bytes_with_roles": 257,
+      "mean_sequence_bytes_with_roles": 147.14,
+      "sha256": "12e02c7c225bea1901db7c84951ccc96674133950846df9f059603e42c131edc"
+    },
+    "test": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 21,
+      "max_sequence_bytes_with_roles": 258,
+      "mean_sequence_bytes_with_roles": 158.22,
+      "sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb"
+    },
+    "challenge": {
+      "count": 24,
+      "kinds": {
+        "single-turn": 16,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 221,
+      "mean_sequence_bytes_with_roles": 153.88,
+      "sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550"
+    }
+  },
+  "cross_split_normalized_duplicates": 0,
+  "cross_split_exact_single_turn_prompts": 0,
+  "semantic_generalization": "Unmeasured. Related everyday topics intentionally occur across splits.",
+  "frozen_v2_test_unchanged": true,
+  "cross_split_input_context_duplicates": 0,
+  "total_examples": 650
+}

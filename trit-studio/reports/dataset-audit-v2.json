@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "scope": "Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation",
+  "corpus_version": "conversation-ru-v2",
+  "splits": {
+    "seed": {
+      "count": 298,
+      "kinds": {
+        "single-turn": 218,
+        "multi-turn": 40,
+        "plain-text": 40
+      },
+      "families": 99,
+      "max_sequence_bytes_with_roles": 270,
+      "mean_sequence_bytes_with_roles": 155.95,
+      "sha256": "bc080922fc6eadaf99f54ab081383125f92fad4aeeb7a5288582b8fffcd2125d"
+    },
+    "validation": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 20,
+      "max_sequence_bytes_with_roles": 257,
+      "mean_sequence_bytes_with_roles": 148.55,
+      "sha256": "860cf380c22f24b31a53f696c332801aa9e75e6ba88ee9dbe251b65cba59dcf7"
+    },
+    "test": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 21,
+      "max_sequence_bytes_with_roles": 258,
+      "mean_sequence_bytes_with_roles": 158.22,
+      "sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb"
+    }
+  },
+  "cross_split_normalized_duplicates": 0,
+  "cross_split_exact_single_turn_prompts": 0,
+  "semantic_generalization": "Unmeasured. Related everyday topics intentionally occur across splits.",
+  "total_examples": 378
+}

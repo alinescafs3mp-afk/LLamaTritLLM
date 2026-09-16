@@ -1,0 +1,250 @@
+{
+  "status": "passed",
+  "scope": "Independent Python algorithm/numerical specification; C# build, native C# execution and target speedup NOT RUN",
+  "torch_version": "2.10.0+cpu",
+  "attention": [
+    {
+      "sequence_length": 1,
+      "heads": 2,
+      "kv_heads": 1,
+      "head_dimension": 8,
+      "forward_max_abs_error": 0.0,
+      "gradient_max_abs_error": 0.0
+    },
+    {
+      "sequence_length": 7,
+      "heads": 4,
+      "kv_heads": 2,
+      "head_dimension": 8,
+      "forward_max_abs_error": 2.384185791015625e-07,
+      "gradient_max_abs_error": 9.313225746154785e-09
+    },
+    {
+      "sequence_length": 31,
+      "heads": 4,
+      "kv_heads": 1,
+      "head_dimension": 16,
+      "forward_max_abs_error": 3.5762786865234375e-07,
+      "gradient_max_abs_error": 1.1641532182693481e-09
+    },
+    {
+      "sequence_length": 96,
+      "heads": 4,
+      "kv_heads": 2,
+      "head_dimension": 16,
+      "forward_max_abs_error": 4.76837158203125e-07,
+      "gradient_max_abs_error": 4.656612873077393e-10
+    }
+  ],
+  "batching": {
+    "scope": "Python shape-count simulation on real bundled lengths, not measured C# time",
+    "corpus_rows": 1994,
+    "uniform": {
+      "steps": 10000,
+      "batch_size": 8,
+      "padding_fraction": 0.31764065435730315,
+      "padded_token_positions": 21710952,
+      "dense_attention_shape_positions": 6089982408,
+      "input_positions": 14814671
+    },
+    "bucketed": {
+      "steps": 10000,
+      "batch_size": 8,
+      "padding_fraction": 0.06080113616226257,
+      "padded_token_positions": 15800560,
+      "dense_attention_shape_positions": 3372748576,
+      "input_positions": 14839868
+    },
+    "marginal_probability_max_error": 0.0,
+    "saved_padded_positions_fraction": 0.27223089987025906,
+    "saved_dense_attention_positions_fraction": 0.44618090003520416
+  },
+  "quantizer": [
+    {
+      "planes": 1,
+      "group": 8,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 1,
+      "group": 8,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 1,
+      "group": 8,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 1,
+      "group": 32,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 1,
+      "group": 32,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 1,
+      "group": 32,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 8,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 8,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 8,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 32,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 32,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 2,
+      "group": 32,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 8,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 8,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 8,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 32,
+      "threshold": 0.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 32,
+      "threshold": 0.5,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    },
+    {
+      "planes": 3,
+      "group": 32,
+      "threshold": 1.0,
+      "value_max_error": 0.0,
+      "gradient_max_error": 0.0
+    }
+  ],
+  "projection": [
+    {
+      "length": 7,
+      "heads": 2,
+      "kv_heads": 1,
+      "planes": 1,
+      "sdpa": false,
+      "targets": 5,
+      "output_max_abs_error": 0.0,
+      "gradient_max_abs_error": 0.0,
+      "loss_abs_error": 0.0
+    },
+    {
+      "length": 13,
+      "heads": 4,
+      "kv_heads": 2,
+      "planes": 2,
+      "sdpa": true,
+      "targets": 5,
+      "output_max_abs_error": 0.0,
+      "gradient_max_abs_error": 7.450580596923828e-09,
+      "loss_abs_error": 0.0
+    },
+    {
+      "length": 31,
+      "heads": 4,
+      "kv_heads": 1,
+      "planes": 3,
+      "sdpa": false,
+      "targets": 5,
+      "output_max_abs_error": 0.0,
+      "gradient_max_abs_error": 3.725290298461914e-09,
+      "loss_abs_error": 0.0
+    },
+    {
+      "length": 48,
+      "heads": 4,
+      "kv_heads": 2,
+      "planes": 2,
+      "sdpa": true,
+      "targets": 5,
+      "output_max_abs_error": 0.0,
+      "gradient_max_abs_error": 3.725290298461914e-09,
+      "loss_abs_error": 0.0
+    }
+  ],
+  "projection_corpus": {
+    "scope": "One unpadded pass over the corpus, output projection positions only; attention is NOT skipped",
+    "full_positions": 369024,
+    "selected_positions": 177968,
+    "removed_positions": 191056,
+    "reduction_fraction": 0.5177332639611516,
+    "not_a_wall_clock_speedup": true
+  },
+  "csharp_benchmark": "Defined: TritStudio.Trainer --benchmark [--cuda] [--output FILE]. Not run in this environment.",
+  "caveats": [
+    "Bucketed batches alter correlations, not per-example marginal sampling. Fitting quality must still be measured.",
+    "The shape-count reduction is not a measured runtime speedup.",
+    "SDPA chooses an available native implementation; this report does not certify FlashAttention on the laptop."
+  ]
+}

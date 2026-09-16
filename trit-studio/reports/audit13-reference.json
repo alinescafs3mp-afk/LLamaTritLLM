@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "Independent Python numeric/data/state specifications only; C# build/runtime/GUI/CUDA NOT_RUN",
+  "attention": {
+    "cases": 90,
+    "max_abs_error": 0.0,
+    "bitwise_equal_in_numpy": true,
+    "scope": "Value reduction lanes only, same scores and time order. NOT .NET SIMD, JIT, native speed or parallel evidence."
+  },
+  "journal": {
+    "tail_cases": 270,
+    "static_valid_journal_records": 10000,
+    "records_parsed_for_last250": 250,
+    "scope": "Independent fixed-window parsing model. NOT real .NET IO, ArrayPool memory or concurrent truncation evidence."
+  },
+  "draftRecovery": {
+    "cases": 16,
+    "scope": "Policy truth table, NOT headless UI execution."
+  },
+  "dataset": {
+    "version": "conversation-ru-v13",
+    "total": 2890,
+    "pretrain_sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
+  }
+}

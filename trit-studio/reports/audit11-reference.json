@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Independent Python index/budget/framing-policy specifications, NOT C# execution, native speed or actual process/UI behavior",
+  "replay_pool_parity_cases": 688,
+  "selected_vs_unselected_guard_cases": 11516,
+  "replay_trace_sha256": "57010bf03241b6eeb4a7a2d902cf132abbd052c9e78860aaa43182e789d27740",
+  "checkpoint_publication_budget_cases": 1078,
+  "command_envelope_cases": 14,
+  "ui_policy_boolean_combinations": 64,
+  "bounded_learned_rows_per_online_pool": 4,
+  "legacy_learned_rows_encoded_per_pool": 64,
+  "corpus_version": "conversation-ru-v11",
+  "csharp_tests": "NOT_RUN"
+}
