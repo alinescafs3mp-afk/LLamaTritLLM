@@ -1,0 +1,1792 @@
+{
+  "train": [
+    {
+      "prompt": "Сегодня хочется просто посидеть у окна.",
+      "answer": "Иногда тихого вечера вполне достаточно.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-31e010017ada0429086c"
+    },
+    {
+      "prompt": "Я наконец дочитал книгу, которую всё откладывал.",
+      "answer": "Приятно закончить то, что долго ждало своего часа. Как тебе финал?",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-856c571ed1baf16b719a"
+    },
+    {
+      "prompt": "У меня сегодня обычный день, без приключений.",
+      "answer": "Обычные дни тоже могут быть хорошими. Что в нём было приятного?",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-12d276a3a8a48d7f9b43"
+    },
+    {
+      "prompt": "Пока не знаю, о чём говорить, но уходить не хочется.",
+      "answer": "Можно не торопиться с темой. Я здесь.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ea2c958521a0b432aad7"
+    },
+    {
+      "prompt": "Вернулся с прогулки, а дома пахнет хлебом.",
+      "answer": "Очень уютное возвращение получилось.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2343ee70755f51655c17"
+    },
+    {
+      "prompt": "На выходных хочу ничего не планировать.",
+      "answer": "Пусть останется место для спонтанного отдыха.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-3b590836bf291af38a12"
+    },
+    {
+      "prompt": "Мне понравилась фраза, но я её уже забыл.",
+      "answer": "Обидно. Осталось хотя бы ощущение, о чём она была?",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-4642a2338cd42027b8f9"
+    },
+    {
+      "prompt": "Я сегодня сделал меньше, чем собирался. Не ругай меня.",
+      "answer": "Не буду. Один неудачный план не отменяет того, что ты всё же сделал.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a38e0900170a417ef883"
+    },
+    {
+      "prompt": "Хочется поговорить без серьёзных выводов.",
+      "answer": "Давай просто поболтаем, без итогового экзамена.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-08368709e6a276a3be94"
+    },
+    {
+      "prompt": "Мне нравится слушать, как идёт дождь.",
+      "answer": "В этом звуке есть что-то успокаивающее. Особенно когда сам в тепле.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-636480e47da4d785a01f"
+    },
+    {
+      "prompt": "Сейчас занят, вернусь к разговору позже.",
+      "answer": "Хорошо. Продолжим, когда освободишься.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-6d0a4fea9b5858d5b903"
+    },
+    {
+      "prompt": "Не надо развлекать меня, просто ответь спокойно.",
+      "answer": "Хорошо. Буду отвечать спокойно.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-33253f89fa5057661a27"
+    },
+    {
+      "prompt": "Сделай вежливее: «Верни книгу завтра».",
+      "answer": "Пожалуйста, верни книгу завтра.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d0970256cdb4bf9bc8cd"
+    },
+    {
+      "prompt": "Перепиши без упрёка: «Ты опять не ответил».",
+      "answer": "Я пока не получил ответ. Напиши, когда сможешь.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-70c2f4437f13127931b3"
+    },
+    {
+      "prompt": "Сократи: «В данный момент времени я нахожусь дома».",
+      "answer": "Сейчас я дома.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9b8f0d5cff78d4e1f184"
+    },
+    {
+      "prompt": "Исправь согласование: «Эта письмо короткая».",
+      "answer": "Это письмо короткое.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-5e7d82489f8b48655110"
+    },
+    {
+      "prompt": "Исправь: «На столе лежала два карандаша».",
+      "answer": "На столе лежали два карандаша.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ad7d321e6c902d287a83"
+    },
+    {
+      "prompt": "Напиши только множественное число слова «окно».",
+      "answer": "окна",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-01c7e4d84350646ef546"
+    },
+    {
+      "prompt": "Поменяй порядок слов без изменения смысла: «Утром Лена открыла окно».",
+      "answer": "Лена открыла окно утром.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-7ead75cf82f2488f0da4"
+    },
+    {
+      "prompt": "Убери повтор: «Мне очень, очень понравился рассказ».",
+      "answer": "Мне очень понравился рассказ.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-597210fc1098f791c420"
+    },
+    {
+      "prompt": "Назови цвет и предмет из фразы «зелёная чашка».",
+      "answer": "Цвет: зелёный. Предмет: чашка.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a1b2e3641183533e4c19"
+    },
+    {
+      "prompt": "Ответь одним словом: «В комнате светло или темно?» В комнате выключен свет и закрыты шторы.",
+      "answer": "Темно.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-929c01daa8a4c0695a49"
+    },
+    {
+      "prompt": "Напиши две строки: сначала «начало», затем «конец».",
+      "answer": "начало\nконец",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-f7812268f208e56e6f3d"
+    },
+    {
+      "prompt": "Перечисли через запятую только фрукты: яблоко, стул, груша.",
+      "answer": "яблоко, груша",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-c6cab4bd5213dea1e4e2"
+    },
+    {
+      "prompt": "Скажи ту же мысль мягче: «Этот вариант мне не подходит».",
+      "answer": "Мне больше подошёл бы другой вариант.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-3deaa41a5d7adff4fef1"
+    },
+    {
+      "prompt": "Мы договорились встретиться, но время ещё не выбрали. Во сколько встреча?",
+      "answer": "Время встречи пока не выбрано.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-aed208398cd02f80ffe3"
+    },
+    {
+      "prompt": "Я собираюсь записаться на курс. Я уже записан?",
+      "answer": "Нет. Пока ты только собираешься записаться.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-67f8d396fc0907cbf4be"
+    },
+    {
+      "prompt": "Письмо сохранено как черновик. Получатель его видел?",
+      "answer": "Из этого нельзя заключить, что он его видел. Черновик ещё не означает отправку.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-45dff7038c6feacc1ed5"
+    },
+    {
+      "prompt": "У Пети синий рюкзак, у Саши серый. Какой рюкзак у Саши?",
+      "answer": "Серый.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-3ef94fe4a594407bc875"
+    },
+    {
+      "prompt": "Я иногда пью чай вечером. Значит, каждый вечер?",
+      "answer": "Нет. «Иногда» не означает «каждый вечер».",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-bb96f99099ac5b526b7b"
+    },
+    {
+      "prompt": "Лампа стоит слева от книги. Что справа от лампы?",
+      "answer": "Книга.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-70be7b4bde0fbce439e6"
+    },
+    {
+      "prompt": "Я предпочёл второй вариант из трёх, но их названий не сообщил. Какой я выбрал?",
+      "answer": "Второй. Его название ты пока не сообщил.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-b9ba8e91461bb5280624"
+    },
+    {
+      "prompt": "Скажи, какой подарок понравится моему другу. Больше о нём ничего не расскажу.",
+      "answer": "Без его интересов и предпочтений я могу предложить только общие идеи, а не угадать наверняка.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-5572c780239b5cde42f1"
+    },
+    {
+      "prompt": "Что я ел вчера на ужин? Я об этом не писал.",
+      "answer": "Я не знаю: ты об этом не рассказывал.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-3645516181fdeba7ab18"
+    },
+    {
+      "prompt": "Придумай название для рассказа о потерянной варежке.",
+      "answer": "Варежка на скамейке.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-24fe880a8faac71e8593"
+    },
+    {
+      "prompt": "Напиши одно предложение о тихом дворе.",
+      "answer": "В тихом дворе медленно качались пустые качели.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-8b3844bbd06c5672e8fb"
+    },
+    {
+      "prompt": "Дай короткую подпись к фотографии чашки на подоконнике.",
+      "answer": "Пауза у окна.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-4bc66f102a6eb0927bac"
+    },
+    {
+      "prompt": "Придумай дружелюбное приглашение на прогулку.",
+      "answer": "Пойдём немного прогуляемся и поболтаем?",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-3de4fd6aee27a458206d"
+    },
+    {
+      "prompt": "Продолжи: «Кот услышал шорох и...»",
+      "answer": "насторожил уши.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-7865c12223e3e2fc5e96"
+    },
+    {
+      "prompt": "Напиши спокойное пожелание перед сном без обещаний.",
+      "answer": "Желаю спокойной ночи и хорошего отдыха.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-5de07ea90335e4f78756"
+    },
+    {
+      "prompt": "У меня свободно полчаса. Предложи один способ отдохнуть без экрана.",
+      "answer": "Можно немного прогуляться, не заглядывая в телефон.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-203fa907c67e145f0f28"
+    },
+    {
+      "prompt": "Хочу навести порядок, но только на столе.",
+      "answer": "Начни с лишних вещей на столе. Остальную комнату пока не трогай.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-64dd72cd7c1ae8a3a85f"
+    },
+    {
+      "prompt": "Помоги выбрать тему короткой заметки о доме.",
+      "answer": "Можно написать о вещи, которая делает дом уютнее.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-74572f62e439389119e1"
+    },
+    {
+      "prompt": "Я хочу оставить день рождения без шумной компании.",
+      "answer": "Небольшая спокойная встреча или вечер для себя тоже подходят.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-df07075dd7439b62006b"
+    },
+    {
+      "prompt": "Мне не понравилась книга, которую все хвалят.",
+      "answer": "Так бывает. Твоё впечатление не обязано совпадать с общим мнением.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-6e233ba36c09d8c10f8e"
+    },
+    {
+      "prompt": "Я не прошу решения, просто делюсь: день был длинный.",
+      "answer": "Понимаю. Длинный день закончился, и сейчас можно немного выдохнуть.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-56d2a2219abbffaca0c7"
+    },
+    {
+      "prompt": "Ответ получился слишком официальный. Давай проще.",
+      "answer": "Хорошо, скажу проще и без канцелярских оборотов.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ee50c307af9bd0ed66d6"
+    },
+    {
+      "prompt": "Спасибо, теперь смысл понятен. Ничего больше не добавляй.",
+      "answer": "Пожалуйста.",
+      "family": "v16_simple_contact_and_language",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-812499293efd88a9e26d"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Положил блокнот на полку."
+        },
+        {
+          "role": "assistant",
+          "content": "На полку."
+        },
+        {
+          "role": "user",
+          "content": "Нет, переложил в ящик."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь он в ящике."
+        },
+        {
+          "role": "user",
+          "content": "Где блокнот?"
+        },
+        {
+          "role": "assistant",
+          "content": "В ящике."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-50b877b68f0e3bfe5364"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Хочу чай без сахара."
+        },
+        {
+          "role": "assistant",
+          "content": "Без сахара."
+        },
+        {
+          "role": "user",
+          "content": "И без лимона."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, без сахара и лимона."
+        },
+        {
+          "role": "user",
+          "content": "Повтори мой заказ."
+        },
+        {
+          "role": "assistant",
+          "content": "Чай без сахара и без лимона."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-41144441ba325dbbd2a7"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Назови нашу заметку «Вечер»."
+        },
+        {
+          "role": "assistant",
+          "content": "Название: «Вечер»."
+        },
+        {
+          "role": "user",
+          "content": "Замени на «Тихий вечер»."
+        },
+        {
+          "role": "assistant",
+          "content": "Название изменено в нашем тексте."
+        },
+        {
+          "role": "user",
+          "content": "Как она называется?"
+        },
+        {
+          "role": "assistant",
+          "content": "«Тихий вечер»."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-4033a44dacbf142fb378"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "У Дины кот, у Веры собака."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Кто живёт у Дины?"
+        },
+        {
+          "role": "assistant",
+          "content": "Кот."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-148d2eb00a6aae1fcdaf"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Выбираю между парком и набережной."
+        },
+        {
+          "role": "assistant",
+          "content": "Оба варианта подходят для прогулки."
+        },
+        {
+          "role": "user",
+          "content": "Сегодня хочу в парк."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда выбираем парк."
+        },
+        {
+          "role": "user",
+          "content": "Куда я решил пойти?"
+        },
+        {
+          "role": "assistant",
+          "content": "В парк."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2e7f1d9705af304653b6"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нужна фраза из трёх слов."
+        },
+        {
+          "role": "assistant",
+          "content": "Например: «Сегодня хороший день»."
+        },
+        {
+          "role": "user",
+          "content": "Теперь без слова «сегодня»."
+        },
+        {
+          "role": "assistant",
+          "content": "«Какой хороший день»."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9e64dbb534ca2ed5feab"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Запомни в этом разговоре число 27."
+        },
+        {
+          "role": "assistant",
+          "content": "В этом разговоре: 27."
+        },
+        {
+          "role": "user",
+          "content": "Теперь замени его на 34."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь число 34."
+        },
+        {
+          "role": "user",
+          "content": "Какое число актуально?"
+        },
+        {
+          "role": "assistant",
+          "content": "34."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-14ac41387d95610dfa15"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Буду дома после шести."
+        },
+        {
+          "role": "assistant",
+          "content": "После шести."
+        },
+        {
+          "role": "user",
+          "content": "Уточню: после семи."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, после семи."
+        },
+        {
+          "role": "user",
+          "content": "Когда меня ждать?"
+        },
+        {
+          "role": "assistant",
+          "content": "После семи."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-b7ac12dc1eb6cd69163f"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Расскажи про спокойный вечер."
+        },
+        {
+          "role": "assistant",
+          "content": "Можно заварить чай и почитать книгу."
+        },
+        {
+          "role": "user",
+          "content": "Я не хочу читать."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда просто посиди с чаем у окна."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-79edc6a14e97ddddbb4b"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "У меня нет балкона."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Как отдохнуть дома без экрана?"
+        },
+        {
+          "role": "assistant",
+          "content": "Можно послушать музыку или спокойно посидеть у окна."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-48d2a67e8f2d9f36a93e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "В списке хлеб и молоко."
+        },
+        {
+          "role": "assistant",
+          "content": "Хлеб и молоко."
+        },
+        {
+          "role": "user",
+          "content": "Убери молоко, добавь яблоки."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь хлеб и яблоки."
+        },
+        {
+          "role": "user",
+          "content": "Что купить?"
+        },
+        {
+          "role": "assistant",
+          "content": "Хлеб и яблоки."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-4e5d9c6a1f416743a3a5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Хочу короткий ответ без вопроса в конце."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо."
+        },
+        {
+          "role": "user",
+          "content": "Я закончил уборку."
+        },
+        {
+          "role": "assistant",
+          "content": "Здорово, теперь дома стало приятнее."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2ba264d9518db09cfd06"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "План был поехать в субботу."
+        },
+        {
+          "role": "assistant",
+          "content": "В субботу."
+        },
+        {
+          "role": "user",
+          "content": "План отменили. Новую дату не выбрали."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда даты пока нет."
+        },
+        {
+          "role": "user",
+          "content": "Когда поездка?"
+        },
+        {
+          "role": "assistant",
+          "content": "Новая дата ещё не выбрана."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-bbedc8fbeb333ecc5d79"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Напиши: «Я скоро отвечу»."
+        },
+        {
+          "role": "assistant",
+          "content": "Я скоро отвечу."
+        },
+        {
+          "role": "user",
+          "content": "Сделай более точным: сегодня вечером."
+        },
+        {
+          "role": "assistant",
+          "content": "Я отвечу сегодня вечером."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-00ab567fc1e77eb2db3e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Красная папка для счетов, белая для писем."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "В какую положить письмо?"
+        },
+        {
+          "role": "assistant",
+          "content": "В белую."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-5a05776182a6d1bee8d4"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нравится серый цвет."
+        },
+        {
+          "role": "assistant",
+          "content": "Запомнил для этого разговора."
+        },
+        {
+          "role": "user",
+          "content": "Но обложку хочу синюю."
+        },
+        {
+          "role": "assistant",
+          "content": "Для обложки выбираем синий."
+        },
+        {
+          "role": "user",
+          "content": "Какой цвет обложки?"
+        },
+        {
+          "role": "assistant",
+          "content": "Синий."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-bbe27c46a92aed1c6ed9"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Посоветуй занятие на десять минут."
+        },
+        {
+          "role": "assistant",
+          "content": "Можно разобрать небольшой ящик."
+        },
+        {
+          "role": "user",
+          "content": "Не хочу ничего убирать."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда послушай пару любимых песен."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9ae54f61716317d1561e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я только подготовил приглашение."
+        },
+        {
+          "role": "assistant",
+          "content": "Пока оно подготовлено."
+        },
+        {
+          "role": "user",
+          "content": "Никому ещё не отправлял."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Гости уже приглашены?"
+        },
+        {
+          "role": "assistant",
+          "content": "Нет, приглашение ещё не отправлено."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d93e946b547755320918"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Назови один предмет на букву К."
+        },
+        {
+          "role": "assistant",
+          "content": "Книга."
+        },
+        {
+          "role": "user",
+          "content": "Другой, который надевают зимой."
+        },
+        {
+          "role": "assistant",
+          "content": "Куртка."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-61fff174dc3bd7d9f297"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Встречаемся у библиотеки."
+        },
+        {
+          "role": "assistant",
+          "content": "У библиотеки."
+        },
+        {
+          "role": "user",
+          "content": "Не внутри, а у входа."
+        },
+        {
+          "role": "assistant",
+          "content": "У входа в библиотеку."
+        },
+        {
+          "role": "user",
+          "content": "Где точно?"
+        },
+        {
+          "role": "assistant",
+          "content": "У входа в библиотеку."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1aed35bf9a11285a3d39"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Оставим только два пункта: чай и печенье."
+        },
+        {
+          "role": "assistant",
+          "content": "Чай и печенье."
+        },
+        {
+          "role": "user",
+          "content": "Напиши каждый на отдельной строке."
+        },
+        {
+          "role": "assistant",
+          "content": "чай\nпеченье"
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-e64d89c8839bce4567ee"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Не используй в ответе смайлики."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо."
+        },
+        {
+          "role": "user",
+          "content": "Пожелай мне удачи перед выступлением."
+        },
+        {
+          "role": "assistant",
+          "content": "Удачи на выступлении. Пусть получится сказать всё, что задумано."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-f5f84a8cc9a6b2185201"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я редко встаю рано."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "А сегодня встал в шесть."
+        },
+        {
+          "role": "assistant",
+          "content": "Сегодня получилось встать рано."
+        },
+        {
+          "role": "user",
+          "content": "Значит, теперь я всегда так делаю?"
+        },
+        {
+          "role": "assistant",
+          "content": "Нет. Один случай не означает, что ты всегда так встаёшь."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-8a77b763b5f14d0c3c57"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Потерял ручку, но нашёл карандаш."
+        },
+        {
+          "role": "assistant",
+          "content": "Карандаш нашёлся."
+        },
+        {
+          "role": "user",
+          "content": "Ручка так и не нашлась."
+        },
+        {
+          "role": "assistant",
+          "content": "Значит, ручка пока потеряна."
+        },
+        {
+          "role": "user",
+          "content": "Что удалось найти?"
+        },
+        {
+          "role": "assistant",
+          "content": "Карандаш."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-69c6d6ea957eaf810e4e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Выбрал рассказ, а не стихотворение."
+        },
+        {
+          "role": "assistant",
+          "content": "Будет рассказ."
+        },
+        {
+          "role": "user",
+          "content": "О чём лучше написать?"
+        },
+        {
+          "role": "assistant",
+          "content": "О небольшой находке, которая изменила обычный день."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2c05e8122e25040c7d12"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Коля принёс хлеб, Маша принесла сыр."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Кто принёс хлеб?"
+        },
+        {
+          "role": "assistant",
+          "content": "Коля."
+        },
+        {
+          "role": "user",
+          "content": "А сыр?"
+        },
+        {
+          "role": "assistant",
+          "content": "Маша."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2ec105a31f0d7a844032"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Сделай подпись: «Солнечное утро»."
+        },
+        {
+          "role": "assistant",
+          "content": "Солнечное утро."
+        },
+        {
+          "role": "user",
+          "content": "Но на фото вечер."
+        },
+        {
+          "role": "assistant",
+          "content": "Солнечный вечер."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2a54909a5bcfb2cc7272"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Давай без списка вариантов."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, предложу один."
+        },
+        {
+          "role": "user",
+          "content": "Что приготовить на завтрак из яиц?"
+        },
+        {
+          "role": "assistant",
+          "content": "Можно приготовить омлет."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ceb20c12c3eb121b006e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я решил оставить старую чашку."
+        },
+        {
+          "role": "assistant",
+          "content": "Оставляем старую."
+        },
+        {
+          "role": "user",
+          "content": "Новую покупать не буду."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Что я решил купить?"
+        },
+        {
+          "role": "assistant",
+          "content": "Ничего: ты решил оставить старую чашку."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-81208261212efb08d7f6"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Начну с кухни, потом займусь столом."
+        },
+        {
+          "role": "assistant",
+          "content": "Сначала кухня, затем стол."
+        },
+        {
+          "role": "user",
+          "content": "Передумал, порядок обратный."
+        },
+        {
+          "role": "assistant",
+          "content": "Сначала стол, затем кухня."
+        },
+        {
+          "role": "user",
+          "content": "С чего начинаю?"
+        },
+        {
+          "role": "assistant",
+          "content": "Со стола."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2a8aed17cbfe32a2d1d5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Нужна подпись без слова «уют»."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "На картинке плед и книга."
+        },
+        {
+          "role": "assistant",
+          "content": "Время для чтения и отдыха."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-70ee3ff8c763aca937c5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я сообщил только имя: Рома."
+        },
+        {
+          "role": "assistant",
+          "content": "Рома."
+        },
+        {
+          "role": "user",
+          "content": "А возраст не называл."
+        },
+        {
+          "role": "assistant",
+          "content": "Возраст мне неизвестен."
+        },
+        {
+          "role": "user",
+          "content": "Сколько Роме лет?"
+        },
+        {
+          "role": "assistant",
+          "content": "Ты не сообщил его возраст."
+        }
+      ],
+      "family": "v16_context_and_corrections",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-0a5e5693330d5ab32236"
+    },
+    {
+      "text": "Лена поставила чашку на стол и открыла окно. В комнату вошёл прохладный воздух. Она решила немного посидеть в тишине.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-196307b50fb3d354306b"
+    },
+    {
+      "text": "На полке стояли три книги. Одну Саша уже прочитал, а две оставил на выходные. Сегодня он выбрал короткий рассказ.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-b36025c801f46b3dcefa"
+    },
+    {
+      "text": "Дождь начался после обеда. Люди раскрыли зонты, а кот спрятался под навесом. Скоро двор опустел.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1dd51b65608c268fcbae"
+    },
+    {
+      "text": "Петя искал ключи в кармане. Потом вспомнил, что положил их в сумку. Ключи оказались именно там.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-0c3e4acdb5a7107e52be"
+    },
+    {
+      "text": "Вера хотела купить новую чашку, но передумала. Старая была целой и удобной. Покупку она отложила.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-e426da16700478f8ad98"
+    },
+    {
+      "text": "Рядом с домом открыли маленькую пекарню. По утрам оттуда пахло хлебом. Дина любила проходить мимо по дороге на работу.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-6dc22c6d668ebdd46b13"
+    },
+    {
+      "text": "Илья написал письмо и сохранил черновик. Он хотел перечитать его утром. Пока письмо никому не отправлялось.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-817bf81149209058ad03"
+    },
+    {
+      "text": "Вечером во дворе стало тихо. Только ветер шевелил листья. На скамейке лежала забытая варежка.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-5d9b5cd6d18dde24314e"
+    },
+    {
+      "text": "Маша убрала со стола лишние бумаги. Потом протёрла стол и поставила лампу ближе к книге. Работать стало удобнее.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2195e1599d7b38850c79"
+    },
+    {
+      "text": "Кот услышал шаги и подошёл к двери. Это вернулся хозяин. Кот потёрся о его ноги и пошёл к своей миске.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a857a1129d42662e909d"
+    },
+    {
+      "text": "Мы собирались гулять в парке, но начался дождь. Прогулку перенесли. Вместо неё остались дома и заварили чай.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1306b0a9243d17fdefff"
+    },
+    {
+      "text": "Утром Антон нашёл записку на холодильнике. В ней просили купить хлеб. Он положил записку в карман, чтобы не забыть.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-0296ff247880a7fcacf5"
+    },
+    {
+      "text": "На встрече сначала обсудили время, потом место. Дату пока не выбрали. Разговор решили продолжить завтра.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-180e94941bb8bbedc771"
+    },
+    {
+      "text": "Оля закрыла книгу на последней странице. Рассказ закончился, но ей хотелось ещё немного подумать о героях.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-fdc205e9d493bd03b47e"
+    },
+    {
+      "text": "В коробке лежали карандаши разных цветов. Серёжа взял зелёный и нарисовал дерево. Затем добавил синее небо.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d4373ff22842c3329dcb"
+    },
+    {
+      "text": "План можно изменить, если обстоятельства стали другими. Это не означает, что прежнего плана не было. Просто теперь действует новый.",
+      "family": "v16_connected_text",
+      "split": "train",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ec7961eb768dc36a65bc"
+    }
+  ],
+  "validation": [
+    {
+      "prompt": "У меня вечер без важных новостей. Можно просто поговорить?",
+      "answer": "Конечно. Необязательно начинать разговор с важной новости.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1ce9e76b7a1fffef31d2"
+    },
+    {
+      "prompt": "Я дочитал повесть и пока не хочу брать следующую.",
+      "answer": "Можно дать истории немного улечься и не торопиться с новой.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-b1b16773b6f47cda212a"
+    },
+    {
+      "prompt": "Исправь фразу «Мой окно открыта».",
+      "answer": "Моё окно открыто.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9bce90e413e613d91593"
+    },
+    {
+      "prompt": "Сократи без потери смысла: «Я планирую вернуться обратно домой вечером».",
+      "answer": "Я планирую вернуться домой вечером.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-58aaf08f7e1ead4650a3"
+    },
+    {
+      "prompt": "Напиши через точку с запятой только овощи: морковь, книга, огурец.",
+      "answer": "морковь; огурец",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a7ac9477efdb8766dc93"
+    },
+    {
+      "prompt": "Книга лежит справа от телефона. Что слева от книги?",
+      "answer": "Телефон.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-bebefb5c119fc24d2d48"
+    },
+    {
+      "prompt": "Я только выбрал курс, но не оплатил и не записался. Я его уже прохожу?",
+      "answer": "Нет. Пока ты только выбрал курс.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9f701eb82968e06fbdbe"
+    },
+    {
+      "prompt": "У Иры жёлтый шарф, у Лизы белый. Какой у Иры?",
+      "answer": "Жёлтый.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2cc0a26a9f0b2c0c3750"
+    },
+    {
+      "prompt": "Ответь без совета: мне нравится смотреть на облака.",
+      "answer": "В их формах интересно находить что-то знакомое.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1f5bfd35748dd8b18d3c"
+    },
+    {
+      "prompt": "Дай короткое название рассказу о старом фонаре.",
+      "answer": "Свет старого фонаря.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-78b4a4e3a138efc79a68"
+    },
+    {
+      "prompt": "Пожелай спокойного вечера одним предложением.",
+      "answer": "Желаю тебе спокойного и приятного вечера.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d115d0b7e63715bdf213"
+    },
+    {
+      "prompt": "Я иногда езжу за город. Правильно ли сказать, что я там каждый день?",
+      "answer": "Нет. «Иногда» не означает «каждый день».",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-2b687ae19f887a9e310b"
+    },
+    {
+      "prompt": "Мы обсуждали поездку, но ничего не решили. Билеты уже куплены?",
+      "answer": "Ты не сообщал о покупке билетов. Обсуждение само по себе этого не означает.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d49a35081c092adb7c63"
+    },
+    {
+      "prompt": "Перепиши мягче: «Ты выбрал не то».",
+      "answer": "Мне кажется, другой вариант подошёл бы лучше.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-8fccd15fc1408e8dc48c"
+    },
+    {
+      "prompt": "Скажи только число: сколько предметов в списке «ручка, блокнот, чашка»?",
+      "answer": "3",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a1a71bb01e8135890b40"
+    },
+    {
+      "prompt": "Мне не нужен разбор моего дня. Просто скажи, что услышал.",
+      "answer": "Я тебя услышал.",
+      "family": "v16_independent_control",
+      "split": "validation",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ef11e746dee03e48418a"
+    }
+  ],
+  "challenge": [
+    {
+      "prompt": "Я придумал название «Письмо у окна». Напиши его без кавычек.",
+      "answer": "Письмо у окна",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-fb19dddb0fe193e902cf"
+    },
+    {
+      "prompt": "Исправь: «Две чашка стояли рядом».",
+      "answer": "Две чашки стояли рядом.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-9f5f72a7f4471eb5dd8f"
+    },
+    {
+      "prompt": "Сделай короче: «На сегодняшний день решение пока не принято».",
+      "answer": "Решение пока не принято.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-a7fc54dabf67f226480c"
+    },
+    {
+      "prompt": "У Нины зелёный зонт, у Яны красный. Что принадлежит Яне?",
+      "answer": "Красный зонт.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ffc21ba796a2d28511ee"
+    },
+    {
+      "prompt": "Мне хочется оставить этот вечер свободным, без обязательных дел.",
+      "answer": "Пусть это будет спокойный вечер без расписания.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-447b0c63b95a21048232"
+    },
+    {
+      "prompt": "Поставь слова «тихо» и «светло» на две отдельные строки.",
+      "answer": "тихо\nсветло",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-07cf4a76c46a926c2709"
+    },
+    {
+      "prompt": "Я собирался позвонить, но передумал. Звонок состоялся?",
+      "answer": "Нет, из твоих слов следует, что ты передумал звонить.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-1b009c8e5133c05c7f3f"
+    },
+    {
+      "prompt": "Предложи одно название заметке о пустой станции.",
+      "answer": "Тишина на станции.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-6d85567c547734dd0d69"
+    },
+    {
+      "prompt": "Просто поддержи разговор: я люблю запах свежей бумаги.",
+      "answer": "У него есть своё настроение, особенно когда открываешь новый блокнот.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-beb013eefbe6aeda7ead"
+    },
+    {
+      "prompt": "Вчера я ничего не писал о погоде. Какая она была?",
+      "answer": "Я не знаю, ты об этом не сообщал.",
+      "family": "v16_unseen_control",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-09a5b200513f30eca7ba"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Записал время: 15:20."
+        },
+        {
+          "role": "assistant",
+          "content": "15:20."
+        },
+        {
+          "role": "user",
+          "content": "Исправь на 16:10."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь 16:10."
+        },
+        {
+          "role": "user",
+          "content": "Какое время оставляем?"
+        },
+        {
+          "role": "assistant",
+          "content": "16:10."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-ab8367b029a530385ffb"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "В пакете были груши и хлеб."
+        },
+        {
+          "role": "assistant",
+          "content": "Груши и хлеб."
+        },
+        {
+          "role": "user",
+          "content": "Груши я достал."
+        },
+        {
+          "role": "assistant",
+          "content": "В пакете остался хлеб."
+        },
+        {
+          "role": "user",
+          "content": "Что осталось в пакете?"
+        },
+        {
+          "role": "assistant",
+          "content": "Хлеб."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-b09b8d883ad7587c62e8"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Для комнаты выбрал светлые шторы."
+        },
+        {
+          "role": "assistant",
+          "content": "Светлые шторы."
+        },
+        {
+          "role": "user",
+          "content": "Но ковёр хочу тёмный."
+        },
+        {
+          "role": "assistant",
+          "content": "Ковёр будет тёмным."
+        },
+        {
+          "role": "user",
+          "content": "Какие шторы я выбрал?"
+        },
+        {
+          "role": "assistant",
+          "content": "Светлые."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-e8f74edc4fa568525b31"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Хочу ответ без вопросительного предложения."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо."
+        },
+        {
+          "role": "user",
+          "content": "Я впервые испёк хлеб."
+        },
+        {
+          "role": "assistant",
+          "content": "Здорово попробовать сделать хлеб самому."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-d21579d0498eac70d62c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Планировал встретиться с Ритой в среду."
+        },
+        {
+          "role": "assistant",
+          "content": "В среду."
+        },
+        {
+          "role": "user",
+          "content": "Встречу перенесли, но день ещё не назначили."
+        },
+        {
+          "role": "assistant",
+          "content": "Новая дата пока неизвестна."
+        },
+        {
+          "role": "user",
+          "content": "Когда встреча?"
+        },
+        {
+          "role": "assistant",
+          "content": "Новую дату ещё не назначили."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-60798f6fce38f110a5ca"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нужен текст из двух слов."
+        },
+        {
+          "role": "assistant",
+          "content": "Тихий берег."
+        },
+        {
+          "role": "user",
+          "content": "Замени берег на двор."
+        },
+        {
+          "role": "assistant",
+          "content": "Тихий двор."
+        }
+      ],
+      "family": "v16_unseen_context",
+      "split": "test",
+      "origin": "authored-synthetic-v16",
+      "id": "ru-v16-dfc173e172b6c9eb4589"
+    }
+  ]
+}

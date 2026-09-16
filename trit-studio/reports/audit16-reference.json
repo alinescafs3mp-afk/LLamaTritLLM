@@ -1,0 +1,775 @@
+{
+  "status": "passed",
+  "scope": "Independent prefix mathematical specification. Does NOT execute C#, UI, OS pipes or native TorchSharp.",
+  "prefixCases": [
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 1,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 2,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 2,
+      "kvHeads": 1,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 2,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 1,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 0,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 3,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 2,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 17,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 16,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 1,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    },
+    {
+      "layers": 4,
+      "heads": 4,
+      "kvHeads": 4,
+      "prefix": 41,
+      "planes": 2,
+      "continuedTokens": 5,
+      "skippedOutputs": 40,
+      "maxAbsLogitDifference": 0.0
+    }
+  ],
+  "pointerPolicyCases": [
+    {
+      "pointer": "absent",
+      "revisions": false,
+      "allow": true
+    },
+    {
+      "pointer": "absent",
+      "revisions": true,
+      "allow": false
+    },
+    {
+      "pointer": "file",
+      "revisions": false,
+      "allow": true
+    },
+    {
+      "pointer": "file",
+      "revisions": true,
+      "allow": true
+    },
+    {
+      "pointer": "directory",
+      "revisions": false,
+      "allow": false
+    },
+    {
+      "pointer": "directory",
+      "revisions": true,
+      "allow": false
+    },
+    {
+      "pointer": "link",
+      "revisions": false,
+      "allow": false
+    },
+    {
+      "pointer": "link",
+      "revisions": true,
+      "allow": false
+    }
+  ],
+  "keyboardPolicySimulation": true,
+  "corpusRecords": 3418,
+  "CSharp": "NOT_RUN",
+  "PowerShell": "NOT_RUN",
+  "GUI": "NOT_RUN",
+  "CUDA": "NOT_RUN",
+  "note": "Exact equal outputs/KV in these NumPy cases. Not a throughput benchmark or execution of the changed C# code."
+}

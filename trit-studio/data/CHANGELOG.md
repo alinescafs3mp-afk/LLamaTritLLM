@@ -1,3 +1,10 @@
+# conversation-ru-v15
+
+- Add160 training,24 control and16 new held-out examples with simpler replies, grammar agreement and connected text.
+- Totals2634 training,352 controls,256 held-out,48 frozen basic =3290.
+- Previously shared v15 seed unchanged; all13 prior holdouts and48 basic records byte-frozen.
+- Byte vocabulary/weight shapes remain compatible. No conversational quality result is claimed.
+
 # Dataset audit14 · 2026-09-16
 
 +160 seed,+24 validation,+16 new challenge; now2474/328/240/48, total3090. Training breakdown1498 single,672 multi,304 texts.

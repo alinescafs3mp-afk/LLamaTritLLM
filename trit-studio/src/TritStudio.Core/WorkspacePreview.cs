@@ -9,7 +9,10 @@ public sealed record WorkspacePreview(string Root, string ConversationId, bool N
     {
         ct.ThrowIfCancellationRequested(); root = Path.GetFullPath(root);
         if (!Directory.Exists(root)) throw new DirectoryNotFoundException(root);
-        string chatState = Path.Combine(root, "chat-state.json"); bool exists = File.Exists(chatState);
+        ModelLibrary.NoLinks(root);
+        string chatState = Path.Combine(root, "chat-state.json"); ModelLibrary.NoLinks(chatState);
+        if (Directory.Exists(chatState)) throw new InvalidDataException("chat-state.json является каталогом.");
+        bool exists = File.Exists(chatState);
         string conversation = exists ? JsonData.Read<string>(chatState, 4096) : Guid.NewGuid().ToString("N");
         if (string.IsNullOrWhiteSpace(conversation) || conversation.Length > 256)
             throw new InvalidDataException("Некорректный идентификатор разговора в chat-state.json. Текущая модель не переключена.");

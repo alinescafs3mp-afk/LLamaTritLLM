@@ -103,6 +103,7 @@ public static class TrainerSelfTest
                 float error = expected.Values[s.Name].Zip(actual.Values[s.Name], (a, b) => MathF.Abs(a - b)).Max();
                 if (error > (requireCuda ? 0.0001 : 0.00001)) throw new Exception($"Optimizer/sampler resume mismatch: {s.Name}, {error}");
             }
+            CheckTrainedExportParity(training, root);
             CheckSnapshotPublication(training, root, resources, options);
             Console.WriteLine($"PASS real gradients, loss fitting ({before:F4} -> {after:F4}), managed/Torch parity, full-state resume on {training.DeviceName}.");
             Console.WriteLine("PASS SDPA/explicit forward+backward, versioned evaluation cache, failure recovery, bucketed sampler resume.");
@@ -110,6 +111,68 @@ public static class TrainerSelfTest
         }
         catch (Exception e) { Console.Error.WriteLine("FAIL " + e); return 1; }
         finally { Directory.Delete(root, true); }
+    }
+
+    // Owner reported poor text after direct conversational training. Verify the actual trained
+    // device -> FP32 master -> packed disk -> managed autoregressive path, not just initial weights.
+    // This is numerical transport parity, NOT proof of conversational competence or a fluency test.
+    private static void CheckTrainedExportParity(TrainingSession training, string root)
+    {
+        var master = training.CapturePublicationMaster();
+        if (training.Step <= 0) throw new Exception("Trained export fixture has not changed any weights.");
+        string packedPath = Path.Combine(root, "trained-export.tritmodel");
+        ModelFiles.Write(packedPath, master, true);
+        var loaded = ModelFiles.Read(packedPath, true);
+        var quantized = TernaryQuantizer.Quantize(master);
+        foreach (var shape in WeightLayout.For(master.Config))
+            if (!quantized.Values[shape.Name].SequenceEqual(loaded.Values[shape.Name]))
+                throw new Exception("Packed trained weights differ from the in-memory quantizer: " + shape.Name);
+        foreach (string prompt in new[] { "q", "x", "привет" })
+        {
+            int[] ids = ByteTokenizer.Prompt([], prompt, master.Config.Context, 16);
+            using var scope = torch.NewDisposeScope();
+            using var noGrad = torch.no_grad();
+            var tensor = torch.tensor(ids.Select(x => (long)x).ToArray(), dtype: torch.ScalarType.Int64,
+                device: training.Model.Device).reshape(1, -1);
+            var expected = training.Model.Forward(tensor).detach().cpu().contiguous().data<float>().ToArray();
+            var cpu = new ManagedInference(loaded, 0, 1).NewSession();
+            for (int pos = 0; pos < ids.Length; pos++)
+            {
+                var actual = cpu.Step(ids[pos]);
+                for (int i = 0; i < actual.Length; i++)
+                {
+                    float wanted = expected[pos * actual.Length + i];
+                    float tolerance = 0.002f + 0.0002f * MathF.Abs(wanted);
+                    if (!float.IsFinite(wanted) || !float.IsFinite(actual[i]) || MathF.Abs(wanted - actual[i]) > tolerance)
+                        throw new Exception($"Trained native/packed managed mismatch: pos={pos}, token={i}, expected={wanted}, actual={actual[i]}");
+                }
+            }
+            var prefixModel = new ManagedInference(loaded, 0, 1);
+            var reference = prefixModel.NewSession(optimizePrefix: false);
+            var optimized = prefixModel.NewSession();
+            float[] refLast = [], fastLast = [];
+            for (int p = 0; p < ids.Length; p++)
+            {
+                refLast = reference.Step(ids[p], computeLogits: p == ids.Length - 1);
+                fastLast = optimized.Step(ids[p], computeLogits: p == ids.Length - 1);
+            }
+            CheckPrefix(refLast, fastLast);
+            for (int p = 0; p < Math.Min(3, master.Config.Context - ids.Length); p++)
+                CheckPrefix(reference.Step(30+p), optimized.Step(30+p));
+            if (optimized.PrefixFinalBlockSkips != ids.Length-1) throw new Exception("Trained prefix shortcut did not run.");
+            void CheckPrefix(float[] a, float[] b)
+            {
+                if (a.Length != b.Length) throw new Exception("Trained prefix length mismatch.");
+                for(int i=0;i<a.Length;i++)
+                    if(!float.IsFinite(a[i])||!float.IsFinite(b[i])||MathF.Abs(a[i]-b[i])>2e-5f)
+                        throw new Exception("Trained prefix cache differs from full last block.");
+            }
+            var sampling = new SamplingOptions(Temperature: 0, MaxNewTokens: 16);
+            string a = new ManagedInference(quantized, 0, 1).Generate(ids, () => sampling, null, CancellationToken.None);
+            string b = new ManagedInference(loaded, 0, 1).Generate(ids, () => sampling, null, CancellationToken.None);
+            if (a != b) throw new Exception("Packed round-trip changed the deterministic trained response.");
+        }
+        Console.WriteLine("PASS trained device/master/packed-file/managed incremental logits and deterministic round-trip (not fluency).");
     }
 
     private static void CheckSiluParity(bool cuda)

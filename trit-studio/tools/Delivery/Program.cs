@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using TritStudio.Core;
 
 return await Delivery.Run(args);
 internal static class Delivery
@@ -22,14 +23,17 @@ internal static class Delivery
             if (!File.Exists(Path.Combine(_root, "TritStudio.sln"))) throw new Exception("Run from the Trit Studio source folder (contains TritStudio.sln).");
             string rid = "win-x64";
             bool cuda = !args.Contains("--cpu-only");
+            bool update = !args.Contains("--full");
             for (int i = 0; i < args.Length; i++)
             {
                 if (args[i] == "--target" && i + 1 < args.Length) rid = args[++i];
-                else if (args[i] is "--cpu-only" or "--with-cuda") { }
-                else throw new ArgumentException("Usage: --target win-x64|linux-x64 [--with-cuda|--cpu-only]");
+                else if (args[i] is "--cpu-only" or "--with-cuda" or "--full") { }
+                else throw new ArgumentException("Usage: --target win-x64|linux-x64 [--with-cuda|--cpu-only] [--full]");
             }
             if (args.Contains("--cpu-only") && args.Contains("--with-cuda")) throw new ArgumentException("Choose one backend packaging mode.");
             if (rid is not ("win-x64" or "linux-x64")) throw new ArgumentException("Unsupported package runtime.");
+            if (update && rid != "win-x64") throw new ArgumentException("App-only updates currently target win-x64. A Linux full installation requires explicit --full; no incompatible update ZIP was produced.");
+            if (update && !cuda) throw new ArgumentException("An update must replace BOTH trainer executables. Use --full --cpu-only only for an explicitly separate CPU installation.");
             string artifacts = Path.Combine(_root, "artifacts"); Directory.CreateDirectory(artifacts);
             deliveryLease = new FileStream(Path.Combine(artifacts, ".delivery.lock"), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
             await File.WriteAllTextAsync(Path.Combine(artifacts, "WHERE_TO_PICK_UP.txt"), "BUILD IN PROGRESS. A previous archive, if present, is not the result of this run.\n", Encoding.UTF8);
@@ -47,14 +51,30 @@ internal static class Delivery
             string hostExe = Path.Combine(_root, "src", "TritStudio.Trainer", "bin", "Release", "net10.0", "TritStudio.Trainer" + (OperatingSystem.IsWindows() ? ".exe" : ""));
             if (!File.Exists(hostExe)) throw new FileNotFoundException("Host trainer was not built.", hostExe);
             await Dotnet("run", "--project", "tests/TritStudio.Tests", "-c", "Release", "--no-build", "--", "--worker", hostExe);
-            string name = "TritStudio-" + rid + "-portable";
+            string name = "TritStudio-" + rid + (update ? "-update" : "-portable");
             staging = Path.Combine(artifacts, ".stage-" + runId); Directory.CreateDirectory(staging);
-            string folder = Path.Combine(staging, name); Directory.CreateDirectory(folder);
+            string folder = Path.Combine(staging, "full-publish"); Directory.CreateDirectory(folder);
             await Publish("src/TritStudio.App", rid, folder);
             await Publish("src/TritStudio.Trainer", rid, Path.Combine(folder, "trainer"), "cpu");
             if (cuda) await Publish("src/TritStudio.Trainer", rid, Path.Combine(folder, "trainer-cuda"), rid == "win-x64" ? "cuda-windows" : "cuda-linux");
             await Publish("src/TritStudio.Runner", rid, Path.Combine(folder, "runner"));
             await Publish("tests/TritStudio.Tests", rid, Path.Combine(folder, "checks"));
+            // Record dependencies from the SAME publish that produced the owned binaries. Keep exact vendor versions.
+            var dependencies = Directory.EnumerateFiles(folder,"*",SearchOption.AllDirectories)
+                .Select(f=>(Path:Path.GetRelativePath(folder,f).Replace('\\','/'),File:f))
+                .Where(x=>!UpdatePayloadPolicy.IsOwnedPayload(x.Path))
+                .OrderBy(x=>x.Path,StringComparer.Ordinal)
+                .ToDictionary(x=>x.Path,x=>new { sha256=Hash(x.File), bytes=new FileInfo(x.File).Length },StringComparer.Ordinal);
+            string outputFolder = Path.Combine(staging,name); Directory.CreateDirectory(outputFolder);
+            foreach (string file in Directory.EnumerateFiles(folder,"*",SearchOption.AllDirectories))
+            {
+                string relative=Path.GetRelativePath(folder,file).Replace('\\','/');
+                if (update && !UpdatePayloadPolicy.IsOwnedPayload(relative)) continue;
+                string destination=Path.Combine(outputFolder,relative);Directory.CreateDirectory(Path.GetDirectoryName(destination)!);File.Copy(file,destination);
+            }
+            folder=outputFolder;
+            if(update) await File.WriteAllTextAsync(Path.Combine(folder,"REQUIRED_RUNTIME_FILES.json"),JsonSerializer.Serialize(new
+            { schema=1,target=rid,reason="Reuse installed vendor files; CUDA Toolkit alone is not LibTorch. No download or deletion is performed.",files=dependencies },Json),Encoding.UTF8);
             CopyTree(Path.Combine(_root, "packaging"), folder);
             CopyTree(Path.Combine(_root, "data"), Path.Combine(folder, "datasets"));
             CopyTree(Path.Combine(_root, "docs"), Path.Combine(folder, "docs"));
@@ -63,7 +83,7 @@ internal static class Delivery
             string version = File.ReadAllText(Path.Combine(_root, "VERSION")).Trim();
             await File.WriteAllTextAsync(Path.Combine(folder, "BUILD_REPORT.json"), JsonSerializer.Serialize(new
             {
-                version, builtAtUtc = DateTimeOffset.UtcNow, target = rid, cudaIncluded = cuda,
+                version, builtAtUtc = DateTimeOffset.UtcNow, target = rid, cudaIncluded = !update && cuda, cudaTrainerUpdated = cuda, packageMode = update ? "update" : "full",
                 host = System.Runtime.InteropServices.RuntimeInformation.OSDescription,
                 verified = new[] { "host managed core + corpus tests", "host headless UI", "host CPU gradients + optimizer resume", "actual host worker lifecycle", "isolated host CPU benchmark" },
                 targetNativeUi = "not run by cross-publisher; execute laptop checklist",
@@ -72,9 +92,11 @@ internal static class Delivery
             }, Json), Encoding.UTF8);
             var files = Directory.EnumerateFiles(folder, "*", SearchOption.AllDirectories).OrderBy(x => x, StringComparer.Ordinal)
                 .ToDictionary(f => Path.GetRelativePath(folder, f).Replace('\\', '/'), Hash, StringComparer.Ordinal);
-            await File.WriteAllTextAsync(Path.Combine(folder, "SHA256SUMS.json"), JsonSerializer.Serialize(files, Json), Encoding.UTF8);
+            await File.WriteAllTextAsync(Path.Combine(folder, update ? "UPDATE_SHA256SUMS.json" : "SHA256SUMS.json"), JsonSerializer.Serialize(files, Json), Encoding.UTF8);
             string stagedZip = Path.Combine(staging, name + ".zip");
-            Console.WriteLine("[package] Creating portable ZIP (includes native libraries). No user workspace is included.");
+            if (update && Directory.EnumerateFiles(folder,"*",SearchOption.AllDirectories).Sum(f=>new FileInfo(f).Length)>64L*1024*1024)
+                throw new IOException("Update payload exceeds 64 MiB. Investigate accidental runtime inclusion; do not silently ship a full package.");
+            Console.WriteLine(update ? "[package] App-only update ZIP. Vendor runtimes are NOT included. Merge contents into existing compatible installation." : "[package] Explicit full package. Vendor runtimes included.");
             ZipFile.CreateFromDirectory(folder, stagedZip, CompressionLevel.Fastest, includeBaseDirectory: true);
             Stop.Token.ThrowIfCancellationRequested();
             string zipHash = Hash(stagedZip);
@@ -86,15 +108,16 @@ internal static class Delivery
             File.Move(stagedZip, finalZip, overwrite: true);
             await File.WriteAllTextAsync(finalZip + ".sha256", zipHash + "  " + Path.GetFileName(finalZip) + "\n", Encoding.UTF8);
             string receipt = "BUILD SUCCEEDED\n" +
-                "Portable archive: " + finalZip + "\n" +
+                "Archive: " + finalZip + "\n" +
                 "Unpacked folder: " + finalFolder + "\n" +
                 "SHA256: " + zipHash + "\n" +
                 "Build logs: " + _logs + "\n" +
-                "Target desktop and GPU remain to be tested on the laptop. Run Check-laptop.cmd on Windows.\n";
+                (update ? "UPDATE: merge CONTENTS into the existing v14/v15 folder; do not delete vendor files or replace whole directories.\n" : "FULL installation.\n") +
+                "Run Check-laptop.cmd on Windows; desktop/GPU remain target acceptance.\n";
             await File.WriteAllTextAsync(Path.Combine(artifacts, "WHERE_TO_PICK_UP.txt"), receipt, Encoding.UTF8);
             await File.WriteAllTextAsync(Path.Combine(artifacts, "DELIVERY_RESULT.json"), JsonSerializer.Serialize(new
             {
-                status = "succeeded", version, target = rid, cudaIncluded = cuda, archive = finalZip, unpackedDirectory = finalFolder,
+                status = "succeeded", version, target = rid, packageMode = update ? "update" : "full", cudaLibrariesIncluded = !update && cuda, cudaTrainerUpdated = cuda, archive = finalZip, unpackedDirectory = finalFolder,
                 sha256 = zipHash, logs = _logs, completedAtUtc = DateTimeOffset.UtcNow,
                 targetExecution = "NOT_RUN_BY_PACKAGER", previousFolder = Directory.Exists(previousFolder) ? previousFolder : null
             }, Json), Encoding.UTF8);

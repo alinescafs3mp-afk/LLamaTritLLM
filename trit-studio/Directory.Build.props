@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Version>14.0.0-audit14</Version>
-    <AssemblyVersion>14.0.0.0</AssemblyVersion>
-    <FileVersion>14.0.0.0</FileVersion>
+    <Version>16.0.0-audit16</Version>
+    <AssemblyVersion>16.0.0.0</AssemblyVersion>
+    <FileVersion>16.0.0.0</FileVersion>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>

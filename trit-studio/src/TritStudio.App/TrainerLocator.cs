@@ -23,8 +23,13 @@ public static class TrainerLocator
         {
             bool valid;
             lock (ProbeCache) valid = ProbeCache.TryGetValue(gpu, out bool saved) && saved;
-            bool cached; lock (ProbeCache) cached = ProbeCache.ContainsKey(gpu);
-            if (!cached) { valid = await ProbeCuda(gpu, cancellationToken).ConfigureAwait(false); lock (ProbeCache) ProbeCache[gpu] = valid; }
+            if (!valid)
+            {
+                valid = await ProbeCuda(gpu, cancellationToken).ConfigureAwait(false);
+                // A transient failure must not make Reconnect permanently CPU-only until app restart.
+                // Cache successful probes only; a failed probe is retried on the next explicit open.
+                if (valid) { lock (ProbeCache) ProbeCache[gpu] = true; }
+            }
             if (valid) return (gpu, "CUDA проверена. Обучение выберет GPU, когда включён переключатель CUDA.");
         }
         cancellationToken.ThrowIfCancellationRequested();

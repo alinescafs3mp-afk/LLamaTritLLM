@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Deterministic v14 corpus builder. The complete v2 test set is byte-for-byte frozen.
-No external calls, no private conversations. Edit corpus_v14_additions.py for reviewed additions.
+"""Deterministic v16 corpus builder. The complete v2 test set is byte-for-byte frozen.
+No external calls, no private conversations. Edit corpus_v16_additions.json for reviewed additions.
 """
 from pathlib import Path
 import hashlib, json
@@ -120,11 +120,15 @@ def run():
         row['id']='ru-v14-'+old.identity(row)[:20];train.append(row)
     validation+=list(additions(audit14.VALIDATION,'validation',version=14))+list(additions(audit14.VAL_MULTI,'validation',True,version=14))
     challenge14=list(additions(audit14.CHALLENGE,'test',version=14))+list(additions(audit14.CHALLENGE_MULTI,'test',True,version=14))
+    new15=json.loads((ROOT/'tools/corpus_v15_additions.json').read_text())
+    train+=new15['train']; validation+=new15['validation']; challenge15=new15['challenge']
+    new16=json.loads((ROOT/'tools/corpus_v16_additions.json').read_text())
+    train+=new16['train']; validation+=new16['validation']; challenge16=new16['challenge']
     pretrain=[]
     for i,line in enumerate(audit7.BASELINE.strip().splitlines()):
         row={'text':line,'family':f'v7_baseline_{i:03}','split':'train','origin':'authored-synthetic-v7'}
         row['id']='ru-v7-'+old.identity(row)[:20];pretrain.append(row)
-    outputs={name:''.join(json.dumps(row,ensure_ascii=False)+'\n' for row in rows).encode('utf-8') for name,rows in [('seed',train),('validation',validation),('test',test),('challenge',challenge),('challenge-v4',challenge4),('challenge-v5',challenge5),('challenge-v6',challenge6),('challenge-v7',challenge7),('challenge-v8',challenge8),('challenge-v9',challenge9),('challenge-v10',challenge10),('challenge-v11',challenge11),('challenge-v12',challenge12),('challenge-v13',challenge13),('challenge-v14',challenge14),('pretrain',pretrain)]}
+    outputs={name:''.join(json.dumps(row,ensure_ascii=False)+'\n' for row in rows).encode('utf-8') for name,rows in [('seed',train),('validation',validation),('test',test),('challenge',challenge),('challenge-v4',challenge4),('challenge-v5',challenge5),('challenge-v6',challenge6),('challenge-v7',challenge7),('challenge-v8',challenge8),('challenge-v9',challenge9),('challenge-v10',challenge10),('challenge-v11',challenge11),('challenge-v12',challenge12),('challenge-v13',challenge13),('challenge-v14',challenge14),('challenge-v15',challenge15),('challenge-v16',challenge16),('pretrain',pretrain)]}
     assert hashlib.sha256(outputs['test']).hexdigest()==FROZEN_V2_TEST_SHA256, 'Frozen v2 test changed'
     frozen_v3_challenge = '2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550'
     assert hashlib.sha256(outputs['challenge']).hexdigest()==frozen_v3_challenge, 'Frozen v3 challenge changed'
@@ -148,14 +152,16 @@ def run():
     frozen_v11_challenge='9fdd58708166d1259ee56462e00de255c737477611a51e238dd0d2a148a37885'
     assert hashlib.sha256(outputs['challenge-v11']).hexdigest()==frozen_v11_challenge, 'Frozen v11 challenge changed'
     assert hashlib.sha256(outputs['challenge-v13']).hexdigest()=='888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3', 'Frozen v13 challenge changed'
+    assert hashlib.sha256(outputs['challenge-v14']).hexdigest()=='a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40', 'Frozen v14 challenge changed'
+    assert hashlib.sha256(outputs['challenge-v15']).hexdigest()=='86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11', 'Frozen v15 challenge changed'
     files={}
     for name,raw in outputs.items():
         (ROOT/'data'/f'{name}.jsonl').write_bytes(raw)
         files[name]={'count':len(raw.decode().splitlines()),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
-    manifest={'version':'conversation-ru-v14','language':'ru','origin':'original authored synthetic text; no private chats or scraping',
+    manifest={'version':'conversation-ru-v16','language':'ru','origin':'original authored synthetic text; no private chats or scraping',
       'license':'MIT (same as application)','counts':{k:v['count'] for k,v in files.items()},'files':files,
-      'blind_test':'test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl and challenge-v14.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen',
-      'frozen_v2_test_sha256':FROZEN_V2_TEST_SHA256, 'frozen_v3_challenge_sha256':frozen_v3_challenge,'frozen_v4_challenge_sha256':frozen_v4_challenge,'frozen_v5_challenge_sha256':frozen_v5_challenge,'frozen_v6_challenge_sha256':frozen_v6_challenge,'frozen_v7_challenge_sha256':frozen_v7_challenge,'frozen_v8_challenge_sha256':frozen_v8_challenge,'frozen_v9_challenge_sha256':frozen_v9_challenge,'frozen_v10_challenge_sha256':frozen_v10_challenge,'frozen_v11_challenge_sha256':frozen_v11_challenge,'frozen_v12_challenge_sha256':hashlib.sha256(outputs['challenge-v12']).hexdigest(),'frozen_v13_challenge_sha256':'888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3','frozen_baseline_sha256':frozen_baseline,'baseline':'pretrain.jsonl is a separate text-only training stage; never injected into random initialization or claimed as pretrained weights','claim':'starter corpus, not pretrained weights or a conversational quality guarantee',
+      'blind_test':'test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl challenge-v14.jsonl challenge-v15.jsonl and challenge-v16.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen',
+      'frozen_v2_test_sha256':FROZEN_V2_TEST_SHA256, 'frozen_v3_challenge_sha256':frozen_v3_challenge,'frozen_v4_challenge_sha256':frozen_v4_challenge,'frozen_v5_challenge_sha256':frozen_v5_challenge,'frozen_v6_challenge_sha256':frozen_v6_challenge,'frozen_v7_challenge_sha256':frozen_v7_challenge,'frozen_v8_challenge_sha256':frozen_v8_challenge,'frozen_v9_challenge_sha256':frozen_v9_challenge,'frozen_v10_challenge_sha256':frozen_v10_challenge,'frozen_v11_challenge_sha256':frozen_v11_challenge,'frozen_v12_challenge_sha256':hashlib.sha256(outputs['challenge-v12']).hexdigest(),'frozen_v13_challenge_sha256':'888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3','frozen_v14_challenge_sha256':'a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40','frozen_v15_challenge_sha256':'86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11','frozen_baseline_sha256':frozen_baseline,'baseline':'pretrain.jsonl is a separate text-only training stage; never injected into random initialization or claimed as pretrained weights','claim':'starter corpus, not pretrained weights or a conversational quality guarantee',
       'generation':'python3 tools/build_conversation_dataset.py','evolution':'Append reviewed train families, retain old held-out tests, add new held-out families separately.'}
     (ROOT/'data/DATASET_MANIFEST.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(manifest['counts']))

@@ -1,0 +1,12 @@
+{
+  "scope": "Authoring environment capabilities only",
+  "dotnet": null,
+  "powershell": null,
+  "sdk_download_attempt": "Official dot.net installer download failed; direct metadata request failed DNS",
+  "CSharp_build": "NOT_RUN",
+  "managed_tests": "NOT_RUN",
+  "native_TorchSharp": "NOT_RUN",
+  "Avalonia": "NOT_RUN",
+  "Windows": "NOT_RUN",
+  "CUDA": "NOT_RUN"
+}

@@ -1,15 +1,10 @@
-# Audit14 completion gate
+# Audit15 completion plan
 
-Read GROK_START_HERE.md and enclosing cumulative first. Preserve owner fork/master changes. Authoring produced source, NOT
-compiler-verified binaries. Run all314 managed contracts, every retained actual-worker, headless and native test and benchmark.
-New gates: safe workspace preview/handoff with preserved old model/draft/lease on refusal; immutable initial-publication ownership
-and invalidation with actual tensors; portable-vector RMSNorm/residual parity, tails, aliases, finite checks and cancellation.
-Run initializationAndElementwise in both orders as well as all prior benchmark sections. Repeat train/eval/reopen native-memory
-soak. Repair genuine integration/compiler failures and rerun, without weakening assertions or replacing neural math with replies.
+Read GROK_START_HERE.md and the enclosing source preflight. Source handoff complete; C#/UI/native/CUDA acceptance must run
+on Grok host and laptop. Preserve deployed audit14 integration fixes. Default target win-x64 app-only UPDATE, no vendor runtime
+payload. Compile both trainer entrypoints and update every adjacent corpus; keep pins unchanged. Never silently choose --full.
 
-Dataset3090 =2474 train+328 controls+240 blind+48 frozen basics. Stage random0 ->basic48 ->conversation remains explicit and online
-off between comparisons. All twelve previous blind files remain frozen. Max453 fits512. No trained weights or fluency claims.
-
-Cross-publish Windows x64 with BOTH CPU and CUDA trainers even from CPU-only Linux. Validate package hashes, emit fresh successful
-DELIVERY_RESULT.json, return absolute ZIP path/SHA256/logs/benchmarks and actual fork/master commit. No stale archive or silent
-CPU-only substitution. Real Windows desktop and RTX5080 execution remain pending until target tests actually run.
+Run scripts/deliver.*. All managed/UI/worker/native tests and existing benchmarks precede output. Add native trained-export parity,
+real modal clear/cancel/failure and Windows model-switch/trash/DPI acceptance. Generated update must be applied to a COPY of the
+old compatible installed folder and pass Check-Update. Missing runtime is a compatibility problem, not license to download or
+bundle gigabytes. Do not overwrite user models. Final report: exact path, checksum, commit, passes and remaining target checks.

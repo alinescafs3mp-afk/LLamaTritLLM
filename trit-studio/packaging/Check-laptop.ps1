@@ -8,21 +8,25 @@ function Run-Check([string]$Name, [string]$Exe, [string[]]$Arguments) {
     Write-Host "`n[$Name] Running..."
     $log = Join-Path $reportDirectory ($Name + ".log")
     if (-not (Test-Path -LiteralPath $Exe -PathType Leaf)) { throw "Missing executable: $Exe" }
-    & $Exe @Arguments 2>&1 | Tee-Object -FilePath $log | Out-Host
-    $code = $LASTEXITCODE
+    # Windows PowerShell 5.1 may turn redirected native stderr into NativeCommandError.
+    # A diagnostic line is not an exit-code failure; keep it in the log, then check the actual exit.
+    # Reset the value first: a failure to start must not reuse a previous process's success code.
+    $savedPreference = $ErrorActionPreference
+    $global:LASTEXITCODE = $null
+    try {
+        $ErrorActionPreference = 'Continue'
+        & $Exe @Arguments 2>&1 | Tee-Object -FilePath $log -ErrorAction Stop | Out-Host
+        $code = $LASTEXITCODE
+    } finally { $ErrorActionPreference = $savedPreference }
+    if ($null -eq $code) { throw "$Name did not produce a process exit code. Read $log" }
     $checks.Add([pscustomobject]@{name=$Name; exitCode=$code; log=$log})
     if ($code -ne 0) { throw "$Name failed with exit code $code. Read $log" }
 }
 try {
-    Write-Host "[integrity] Verifying portable files..."
-    $hashes = Get-Content -Raw -LiteralPath (Join-Path $root "SHA256SUMS.json") | ConvertFrom-Json
-    foreach ($entry in $hashes.PSObject.Properties) {
-        $candidate = [IO.Path]::GetFullPath((Join-Path $root $entry.Name))
-        if (-not $candidate.StartsWith($root + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw "Unsafe checksum path: $($entry.Name)" }
-        if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) { throw "File missing: $($entry.Name)" }
-        if ((Get-Item -LiteralPath $candidate).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw "Unexpected link: $($entry.Name)" }
-        if ((Get-FileHash -Algorithm SHA256 -LiteralPath $candidate).Hash.ToLowerInvariant() -ne $entry.Value) { throw "Checksum mismatch: $($entry.Name)" }
-    }
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "Check-Update.ps1") -Root $root
+    if ($LASTEXITCODE -ne 0) { throw "Installation integrity/runtime compatibility check failed. No runtime was downloaded or replaced." }
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "Test-LaptopChecks.ps1")
+    if ($LASTEXITCODE -ne 0) { throw "Laptop-check runner regression failed." }
     $checks.Add([pscustomobject]@{name="integrity";exitCode=0})
     Run-Check "core-tests" (Join-Path $root "checks/TritStudio.Tests.exe") @()
     Run-Check "cpu-doctor" (Join-Path $root "trainer/TritStudio.Trainer.exe") @("--doctor")

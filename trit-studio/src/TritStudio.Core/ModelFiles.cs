@@ -164,18 +164,30 @@ public static class ModelFiles
     }
     public static string GetRevisionPath(string workspace, string name)
     {
-        if (name.Length != 17 || !name.StartsWith("r", StringComparison.Ordinal) || name[1..].Any(x => x < '0' || x > '9'))
+        if (name is null || name.Length != 17 || !name.StartsWith("r", StringComparison.Ordinal) || name[1..].Any(x => x < '0' || x > '9'))
             throw new InvalidDataException("Invalid revision identifier.");
         return Path.Combine(Path.GetFullPath(workspace), "revisions", name);
     }
     public static string? ActivePath(string workspace)
     {
         string pointer = Path.Combine(workspace, "active.json");
-        return File.Exists(pointer) ? GetRevisionPath(workspace, JsonData.Read<ActiveRevision>(pointer).Directory) : null;
+        ModelLibrary.NoLinks(pointer);
+        if (Directory.Exists(pointer)) throw new InvalidDataException("active.json является каталогом, а не указателем снимка.");
+        if (!File.Exists(pointer))
+        {
+            string revisions = Path.Combine(workspace, "revisions");
+            ModelLibrary.NoLinks(revisions);
+            if (Directory.Exists(revisions) && Directory.EnumerateDirectories(revisions, "r*").Any())
+                throw new InvalidDataException("Указатель active.json отсутствует, но сохранённые ревизии существуют. Восстановите указатель из проверенной резервной копии; новую модель поверх этих данных создавать нельзя.");
+            return null;
+        }
+        return GetRevisionPath(workspace, JsonData.Read<ActiveRevision>(pointer, 4096).Directory);
     }
     public static RevisionInfo ReadRevisionInfo(string path)
     {
-        var info = JsonData.Read<RevisionInfo>(Path.Combine(path, "revision.json"));
+        ModelLibrary.NoLinks(path);
+        string metadata = Path.Combine(path, "revision.json"); ModelLibrary.NoLinks(metadata);
+        var info = JsonData.Read<RevisionInfo>(metadata, 65536);
         if (info.Revision < 0 || info.Step < 0 || info.ChangedWeights < 0 || info.TargetTokens < 0 ||
             (info.ValidationLoss is double loss && (!double.IsFinite(loss) || loss < 0)) ||
             (info.BestValidationLoss is double best && (!double.IsFinite(best) || best < 0)) ||
@@ -188,7 +200,8 @@ public static class ModelFiles
     public static (WeightSet Weights, RevisionInfo Info) ReadInferenceRevision(string path, int threads = 1, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested(); var info = ReadRevisionInfo(path);
-        using var stream = new FileStream(Path.Combine(path, "model.tritmodel"), FileMode.Open, FileAccess.Read, FileShare.Read);
+        string packedFile = Path.Combine(path, "model.tritmodel"); ModelLibrary.NoLinks(packedFile);
+        using var stream = new FileStream(packedFile, FileMode.Open, FileAccess.Read, FileShare.Read);
         if (stream.Length is < 20 or > 600_000_000) throw new InvalidDataException("Invalid model file size.");
         string hash = HashStream(stream, ct);
         if (!StringComparer.OrdinalIgnoreCase.Equals(hash, info.ModelSha256)) throw new InvalidDataException("Inference snapshot checksum mismatch.");

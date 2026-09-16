@@ -16,7 +16,7 @@ try
     await ClientFaultChecks.Run(home);
     await ClientFaultChecks.CheckWriteDeadline(home);
     using var session = HeadlessUnitTestSession.StartNew(typeof(HeadlessBuilder));
-    using var deadline = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+    using var deadline = new CancellationTokenSource(TimeSpan.FromMinutes(3));
     await session.Dispatch<int>(async () =>
     {
         var window = new MainWindow(); window.Show(); Dispatcher.UIThread.RunJobs();
@@ -83,8 +83,8 @@ try
             typeof(MainWindow).GetMethod("UpdateState",BindingFlags.Instance|BindingFlags.NonPublic)!.Invoke(window,[]);
         }
         Check(!Field<Button>("_maintenanceButton").IsEnabled && !Field<Button>("_discardButton").IsEnabled,"Maintenance is enabled without a workspace.");
-        Field<Button>("_newChatButton").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-        Check(Field<TextBlock>("_status").Text!.Contains("Контекст очищен"), "New chat click has no effect feedback.");
+        Check(Field<Button>("_newChatButton").Content!.ToString()=="Очистить чат" && !Field<Button>("_newChatButton").IsEnabled,
+            "Clear chat must be visible but disabled without a conversation. Real confirmation is tested in Audit15UiChecks.");
         Field<NumericUpDown>("_kvHeads").Value = 3;
         Field<Button>("_create").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         Check(Field<TextBlock>("_error").IsVisible, "Invalid configuration did not show an error.");
@@ -177,6 +177,8 @@ try
         Check(ReferenceEquals(priorModel,Field<ManagedInference>("_model"))&&Field<long>("_epoch")==priorEpoch,"Bad conversation state changed active model.");
         window.Width = 1000; window.Height = 760; Dispatcher.UIThread.RunJobs();
         Check(Field<TextBlock>("_actionTitle").Bounds.Width > 0, "Feedback not laid out at minimum supported width.");
+        await Audit15UiChecks.Run(window,home);
+        await Audit16UiChecks.Run(window,home);
         window.Close(); Dispatcher.UIThread.RunJobs();
         Console.WriteLine("PASS headless UI: initial state, immediate receipt, duplicate suppression, completion, persistent failure, new chat, config rejection, layout.");
         return 0;

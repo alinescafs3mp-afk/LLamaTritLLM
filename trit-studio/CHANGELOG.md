@@ -1,3 +1,30 @@
+# Audit16 · 16.0.0-audit16 · 2026-09-16
+
+- Fix the still-unhandled Enter report using tunnel routing and real key-event tests.
+- Reject orphaned/directory/linked workspace metadata before switching a working session.
+- Skip unused final-block outputs during CPU prefix preparation, retaining K/V and the old reference path.
+- Retest actual TRAINED export/continuation parity; add prefixPreparation benchmark.
+- Retry failed CUDA probes on later explicit reconnect, guard nested model confirmation and restore failed-removal drafts.
+- Restore control-suppression flags on exceptions; make laptop runner use native exit codes with a Windows regression script.
+- Keep default app-only Windows update, reject unsupported Linux update early. Vendor dependencies unchanged.
+- Dataset3418 records with2730 train; add128 total and freeze baseline/14 previous blind files.
+- C#/GUI/PowerShell/native/CUDA NOT_RUN by source author. See docs/AUDIT_V16.md; no speedup or fluency claim.
+- Host integration: Audit15UiChecks calls ChatJournal.AppendAsync (the only append API); a nonexistent sync Append did not compile.
+
+## Historical changes
+
+# Audit15 · 15.0.0-audit15 · 2026-09-16
+
+- Continue from actual deployed audit14 host tree; preserve Grok integration fixes.
+- Default app-only update, both trainers/data updated, no vendor DLLs; exact retained-runtime checks.
+- Compact responsive UI, persistent scale and collapsible lazy controls; header model catalog shared by both tabs.
+- Guarded local-trash model removal, external forget, read-only active config, diagnostics and publication interval.
+- Confirmed clear-chat with durable conversation boundary; keep weights/queue/log/draft and preserve state on write failure.
+- Real trained native->packed->managed regression added. Still requires execution on Grok CPU/target CUDA.
+- 3290 corpus records; baseline and all13 previous holdout files byte-frozen. No pretrained weights or fluency guarantee.
+
+## Historical changes
+
 # Audit14 · 2026-09-16
 
 - Prepare/verify a destination workspace before disconnecting the usable model; release rejected lease and reuse verified objects.

@@ -22,7 +22,7 @@ public sealed class ManagedInference
         }).ToArray();
         _rope = new(() => new RopeTable(Weights.Config), LazyThreadSafetyMode.ExecutionAndPublication);
     }
-    public Session NewSession() => new(Weights, _threads, _rope.Value, _layers);
+    public Session NewSession(bool optimizePrefix = true) => new(Weights, _threads, _rope.Value, _layers, optimizePrefix);
 
     public string Generate(int[] prompt, Func<SamplingOptions> sampling, Action<string>? onText, CancellationToken ct)
         => GenerateDetailed(prompt, sampling, onText, ct).Text;
@@ -90,6 +90,7 @@ public sealed class ManagedInference
     public sealed class Session
     {
         private readonly LayerWeights[] _layers;
+        private readonly bool _optimizePrefix;
         private readonly float[] _embedding, _finalNorm;
         private readonly ModelConfig _c;
         private readonly ParallelOptions _parallel;
@@ -97,8 +98,10 @@ public sealed class ManagedInference
         private readonly float[] _x, _normed, _q, _k, _v, _attention, _projected, _gate, _up, _hidden;
         private readonly float[] _ropeCos, _ropeSin, _scores;
         public int Position { get; private set; }
-        internal Session(WeightSet weights, int threads, RopeTable rope, LayerWeights[] layers)
+        public int PrefixFinalBlockSkips { get; private set; }
+        internal Session(WeightSet weights, int threads, RopeTable rope, LayerWeights[] layers, bool optimizePrefix)
         {
+            _optimizePrefix = optimizePrefix;
             _layers = layers; _embedding = weights.Values["embedding"]; _finalNorm = weights.Values["norm"]; _c = weights.Config; _scores = new float[_c.Context];
             _parallel = new ParallelOptions { MaxDegreeOfParallelism = threads };
             _keys = Enumerable.Range(0, _c.Layers).Select(_ => new float[_c.Context * _c.KvDimension]).ToArray();
@@ -123,6 +126,10 @@ public sealed class ManagedInference
                 Rotate(_q, _c.Heads); Rotate(_k, _c.KvHeads);
                 Array.Copy(_k, 0, _keys[l], Position * _c.KvDimension, _k.Length);
                 Array.Copy(_v, 0, _values[l], Position * _c.KvDimension, _v.Length);
+                // Prefix tokens need this block's K/V for the next token, not its output.
+                // Earlier blocks MUST still run in full: their output feeds the next block's K/V.
+                if (_optimizePrefix && !computeLogits && l == _c.Layers - 1)
+                { PrefixFinalBlockSkips++; Position++; return Array.Empty<float>(); }
                 Attend(l, ct);
                 MatVec(layer.Out, _attention, _projected); CpuElementwise.AddInPlace(_x, _projected, ct);
                 CpuElementwise.RmsNorm(_x, layer.Norm2, _normed, ct);

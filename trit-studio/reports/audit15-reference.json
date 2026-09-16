@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "scope": "Independent policy checks of update routing and chat boundaries. NOT execution of C# or PowerShell.",
+  "synthetic_publish_files": 37,
+  "owned_files": 30,
+  "retained_vendor_files": 7,
+  "actual_fixture_overlay_verified": true,
+  "corpus_records": 3290,
+  "csharp": "NOT_RUN",
+  "powershell": "NOT_RUN",
+  "native_training": "NOT_RUN",
+  "gui": "NOT_RUN",
+  "cuda": "NOT_RUN"
+}

@@ -1,37 +1,33 @@
-# Grok: audit14 source to Windows portable delivery
+# Grok: audit16 deep regression pass, app-only Windows delivery
 
-Read enclosing 00_GROK_START_HERE.md FIRST. Its read-only preflight selects full additive original-base overlay or exact-audit13
-upgrade. Target ONLY alinescafs3mp-afk/LLamaTritLLM, existing master. Preserve originals/notices and owner changes. No force push,
-destructive reset, branch rename or blind overwrite. Build prerequisites are installed; do not alter drivers gratuitously.
+Read enclosing 00_GROK_START_HERE.md first. Target owner fork alinescafs3mp-afk/LLamaTritLLM, existing master.
+Actual verified fork baseline is fa9c9261fdcf3f463855ab5fb2687e71ba4654d9 (integrated14). Exact15 upgrade is also provided.
+Preserve mean(long[]), protocol IOException and Linux EOF host repairs. Never reset/rebase/force-push to erase owner work.
+The author did not compile/run C#, Avalonia, PowerShell or CUDA. Do not convert Python/static evidence into runtime passes.
 
-From trit-studio run bash scripts/deliver.sh or Windows ./scripts/deliver.ps1. Default output MUST be win-x64 with BOTH CPU and
-CUDA trainers, including on a CPU-only Linux host. All314 managed contracts and EVERY retained worker/headless/native gate must
-pass before reporting host delivery. Source author did NOT compile C#, render GUI or run CUDA. Repair actual failures and rerun;
-no fake responses, weakened assertions, invented passes, silent CPU-only package or old ZIP presented as fresh.
+From trit-studio run bash scripts/deliver.sh (or scripts/deliver.ps1). Default MUST be artifacts/TritStudio-win-x64-update.zip,
+containing only owned binaries/metadata/data plus both trainer programs. No vendor CUDA/LibTorch/Avalonia/.NET redistribution.
+Do not invoke --full to evade compatibility checks. Keep pinned package versions; any forced change needs owner approval and
+an explicit migration path for retained libraries. Actual Linux-to-Windows publishing is not a Windows runtime test.
 
-## Priority gates
+Read docs/AUDIT_V16.md, PERFORMANCE_V16.md, UPDATE_RU.md and QUALITY_DIAGNOSTICS_RU.md. Run all372 managed contracts, all
+headless/real-child/native/worker tests, new Audit16UiChecks and every benchmark. Fix causes and rerun without weakened tests.
+New keyboard tests MUST use focused-window KeyPress/KeyRelease, not StartSend invocation. Verify Shift+Enter, held Enter,
+release/next send, no model and busy-gate refusal. Raw event behavior/IME and DPI also need real Windows desktop acceptance.
 
-Read docs/AUDIT_V14.md, docs/PERFORMANCE_V14.md and docs/ACCEPTANCE.md. Verify destination preflight occurs before epoch/client
-teardown: malformed chat-state, active path and checksum preserve old model/history/draft, and rejected .ui.lock is released.
-Check normal and same-folder open, close during preview, and valid packed model with native optimizer failure -> visible CPU-only
-fallback. Preview is NOT full optimizer verification. It temporarily retains old+new model RAM; no peak-memory reduction claim.
+Check missing active pointer with revisions, pointer/state directories, linked metadata, null/oversized pointer metadata,
+failed opening preserves active model/private draft/history/epoch and releases its candidate lease. Do NOT guess the latest
+revision or create new random weights over an orphaned workspace. Test nested delete dialog duplicates and failure feedback.
+If active removal fails and recovery succeeds, retain its draft/privacy. A failed native recovery must remain visible.
 
-Run initial-master/native copy parity with real device tensors, zero-step identity, version invalidation, successful/failed state
-restore and post-update fresh copy. Preserve snapshot verification and all optimizer/rollback/provenance/evolution tests.
-Run portable-vector norm/residual scalar/tail/alias/shape/nonfinite/cancellation tests plus full native/managed incremental parity.
-Run initializationAndElementwise AND all older benchmarks, both orders, warmup excluded, parity outside timing, real memory soak.
+Run trained native -> packed disk -> CPU parity, including new prefix shortcut vs previous compute path and continuation KV.
+Actual prefixPreparation benchmark is CPU only. No promised speedup threshold. Repeated train/eval/reopen memory soak remains.
+Run packaging/Test-LaptopChecks.ps1 on Windows; Check-laptop calls it. Probe CUDA failure then explicitly reconnect after recovery.
+A negative probe may be retried; a CPU fallback or nvidia-smi output is not a successful CUDA training test.
 
-## Dataset and evolution
+3418 corpus records:2730 train+368 controls+272 held-out+48 basics. All14 previous holdouts/baseline frozen. No pretrained weights
+or conversational-quality guarantee. Existing-model controls never change silently. Staged zero/basic/conversation experiment,
+clear-chat boundary and exclusion privacy behavior remain. Diagnose actual owner weights/logs before explaining gibberish.
 
-3090 total =2474 seed+328 controls+240 holdout+48 frozen basics. Max453 fits default512. All twelve previous holdout files and48
-basics stay byte-identical. Update dataset with substantive reviewed examples in later audits, never moving the old baseline.
-Create defaults to random weights, ZERO optimizer steps and online OFF. Separate48-text baseline, then explicit conversation
-stage; manual stages pause online learning. Preserve first inference references, current workspace control set and all privacy guards.
-No pretrained model or proven fluency exists in this source handoff.
-
-## Deliverable to owner
-
-Fresh artifacts/DELIVERY_RESULT.json must say succeeded, matching the new zip. Return ABSOLUTE path to
-artifacts/TritStudio-win-x64-portable.zip, SHA256, extracted directory, WHERE_TO_PICK_UP.txt, logs/benchmark reports and final
-fork/master commit. Clearly distinguish CPU-host passed from Windows/RTX5080 pending. Copy/extract WHOLE ZIP on target, run
-Check-laptop.cmd then Start-TritStudio.cmd. Target needs no SDK. CPU fallback never counts as a CUDA pass.
+Return absolute fresh UPDATE zip path, SHA256, output directory, WHERE_TO_PICK_UP.txt, full logs, actual host results and final
+fork commit. Explicitly list pending Windows/CUDA tests. Do not return an old ZIP as this build or a giant portable archive.

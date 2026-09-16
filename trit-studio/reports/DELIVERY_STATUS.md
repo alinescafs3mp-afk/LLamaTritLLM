@@ -1,6 +1,8 @@
-# Audit14 execution status
+# Audit15 execution status
 
-Source handoff, NOT compiled binaries. Executed independent Python data/math/policy checks, structural checks and package rehearsal
-are in versioned JSON reports. No C# compiler/runtime, headless/desktop GUI, native TorchSharp, Windows or CUDA execution occurred
-in the authoring environment. Grok must execute scripts/deliver.* including all314 managed cases and every retained actual-worker,
-UI/native gate/benchmark. No source-test count is a passed-test count. No wall-clock C# speedup or model-quality claim.
+Source cumulative completed and packaged. Python data/specification/static/package checks are the author's executed evidence.
+C# build/tests, Avalonia rendering/headless scheduling, native TorchSharp, Windows, CUDA and merged-installed-update tests:
+NOT_RUN in the authoring container (no dotnet SDK; official SDK access fails DNS). Previous host repairs from deployed audit14
+are preserved; their existence is not a v15 runtime pass. Grok must build and run all gates before reporting a fresh update ZIP.
+No pretrained weights, proven fluency, measured native speedup or peak memory savings. See reports/static-audit-v15.json for the
+number of DEFINED managed tests, not a pass count.

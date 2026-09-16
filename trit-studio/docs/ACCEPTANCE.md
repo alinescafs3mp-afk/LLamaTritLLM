@@ -1,3 +1,51 @@
+# Audit16 current acceptance additions
+
+Current source16.0.0-audit16, corpus conversation-ru-v16. All earlier suites below remain mandatory; historical counts are not
+current passes. Author executed Python/source/package checks only. C#, native TorchSharp, UI, Windows/CUDA and PowerShell are NOT_RUN.
+
+- Run all372 managed contracts plus retained actual-child, headless UI, worker and native suites. Audit16UiChecks must use real
+  focus and KeyPress/KeyRelease: Shift+Enter inserts a newline, plain Enter sends once, a held Enter does not send a new draft,
+  unavailable Send cannot be bypassed. Test IME composition and modifiers manually on Windows; headless events do not certify IME.
+- A destination with missing active.json but existing r* revision folders, directory-valued active.json/chat-state.json or invalid
+  bounded metadata must refuse BEFORE disconnecting the old model. Preserve epoch, client, weights, history, draft/privacy.
+  Check the failed destination lease is released; preserve actual empty and staging-only creation. No guessed repair.
+- Exercise two quick model-removal clicks and one cancelled confirmation. No duplicate modal or swallowed exception. Force
+  trash failure and verify error feedback remains; if active-session recovery succeeds, restore its original draft/privacy.
+- Force a first failed CUDA probe followed by a successful explicit reconnect on suitable hardware. No cached permanent CPU
+  fallback. Positive cache is permitted but cannot certify the runtime after a later driver/device failure.
+- PrefixFinalBlockSkips must be n-1 only for optimized prefill. Compare all logits and continued tokens to optimizePrefix:false
+  for one/multiple layers and GQA. Check cancellation and invalid input. Retain trained native->master->packed->CPU parity
+  after real optimizer steps, not random-model parity alone. Run CPU and actual CUDA native suites.
+- Run prefixPreparation benchmark with both orders and every earlier benchmark. No mandatory speed ratio. Record runtime/CPU
+  and allocator behavior. Retain repeated create/train/evaluate/reopen soak and prior checkpoint/online privacy guarantees.
+- App-only UPDATE is win-x64 and contains no vendor runtimes. Both trainers/current adjacent data are included. Linux target
+  with default update refuses before builds; do not silently use --full. Run Test-LaptopChecks.ps1, which extracts the ACTUAL
+  Run-Check body and tests exit0 with stderr and exit7. Log-write failures and nonzero exits must still fail checks.
+- Dataset3418=2730train+368control+272held-out+48baseline. Baseline and all14 previous blind files must be byte-identical.
+  Whole sequence maximum453 fits512. Existing workspace controls remain unchanged. No fluent-language claim from these counts.
+
+Host gates must pass before emitting the fresh small TritStudio-win-x64-update.zip. Retained vendor hashes are checked on a
+disposable copy of the compatible installed folder. Windows desktop and actual RTX5080 acceptance remain target-side gates.
+A CPU fallback is never a CUDA pass. No weakened assertions, unreported native failure, stale ZIP or modified user workspace as fixture.
+
+## Accumulated earlier acceptance requirements
+
+# Audit15 current acceptance additions
+
+Current delivery overrides historical portable wording below: DEFAULT is app-only Windows UPDATE, not the full vendor-runtime ZIP.
+Run all retained tests and the current count in static-audit-v15.json. Validate trained-export parity after actual updates,
+Audit15UiChecks modal clear/cancel/failed-state/reload/no-weight-change, active file selection and inactive removal. Test
+model catalog refresh/failure, early switch refusal, learning target identity, lazy feedback expansion, scale/DPI and blocked
+operations during switch/clear/delete. Observe actual UI, no static-layout pass substitution.
+
+Verify every update entry with UpdatePayloadPolicy. Both trainer assemblies, adjacent datasets and checks/reference.json update.
+Vendor DLLs/.NET are ABSENT from update but present and exact in installed folder. Missing/mismatched vendor fails Check-Update.
+Merge onto a disposable COPY of an existing v14 full installation and run actual CPU/CUDA/desktop tests. Do not mutate user
+workspaces in tests. Restore prior folder copy on failed update. Full packaging only explicit --full by owner request.
+
+All previous numerical, protocol, lifecycle, staged training and memory-soak gates remain below as historical accumulated tests.
+Source-author reports are not C# test passes. No assertion weakening to fabricate success.
+
 # Audit14 current acceptance: retain every previous gate
 
 Current314 managed contracts plus ALL retained actual-worker, headless and native suites. Historical headings and test/data counts
