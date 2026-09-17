@@ -107,7 +107,8 @@ public static class TrainerSelfTest
             CheckSnapshotPublication(training, root, resources, options);
             Console.WriteLine($"PASS real gradients, loss fitting ({before:F4} -> {after:F4}), managed/Torch parity, full-state resume on {training.DeviceName}.");
             Console.WriteLine("PASS SDPA/explicit forward+backward, versioned evaluation cache, failure recovery, bucketed sampler resume.");
-            Console.WriteLine("This is a numerical smoke test, not a model quality benchmark."); return 0;
+            LearningSmoke.Run(requireCuda, root);
+            Console.WriteLine("PASS isolated six-reply learning/packed-generation gate; not general conversation quality."); return 0;
         }
         catch (Exception e) { Console.Error.WriteLine("FAIL " + e); return 1; }
         finally { Directory.Delete(root, true); }

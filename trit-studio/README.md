@@ -1,15 +1,8 @@
-# Trit Studio · audit16
+# Trit Studio · audit17
 
-C# / Avalonia desktop model laboratory, TorchSharp trainer, independent managed CPU inference. Training from random weights;
-not a bundled pretrained assistant. UI in Russian. See README_RU.md and docs/AUDIT_V16.md.
-
-Current delivery: app-only update by default. `bash scripts/deliver.sh` (or scripts/deliver.ps1) runs all real host acceptance,
-builds both trainer entrypoints and writes artifacts/TritStudio-win-x64-update.zip. Existing vendor runtimes must match the
-REQUIRED_RUNTIME_FILES manifest. Full installation only via explicit --full. Source handoff is not a compiled package.
-
-Selected model in header controls chat AND training. Architecture creation is separate. Optional staged evolution, explicit
-online learning/corrections, persistent snapshots and clear-chat boundary are retained. Model deletion moves local folders to
-app-local trash. Clearing context does not delete history, discard training queue or unlearn weights.
-
-Authoring checks here do not run C#, Avalonia or CUDA. Grok must compile/test and target must run Windows/RTX5080 acceptance.
-All upstream MIT attribution preserved. Binary format is Trit Studio V1; byte vocabulary262. Corpus is synthetic starter material.
+C# / Avalonia desktop lab; TorchSharp training, independent portable CPU inference. See README_RU.md.
+User networks are initialized from scratch. This is not a ready pretrained chatbot.
+Audit17 prioritizes native learning+generation acceptance, phase-correct memory checks and exactly3 independent training UI blocks.
+One small explicitly labeled learned test fixture isolates decoder behavior; it is never used in user-network initialization.
+Read GROK_START_HERE.md, docs/AUDIT_V17.md and docs/TRAINING_DIAGNOSIS_RU.md.
+Default delivery is the small Windows app-only UPDATE, without vendor runtime libraries. C#/GUI/native/CUDA authoring tests NOT_RUN.

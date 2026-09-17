@@ -59,8 +59,9 @@ def validate(write_report=True):
     assert hashlib.sha256((ROOT/'data/challenge-v13.jsonl').read_bytes()).hexdigest() == manifest['frozen_v13_challenge_sha256']
     assert hashlib.sha256((ROOT/'data/challenge-v14.jsonl').read_bytes()).hexdigest() == 'a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40'
     assert hashlib.sha256((ROOT/'data/challenge-v15.jsonl').read_bytes()).hexdigest() == '86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11'
+    assert hashlib.sha256((ROOT/'data/challenge-v16.jsonl').read_bytes()).hexdigest() == '125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0'
     reports, overlaps = {}, []
-    for split, label in [('seed', 'train'), ('validation', 'validation'), ('test', 'test'), ('challenge', 'test'), ('challenge-v4', 'test'), ('challenge-v5', 'test'), ('challenge-v6', 'test'), ('challenge-v7', 'test'), ('challenge-v8', 'test'), ('challenge-v9', 'test'), ('challenge-v10', 'test'), ('challenge-v11', 'test'), ('challenge-v12', 'test'), ('challenge-v13', 'test'), ('challenge-v14', 'test'), ('challenge-v15', 'test'), ('challenge-v16', 'test'), ('pretrain', 'train')]:
+    for split, label in [('seed', 'train'), ('validation', 'validation'), ('test', 'test'), ('challenge', 'test'), ('challenge-v4', 'test'), ('challenge-v5', 'test'), ('challenge-v6', 'test'), ('challenge-v7', 'test'), ('challenge-v8', 'test'), ('challenge-v9', 'test'), ('challenge-v10', 'test'), ('challenge-v11', 'test'), ('challenge-v12', 'test'), ('challenge-v13', 'test'), ('challenge-v14', 'test'), ('challenge-v15', 'test'), ('challenge-v16', 'test'), ('challenge-v17', 'test'), ('pretrain', 'train')]:
         path = ROOT / 'data' / (split + '.jsonl')
         raw = path.read_bytes()
         assert hashlib.sha256(raw).hexdigest() == manifest['files'][split]['sha256'], f'Hash mismatch: {path}'
@@ -70,7 +71,7 @@ def validate(write_report=True):
         families = collections.Counter()
         lengths = []
         for i, row in enumerate(rows):
-            assert row['split'] == label and row['origin'] in ('authored-synthetic-v2','authored-synthetic-v3','authored-synthetic-v4','authored-synthetic-v5','authored-synthetic-v6','authored-synthetic-v7','authored-synthetic-v8','authored-synthetic-v9','authored-synthetic-v10','authored-synthetic-v11','authored-synthetic-v12','authored-synthetic-v13','authored-synthetic-v14','authored-synthetic-v15','authored-synthetic-v16')
+            assert row['split'] == label and row['origin'] in ('authored-synthetic-v2','authored-synthetic-v3','authored-synthetic-v4','authored-synthetic-v5','authored-synthetic-v6','authored-synthetic-v7','authored-synthetic-v8','authored-synthetic-v9','authored-synthetic-v10','authored-synthetic-v11','authored-synthetic-v12','authored-synthetic-v13','authored-synthetic-v14','authored-synthetic-v15','authored-synthetic-v16','authored-synthetic-v17')
             value = canonical(row)
             identity = hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
             assert row['id'] == ('ru-'+row['origin'].rsplit('-',1)[-1]+'-') + identity[:20]
@@ -118,10 +119,10 @@ def validate(write_report=True):
     report = {'status':'passed', 'scope':'Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation',
               'corpus_version': manifest['version'], 'splits':reports, 'cross_split_normalized_duplicates':0, 'cross_split_exact_single_turn_prompts':0,
               'runtime_equivalent_cross_partition_inputs':0, 'semantic_generalization':'Unmeasured. Related everyday topics intentionally occur across splits.',
-              'frozen_v2_test_unchanged':True, 'frozen_v3_challenge_unchanged':True, 'frozen_v4_challenge_unchanged':True, 'frozen_v5_challenge_unchanged':True, 'frozen_v6_challenge_unchanged':True, 'frozen_v7_challenge_unchanged':True, 'frozen_v8_challenge_unchanged':True, 'frozen_v9_challenge_unchanged':True, 'frozen_v10_challenge_unchanged':True, 'frozen_v11_challenge_unchanged':True, 'frozen_v12_challenge_unchanged':True, 'frozen_v13_challenge_unchanged':True, 'frozen_v14_challenge_unchanged':True, 'frozen_v15_challenge_unchanged':True, 'baseline_v7_unchanged':True, 'cross_split_input_context_duplicates':0, 'total_examples':sum(x['count'] for x in reports.values())}
+              'frozen_v2_test_unchanged':True, 'frozen_v3_challenge_unchanged':True, 'frozen_v4_challenge_unchanged':True, 'frozen_v5_challenge_unchanged':True, 'frozen_v6_challenge_unchanged':True, 'frozen_v7_challenge_unchanged':True, 'frozen_v8_challenge_unchanged':True, 'frozen_v9_challenge_unchanged':True, 'frozen_v10_challenge_unchanged':True, 'frozen_v11_challenge_unchanged':True, 'frozen_v12_challenge_unchanged':True, 'frozen_v13_challenge_unchanged':True, 'frozen_v14_challenge_unchanged':True, 'frozen_v15_challenge_unchanged':True, 'frozen_v16_challenge_unchanged':True, 'baseline_v7_unchanged':True, 'cross_split_input_context_duplicates':0, 'total_examples':sum(x['count'] for x in reports.values())}
     if write_report:
         (ROOT/'reports').mkdir(exist_ok=True)
-        (ROOT/'reports/dataset-audit-v16.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        (ROOT/'reports/dataset-audit-v17.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     return report
 
 if __name__ == '__main__':

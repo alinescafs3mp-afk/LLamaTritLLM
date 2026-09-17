@@ -1,0 +1,46 @@
+{
+  "scope": "Create an EXPLICIT six-reply learned diagnostic fixture, never a default app model.\nUses independent Python/Torch training + a V1 binary writer + a separate NumPy reader/inference.\nDoes NOT execute C#, and six training replies are not general conversational ability.\n",
+  "status": "passed-independent-python",
+  "parameter_count": 115392,
+  "steps": 300,
+  "learning_rate": 0.001,
+  "training_loss_before": 5.547685146331787,
+  "training_loss_after": 0.011795216239988804,
+  "file_bytes": 80590,
+  "sha256": "f48e827aad3af94c2c6395b55991000e617db21b82c2bfcc6d69e41b4536e697",
+  "replies": [
+    {
+      "prompt": "Привет!",
+      "expected": "Привет!",
+      "generated": "Привет!"
+    },
+    {
+      "prompt": "Как дела?",
+      "expected": "Хорошо.",
+      "generated": "Хорошо."
+    },
+    {
+      "prompt": "Как тебя зовут?",
+      "expected": "Трит.",
+      "generated": "Трит."
+    },
+    {
+      "prompt": "Спасибо.",
+      "expected": "Пожалуйста.",
+      "generated": "Пожалуйста."
+    },
+    {
+      "prompt": "Пока!",
+      "expected": "До встречи!",
+      "generated": "До встречи!"
+    },
+    {
+      "prompt": "Ты тут?",
+      "expected": "Да.",
+      "generated": "Да."
+    }
+  ],
+  "CSharp": "NOT_RUN",
+  "CUDA": "NOT_RUN",
+  "generalization": "NOT_TESTED; fixture only memorizes six training replies"
+}

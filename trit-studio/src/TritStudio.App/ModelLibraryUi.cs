@@ -81,7 +81,7 @@ public sealed partial class MainWindow
     private void UpdateSelectedInfo()
     {
         var c = _model?.Weights.Config;
-        string text = c is null ? "Активной модели нет. Создание другой сети находится в отдельном блоке справа." :
+        string text = c is null ? "Активной модели нет. Создание другой сети находится в отдельном блоке ниже." :
             $"{Path.GetFileName(Path.TrimEndingDirectorySeparator(CurrentModelPath ?? ""))}\n" +
             $"{c.ParameterCount:N0} параметров · ревизия {_model!.Revision} · шаг {_workerStatus?.Step ?? _revision?.Step ?? 0:N0}\n" +
             $"Ширина {c.Dimension} · FFN {c.HiddenDimension} · слоёв {c.Layers} · голов {c.Heads}/{c.KvHeads}\n" +
@@ -125,6 +125,7 @@ public sealed partial class MainWindow
     }
     private void ClearModelSpecificInputs()
     {
+        _qualitySummary.Text = "Проверка этой модели ещё не выполнялась.";
         _datasetPaths = []; _pathsLabel.Text = "Выбранные пользовательские файлы сброшены при переключении модели.";
         _dataSummary.Text = "Учебный материал появится после подключения тренера.";
         _input.Text = ""; _private.IsChecked = false; _followTail = true;
@@ -239,7 +240,7 @@ public sealed partial class MainWindow
         string? active = _workspace is null || _inferenceFile is null ? null : Path.GetDirectoryName(_inferenceFile);
         WorkspaceSettings? saved = active is not null && File.Exists(Path.Combine(active,"settings.json")) ? JsonData.Read<WorkspaceSettings>(Path.Combine(active,"settings.json"),64*1024) : null;
         string file = Path.Combine(AppPaths.Root,"diagnostics","model-"+DateTime.UtcNow.ToString("yyyyMMdd-HHmmss")+"-"+Guid.NewGuid().ToString("N")[..6]+".json");
-        var report = new { version = "16.0.0-audit16", capturedAt = DateTimeOffset.UtcNow, modelName = Path.GetFileName(CurrentModelPath),
+        var report = new { version = "17.0.0-audit17", capturedAt = DateTimeOffset.UtcNow, modelName = Path.GetFileName(CurrentModelPath),
             architecture = model.Weights.Config, parameterCount = model.Weights.Config.ParameterCount,
             published = revision is null ? null : new { revision.Revision, revision.Step, revision.TargetTokens, revision.ValidationLoss, revision.BestValidationLoss, revision.ValidationSequenceLength },
             liveStep = status?.Step, liveTrainingLoss = status?.Loss, device = status?.Device, performance = status?.Performance,

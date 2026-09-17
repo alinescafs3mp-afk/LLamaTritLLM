@@ -19,3 +19,6 @@ startup.log*
 preferences.json
 chat-state.json
 runtime.json
+
+# Explicit synthetic six-reply diagnostic fixture, never owner weights.
+!tests/fixtures/learning-reference.tritmodel

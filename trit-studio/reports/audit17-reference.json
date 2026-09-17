@@ -1,0 +1,17 @@
+{
+  "status": "passed-independent",
+  "scope": "Source-independent arithmetic/data and packaging inputs, not C# or OS allocation",
+  "memory": {
+    "parameters": 4788992,
+    "fp32_master_MiB": 18.2685546875,
+    "persistent_envelope_MiB": 694.4453125,
+    "linear_work_MiB": 3072.0,
+    "attention_work_MiB": 24576.0,
+    "previous_total_MiB": 28342.4453125,
+    "configured_RAM_MiB": 16384,
+    "zero_step_activation_MiB": 0
+  },
+  "frozen_files": 16,
+  "corpus_records": 3466,
+  "native_learning": "NOT_RUN"
+}

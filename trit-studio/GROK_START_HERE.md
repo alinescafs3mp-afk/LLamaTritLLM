@@ -1,33 +1,36 @@
-# Grok: audit16 deep regression pass, app-only Windows delivery
+# Grok: audit17, actual learning before cosmetic completion
 
-Read enclosing 00_GROK_START_HERE.md first. Target owner fork alinescafs3mp-afk/LLamaTritLLM, existing master.
-Actual verified fork baseline is fa9c9261fdcf3f463855ab5fb2687e71ba4654d9 (integrated14). Exact15 upgrade is also provided.
-Preserve mean(long[]), protocol IOException and Linux EOF host repairs. Never reset/rebase/force-push to erase owner work.
-The author did not compile/run C#, Avalonia, PowerShell or CUDA. Do not convert Python/static evidence into runtime passes.
+Owner repository: alinescafs3mp-afk/LLamaTritLLM, existing master. Verified deployed base1570538ee47af73a1c30d38acaf91e39a82714e5.
+Preserve original console directories and all host repairs. Do not force-push, reset owner changes, create a dispatcher or alter
+vendor versions. Read docs/AUDIT_V17.md and TRAINING_DIAGNOSIS_RU.md before working.
 
-From trit-studio run bash scripts/deliver.sh (or scripts/deliver.ps1). Default MUST be artifacts/TritStudio-win-x64-update.zip,
-containing only owned binaries/metadata/data plus both trainer programs. No vendor CUDA/LibTorch/Avalonia/.NET redistribution.
-Do not invoke --full to evade compatibility checks. Keep pinned package versions; any forced change needs owner approval and
-an explicit migration path for retained libraries. Actual Linux-to-Windows publishing is not a Windows runtime test.
+## Required outcome
 
-Read docs/AUDIT_V16.md, PERFORMANCE_V16.md, UPDATE_RU.md and QUALITY_DIAGNOSTICS_RU.md. Run all372 managed contracts, all
-headless/real-child/native/worker tests, new Audit16UiChecks and every benchmark. Fix causes and rerun without weakened tests.
-New keyboard tests MUST use focused-window KeyPress/KeyRelease, not StartSend invocation. Verify Shift+Enter, held Enter,
-release/next send, no model and busy-gate refusal. Raw event behavior/IME and DPI also need real Windows desktop acceptance.
+Run scripts/deliver.sh (or deliver.ps1) from trit-studio. Default deliverable MUST be artifacts/TritStudio-win-x64-update.zip.
+BOTH updated trainer entrypoints/data must be included; installed LibTorch/CUDA/.NET/Avalonia libraries must NOT be in update.
+Do not choose --full silently. Keep package ownership checks; the only extra model is80,590-byte checks/learning-reference.tritmodel,
+a public authored test fixture, never user weights. All newly created models still start from random weights.
 
-Check missing active pointer with revisions, pointer/state directories, linked metadata, null/oversized pointer metadata,
-failed opening preserves active model/private draft/history/epoch and releases its candidate lease. Do NOT guess the latest
-revision or create new random weights over an orphaned workspace. Test nested delete dialog duplicates and failure feedback.
-If active removal fails and recovery succeeds, retain its draft/privacy. A failed native recovery must remain visible.
+## Blocking acceptance, not optional
 
-Run trained native -> packed disk -> CPU parity, including new prefix shortcut vs previous compute path and continuation KV.
-Actual prefixPreparation benchmark is CPU only. No promised speedup threshold. Repeated train/eval/reopen memory soak remains.
-Run packaging/Test-LaptopChecks.ps1 on Windows; Check-laptop calls it. Probe CUDA failure then explicitly reconnect after recovery.
-A negative probe may be retried; a CPU fallback or nvidia-smi output is not a successful CUDA training test.
+- Compile all projects and repair real errors without weakening assertions. Author had no dotnet; all C#/UI/native passes are pending.
+- Run existing core/UI/actual-worker/native suites and benchmarks. The new native LearningSmoke is called by --self-test.
+- Fresh network must learn6 Russian replies through REAL C# gradients, native optimizer, packed disk reload and production CPU
+  generation. All6 exact after<=1000 steps and loss<.20. If it fails, investigate until fixed; do not lower thresholds, replace
+  the network with strings, claim that loss decreasing is enough, or bypass the test for delivery. The six expected strings
+  are training targets and test assertions ONLY. There is NO reply lookup in the product.
+- Actual C# CPU reader/generator must generate all6 expected replies from independent Python-trained fixture. This separately
+  checks decoding without depending on the C# training implementation. Retain real log outputs.
+- Experimental4.79M zero-step creation with B32/T1024/RAM16384 must save step0 and reopen. Actual quality command must preserve
+  active weights, replay and mode. Check actual length validation and real allocation failures, not merely checkbox values.
+- Exactly3 top-level training cards and aligned header at100/150/200%DPI, window resize and UI50/65/80/100/125%. Creation and
+  selected-model fine-tune use DIFFERENT settings objects. Small-LR warning+confirm; explicit profile never auto-starts learning.
+- Retain Enter/Shift+Enter, clear-chat, private retry, selector/library/trash, cancellation and app-only update regressions.
+- CPU success precedes Windows cross-publication. Actual Windows/CUDA gates run on target; CPU fallback is not GPU acceptance.
 
-3418 corpus records:2730 train+368 controls+272 held-out+48 basics. All14 previous holdouts/baseline frozen. No pretrained weights
-or conversational-quality guarantee. Existing-model controls never change silently. Staged zero/basic/conversation experiment,
-clear-chat boundary and exclusion privacy behavior remain. Diagnose actual owner weights/logs before explaining gibberish.
+## Report to owner
 
-Return absolute fresh UPDATE zip path, SHA256, output directory, WHERE_TO_PICK_UP.txt, full logs, actual host results and final
-fork commit. Explicitly list pending Windows/CUDA tests. Do not return an old ZIP as this build or a giant portable archive.
+Give absolute path to fresh update ZIP, SHA256, committed fork SHA, exact tests run and generated learning-smoke replies.
+Report any target-only unrun checks explicitly. Do not repackage an old ZIP or promise to repair quality merely by expanding data.
+The owner's actual checkpoint was not supplied to source author. LR1e-6 is a reproduced plausible factor, not a proven unique cause.
+The quality report must retain saved-manual-LR and distinguish teacher accuracy from free-running generation.

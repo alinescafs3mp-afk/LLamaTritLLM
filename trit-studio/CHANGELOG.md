@@ -1,3 +1,16 @@
+# Audit17 · 17.0.0-audit17 · 2026-09-17
+
+- Require real C# six-reply learning/export/CPU generation, beyond numeric/loss smoke.
+- Add read-only quality probe for selected committed model and independent learned V1 diagnostic fixture.
+- Separate creation, actual CPU batch and CUDA/host memory estimates; independent create/finetune options.
+- Exactly three training UI cards, aligned header, visible tiny-LR warning and explicit starting profile.
+- Expand corpus modestly to3466; baseline/old holdouts remain byte-frozen.
+- Preserve Grok audit16 host fixes, app-only updates and ALL prior acceptance. Native/GUI/CUDA author tests NOT_RUN.
+- Host integration: LearningSmoke uses TorchSharp DeviceType (not torch.DeviceType); TorchSharp 0.107 has no torch.DeviceType.
+- Host integration: challenge-v17 remains held-out (Load, not LoadTraining); records have split=test and NEVER enter training.
+
+## Historical changes
+
 # Audit16 · 16.0.0-audit16 · 2026-09-16
 
 - Fix the still-unhandled Enter report using tunnel routing and real key-event tests.

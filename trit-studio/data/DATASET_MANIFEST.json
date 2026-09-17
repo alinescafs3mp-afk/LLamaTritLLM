@@ -1,11 +1,11 @@
 {
-  "version": "conversation-ru-v16",
+  "version": "conversation-ru-v17",
   "language": "ru",
   "origin": "original authored synthetic text; no private chats or scraping",
   "license": "MIT (same as application)",
   "counts": {
-    "seed": 2730,
-    "validation": 368,
+    "seed": 2762,
+    "validation": 376,
     "test": 40,
     "challenge": 24,
     "challenge-v4": 16,
@@ -21,18 +21,19 @@
     "challenge-v14": 16,
     "challenge-v15": 16,
     "challenge-v16": 16,
+    "challenge-v17": 8,
     "pretrain": 48
   },
   "files": {
     "seed": {
-      "count": 2730,
-      "bytes": 1029208,
-      "sha256": "2060c018f4b0f4607948eaeec2d2689d8ef3907ffe8a48b89d8abf50502894e5"
+      "count": 2762,
+      "bytes": 1039499,
+      "sha256": "4eaea6b90db782ffc51d1146fc8a939edf0311530a129e58ac82adf6a0458130"
     },
     "validation": {
-      "count": 368,
-      "bytes": 138077,
-      "sha256": "1c033e55b335aa45b90bf1c38e137f09efeaa8467bd9b511917bcef67a1cd018"
+      "count": 376,
+      "bytes": 140527,
+      "sha256": "d4906d1a723b073908fe09b96bfe0fb95b51b10ba4f13ed926cf2e6986eb654d"
     },
     "test": {
       "count": 40,
@@ -109,13 +110,18 @@
       "bytes": 6164,
       "sha256": "125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0"
     },
+    "challenge-v17": {
+      "count": 8,
+      "bytes": 2156,
+      "sha256": "efbb9ea61308bca0cf3e9f9ddeb0346e5a7f802527638b053699244b9e20968e"
+    },
     "pretrain": {
       "count": 48,
       "bytes": 9425,
       "sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
     }
   },
-  "blind_test": "test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl challenge-v14.jsonl challenge-v15.jsonl and challenge-v16.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen",
+  "blind_test": "test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl challenge-v14.jsonl challenge-v15.jsonl challenge-v16.jsonl and challenge-v17.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen",
   "frozen_v2_test_sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb",
   "frozen_v3_challenge_sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550",
   "frozen_v4_challenge_sha256": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf",
@@ -130,6 +136,7 @@
   "frozen_v13_challenge_sha256": "888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3",
   "frozen_v14_challenge_sha256": "a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40",
   "frozen_v15_challenge_sha256": "86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11",
+  "frozen_v16_challenge_sha256": "125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0",
   "frozen_baseline_sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973",
   "baseline": "pretrain.jsonl is a separate text-only training stage; never injected into random initialization or claimed as pretrained weights",
   "claim": "starter corpus, not pretrained weights or a conversational quality guarantee",

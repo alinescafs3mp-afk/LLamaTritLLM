@@ -82,11 +82,39 @@ public static class WorkerProtocolChecks
             await CheckMalformedCommandChannel(executable, Path.Combine(root, "command-frames"));
             await CheckEvolution(executable,Path.Combine(root,"stage-checks"));
             await CheckFailedRollback(executable,Path.Combine(root,"stage-checks"));
+            await CheckCreationBudgetAndQuality(executable,Path.Combine(root,"audit17"));
             Console.WriteLine("PASS actual worker: creation, receipts, coherent snapshots, online gradients, rollback, idempotency, stop fence, restart.");
             return 0;
         }
         catch (Exception error) { Console.Error.WriteLine("FAIL actual worker: " + error); return 1; }
         finally { Directory.Delete(root, recursive: true); }
+    }
+    private static async Task CheckCreationBudgetAndQuality(string executable,string root)
+    {
+        var resources=new ResourceOptions{Threads=2,MemoryMiB=16384,BatchSize=32,SequenceLength=1024,PreferCuda=false};
+        await using(var worker=new Child(executable,root))
+        {
+            await worker.Wait(e=>e.Kind=="ready");
+            await worker.Complete(await worker.Send("create",new CreateRequest(ModelConfig.Large,resources,new TrainingOptions{Steps=8000},[],CreationMode.Untrained)));
+            string active=ModelFiles.ActivePath(root)!;var before=ModelFiles.VerifyRevision(active);
+            Assert(before.Step==0 && before.TargetTokens==0,"Zero creation took optimizer steps.");
+        }
+        await using(var worker=new Child(executable,root))
+        {
+            await worker.Wait(e=>e.Kind=="ready");
+            string active=ModelFiles.ActivePath(root)!;var before=ModelFiles.VerifyRevision(active);
+            string replay=Path.Combine(root,"replay.json");string? replayHash=File.Exists(replay)?ModelFiles.Hash(replay):null;
+            string runtime=Path.Combine(root,"runtime.json");string? runtimeHash=File.Exists(runtime)?ModelFiles.Hash(runtime):null;
+            var completed=await worker.Complete(await worker.Send("quality",new{}));
+            var result=completed.Data.GetProperty("result");
+            Assert(result.GetProperty("step").GetInt64()==0&&result.GetProperty("parity").GetBoolean(),"Quality probe failed numerical pipeline on current random model.");
+            string report=result.GetProperty("file").GetString()!;Assert(File.Exists(report),"Diagnostic result file missing.");
+            var after=ModelFiles.VerifyRevision(ModelFiles.ActivePath(root)!);
+            Assert(before==after && active==ModelFiles.ActivePath(root),"Quality check changed active weights.");
+            Assert(replayHash==(File.Exists(replay)?ModelFiles.Hash(replay):null),"Quality check changed replay queue.");
+            Assert(runtimeHash==(File.Exists(runtime)?ModelFiles.Hash(runtime):null),"Quality check changed learning mode.");
+        }
+        Console.WriteLine("PASS audit17: large zero-step create/reopen ignores future activation estimate; actual model quality report preserves weights, queue and mode.");
     }
     private static async Task CheckModeFailureAndRefusal(string executable, string root)
     {

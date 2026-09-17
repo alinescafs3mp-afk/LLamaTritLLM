@@ -97,8 +97,8 @@ def main():
     assert 'StageArchive.Preserve' in worker and 'fixedContext' in ui and 'learningHistory' in ui
     assert 'nn.functional.silu(gate)' in model
     assert 'new byte[Math.Min(1024' in (ROOT/'src/TritStudio.Core/ManagedInference.cs').read_text()
-    assert '16.0.0-audit16' in (ROOT/'VERSION').read_text() and '16.0.0-audit16' in (ROOT/'Directory.Build.props').read_text()
-    assert 'аудит 16' in ui and 'RU v5' not in ui
+    assert '17.0.0-audit17' in (ROOT/'VERSION').read_text() and '17.0.0-audit17' in (ROOT/'Directory.Build.props').read_text()
+    assert 'аудит 17' in ui and 'RU v5' not in ui
     assert client.index('CommandCompletion.Parse(message.Data)') < client.index('_pending.TryRemove(id, out var pending)')
     assert 'EvaluationBatchCache' in training and 'RetainedPayloadBytes' in (ROOT/'src/TritStudio.Core/EvaluationBatchCache.cs').read_text()
     rollback = worker[worker.index('    private void Rollback()'):]
@@ -146,7 +146,7 @@ def main():
     assert 'Repeated publication reported completion' in tests
     assert 'first == 0 ? full' in (ROOT/'src/TritStudio.Core/ValidationGuard.cs').read_text()
     assert 'CpuPreparationBenchmark.Run' in (ROOT/'src/TritStudio.Trainer/TrainerBenchmark.cs').read_text()
-    assert 'conversation-ru-v16' == manifest['version']
+    assert 'conversation-ru-v17' == manifest['version']
     assert 'challenge-v12.jsonl' in (ROOT/'src/TritStudio.Core/BundledCorpus.cs').read_text()
     assert 'DraftRecovery.Restore' in ui and 'RestoreFailedDraft(input, excluded)' in ui
     assert 'CpuAttention.Compute' in inference
@@ -196,17 +196,23 @@ def main():
     assert 'Test-LaptopChecks.ps1' in (ROOT/'packaging/Check-laptop.ps1').read_text()
     assert 'rid != "win-x64"' in delivery and 'exact-deployed' not in ui
     assert 'challenge-v16.jsonl' in (ROOT/'src/TritStudio.Core/BundledCorpus.cs').read_text()
+    assert 'ValidateInitialization' in training and 'ValidateForTraining' in training
+    assert 'ModelPanels' in ui and all(name in ui for name in ['ActiveModelPanel','CreateModelPanel','TrainModelPanel'])
+    assert 'CreationResources(config)' in ui and 'CreationTraining()' in ui
+    assert 'LearningSmoke.Run' in (ROOT/'src/TritStudio.Trainer/TrainerSelfTest.cs').read_text()
+    assert 'CheckCreationBudgetAndQuality' in (ROOT/'tests/TritStudio.Tests/WorkerProtocolChecks.cs').read_text()
+    assert 'QualityProbe.Run' in worker
     differences = subprocess.run(['git','diff','--check'],cwd=ROOT,text=True,capture_output=True)
     assert differences.returncode == 0, differences.stdout+differences.stderr
     staged = subprocess.run(['git','diff','--cached','--check'],cwd=ROOT,text=True,capture_output=True)
     assert staged.returncode == 0, staged.stdout+staged.stderr
     core_tests = len(re.findall(r'^    \("', (ROOT/'tests/TritStudio.Tests/Program.cs').read_text(), re.M))
-    core_tests += sum(len(re.findall(r'^        \("', (ROOT/name).read_text(), re.M)) for name in ['tests/TritStudio.Tests/Audit5Checks.cs','tests/TritStudio.Tests/Audit6Checks.cs','tests/TritStudio.Tests/Audit7Checks.cs','tests/TritStudio.Tests/Audit8Checks.cs','tests/TritStudio.Tests/Audit9Checks.cs','tests/TritStudio.Tests/Audit10Checks.cs','tests/TritStudio.Tests/Audit11Checks.cs','tests/TritStudio.Tests/Audit12Checks.cs','tests/TritStudio.Tests/Audit13Checks.cs','tests/TritStudio.Tests/Audit14Checks.cs','tests/TritStudio.Tests/Audit15Checks.cs','tests/TritStudio.Tests/Audit16Checks.cs'])
+    core_tests += sum(len(re.findall(r'^        \("', (ROOT/name).read_text(), re.M)) for name in ['tests/TritStudio.Tests/Audit5Checks.cs','tests/TritStudio.Tests/Audit6Checks.cs','tests/TritStudio.Tests/Audit7Checks.cs','tests/TritStudio.Tests/Audit8Checks.cs','tests/TritStudio.Tests/Audit9Checks.cs','tests/TritStudio.Tests/Audit10Checks.cs','tests/TritStudio.Tests/Audit11Checks.cs','tests/TritStudio.Tests/Audit12Checks.cs','tests/TritStudio.Tests/Audit13Checks.cs','tests/TritStudio.Tests/Audit14Checks.cs','tests/TritStudio.Tests/Audit15Checks.cs','tests/TritStudio.Tests/Audit16Checks.cs','tests/TritStudio.Tests/Audit17Checks.cs'])
     result = {'status':'passed','scope':'Project/source/script structure and selected invariants, NOT compilation or execution',
               'projects':len(projects),'solution_projects':len(solution_projects),'csharp_source_files':len(cs_files),
               'core_test_cases_defined':core_tests,'python_modules_parsed':len(python_files),'bash_scripts_syntax_checked':len(sh_files),
               'dotnet_available':shutil.which('dotnet') is not None,'csharp_build':'NOT_RUN','headless_ui':'NOT_RUN','cuda':'NOT_RUN'}
-    (ROOT/'reports/static-audit-v16.json').write_text(json.dumps(result,indent=2)+'\n')
+    (ROOT/'reports/static-audit-v17.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))
     return result
 

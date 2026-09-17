@@ -12,7 +12,7 @@ using Avalonia.Threading;
 using TritStudio.Core;
 namespace TritStudio.App;
 
-// Intentionally small event-driven UI. No timer rebuilds the tree; text is updated in-place.
+// Event-driven desktop UI; selected-model and creation state are separate. No timer rebuilds the tree; text is updated in-place.
 public sealed partial class MainWindow : Window
 {
     private static readonly IBrush PanelBrush = new SolidColorBrush(Color.Parse("#172033"));
@@ -93,7 +93,7 @@ public sealed partial class MainWindow : Window
 
     public MainWindow()
     {
-        Title = "Trit Studio • аудит 16 • лаборатория собственных моделей";
+        Title = "Trit Studio • аудит 17 • лаборатория собственных моделей";
         Width = 1280; Height = 860; MinWidth = 780; MinHeight = 540;
         Background = new SolidColorBrush(Color.Parse("#101624"));
         _preferences = AppPaths.Load(); _sampling = _preferences.Sampling ?? new();
@@ -135,12 +135,21 @@ public sealed partial class MainWindow : Window
         var open = _openButton = Button("Папка…"); open.Click += async (_, _) => await RunButton(open, "Открытие модели", OpenFolder);
         var packed = _packedButton = Button("Файл…"); packed.Click += async (_, _) => await RunButton(packed, "Открытие модели для чата", OpenPacked);
         var export = _exportButton = Button("Экспорт"); export.Click += async (_, _) => await RunButton(export, "Экспорт модели", Export);
-        var header = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*,Auto"), RowDefinitions = new RowDefinitions("Auto,Auto"), Margin = new Thickness(12, 8) };
-        var brand = Text("TRIT STUDIO", 18); brand.VerticalAlignment = VerticalAlignment.Center; brand.Margin = new Thickness(0,0,16,0); header.Children.Add(brand);
-        var choose = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto,Auto"), Margin = new Thickness(0,0,14,0) };
-        choose.Children.Add(_modelPicker); Grid.SetColumn(_selectModelButton,1); choose.Children.Add(_selectModelButton); Grid.SetColumn(_manageModelsButton,2); choose.Children.Add(_manageModelsButton);
-        var identity = Column(choose, _modelLabel); Grid.SetColumn(identity,1); header.Children.Add(identity);
-        var right = Row(open, packed, export, Field("Масштаб",_uiScale)); right.HorizontalAlignment = HorizontalAlignment.Right; Grid.SetColumn(right,2); header.Children.Add(right);
+        var header = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*,Auto"), RowDefinitions = new RowDefinitions("Auto,Auto,Auto"), Margin = new Thickness(12, 8) };
+        var brand = Text("TRIT STUDIO", 17); brand.VerticalAlignment = VerticalAlignment.Center; brand.Margin = new Thickness(0,0,16,0); header.Children.Add(brand);
+        var choose = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto,Auto"), Margin = new Thickness(0,0,12,0), VerticalAlignment = VerticalAlignment.Center };
+        _modelPicker.MinHeight = 30; choose.Children.Add(_modelPicker);
+        Grid.SetColumn(_selectModelButton,1); choose.Children.Add(_selectModelButton);
+        Grid.SetColumn(_manageModelsButton,2); choose.Children.Add(_manageModelsButton);
+        Grid.SetColumn(choose,1); header.Children.Add(choose);
+        _uiScale.MinHeight = 30;
+        var scaleLabel = Text("Масштаб",12); scaleLabel.VerticalAlignment = VerticalAlignment.Center;
+        var right = Row(open, packed, export, scaleLabel, _uiScale); right.VerticalAlignment = VerticalAlignment.Center;
+        right.HorizontalAlignment = HorizontalAlignment.Right; Grid.SetColumn(right,2); header.Children.Add(right);
+        foreach (var control in new Control[] { open, packed, export, _selectModelButton, _manageModelsButton, _modelPicker, _uiScale })
+        { control.VerticalAlignment = VerticalAlignment.Center; control.MinHeight = 30; }
+        _modelLabel.TextWrapping = TextWrapping.NoWrap; _modelLabel.TextTrimming = TextTrimming.CharacterEllipsis;
+        _modelLabel.Margin = new Thickness(0,5,0,0); Grid.SetRow(_modelLabel,1); Grid.SetColumnSpan(_modelLabel,3); header.Children.Add(_modelLabel);
         bool narrowHeader = false;
         header.PropertyChanged += (_,e) =>
         {
@@ -148,6 +157,7 @@ public sealed partial class MainWindow : Window
             bool narrow = header.Bounds.Width < 1050; if (narrow == narrowHeader) return; narrowHeader = narrow;
             header.ColumnDefinitions = new ColumnDefinitions(narrow ? "Auto,*" : "Auto,*,Auto");
             Grid.SetColumn(right,narrow ? 0 : 2); Grid.SetRow(right,narrow ? 1 : 0); Grid.SetColumnSpan(right,narrow ? 2 : 1);
+            Grid.SetRow(_modelLabel,narrow ? 2 : 1); Grid.SetColumnSpan(_modelLabel,narrow ? 2 : 3);
         };
         _tabs.ItemsSource = new[] { new TabItem { Header = "Чат", Content = BuildChat() }, new TabItem { Header = "Модель и обучение", Content = BuildTraining() } };
         _tabs.Margin = new Thickness(12,0,12,6);
@@ -211,24 +221,10 @@ public sealed partial class MainWindow : Window
 
     private Control BuildTraining()
     {
-        var pick = _pickDataButton = Button("Добавить датасеты…"); pick.Click += async (_, _) => await RunButton(pick, "Выбор датасетов", PickDatasets);
-        var clear = _clearDataButton = Button("Убрать выбранные"); clear.Click += (_, _) => { _datasetPaths = []; _pathsLabel.Text = "Выбор файлов очищен. Материал определяет выбранный этап обучения. Обученные веса не изменены."; Notice("Выбор очищен", _pathsLabel.Text); };
-        var advanced = new Grid { ColumnDefinitions = new ColumnDefinitions("*,*"), RowDefinitions = new RowDefinitions("Auto,Auto,Auto,Auto,Auto") };
-        Control[] fields = { Field("Ширина", _dimension), Field("FFN", _hidden), Field("Слои", _layers), Field("Головы внимания", _heads), Field("KV-головы", _kvHeads),
-            Field("Контекст (байт-токены)", _context), Field("Троичные плоскости", _planes), Field("Группа квантования", _group), Field("Порог квантования", _threshold) };
-        for (int i = 0; i < fields.Length; i++) { fields[i].Margin = new Thickness(i % 2 == 0 ? 0 : 12, 0, 0, 12); Grid.SetColumn(fields[i], i % 2); Grid.SetRow(fields[i], i / 2); advanced.Children.Add(fields[i]); }
-        var model = Card(Column(Text("Создать другую модель", 17), Field("Название", _name), Field("Размер", _preset), Field("После создания", _creationMode), _stageHint,
-            new Expander { Header = "Архитектура новой сети (не меняет выбранную модель)", Content = advanced }, _estimate,
-            Text("Эти поля относятся только к новой модели. Дообучение ниже меняет веса выбранной в шапке модели, а не её архитектуру.", 12), _create));
-        var data = Card(Column(Text("Данные и этап", 17), Field("Материал следующего запуска", _trainingMaterial), Row(pick, clear), _pathsLabel, _dataSummary, _refreshCorpus,
-            Text("TXT: строки текста. JSON/JSONL: {text}, {prompt, answer} или {messages:[…]} для многоходового диалога.\nВыбранные файлы используются на разговорном/своём этапе. Базовый этап их не использует. Контрольный набор не обучается.", 12)));
-        var compute = Card(Column(Text("Обучение и ресурсы", 17), _cuda,
-            new Expander { Header = "Оптимизация обучения", Content = Column(_sdpa, _buckets, _targetProjection,
-                Text("Настройки применятся со следующего ручного запуска обучения. SDPA выбирает доступный движок LibTorch; CUDA не обязательна. Отключение оставляет эталонный путь для диагностики.", 12)) },
-            Row(Field("Потоки CPU", _threads), Field("Бюджет RAM, МиБ", _memory)),
-            Row(Field("Пакет", _batch), Field("Длина обучения", _sequence)),
-            Row(Field("Дополнительные шаги", _steps), Field("Learning rate", _learningRate)), Field("Сохранять каждые N шагов", _publishEvery),
-            Text("CUDA требует CUDA-сборку тренера. Интерфейс и CPU-чат от неё не зависят. Бюджет памяти является оценкой и защитой, а не жёстким лимитом ОС.", 12)));
+        var pick = _pickDataButton = Button("Добавить датасеты…");
+        pick.Click += async (_, _) => await RunButton(pick, "Выбор датасетов", PickDatasets);
+        var clear = _clearDataButton = Button("Убрать выбранные");
+        clear.Click += (_, _) => { _datasetPaths = []; _pathsLabel.Text = "Выбор файлов очищен. Обученные веса не изменены."; Notice("Выбор очищен", _pathsLabel.Text); };
         var maintain = _maintenanceButton = Button("Очистить старые снимки");
         maintain.Click += async (_, _) => await RunButton(maintain, "Очистка истории снимков", MaintainSnapshots);
         var discard = _discardButton = Button("Очистить очередь обучения");
@@ -257,36 +253,66 @@ public sealed partial class MainWindow : Window
             _status.Text = "Эталоны для CPU-чата: " + path + ". Открывайте model.tritmodel через «Файл…» в шапке.";
             return Task.CompletedTask;
         });
-        var actions = Card(Column(Text("Действия с выбранной моделью",17), _train, _stopTraining, references, _diagnosticsButton, service,
-            Text("Новая модель автоматически становится активной. Изменение ширины, слоёв или словаря требует создания другой модели, не дообучения текущей.", 12)));
-        _newModelPane = new Expander { Header = "Создать новую модель", Content = model, IsExpanded = false, HorizontalAlignment = HorizontalAlignment.Stretch };
-        var active = Card(Column(Text("Выбранная модель",17), _selectedModelInfo, _workspaceLabel));
-        var left = Column(active,data,compute);
-        var right = Column(actions, Card(Column(Text("Ход обучения",17),_details)), _newModelPane,
-            new Expander { Header = "Журнал действий", Content = new ScrollViewer { Content = _log, MaxHeight = 260 } });
-        var grid = new Grid { ColumnDefinitions = new ColumnDefinitions("3*,2*"), RowDefinitions = new RowDefinitions("Auto,Auto"), Margin = new Thickness(0,6,0,0) };
-        left.Margin = new Thickness(0,0,10,0); grid.Children.Add(left); Grid.SetColumn(right,1); grid.Children.Add(right);
+
+        _qualityButton.Click += async (_,_) => await RunButton(_qualityButton, "Проверка обучения", CheckLearning);
+        _trainingPresetButton.Click += (_,_) => ApplyLearningPreset();
+        var active = Card(Column(Text("Текущая модель",18), _selectedModelInfo, _workspaceLabel,
+            Flow(_diagnosticsButton, _qualityButton, references), _qualitySummary,
+            new Expander { Header = "Обслуживание модели и журнал", Content = Column(service,
+                new ScrollViewer { Content = _log, MaxHeight = 200 }) }));
+        active.Name = "ActiveModelPanel";
+        var architecture = FormFields(
+            Field("Ширина",_dimension), Field("FFN",_hidden), Field("Слои",_layers), Field("Головы",_heads),
+            Field("KV-головы",_kvHeads), Field("Контекст",_context), Field("Троичные плоскости",_planes),
+            Field("Группа квантования",_group), Field("Порог",_threshold));
+        _newModelPane = new Expander { Header = "Архитектура новой сети", Content = architecture };
+        _createTrainFields = Column(Text("Обучение сразу после создания",14),
+            FormFields(Field("Шаги",_newSteps),Field("Learning rate",_newRate),Field("Пакет",_newBatch),
+                Field("Длина обучения",_newSequence),Field("Сохранять через N шагов",_newPublish)),
+            Text("Только встроенный материал выбранного этапа. Свои файлы подключаются после создания в соседнем блоке.",12));
+        var create = Card(Column(Text("Создать новую модель",18), Field("Имя",_name),Field("Размер",_preset),
+            _newModelPane, _estimate, Field("После создания",_creationMode),_stageHint,
+            Flow(_newCuda,Field("Бюджет RAM создания, МиБ",_newMemory)),_createTrainFields,_create));
+        create.Name = "CreateModelPanel";
+        var training = Card(Column(Text("Дообучить выбранную модель",18),
+            Text("Меняются веса модели из шапки. Поля блока «Создать новую модель» к этому запуску не относятся.",12),
+            SectionTitle("Материал"),Field("Этап",_trainingMaterial),Flow(pick,clear),_pathsLabel,_dataSummary,_refreshCorpus,
+            SectionTitle("Параметры запуска"), _trainingPresetButton,
+            FormFields(Field("Дополнительные шаги",_steps),Field("Learning rate",_learningRate),
+                Field("Пакет",_batch),Field("Максимальная длина",_sequence),Field("Сохранять через N шагов",_publishEvery)),
+            _learningHint,SectionTitle("Устройство и память"),_cuda,
+            FormFields(Field("Потоки CPU",_threads),Field("Бюджет RAM тренера, МиБ",_memory)),
+            Text("Бюджет RAM задаёт лимит процесса, а не измеряет свободную память. VRAM не равна RAM. Нулевое создание не выделяет активации учебного пакета.",12),
+            new Expander { Header = "Оптимизации", Content = Column(_sdpa,_buckets,_targetProjection) },
+            Flow(_train,_stopTraining),SectionTitle("Последний запуск"),_details));
+        training.Name = "TrainModelPanel";
+        var grid = new Grid { Name = "ModelPanels", ColumnDefinitions = new ColumnDefinitions("2*,3*"),
+            RowDefinitions = new RowDefinitions("Auto,Auto,Auto"), Margin = new Thickness(0,6,0,0) };
+        Grid.SetColumnSpan(active,2);active.Margin = new Thickness(0,0,0,10);grid.Children.Add(active);
+        Grid.SetRow(create,1);create.Margin = new Thickness(0,0,10,0);grid.Children.Add(create);
+        Grid.SetRow(training,1);Grid.SetColumn(training,1);grid.Children.Add(training);
         bool stacked = false;
         grid.PropertyChanged += (_,e) =>
         {
             if (e.Property.Name != "Bounds" || grid.Bounds.Width <= 0) return;
-            bool compact = grid.Bounds.Width < 960;
-            if (compact == stacked) return; stacked = compact;
-            grid.ColumnDefinitions = new ColumnDefinitions(compact ? "*" : "3*,2*");
-            Grid.SetColumn(right,compact ? 0 : 1); Grid.SetRow(right,compact ? 1 : 0);
-            left.Margin = compact ? new Thickness(0,0,0,10) : new Thickness(0,0,10,0);
+            bool narrow = grid.Bounds.Width < 960;if(narrow==stacked)return;stacked=narrow;
+            grid.ColumnDefinitions = new ColumnDefinitions(narrow ? "*" : "2*,3*");
+            Grid.SetColumnSpan(active,narrow?1:2);Grid.SetRow(training,narrow?2:1);Grid.SetColumn(training,narrow?0:1);
+            create.Margin = narrow ? new Thickness(0,0,0,10) : new Thickness(0,0,10,0);
         };
         return new ScrollViewer { Content = grid, HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled };
     }
 
     private void Wire()
     {
-        _creationMode.SelectionChanged += (_, _) => UpdateLearningControls();
+        _creationMode.SelectionChanged += (_, _) => { UpdateLearningControls(); UpdateEstimate(); };
         _trainingMaterial.SelectionChanged += (_, _) => UpdateLearningControls();
         foreach (var c in new AvaloniaObject[] { _temperature, _topP, _repetition, _maxTokens, _topK })
             c.PropertyChanged += (_, e) => { if (e.Property.Name == "Value") UpdateSampling(); };
         foreach (var c in new[] { _dimension, _hidden, _layers, _heads, _kvHeads, _context, _planes, _group, _threshold })
             c.PropertyChanged += (_, e) => { if (e.Property.Name == "Value") UpdateEstimate(); };
+        _learningRate.PropertyChanged += (_,e) => { if(e.Property.Name == "Value") UpdateLearningHint(); };
+        _newMemory.PropertyChanged += (_,e) => { if(e.Property.Name == "Value") UpdateEstimate(); };
         _preset.SelectionChanged += (_, _) => ApplyPreset(_preset.SelectedIndex switch { 1 => ModelConfig.Medium, 2 => ModelConfig.Large, _ => ModelConfig.Small });
         _online.PropertyChanged += async (_, e) =>
         {
@@ -331,11 +357,13 @@ public sealed partial class MainWindow : Window
         if (!_busyButtons.Contains(_create)) _create.Content = mode switch
         { CreationMode.Untrained => "Создать без обучения", CreationMode.BasicPretrain => "Создать и пройти базовый претрейн", _ => "Создать и обучить диалогам" };
         if (!_busyButtons.Contains(_train)) _train.Content = _trainingMaterial.SelectedIndex == 1 ? "Запустить базовый претрейн" : "Дообучить текущую модель";
+        if (_createTrainFields is not null) _createTrainFields.IsVisible = mode != CreationMode.Untrained;
+        UpdateLearningHint();
         _stageHint.Text = mode switch
         {
-            CreationMode.Untrained => "Нулевой этап: случайные веса, строго 0 шагов, автообучение выключено. Число шагов ниже относится к следующему запуску обучения.",
+            CreationMode.Untrained => "Случайные веса, строго 0 шагов. Настройки дообучения соседнего блока не используются.",
             CreationMode.BasicPretrain => "Только короткие базовые тексты, без разговорного датасета и своих файлов. После завершения автообучение останется выключенным.",
-            _ => "Быстрый путь: создание и обучение на разговорном корпусе плюс выбранные файлы. Нулевой эталон сохранится отдельно."
+            _ => "Создание и обучение на встроенном разговорном корпусе. Нулевой эталон сохранится отдельно; свои файлы добавляйте при дообучении."
         };
     }
     private static int Int(NumericUpDown x) => (int)(x.Value ?? 0);
@@ -350,7 +378,7 @@ public sealed partial class MainWindow : Window
     }
     private void UpdateEstimate()
     {
-        try { var c = SelectedConfig(); c.Validate(); _estimate.Text = $"{c.ParameterCount:N0} параметров · мастер-веса ≈ {c.ParameterCount * 4 / 1048576.0:F2} МиБ.\nОбучение потребляет больше памяти, чем сами веса."; }
+        try { var c = SelectedConfig(); c.Validate(); _estimate.Text = $"{c.ParameterCount:N0} параметров · мастер-веса ≈ {c.ParameterCount * 4 / 1048576.0:F2} МиБ.\nСоздание/загрузка: оценка ≈ {TrainingMemoryEstimate.For(c, CreationResources(c), 0).PersistentBytes / 1048576.0:F0} МиБ, бюджет {Int(_newMemory):N0} МиБ.\nАктивации обучения в нулевое создание не входят."; }
         catch (Exception e) { _estimate.Text = "Проверьте архитектуру: " + e.Message; }
     }
     private void UpdateSampling()
@@ -400,6 +428,8 @@ public sealed partial class MainWindow : Window
         _onlineRate.IsEnabled = (_workerReady || _model is null) && !_modeApplying && !_openingWorkspace && !_operationBusy && !_navigationBusy;
         if (_pickDataButton is not null) _pickDataButton.IsEnabled = !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
         if (_clearDataButton is not null) _clearDataButton.IsEnabled = !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
+        _qualityButton.IsEnabled = _workerReady && _model is not null && !_generating && !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
+        _trainingPresetButton.IsEnabled = !_operationBusy && !_openingWorkspace && !_navigationBusy;
         UpdateLibraryState();
         foreach (var b in _busyButtons) b.IsEnabled = false;
     }
@@ -417,7 +447,7 @@ public sealed partial class MainWindow : Window
         if (_closing || _busyButtons.Contains(button) || !button.IsEnabled) return;
         bool navigation = button == _openButton || button == _packedButton || button == _exportButton ||
             button == _maintenanceButton || button == _discardButton || button == _reconnectButton || button == _pickDataButton ||
-            button == _selectModelButton || button == _manageModelsButton || button == _diagnosticsButton || button == _newChatButton;
+            button == _selectModelButton || button == _manageModelsButton || button == _diagnosticsButton || button == _newChatButton || button == _qualityButton;
         if (navigation) { if (_navigationBusy || _modeApplying) return; CancelPendingModeEdit(); _navigationBusy = true; }
         if (button == _create || button == _train || button == _rollbackButton) CancelPendingModeEdit();
         long serial = ++_actionSerial; object? label = button.Content;
@@ -745,16 +775,24 @@ public sealed partial class MainWindow : Window
     {
         var mode = (CreationMode)Math.Clamp(_creationMode.SelectedIndex, 0, 2);
         bool onlineAfterCreate = mode == CreationMode.Conversation && _online.IsChecked == true;
-        if (mode != CreationMode.Conversation && _datasetPaths.Length != 0)
-            throw new ArgumentException("Уберите выбранные датасеты для нулевого/базового создания или выберите разговорный режим. Файлы нельзя молча проигнорировать.");
-        var config = SelectedConfig(); var resources = SelectedResources(); var selectedTraining = SelectedTraining();
+        var config = SelectedConfig(); var resources = CreationResources(config); var selectedTraining = CreationTraining();
         if (mode != CreationMode.Untrained && selectedTraining.Steps == 0) throw new ArgumentException("Выберите «Без обучения» для нулевого этапа или укажите положительное число шагов.");
         var training = LearningStages.CreationOptions(mode, selectedTraining);
-        config.Validate(); resources.Validate(config); training.Validate();
+        config.Validate(); resources.ValidateInitialization(config); training.Validate();
         CheckpointBudget.EnsureFits(0, CheckpointBudget.Publications(training.Steps, training.PublishEvery, includeInitial: true));
         if (_operationBusy) throw new InvalidOperationException("Дождитесь текущего обучения или остановите его.");
+        if(training.Steps > 0 && training.LearningRate < 0.00001)
+        {
+            _operationBusy = true; UpdateState();
+            try
+            {
+                if(!await Confirm("Маленький LR новой модели", $"Выбрано {training.LearningRate:G6}. Это может оставить случайную сеть почти необученной даже после тысяч шагов. Продолжить с этим значением?"))
+                    throw new OperationCanceledException();
+            }
+            finally { _operationBusy = false; UpdateState(); }
+        }
         // Fail fast on user data before opening a new workspace or initializing native compute.
-        var selectedPaths = mode == CreationMode.Conversation ? (string[])_datasetPaths.Clone() : Array.Empty<string>();
+        var selectedPaths = Array.Empty<string>(); // Creation never silently borrows the selected model's files.
         using var preparation = CancellationTokenSource.CreateLinkedTokenSource(_windowLife.Token);
         _preparationCts = preparation; _operationBusy = true; _status.Text = "Проверяю датасеты до создания рабочей папки…"; UpdateState();
         try
@@ -792,10 +830,13 @@ public sealed partial class MainWindow : Window
     private async Task Train()
     {
         NeedWorker(); if (_model is null) return;
-        var resources = SelectedResources(); resources.Validate(_model.Weights.Config); var training = SelectedTraining(); training.Validate();
+        var resources = SelectedResources(); resources.ValidateInitialization(_model.Weights.Config); var training = SelectedTraining(); training.Validate();
         _operationBusy = true; _progress.IsIndeterminate = true; UpdateState();
         try
         {
+            if (training.LearningRate < 0.00001 && !await Confirm("Очень маленький learning rate",
+                $"Сейчас LR={training.LearningRate:G6}. Это в {0.001/training.LearningRate:N0} раз меньше учебного старта 0,001. " +
+                "При обучении с нуля даже тысячи шагов могут оставить почти случайную речь. Продолжить с выбранным значением?")) throw new OperationCanceledException();
             var material = (TrainingMaterial)Math.Clamp(_trainingMaterial.SelectedIndex, 0, 2);
             if (material == TrainingMaterial.BasicPretrain && _datasetPaths.Length != 0)
                 throw new ArgumentException("Для чистого базового этапа уберите выбранные файлы. Они не будут использоваться молча.");

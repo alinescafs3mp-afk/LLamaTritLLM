@@ -1,0 +1,8 @@
+{"prompt": "Поздоровайся и не добавляй встречный вопрос.", "answer": "Привет! Рад общению.", "family": "v17_simple_000", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-705589f80b417ef0b92b"}
+{"prompt": "Как согласовать слова: Уютный комната?", "answer": "Уютная комната.", "family": "v17_simple_001", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-10b53f9a4ba091d481ac"}
+{"prompt": "Дай простую подпись к фотографии дождя за окном.", "answer": "Дождь за окном.", "family": "v17_simple_002", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-17e0c58bc3ee2618d56b"}
+{"prompt": "Я собираюсь отправить письмо. Оно уже отправлено?", "answer": "Нет, пока ты только собираешься его отправить.", "family": "v17_simple_003", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-2658f63c12f78e81e304"}
+{"prompt": "Угадывать не надо: знаешь ли ты имя моего соседа?", "answer": "Нет, ты его не сообщал.", "family": "v17_simple_004", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-ac7907380cde5c128d67"}
+{"prompt": "Мне хочется отдохнуть без объяснений. Просто согласись.", "answer": "Хорошо, отдыхай.", "family": "v17_simple_005", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-7869e70e4e9e37873516"}
+{"prompt": "Сократи: В настоящий момент я нахожусь дома.", "answer": "Сейчас я дома.", "family": "v17_simple_006", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-41fd2d76daa92102ba2b"}
+{"prompt": "Замени приказ просьбой: Закрой окно.", "answer": "Закрой, пожалуйста, окно.", "family": "v17_simple_007", "split": "test", "origin": "authored-synthetic-v17", "id": "ru-v17-fbcada054ee8cc13bd32"}

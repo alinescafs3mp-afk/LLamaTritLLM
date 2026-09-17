@@ -38,7 +38,7 @@ public sealed class TrainingSession : IDisposable
     public double LastValidationMilliseconds { get; private set; }
     public TrainingSession(WeightSet initial, ResourceOptions resources, TrainingOptions training)
     {
-        resources.Validate(initial.Config); training.Validate(); _resources = resources;
+        resources.ValidateInitialization(initial.Config); training.Validate(); _resources = resources;
         int effectiveThreads = Math.Min(resources.EffectiveThreads, initial.Config.ParameterCount < 200000 ? 2 : initial.Config.ParameterCount < 1000000 ? 4 : resources.EffectiveThreads);
         set_num_threads(effectiveThreads);
         // Set inter-op threads once at process initialization, not each time a model is opened.
@@ -67,6 +67,7 @@ public sealed class TrainingSession : IDisposable
         var selected = plan.Examples;
         int t = plan.Length;
         if (t < 1 || t > _resources.SequenceLength) throw new ArgumentException("Invalid effective batch sequence length.");
+        _resources.ValidateForTraining(Model.Config, t, Model.Device.type == DeviceType.CUDA);
         var batch = SupervisedBatch.Build(selected, t, ct); long targetTokens = batch.Targets.LongLength;
         foreach (var pg in Optimizer.ParamGroups) pg.LearningRate = lr;
         Optimizer.zero_grad();
@@ -125,6 +126,7 @@ public sealed class TrainingSession : IDisposable
         {
             ct.ThrowIfCancellationRequested(); using var scope = NewDisposeScope();
             var packed = _validationBatches.Get(index, ct); long tokens = packed.Targets.LongLength;
+            _resources.ValidateForTraining(Model.Config, packed.Length, Model.Device.type == DeviceType.CUDA);
             var ids = tensor(packed.Inputs, dtype: ScalarType.Int64, device: Model.Device).reshape(packed.Rows, packed.Length);
             var labels = tensor(packed.Targets, dtype: ScalarType.Int64, device: Model.Device);
             var positions = tensor(packed.Positions, dtype: ScalarType.Int64, device: Model.Device);

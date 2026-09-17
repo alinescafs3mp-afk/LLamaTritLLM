@@ -21,6 +21,7 @@ public sealed class TorchModel : IDisposable
     private readonly Tensor _cos = null!, _sin = null!, _causal = null!;
     public IReadOnlyList<Parameter> Parameters => _parameters;
     public Device Device => _device;
+    public ModelConfig Config => _c;
     public TorchModel(WeightSet weights, Device device, bool useSdpa = true)
     {
         using var initScope = NewDisposeScope();

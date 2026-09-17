@@ -19,7 +19,7 @@ public static class UpdatePayloadPolicy
     public static bool IsOwnedContent(string relative)
     {
         string p = Normalize(relative); string[] parts = p.Split('/');
-        if (p == "checks/reference.json") return true;
+        if (p is "checks/reference.json" or "checks/learning-reference.tritmodel") return true;
         if (parts.Length != 3 || parts[0] is not ("trainer" or "trainer-cuda" or "checks") || parts[1] != "data") return false;
         string name = parts[2];
         if (name is "DATASET_MANIFEST.json" or "seed.jsonl" or "validation.jsonl" or "test.jsonl" or "challenge.jsonl" or "pretrain.jsonl") return true;

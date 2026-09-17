@@ -1,3 +1,11 @@
+# Audit17 blocking additions
+
+Run all earlier gates below, plus LearningSmoke, independent learned-fixture recall, Audit17Checks, Audit17UiChecks and worker zero-create/quality invariants.
+A failed6-reply learning gate blocks delivery. A decreasing loss or compile success alone is not sufficient. Never add reply lookup logic.
+Keep CPU and real CUDA evidence separate; source author executed neither. Default delivery remains app-only update.
+
+## Previous gates retained
+
 # Audit16 current acceptance additions
 
 Current source16.0.0-audit16, corpus conversation-ru-v16. All earlier suites below remain mandatory; historical counts are not

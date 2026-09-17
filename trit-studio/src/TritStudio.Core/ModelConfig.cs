@@ -51,18 +51,37 @@ public sealed record ResourceOptions
     public bool BucketByLength { get; init; } = true;
     public bool ProjectOnlyTargets { get; init; } = true;
     public int EffectiveThreads => Math.Clamp(Threads, 1, Math.Max(1, Environment.ProcessorCount));
-    public void Validate(ModelConfig config)
+    public void ValidateConfiguration(ModelConfig config)
     {
         config.Validate();
         if (Threads < 1 || Threads > 1024 || MemoryMiB is < 512 or > 65536 ||
             BatchSize is < 1 or > 32 || SequenceLength < 16 || SequenceLength > config.Context)
-            throw new ArgumentException("Invalid CPU/memory/batch/sequence resource budget.");
-        // Conservative preflight estimate, not a measured peak or a hard OS allocation limit.
-        long estimate = 96 * config.ParameterCount + 64L * BatchSize * SequenceLength * config.Dimension * config.Layers +
-                        16L * BatchSize * config.Heads * SequenceLength * SequenceLength * config.Layers + 256L * 1024 * 1024;
-        if (estimate > (long)MemoryMiB * 1024 * 1024)
-            throw new ArgumentException($"Estimated training working set {estimate / 1048576} MiB exceeds the configured budget. Reduce size, batch, or sequence length.");
+            throw new ArgumentException("Недопустимые настройки потоков, RAM, пакета или длины обучения.");
     }
+    public void ValidateInitialization(ModelConfig config)
+    {
+        ValidateConfiguration(config);
+        var plan = TrainingMemoryEstimate.For(config, this, 0);
+        EnsureHostFits(plan.PersistentBytes, "создание / загрузка модели");
+    }
+    public void ValidateForTraining(ModelConfig config, int effectiveLength, bool onCuda)
+    {
+        ValidateInitialization(config);
+        if (effectiveLength < 1 || effectiveLength > SequenceLength) throw new ArgumentOutOfRangeException(nameof(effectiveLength));
+        var plan = TrainingMemoryEstimate.For(config, this, effectiveLength);
+        // MemoryMiB is a configured HOST-RAM budget, never a claim about available physical RAM or VRAM.
+        // On CUDA, activations live on the GPU; native allocation errors remain explicit and recoverable.
+        EnsureHostFits(onCuda ? plan.PersistentBytes : plan.TotalBytes, "обучение на " + (onCuda ? "CUDA (RAM)" : "CPU"));
+    }
+    // Conservative compatibility check for callers that really request a full-length CPU batch.
+    public void Validate(ModelConfig config) => ValidateForTraining(config, SequenceLength, onCuda: false);
+    private void EnsureHostFits(long estimate, string operation)
+    {
+        if (estimate > (long)MemoryMiB * 1048576)
+            throw new ArgumentException($"{operation}: оценка RAM {estimate / 1048576:N0} МиБ превышает заданный в программе бюджет {MemoryMiB:N0} МиБ. " +
+                "Это не объём установленной/свободной RAM и не VRAM. Уменьшите пакет/длину или явно измените бюджет RAM.");
+    }
+
 }
 
 public sealed record TrainingOptions

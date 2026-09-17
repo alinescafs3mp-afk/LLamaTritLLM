@@ -180,7 +180,7 @@ internal sealed class Worker : IDisposable
                     try
                     {
                         if (command.Kind == "shutdown") break;
-                        if (_currentCancelEpoch != Volatile.Read(ref _cancelEpoch) && (command.Kind is "create" or "train" or "mode"))
+                        if (_currentCancelEpoch != Volatile.Read(ref _cancelEpoch) && (command.Kind is "create" or "train" or "mode" or "quality"))
                             throw new OperationCanceledException("Команда отменена до начала выполнения.");
                         await Handle(command);
                     }
@@ -216,7 +216,7 @@ internal sealed class Worker : IDisposable
         lock (_operationLock)
         {
             _operation = cts; _operationKind = kind;
-            if (kind == "offline" && _currentCancelEpoch != Volatile.Read(ref _cancelEpoch)) cts.Cancel();
+            if ((kind == "offline" || kind == "diagnostics") && _currentCancelEpoch != Volatile.Read(ref _cancelEpoch)) cts.Cancel();
             // A disable/stop may arrive after the scheduler condition but before _operation is assigned.
             if (kind == "online" && (Volatile.Read(ref _stopRequested) != 0 || Volatile.Read(ref _disableOnlineRequested) != 0)) cts.Cancel();
         }
@@ -229,6 +229,7 @@ internal sealed class Worker : IDisposable
         switch (command.Kind)
         {
             case "create": return InOperation("offline", ct => Create(Protocol.Payload<CreateRequest>(command.Payload), ct));
+            case "quality": return InOperation("diagnostics", QualityReport);
             case "train": return InOperation("offline", ct => Train(Protocol.Payload<TrainRequest>(command.Payload), ct));
             case "mode":
                 var mode = Protocol.Payload<OnlineMode>(command.Payload);
@@ -261,7 +262,7 @@ internal sealed class Worker : IDisposable
     private void Create(CreateRequest r, CancellationToken ct)
     {
         if (ModelFiles.ActivePath(_store.Root) is not null || _session is not null) throw new InvalidOperationException("В этой рабочей папке уже есть модель. Создайте новую папку модели.");
-        r.Config.Validate(); r.Resources.Validate(r.Config);
+        r.Config.Validate(); r.Resources.ValidateInitialization(r.Config);
         var training = LearningStages.CreationOptions(r.Mode, r.Training);
         _store.EnsureCapacity(CheckpointBudget.Publications(training.Steps, training.PublishEvery, includeInitial: true));
         bool conversation = r.Mode == CreationMode.Conversation;
@@ -320,7 +321,7 @@ internal sealed class Worker : IDisposable
         var info = ModelFiles.VerifyRevision(path);
         string inputRoot = info.CheckpointVersion >= 2 ? path : _store.Root;
         var settings = JsonData.Read<WorkspaceSettings>(Path.Combine(inputRoot, "settings.json"));
-        settings.Resources.Validate(settings.Config); settings.Training.Validate();
+        settings.Resources.ValidateInitialization(settings.Config); settings.Training.Validate();
         if (settings.LastMaterial is TrainingMaterial savedMaterial) LearningStages.Validate(savedMaterial);
         var state = JsonData.Read<TrainerState>(Path.Combine(path, "state.json"));
         var commits = JsonData.Read<CommitLedger>(Path.Combine(path, "commit.json"));
@@ -361,7 +362,7 @@ internal sealed class Worker : IDisposable
         _store.EnsureCapacity(CheckpointBudget.Publications(r.Training.Steps, r.Training.PublishEvery));
         _stage = "dataset"; Status("Проверка датасетов и параметров дообучения…", busy: true);
         var settings = _settings!;
-        var resources = r.Resources ?? settings.Resources; resources.Validate(settings.Config);
+        var resources = r.Resources ?? settings.Resources; resources.ValidateInitialization(settings.Config);
         // Validate only material this operation consumes. Scanning/encoding the entire historical replay
         // was both expensive and allowed an unused old long message to block a baseline-only stage.
         bool conversationPreviouslyTrained = settings.ConversationTrained == true;
@@ -418,6 +419,18 @@ internal sealed class Worker : IDisposable
         _paused = false; _online = false; _onlineLr = r.Training.OnlineLearningRate; SaveMode(); RunOffline(_base, r.Training, ct);
         PreserveStage(LearningStages.ArchiveKey(r.Material), LearningStages.Name(r.Material));
         _paused = true; SaveMode(); Ready();
+    }
+    private void QualityReport(CancellationToken ct)
+    {
+        NeedSession(); _stage = "diagnostics"; Status("Сравниваю обученные веса, файл и CPU-ответы. Веса не изменяются…", busy: true);
+        string active = ModelFiles.ActivePath(_store.Root) ?? throw new InvalidDataException("Нет активного снимка.");
+        var report = QualityProbe.Run(_session!, active, _settings!, _trainingData, _validationData, ct);
+        ct.ThrowIfCancellationRequested();
+        string file = FileAt(Path.Combine("diagnostics", "quality-" + DateTime.UtcNow.ToString("yyyyMMdd-HHmmss") + "-" + Guid.NewGuid().ToString("N")[..6] + ".json"));
+        JsonData.AtomicWrite(file, report, 256 * 1024);
+        _commandResult = new { file, summary = report.Interpretation, step = report.Step, learningRate = report.SavedLearningRate,
+            accuracy = report.TrainSampleAccuracy, parity = report.Replies.All(x => x.PipelineParityPassed) };
+        Status("Диагностика готова: " + file + ". " + report.Interpretation);
     }
     private void NeedSession() { if (_session is null || _settings is null) throw new InvalidOperationException("Сначала создайте или откройте модель."); }
     private void RunOffline(EncodedExample[] corpus, TrainingOptions options, CancellationToken ct)
