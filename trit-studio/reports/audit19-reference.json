@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "Independent policy/corpus algorithms, NOT C# execution or model quality certification.",
+  "schedule_cases": 40,
+  "accepted_budget_cases": 403,
+  "current_data_version": "conversation-ru-v19",
+  "v19_reference_seed_only": {
+    "correct": 9595,
+    "total": 22051,
+    "accuracy_percent": 43.51276586095869
+  },
+  "v19_reference_seed_and_basics": {
+    "correct": 9595,
+    "total": 22051,
+    "accuracy_percent": 43.51276586095869
+  },
+  "route_order": "Exact zero-step placeholder removal equals direct seed; actual Worker test still NOT_RUN",
+  "frozen_baseline_sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973",
+  "csharp": "NOT_RUN",
+  "new_schedule_training_benefit": "NOT_MEASURED",
+  "executed_learning_evidence": "reports/learning-investigation-v19.json, independent constant-LR v18 arms only"
+}

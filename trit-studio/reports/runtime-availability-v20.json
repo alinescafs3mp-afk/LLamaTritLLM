@@ -1,0 +1,11 @@
+{
+  "scope": "Actual author environment",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "dotnet": null,
+  "sdk_metadata_download": "attempted via container.download; failed",
+  "csharp_build": "NOT_RUN",
+  "native_TorchSharp": "NOT_RUN",
+  "Avalonia": "NOT_RUN",
+  "Windows": "NOT_RUN",
+  "CUDA": "NOT_RUN"
+}

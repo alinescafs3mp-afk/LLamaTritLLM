@@ -22,7 +22,7 @@ public static class UpdatePayloadPolicy
         if (p is "checks/reference.json" or "checks/learning-reference.tritmodel") return true;
         if (parts.Length != 3 || parts[0] is not ("trainer" or "trainer-cuda" or "checks") || parts[1] != "data") return false;
         string name = parts[2];
-        if (name is "DATASET_MANIFEST.json" or "seed.jsonl" or "validation.jsonl" or "test.jsonl" or "challenge.jsonl" or "pretrain.jsonl") return true;
+        if (name is "conversation-language.jsonl" or "conversation-transfer.jsonl" or "transfer-challenge.jsonl" or "conversation-context.jsonl" or "conversation-starter.jsonl" or "context-challenge.jsonl" or "DATASET_MANIFEST.json" or "seed.jsonl" or "validation.jsonl" or "test.jsonl" or "challenge.jsonl" or "pretrain.jsonl") return true;
         if (name.Length <= 17 || !name.StartsWith("challenge-v",StringComparison.Ordinal) || !name.EndsWith(".jsonl",StringComparison.Ordinal)) return false;
         var digits = name.AsSpan(11,name.Length-17);
         foreach (char c in digits) if (c < '0' || c > '9') return false;

@@ -23,7 +23,8 @@ public sealed class TrainingSession : IDisposable
         return Model.CopyMaster(ct);
     }
     public long TargetTokens { get; private set; }
-    public TrainerState State => new(Step, _rng.State, TargetTokens);
+    public double? LastLearningRate { get; private set; }
+    public TrainerState State => new(Step, _rng.State, TargetTokens, LastLearningRate);
     private EncodedExample[]? _plannedCorpus, _evaluatedCorpus;
     private BatchPlanner? _planner;
     private EncodedExample[]? _preparedCorpus;
@@ -55,7 +56,7 @@ public sealed class TrainingSession : IDisposable
         catch { Model.Dispose(); throw; }
         _rng = new(unchecked((ulong)initial.Config.Seed)); _initialMaster = initial;
     }
-    public (double Loss, long TargetTokens) TrainStep(EncodedExample[] corpus, double lr, CancellationToken ct, EncodedExample? required = null)
+    public (double Loss, long TargetTokens) TrainStep(EncodedExample[] corpus, double lr, CancellationToken ct, EncodedExample? required = null, bool equalExampleWeight = false, DialogueBatchPlanner? dialoguePlanner = null, int courseCompleted = 0, int courseTotal = 0)
     {
         ct.ThrowIfCancellationRequested();
         if (!double.IsFinite(lr) || lr is <= 0 or > 0.01) throw new ArgumentOutOfRangeException(nameof(lr));
@@ -66,8 +67,13 @@ public sealed class TrainingSession : IDisposable
         using var scope = NewDisposeScope();
         var watch = Stopwatch.StartNew();
         int b = _resources.BatchSize;
-        if (!ReferenceEquals(_plannedCorpus, corpus)) { _planner = new BatchPlanner(corpus, ct: ct); _plannedCorpus = corpus; _accuracyWindow.Clear(); }
-        var plan = _planner!.Select(b, _rng, _resources.BucketByLength, required);
+        if (!ReferenceEquals(_plannedCorpus, corpus))
+        { _planner = null; _plannedCorpus = corpus; _accuracyWindow.Clear(); }
+        if (dialoguePlanner is null && _planner is null) _planner = new BatchPlanner(corpus, ct: ct);
+        if (dialoguePlanner is not null && (!ReferenceEquals(dialoguePlanner.Corpus, corpus) || required is not null))
+            throw new ArgumentException("The v22 planner must own this corpus and cannot be used for online corrections.");
+        var plan = dialoguePlanner is null ? _planner!.Select(b, _rng, _resources.BucketByLength, required)
+            : dialoguePlanner.Select(b, _rng, courseCompleted, courseTotal, ct);
         var selected = plan.Examples;
         int t = plan.Length;
         if (t < 1 || t > _resources.SequenceLength) throw new ArgumentException("Invalid effective batch sequence length.");
@@ -79,7 +85,10 @@ public sealed class TrainingSession : IDisposable
         var targets = tensor(batch.Targets, dtype: ScalarType.Int64, device: Model.Device);
         var positions = tensor(batch.Positions, dtype: ScalarType.Int64, device: Model.Device);
         var logits = ForwardForLoss(ids, positions);
-        var loss = nn.functional.cross_entropy(logits, targets);
+        var loss = equalExampleWeight
+            ? (nn.functional.cross_entropy(logits, targets, reduction: nn.Reduction.None) *
+                tensor(ExampleLossWeights.Build(batch), dtype: ScalarType.Float32, device: Model.Device)).sum()
+            : nn.functional.cross_entropy(logits, targets);
         loss.backward();
         // Argmax reuses the logits already calculated for loss. No extra forward or softmax.
         // Float64 transports exact integer counts for these bounded batches, in the SAME host transfer.
@@ -94,10 +103,10 @@ public sealed class TrainingSession : IDisposable
         if (norm > 1) { using var ng = no_grad(); foreach (var p in Model.Parameters) { using var gradientScope = NewDisposeScope(); if (p.grad is { } g) g.mul_(1 / norm); } }
         ct.ThrowIfCancellationRequested();
         _initialMaster = null; // BEFORE a possibly partial native update, not after its success.
-        Optimizer.step(); Model.MarkUpdated(); Step++; TargetTokens += targetTokens;
+        Optimizer.step(); Model.MarkUpdated(); Step++; TargetTokens += targetTokens; LastLearningRate = lr;
         // Predictions precede this update. Publish the observation only after the update succeeds.
         _accuracyWindow.Add(correctCount, targetTokens, Step, _resources.SequenceLength);
-        LastStepPerformance = new(watch.Elapsed.TotalMilliseconds, b, t, plan.InputTokens, targetTokens, plan.PaddedPositions, Model.AttentionBackend, _resources.ProjectOnlyTargets ? targetTokens : plan.PaddedPositions);
+        LastStepPerformance = new(watch.Elapsed.TotalMilliseconds, b, t, plan.InputTokens, targetTokens, plan.PaddedPositions, Model.AttentionBackend, _resources.ProjectOnlyTargets ? targetTokens : plan.PaddedPositions, dialoguePlanner?.LastMix);
         return (value, targetTokens);
     }
     internal static Tensor SquaredGradientNorm(IEnumerable<Parameter> parameters, Device device)
@@ -163,18 +172,20 @@ public sealed class TrainingSession : IDisposable
     public void SaveOptimizer(string path) => Optimizer.save_state_dict(path);
     public void Restore(WeightSet weights, string optimizer, TrainerState state)
     {
+        if (state.LastLearningRate is double rate && (!double.IsFinite(rate) || rate is <= 0 or > 0.01 || state.Step == 0)) throw new InvalidDataException("Invalid actual learning rate in trainer state.");
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0) throw new InvalidDataException("Invalid trainer state.");
         _initialMaster = null; _evaluatedVersion = -1; LastEvaluationAccuracy = null; _accuracyWindow.Clear(); LastStepPerformance = null;
         Model.Restore(weights); RestoreState(optimizer, state);
     }
     public void RestoreState(string optimizer, TrainerState state)
     {
+        if (state.LastLearningRate is double rate && (!double.IsFinite(rate) || rate is <= 0 or > 0.01 || state.Step == 0)) throw new InvalidDataException("Invalid actual learning rate in trainer state.");
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0)
             throw new InvalidDataException("Invalid training counters or sampler state.");
         _initialMaster = null; // No initial-reference shortcut after state restoration, even on failure.
         _evaluatedVersion = -1; LastEvaluationAccuracy = null; _accuracyWindow.Clear(); LastStepPerformance = null;
         Optimizer.load_state_dict(optimizer); Optimizer.to(Model.Device);
-        Step = state.Step; _rng.State = state.SamplerState; TargetTokens = state.TargetTokens;
+        Step = state.Step; _rng.State = state.SamplerState; TargetTokens = state.TargetTokens; LastLearningRate = state.LastLearningRate;
     }
     private void CheckMemory()
     {

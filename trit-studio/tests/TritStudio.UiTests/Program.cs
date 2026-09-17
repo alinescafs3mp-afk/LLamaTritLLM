@@ -181,6 +181,9 @@ try
         await Audit16UiChecks.Run(window,home);
         Audit17UiChecks.Run(window);
         await Audit18UiChecks.Run(window,home);
+        await Audit20UiChecks.Run(window,home);
+        await Audit21UiChecks.Run(window,home);
+        await Audit22UiChecks.Run(window,home);
         window.Close(); Dispatcher.UIThread.RunJobs();
         Console.WriteLine("PASS headless UI: initial state, immediate receipt, duplicate suppression, completion, persistent failure, new chat, config rejection, layout.");
         return 0;

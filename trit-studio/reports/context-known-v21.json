@@ -1,0 +1,270 @@
+{
+  "scope": "Known TRAINING-set recall after the independent experiment. Not held-out quality or C# execution.\nThe fixed index list is a diagnostic sample, not an exhaustive test. Each dialogue uses own generated history.\nRequires the synthetic .pt produced by context_learning_experiment.py; never opens a user workspace.\n",
+  "state_sha256": "61a1b8569bc954980107d285469870de66a2d12845043eecdc3f057d5633fb4e",
+  "exact": 14,
+  "total": 14,
+  "results": [
+    {
+      "index": 0,
+      "id": "ru-v21-e2c30c2fd4a4beb73424",
+      "expected_training_answer": "Лена.",
+      "actual_history": [
+        [
+          "Меня зовут Лена.",
+          "Понял."
+        ],
+        [
+          "Как меня зовут? Ответь одним именем.",
+          "Лена."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Лена."
+    },
+    {
+      "index": 5,
+      "id": "ru-v21-f4f0e534b6e7bf1635b6",
+      "expected_training_answer": "Лена.",
+      "actual_history": [
+        [
+          "В чате я Лена.",
+          "Понял."
+        ],
+        [
+          "Назови только моё имя.",
+          "Лена."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Лена."
+    },
+    {
+      "index": 15,
+      "id": "ru-v21-646b4f3401629d8e595b",
+      "expected_training_answer": "Лена.",
+      "actual_history": [
+        [
+          "Моё имя Лена.",
+          "Понял."
+        ],
+        [
+          "Кто я? Напиши лишь имя.",
+          "Лена."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Лена."
+    },
+    {
+      "index": 30,
+      "id": "ru-v21-8e739cc14f1fa996bb0e",
+      "expected_training_answer": "Нина.",
+      "actual_history": [
+        [
+          "Зови меня Нина.",
+          "Понял."
+        ],
+        [
+          "Какое имя я назвал? Только имя.",
+          "Нина."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Нина."
+    },
+    {
+      "index": 60,
+      "id": "ru-v21-571cc9b845817a99964b",
+      "expected_training_answer": "Оля.",
+      "actual_history": [
+        [
+          "Меня зовут Оля.",
+          "Понял."
+        ],
+        [
+          "Как меня зовут? Ответь одним именем.",
+          "Оля."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Оля."
+    },
+    {
+      "index": 125,
+      "id": "ru-v21-4c1296ef48719f4a4796",
+      "expected_training_answer": "Илья.",
+      "actual_history": [
+        [
+          "В чате я Илья.",
+          "Понял."
+        ],
+        [
+          "Назови только моё имя.",
+          "Илья."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Илья."
+    },
+    {
+      "index": 160,
+      "id": "ru-v21-9247f521c21e6b0e5b10",
+      "expected_training_answer": "жёлтая.",
+      "actual_history": [
+        [
+          "Моя папка синяя.",
+          "Понял."
+        ],
+        [
+          "Поправка: папка жёлтая.",
+          "Принял поправку."
+        ],
+        [
+          "Какая папка теперь? Только цвет.",
+          "жёлтая."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "жёлтая."
+    },
+    {
+      "index": 185,
+      "id": "ru-v21-500824d1f7a131d55b1a",
+      "expected_training_answer": "белая.",
+      "actual_history": [
+        [
+          "Запомни: папка красная.",
+          "Понял."
+        ],
+        [
+          "Нет, я ошибся: папка белая.",
+          "Принял поправку."
+        ],
+        [
+          "Назови актуальный цвет: какая папка? Одним словом.",
+          "белая."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "белая."
+    },
+    {
+      "index": 205,
+      "id": "ru-v21-76e46ce9ad3faaeb83aa",
+      "expected_training_answer": "красная.",
+      "actual_history": [
+        [
+          "Запомни: папка зелёная.",
+          "Понял."
+        ],
+        [
+          "Нет, я ошибся: папка красная.",
+          "Принял поправку."
+        ],
+        [
+          "Назови актуальный цвет: какая папка? Одним словом.",
+          "красная."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "красная."
+    },
+    {
+      "index": 240,
+      "id": "ru-v21-6a234da3a0698f0619bf",
+      "expected_training_answer": "синяя.",
+      "actual_history": [
+        [
+          "Моя чашка красная.",
+          "Понял."
+        ],
+        [
+          "Поправка: чашка синяя.",
+          "Принял поправку."
+        ],
+        [
+          "Какая чашка теперь? Только цвет.",
+          "синяя."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "синяя."
+    },
+    {
+      "index": 300,
+      "id": "ru-v21-4ca54200d8f47d769262",
+      "expected_training_answer": "На полке.",
+      "actual_history": [
+        [
+          "Блокнот был у окна.",
+          "Понял."
+        ],
+        [
+          "Теперь блокнот лежит на полке.",
+          "Учту новое место."
+        ],
+        [
+          "Где блокнот сейчас? Ответь кратко.",
+          "На полке."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "На полке."
+    },
+    {
+      "index": 330,
+      "id": "ru-v21-55e6e3bc28ebc3df1a3d",
+      "expected_training_answer": "На полке.",
+      "actual_history": [
+        [
+          "Билет был у окна.",
+          "Понял."
+        ],
+        [
+          "Теперь билет лежит на полке.",
+          "Учту новое место."
+        ],
+        [
+          "Где билет сейчас? Ответь кратко.",
+          "На полке."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "На полке."
+    },
+    {
+      "index": 360,
+      "id": "ru-v21-d3457051d20ee70bcf3f",
+      "expected_training_answer": "Да.",
+      "actual_history": [
+        [
+          "На сейчас: Я закончил рисунок.",
+          "Понял."
+        ],
+        [
+          "Рисунок уже закончен? Ответь да или нет.",
+          "Да."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Да."
+    },
+    {
+      "index": 387,
+      "id": "ru-v21-b5780e01f4c7d2e93b4a",
+      "expected_training_answer": "Ты пока не сообщил об этом.",
+      "actual_history": [
+        [
+          "Я Миша. Завтра я занят.",
+          "Понял."
+        ],
+        [
+          "В какое время я освобожусь?",
+          "Ты пока не сообщил об этом."
+        ]
+      ],
+      "exact": true,
+      "teacher_history_final": "Ты пока не сообщил об этом."
+    }
+  ]
+}

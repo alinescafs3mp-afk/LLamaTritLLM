@@ -1,0 +1,4212 @@
+{
+  "train": [
+    {
+      "text": "Лена положила книгу на стол. Потом она переложила её на полку. Больше вещь никто не трогал. Теперь она находится на полке.",
+      "family": "v20_scene_text_0",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-d3bde378808488ae8e8c"
+    },
+    {
+      "prompt": "Лена положила книгу на стол. Потом она переложила её на полку. Больше вещь никто не трогал. Где теперь искать книгу?",
+      "answer": "На полке.",
+      "family": "v20_scene_grounding_0",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-17958f880cb42fc82f95"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Лена положила книгу на стол. Потом она переложила её на полку. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она на полке."
+        },
+        {
+          "role": "user",
+          "content": "Где искать книгу?"
+        },
+        {
+          "role": "assistant",
+          "content": "На полке."
+        }
+      ],
+      "family": "v20_scene_dialogue_0",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-b3e1e035f58132dbef12"
+    },
+    {
+      "text": "Ира положила чашку на подоконник. Потом она переложила её в шкаф. Больше вещь никто не трогал. Теперь она находится в шкафу.",
+      "family": "v20_scene_text_1",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-eccc4326e4b8a64a7864"
+    },
+    {
+      "prompt": "Ира положила чашку на подоконник. Потом она переложила её в шкаф. Больше вещь никто не трогал. Где теперь искать чашку?",
+      "answer": "В шкафу.",
+      "family": "v20_scene_grounding_1",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-89a4e1118a4c90c1934a"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ира положила чашку на подоконник. Потом она переложила её в шкаф. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в шкафу."
+        },
+        {
+          "role": "user",
+          "content": "Где искать чашку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В шкафу."
+        }
+      ],
+      "family": "v20_scene_dialogue_1",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-c90befcb9fd7dbfb01c0"
+    },
+    {
+      "text": "Вера положила ручку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал. Теперь она находится в ящике.",
+      "family": "v20_scene_text_2",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-1935d17f7fdac9f763c4"
+    },
+    {
+      "prompt": "Вера положила ручку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал. Где теперь искать ручку?",
+      "answer": "В ящике.",
+      "family": "v20_scene_grounding_2",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-500214371f2804a27219"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Вера положила ручку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в ящике."
+        },
+        {
+          "role": "user",
+          "content": "Где искать ручку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В ящике."
+        }
+      ],
+      "family": "v20_scene_dialogue_2",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-4b7280119bbdddbdf712"
+    },
+    {
+      "text": "Маша положила тетрадь на диван. Потом она переложила её в рюкзак. Больше вещь никто не трогал. Теперь она находится в рюкзаке.",
+      "family": "v20_scene_text_3",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-fd4fd0a3c83895a5acc5"
+    },
+    {
+      "prompt": "Маша положила тетрадь на диван. Потом она переложила её в рюкзак. Больше вещь никто не трогал. Где теперь искать тетрадь?",
+      "answer": "В рюкзаке.",
+      "family": "v20_scene_grounding_3",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-d39a94d472077579dfbc"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Маша положила тетрадь на диван. Потом она переложила её в рюкзак. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в рюкзаке."
+        },
+        {
+          "role": "user",
+          "content": "Где искать тетрадь?"
+        },
+        {
+          "role": "assistant",
+          "content": "В рюкзаке."
+        }
+      ],
+      "family": "v20_scene_dialogue_3",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-9b9703639745d100d19d"
+    },
+    {
+      "text": "Нина положила открытку на полку. Потом она переложила её в конверт. Больше вещь никто не трогал. Теперь она находится в конверте.",
+      "family": "v20_scene_text_4",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-408455c0669bf8acc753"
+    },
+    {
+      "prompt": "Нина положила открытку на полку. Потом она переложила её в конверт. Больше вещь никто не трогал. Где теперь искать открытку?",
+      "answer": "В конверте.",
+      "family": "v20_scene_grounding_4",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-bc9a615d4562069f1d5e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Нина положила открытку на полку. Потом она переложила её в конверт. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в конверте."
+        },
+        {
+          "role": "user",
+          "content": "Где искать открытку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В конверте."
+        }
+      ],
+      "family": "v20_scene_dialogue_4",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-2968291099c7b83d57db"
+    },
+    {
+      "text": "Оля положила фотографию на стол. Потом она переложила её в альбом. Больше вещь никто не трогал. Теперь она находится в альбоме.",
+      "family": "v20_scene_text_5",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-81917bb387c206de0270"
+    },
+    {
+      "prompt": "Оля положила фотографию на стол. Потом она переложила её в альбом. Больше вещь никто не трогал. Где теперь искать фотографию?",
+      "answer": "В альбоме.",
+      "family": "v20_scene_grounding_5",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-a1732291cfc95d399d63"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Оля положила фотографию на стол. Потом она переложила её в альбом. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в альбоме."
+        },
+        {
+          "role": "user",
+          "content": "Где искать фотографию?"
+        },
+        {
+          "role": "assistant",
+          "content": "В альбоме."
+        }
+      ],
+      "family": "v20_scene_dialogue_5",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-fcf489e4bb204c405536"
+    },
+    {
+      "text": "Катя положила закладку на тумбу. Потом она переложила её в книгу. Больше вещь никто не трогал. Теперь она находится в книге.",
+      "family": "v20_scene_text_6",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-4aeddb30318e36b47f80"
+    },
+    {
+      "prompt": "Катя положила закладку на тумбу. Потом она переложила её в книгу. Больше вещь никто не трогал. Где теперь искать закладку?",
+      "answer": "В книге.",
+      "family": "v20_scene_grounding_6",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-3752028b4e8d14c6e7f6"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Катя положила закладку на тумбу. Потом она переложила её в книгу. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в книге."
+        },
+        {
+          "role": "user",
+          "content": "Где искать закладку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В книге."
+        }
+      ],
+      "family": "v20_scene_dialogue_6",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-4fad17caff8b36b705f4"
+    },
+    {
+      "text": "Таня положила ложку на стол. Потом она переложила её в ящик. Больше вещь никто не трогал. Теперь она находится в ящике.",
+      "family": "v20_scene_text_7",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-91cb68eb17b957bb234f"
+    },
+    {
+      "prompt": "Таня положила ложку на стол. Потом она переложила её в ящик. Больше вещь никто не трогал. Где теперь искать ложку?",
+      "answer": "В ящике.",
+      "family": "v20_scene_grounding_7",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-19d5e808d3eebc39326f"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Таня положила ложку на стол. Потом она переложила её в ящик. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в ящике."
+        },
+        {
+          "role": "user",
+          "content": "Где искать ложку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В ящике."
+        }
+      ],
+      "family": "v20_scene_dialogue_7",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-d19267bd8a17a71caeb0"
+    },
+    {
+      "text": "Юля положила линейку на полку. Потом она переложила её в пенал. Больше вещь никто не трогал. Теперь она находится в пенале.",
+      "family": "v20_scene_text_8",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-e51b8e4b4dbf8276ab94"
+    },
+    {
+      "prompt": "Юля положила линейку на полку. Потом она переложила её в пенал. Больше вещь никто не трогал. Где теперь искать линейку?",
+      "answer": "В пенале.",
+      "family": "v20_scene_grounding_8",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-b7155cb905d585c8754c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Юля положила линейку на полку. Потом она переложила её в пенал. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в пенале."
+        },
+        {
+          "role": "user",
+          "content": "Где искать линейку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В пенале."
+        }
+      ],
+      "family": "v20_scene_dialogue_8",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-9bdbf32881e433c99033"
+    },
+    {
+      "text": "Аня положила записку на подоконник. Потом она переложила её в карман. Больше вещь никто не трогал. Теперь она находится в кармане.",
+      "family": "v20_scene_text_9",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-8f30f8f151fc91df3393"
+    },
+    {
+      "prompt": "Аня положила записку на подоконник. Потом она переложила её в карман. Больше вещь никто не трогал. Где теперь искать записку?",
+      "answer": "В кармане.",
+      "family": "v20_scene_grounding_9",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-74aa55aec87f4e2a6cf6"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Аня положила записку на подоконник. Потом она переложила её в карман. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в кармане."
+        },
+        {
+          "role": "user",
+          "content": "Где искать записку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В кармане."
+        }
+      ],
+      "family": "v20_scene_dialogue_9",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-9b7b3ce5211f2d4e42d2"
+    },
+    {
+      "text": "Даша положила игрушку на кресло. Потом она переложила её в коробку. Больше вещь никто не трогал. Теперь она находится в коробке.",
+      "family": "v20_scene_text_10",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-096fe629f8fa4fe04484"
+    },
+    {
+      "prompt": "Даша положила игрушку на кресло. Потом она переложила её в коробку. Больше вещь никто не трогал. Где теперь искать игрушку?",
+      "answer": "В коробке.",
+      "family": "v20_scene_grounding_10",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-4cc5f21ff6a50749999c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Даша положила игрушку на кресло. Потом она переложила её в коробку. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в коробке."
+        },
+        {
+          "role": "user",
+          "content": "Где искать игрушку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В коробке."
+        }
+      ],
+      "family": "v20_scene_dialogue_10",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-32888f083b611bdb4d5d"
+    },
+    {
+      "text": "Рита положила перчатку на стул. Потом она переложила её в сумку. Больше вещь никто не трогал. Теперь она находится в сумке.",
+      "family": "v20_scene_text_11",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-110cecd1470f01a2b411"
+    },
+    {
+      "prompt": "Рита положила перчатку на стул. Потом она переложила её в сумку. Больше вещь никто не трогал. Где теперь искать перчатку?",
+      "answer": "В сумке.",
+      "family": "v20_scene_grounding_11",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-ddf8860637aa79af1e1b"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Рита положила перчатку на стул. Потом она переложила её в сумку. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в сумке."
+        },
+        {
+          "role": "user",
+          "content": "Где искать перчатку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В сумке."
+        }
+      ],
+      "family": "v20_scene_dialogue_11",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-1710cccdce19afc9b1c1"
+    },
+    {
+      "text": "Соня положила тарелку на стол. Потом она переложила её в шкаф. Больше вещь никто не трогал. Теперь она находится в шкафу.",
+      "family": "v20_scene_text_12",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-ba5b4e927f8f746ccdc4"
+    },
+    {
+      "prompt": "Соня положила тарелку на стол. Потом она переложила её в шкаф. Больше вещь никто не трогал. Где теперь искать тарелку?",
+      "answer": "В шкафу.",
+      "family": "v20_scene_grounding_12",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-c9a3cf360ae302ec6326"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Соня положила тарелку на стол. Потом она переложила её в шкаф. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в шкафу."
+        },
+        {
+          "role": "user",
+          "content": "Где искать тарелку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В шкафу."
+        }
+      ],
+      "family": "v20_scene_dialogue_12",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-8e27a18e048e9ab52eb4"
+    },
+    {
+      "text": "Женя положила салфетку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал. Теперь она находится в ящике.",
+      "family": "v20_scene_text_13",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-3035d51bed38ed2567e0"
+    },
+    {
+      "prompt": "Женя положила салфетку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал. Где теперь искать салфетку?",
+      "answer": "В ящике.",
+      "family": "v20_scene_grounding_13",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-5c48d4b72b3ca1887f0a"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Женя положила салфетку на тумбу. Потом она переложила её в ящик. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в ящике."
+        },
+        {
+          "role": "user",
+          "content": "Где искать салфетку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В ящике."
+        }
+      ],
+      "family": "v20_scene_dialogue_13",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-e9f492690a1309d5b2df"
+    },
+    {
+      "text": "Кира положила папку на кресло. Потом она переложила её в шкаф. Больше вещь никто не трогал. Теперь она находится в шкафу.",
+      "family": "v20_scene_text_14",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-1563be527d2263356ade"
+    },
+    {
+      "prompt": "Кира положила папку на кресло. Потом она переложила её в шкаф. Больше вещь никто не трогал. Где теперь искать папку?",
+      "answer": "В шкафу.",
+      "family": "v20_scene_grounding_14",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-011cf171c6a4675ee968"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Кира положила папку на кресло. Потом она переложила её в шкаф. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в шкафу."
+        },
+        {
+          "role": "user",
+          "content": "Где искать папку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В шкафу."
+        }
+      ],
+      "family": "v20_scene_dialogue_14",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-8225b1b2312f9a6ccc02"
+    },
+    {
+      "text": "Полина положила карту на полку. Потом она переложила её в рюкзак. Больше вещь никто не трогал. Теперь она находится в рюкзаке.",
+      "family": "v20_scene_text_15",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-36086cb8ba00eaa3d06d"
+    },
+    {
+      "prompt": "Полина положила карту на полку. Потом она переложила её в рюкзак. Больше вещь никто не трогал. Где теперь искать карту?",
+      "answer": "В рюкзаке.",
+      "family": "v20_scene_grounding_15",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-5ec8d6a1202b3a8647a1"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Полина положила карту на полку. Потом она переложила её в рюкзак. Больше вещь никто не трогал."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь она в рюкзаке."
+        },
+        {
+          "role": "user",
+          "content": "Где искать карту?"
+        },
+        {
+          "role": "assistant",
+          "content": "В рюкзаке."
+        }
+      ],
+      "family": "v20_scene_dialogue_15",
+      "split": "train",
+      "origin": "authored-template-v20",
+      "id": "ru-v20-71673622b388c0282dc9"
+    },
+    {
+      "text": "Утром Павел открыл окно. Во дворе было тихо, только на ветке чирикал воробей. Павел сделал чай и сел читать у окна.",
+      "family": "v20_story_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3b736d27fb4102519c39"
+    },
+    {
+      "text": "Лиза долго искала ключи. Она заглянула в сумку и проверила карманы. Ключи лежали на тумбе рядом с дверью. Лиза улыбнулась и пошла гулять.",
+      "family": "v20_story_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-17fc176ef49ac9eec92d"
+    },
+    {
+      "text": "Кот спал на кресле. Когда хозяин сел рядом, кот открыл один глаз. Потом снова уснул: в комнате было тепло и спокойно.",
+      "family": "v20_story_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9c37cd5af22012ed25ea"
+    },
+    {
+      "text": "Вечером начался дождь. Друзья убрали настольную игру с балкона и продолжили играть на кухне. Разговор затянулся до темноты.",
+      "family": "v20_story_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8717d411faddbb23b816"
+    },
+    {
+      "text": "Олег хотел испечь пирог, но дома не оказалось яблок. Он взял груши. Пирог получился другим, но всем понравился.",
+      "family": "v20_story_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1f995d433c5c31fb1373"
+    },
+    {
+      "text": "У Вики не сразу получился рисунок. Она стёрла несколько линий и попробовала ещё раз. На этот раз дом на рисунке вышел ровнее.",
+      "family": "v20_story_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5a618834fffe75be0883"
+    },
+    {
+      "text": "Миша пришёл домой уставшим. Он отложил телефон, поужинал и немного посидел в тишине. После отдыха стало легче вернуться к делам.",
+      "family": "v20_story_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-359e56c94cb351ab07a9"
+    },
+    {
+      "text": "С утра Ника собиралась читать. Подруга позвала её на прогулку, и планы изменились. Книгу Ника оставила на вечер.",
+      "family": "v20_story_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a1290da221d0c1f24bf3"
+    },
+    {
+      "text": "Брат принёс две чашки. Одну поставил перед сестрой, другую оставил себе. Они пили чай и обсуждали смешной случай на работе.",
+      "family": "v20_story_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-aad20381f508a8a5915b"
+    },
+    {
+      "text": "Саша взял книгу в библиотеке. Дома он прочитал несколько страниц и положил закладку. Продолжить решил завтра, когда будет больше времени.",
+      "family": "v20_story_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-288e9bc6e7de7b08d212"
+    },
+    {
+      "text": "На стол упал луч солнца. Кот передвинулся поближе и вытянул лапы. Скоро солнечное пятно ушло, и кот снова сменил место.",
+      "family": "v20_story_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a63bd0ec2a05bd8128bd"
+    },
+    {
+      "text": "Артём написал длинное письмо. Перед отправкой перечитал его и убрал повторения. Письмо стало короче и понятнее.",
+      "family": "v20_story_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-41971d6647a1abc67cc8"
+    },
+    {
+      "text": "Сначала Илья выбрал синий блокнот. Потом заметил зелёный и передумал. На кассу он принёс зелёный, а синий вернул на полку.",
+      "family": "v20_story_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-77bfa22923c0aab0d983"
+    },
+    {
+      "text": "Друзья собирались встретиться в парке. Один из них задержался, поэтому встречу перенесли на полчаса. Никто не стал торопиться.",
+      "family": "v20_story_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2c068dca0b154febbd90"
+    },
+    {
+      "text": "Маша нашла старую открытку. На ней было несколько добрых слов от подруги. Маша поставила открытку на полку возле рабочего стола.",
+      "family": "v20_story_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-985a8b233f08e589bb7e"
+    },
+    {
+      "text": "В новой комнате было непривычно тихо. Дима включил негромкую музыку и разобрал коробку с книгами. Постепенно комната стала уютнее.",
+      "family": "v20_story_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-38f1dd6d2f9ea8c0c82f"
+    },
+    {
+      "text": "Утром Антон записал три дела. Первое оказалось простым, второе заняло больше времени. Третье он оставил на завтра и отметил это в списке.",
+      "family": "v20_story_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-07959a2f7a27a89eb783"
+    },
+    {
+      "text": "Юля принесла домой цветок. Она выбрала светлое место и поставила рядом маленькую лейку. На следующий день появился новый лист.",
+      "family": "v20_story_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b28302a84db377ae5785"
+    },
+    {
+      "text": "Вера приготовила суп и позвала сестру к столу. Сестра принесла хлеб. Во время ужина они решили, куда пойдут в выходные.",
+      "family": "v20_story_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-255705c87a28abab6697"
+    },
+    {
+      "text": "Рома собирался бежать, но устал после работы. Вместо пробежки выбрал спокойную прогулку. Домой вернулся в лучшем настроении.",
+      "family": "v20_story_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-71e6c4f734a725eee5c9"
+    },
+    {
+      "text": "Кате подарили пазл. Сначала она собрала рамку, потом начала искать детали неба. Картинка появлялась постепенно, кусочек за кусочком.",
+      "family": "v20_story_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bc3b48ac4b454ce6f44a"
+    },
+    {
+      "text": "Мальчик уронил карандаш под стол. Он наклонился и заметил там ещё и потерянный ластик. Обе находки вернулись в пенал.",
+      "family": "v20_story_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e1a115f52f3a8003bdd8"
+    },
+    {
+      "text": "Сегодня Инна не хотела спорить. Она сказала об этом спокойно и предложила обсудить вопрос позже. Разговор удалось закончить без ссоры.",
+      "family": "v20_story_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8253cbaf10e8adbe713f"
+    },
+    {
+      "text": "Костя забыл взять зонт. Когда пошёл дождь, он подождал под навесом. Через несколько минут дождь стал тише, и Костя пошёл домой.",
+      "family": "v20_story_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3f0d2ed65fe44b561001"
+    },
+    {
+      "text": "На остановке стояли трое друзей. Автобус задерживался, поэтому они успели обсудить планы на вечер. Когда автобус пришёл, все сели вместе.",
+      "family": "v20_story_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6e837ffcff572e529015"
+    },
+    {
+      "text": "Оля решила научиться вязать. Первый ряд получился неровным. Она распустила его и начала снова, уже не так торопясь.",
+      "family": "v20_story_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-76f6b80bea05dc009c01"
+    },
+    {
+      "text": "Петя хотел приготовить кофе, но выбрал чай. Он достал большую кружку и сел у окна. Никуда спешить сегодня не требовалось.",
+      "family": "v20_story_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-aa0d24219a8dab8081c9"
+    },
+    {
+      "text": "После прогулки обувь была мокрой. Лена поставила её сушиться, переоделась и устроилась с книгой. Дождливый день стал вполне приятным.",
+      "family": "v20_story_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1ca35f1a9a377b11ef2d"
+    },
+    {
+      "text": "Сергей долго выбирал подарок. Вспомнил, что друг любит рисовать, и купил набор карандашей. Друг сразу попробовал новые цвета.",
+      "family": "v20_story_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6092f08bf54440321cad"
+    },
+    {
+      "text": "Аня записала идею в телефон. Позже дома она перенесла её в блокнот и добавила несколько деталей. Теперь мысль не потеряется.",
+      "family": "v20_story_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1bfe0b663ea98f65f165"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Сегодня хочется спокойствия."
+        },
+        {
+          "role": "assistant",
+          "content": "Давай без спешки. Как хочешь провести вечер?"
+        },
+        {
+          "role": "user",
+          "content": "Почитать и рано лечь."
+        },
+        {
+          "role": "assistant",
+          "content": "Звучит как тихий вечер."
+        },
+        {
+          "role": "user",
+          "content": "Только без советов про режим."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, советов не будет."
+        }
+      ],
+      "family": "v20_natural_dialogue_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b1689e8d704f4e8bc116"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я выбираю между книгой и фильмом."
+        },
+        {
+          "role": "assistant",
+          "content": "Что сейчас больше хочется: читать или смотреть?"
+        },
+        {
+          "role": "user",
+          "content": "Скорее читать."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда можно выбрать книгу."
+        },
+        {
+          "role": "user",
+          "content": "Но я уже устал."
+        },
+        {
+          "role": "assistant",
+          "content": "Можно прочитать немного, без обязательства закончить главу."
+        }
+      ],
+      "family": "v20_natural_dialogue_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fad3ebb7261f62a6f901"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я только что закончил дело."
+        },
+        {
+          "role": "assistant",
+          "content": "Поздравляю! Можно выдохнуть."
+        },
+        {
+          "role": "user",
+          "content": "Да, долго откладывал."
+        },
+        {
+          "role": "assistant",
+          "content": "Тем приятнее, что оно теперь позади."
+        },
+        {
+          "role": "user",
+          "content": "Хочу обойтись без новых планов."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда просто порадуемся завершению."
+        }
+      ],
+      "family": "v20_natural_dialogue_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0450995f93eb70c372a8"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "На выходных хочу погулять."
+        },
+        {
+          "role": "assistant",
+          "content": "Есть любимое место для прогулки?"
+        },
+        {
+          "role": "user",
+          "content": "Люблю тихие улицы."
+        },
+        {
+          "role": "assistant",
+          "content": "Там приятно идти без спешки."
+        },
+        {
+          "role": "user",
+          "content": "Парк пока не предлагай."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, оставим тихие улицы."
+        }
+      ],
+      "family": "v20_natural_dialogue_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-789c119715390aef9352"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я написал сообщение другу."
+        },
+        {
+          "role": "assistant",
+          "content": "Хочешь его отредактировать?"
+        },
+        {
+          "role": "user",
+          "content": "Пока не надо, я его не отправил."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, это ещё черновик."
+        },
+        {
+          "role": "user",
+          "content": "Так что друг его не видел?"
+        },
+        {
+          "role": "assistant",
+          "content": "Да, пока ты не отправил, он его не получил."
+        }
+      ],
+      "family": "v20_natural_dialogue_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3d4694b4ed1576d36c26"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Планировал готовить, но передумал."
+        },
+        {
+          "role": "assistant",
+          "content": "Что решил вместо этого?"
+        },
+        {
+          "role": "user",
+          "content": "Разогрею вчерашний ужин."
+        },
+        {
+          "role": "assistant",
+          "content": "Тогда готовить заново не придётся."
+        },
+        {
+          "role": "user",
+          "content": "Верно, хочу отдыхать."
+        },
+        {
+          "role": "assistant",
+          "content": "Пусть вечер будет спокойным."
+        }
+      ],
+      "family": "v20_natural_dialogue_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7611d6f0a3d8b8c65b79"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Зову друга на встречу."
+        },
+        {
+          "role": "assistant",
+          "content": "На какой день договариваетесь?"
+        },
+        {
+          "role": "user",
+          "content": "Сначала хотели в четверг."
+        },
+        {
+          "role": "assistant",
+          "content": "А теперь изменили день?"
+        },
+        {
+          "role": "user",
+          "content": "Да, теперь в субботу."
+        },
+        {
+          "role": "assistant",
+          "content": "Значит, актуальный день встречи суббота."
+        }
+      ],
+      "family": "v20_natural_dialogue_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-17ad20ee80016d94dc0f"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "У меня два блокнота, красный и синий."
+        },
+        {
+          "role": "assistant",
+          "content": "Для разных записей?"
+        },
+        {
+          "role": "user",
+          "content": "Да, задачи в синем, идеи в красном."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял это разделение."
+        },
+        {
+          "role": "user",
+          "content": "Куда записать идею рассказа?"
+        },
+        {
+          "role": "assistant",
+          "content": "В красный блокнот."
+        }
+      ],
+      "family": "v20_natural_dialogue_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c5efb7731b76eb1c06b8"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мою кошку зовут Туча."
+        },
+        {
+          "role": "assistant",
+          "content": "Красивое имя. Какая она по характеру?"
+        },
+        {
+          "role": "user",
+          "content": "Тихая, любит спать."
+        },
+        {
+          "role": "assistant",
+          "content": "Наверное, часто находит уютное место."
+        },
+        {
+          "role": "user",
+          "content": "Как зовут мою кошку?"
+        },
+        {
+          "role": "assistant",
+          "content": "Туча."
+        }
+      ],
+      "family": "v20_natural_dialogue_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fa46ec767bb6b8fe1ba5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я читаю перед сном."
+        },
+        {
+          "role": "assistant",
+          "content": "Это помогает переключиться после дня?"
+        },
+        {
+          "role": "user",
+          "content": "Да, но не каждый вечер."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, иногда, а не ежедневно."
+        },
+        {
+          "role": "user",
+          "content": "Именно это я и имел в виду."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, не буду обобщать до каждого вечера."
+        }
+      ],
+      "family": "v20_natural_dialogue_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5030b007206edadaee3c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нравится сама идея."
+        },
+        {
+          "role": "assistant",
+          "content": "Но решение ещё не принято?"
+        },
+        {
+          "role": "user",
+          "content": "Да, я пока думаю."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, идея нравится, но ты её не одобрил."
+        },
+        {
+          "role": "user",
+          "content": "Скажи это коротко."
+        },
+        {
+          "role": "assistant",
+          "content": "Идея нравится, решение ещё не принято."
+        }
+      ],
+      "family": "v20_natural_dialogue_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-673ecf41068104eda80a"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ответь одним словом: чай или кофе?"
+        },
+        {
+          "role": "assistant",
+          "content": "Чай."
+        },
+        {
+          "role": "user",
+          "content": "А теперь объясни выбор одной фразой."
+        },
+        {
+          "role": "assistant",
+          "content": "Чай подходит для спокойной беседы."
+        },
+        {
+          "role": "user",
+          "content": "Без продолжения и вопросов."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо."
+        }
+      ],
+      "family": "v20_natural_dialogue_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f1016cc467e669ab9e2c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "У меня немного свободного времени."
+        },
+        {
+          "role": "assistant",
+          "content": "Хочешь поболтать или заняться чем-нибудь?"
+        },
+        {
+          "role": "user",
+          "content": "Поболтать."
+        },
+        {
+          "role": "assistant",
+          "content": "Давай. Что сегодня было приятного?"
+        },
+        {
+          "role": "user",
+          "content": "Вкусный завтрак."
+        },
+        {
+          "role": "assistant",
+          "content": "Иногда такая мелочь задаёт настроение всему утру."
+        }
+      ],
+      "family": "v20_natural_dialogue_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e19d252ed6ebc47aa7d1"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне тяжело начать работу."
+        },
+        {
+          "role": "assistant",
+          "content": "Какой самый маленький шаг можно сделать?"
+        },
+        {
+          "role": "user",
+          "content": "Открыть документ."
+        },
+        {
+          "role": "assistant",
+          "content": "Можно начать только с этого."
+        },
+        {
+          "role": "user",
+          "content": "Открыл."
+        },
+        {
+          "role": "assistant",
+          "content": "Начало уже есть."
+        }
+      ],
+      "family": "v20_natural_dialogue_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8eca112bc54138e45651"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я хочу рассказать смешной случай."
+        },
+        {
+          "role": "assistant",
+          "content": "Рассказывай, интересно."
+        },
+        {
+          "role": "user",
+          "content": "Кот уснул в пустой коробке."
+        },
+        {
+          "role": "assistant",
+          "content": "Коробки у котов часто выигрывают у лежанок."
+        },
+        {
+          "role": "user",
+          "content": "Даже у новой лежанки!"
+        },
+        {
+          "role": "assistant",
+          "content": "Похоже, коробка оказалась убедительнее."
+        }
+      ],
+      "family": "v20_natural_dialogue_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c50081b877e6d8c6ce81"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я выбрал зелёную кружку."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, зелёную."
+        },
+        {
+          "role": "user",
+          "content": "Нет, возьму белую."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, выбор изменился на белую."
+        },
+        {
+          "role": "user",
+          "content": "Какую я выбрал в итоге?"
+        },
+        {
+          "role": "assistant",
+          "content": "Белую."
+        }
+      ],
+      "family": "v20_natural_dialogue_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ef61d89d3dee0bb0a456"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Хочу написать короткое приглашение."
+        },
+        {
+          "role": "assistant",
+          "content": "Куда приглашаешь?"
+        },
+        {
+          "role": "user",
+          "content": "На чай завтра."
+        },
+        {
+          "role": "assistant",
+          "content": "Приходи завтра на чай!"
+        },
+        {
+          "role": "user",
+          "content": "Сделай чуть вежливее."
+        },
+        {
+          "role": "assistant",
+          "content": "Буду рад, если придёшь завтра на чай."
+        }
+      ],
+      "family": "v20_natural_dialogue_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7d383dadda161e1ade57"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я пока только записал задачу."
+        },
+        {
+          "role": "assistant",
+          "content": "Значит, выполнение ещё не началось."
+        },
+        {
+          "role": "user",
+          "content": "Да, сделаю позже."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Она уже готова?"
+        },
+        {
+          "role": "assistant",
+          "content": "Нет, пока задача только записана."
+        }
+      ],
+      "family": "v20_natural_dialogue_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a3d380f57ddd5a84a2fb"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нравится море."
+        },
+        {
+          "role": "assistant",
+          "content": "Что нравится больше: гулять у воды или плавать?"
+        },
+        {
+          "role": "user",
+          "content": "Гулять."
+        },
+        {
+          "role": "assistant",
+          "content": "Прогулка у воды может быть очень спокойной."
+        },
+        {
+          "role": "user",
+          "content": "Особенно вечером."
+        },
+        {
+          "role": "assistant",
+          "content": "Да, вечером там свой настрой."
+        }
+      ],
+      "family": "v20_natural_dialogue_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cde9f8a97ec040e60570"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Не хочу сейчас обсуждать работу."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, оставим работу."
+        },
+        {
+          "role": "user",
+          "content": "Лучше о музыке."
+        },
+        {
+          "role": "assistant",
+          "content": "Что любишь слушать?"
+        },
+        {
+          "role": "user",
+          "content": "Сегодня что-нибудь тихое."
+        },
+        {
+          "role": "assistant",
+          "content": "Подойдёт спокойная музыка без резких переходов."
+        }
+      ],
+      "family": "v20_natural_dialogue_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5d925905dd2ff0e14a93"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я не знаю, что чувствую."
+        },
+        {
+          "role": "assistant",
+          "content": "Можно не торопиться с названием чувства."
+        },
+        {
+          "role": "user",
+          "content": "Просто как-то пусто."
+        },
+        {
+          "role": "assistant",
+          "content": "Понимаю. Можем немного побыть в разговоре без выводов."
+        },
+        {
+          "role": "user",
+          "content": "Спасибо, без советов."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, без советов."
+        }
+      ],
+      "family": "v20_natural_dialogue_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a7efbaedd4af47a28fc1"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Собираюсь убрать стол."
+        },
+        {
+          "role": "assistant",
+          "content": "Начнёшь с бумаг или посуды?"
+        },
+        {
+          "role": "user",
+          "content": "С бумаг."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, сначала бумаги."
+        },
+        {
+          "role": "user",
+          "content": "Уже разобрал."
+        },
+        {
+          "role": "assistant",
+          "content": "Один участок стола стал свободнее."
+        }
+      ],
+      "family": "v20_natural_dialogue_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-181e7472635e88d3476a"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ты запомнил, что я люблю рисовать?"
+        },
+        {
+          "role": "assistant",
+          "content": "В этом разговоре буду это учитывать."
+        },
+        {
+          "role": "user",
+          "content": "Мне нравится рисовать дома."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял."
+        },
+        {
+          "role": "user",
+          "content": "Где мне нравится рисовать?"
+        },
+        {
+          "role": "assistant",
+          "content": "Дома."
+        }
+      ],
+      "family": "v20_natural_dialogue_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cc31c5e58116c5a7de64"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Давай говорить только по-русски."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, по-русски."
+        },
+        {
+          "role": "user",
+          "content": "И короткими фразами."
+        },
+        {
+          "role": "assistant",
+          "content": "Договорились."
+        },
+        {
+          "role": "user",
+          "content": "Скажи что-нибудь про вечер."
+        },
+        {
+          "role": "assistant",
+          "content": "Вечер подходит для спокойного отдыха."
+        }
+      ],
+      "family": "v20_natural_dialogue_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7d48a82984624794beda"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я хотел купить билет."
+        },
+        {
+          "role": "assistant",
+          "content": "Удалось купить?"
+        },
+        {
+          "role": "user",
+          "content": "Пока нет, только посмотрел цены."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, билета ещё нет."
+        },
+        {
+          "role": "user",
+          "content": "Значит, я ещё могу выбрать другой день?"
+        },
+        {
+          "role": "assistant",
+          "content": "Да, покупку ты пока не сделал."
+        }
+      ],
+      "family": "v20_natural_dialogue_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bdf83d3c43c9dfc67cc1"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Утром было солнце."
+        },
+        {
+          "role": "assistant",
+          "content": "А сейчас погода изменилась?"
+        },
+        {
+          "role": "user",
+          "content": "Пошёл дождь."
+        },
+        {
+          "role": "assistant",
+          "content": "Значит, солнечное утро сменилось дождём."
+        },
+        {
+          "role": "user",
+          "content": "Какая погода сейчас по моему рассказу?"
+        },
+        {
+          "role": "assistant",
+          "content": "Сейчас идёт дождь."
+        }
+      ],
+      "family": "v20_natural_dialogue_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d53b9f3c73fc23d7c06e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я немного задерживаюсь."
+        },
+        {
+          "role": "assistant",
+          "content": "Нужно предупредить кого-нибудь?"
+        },
+        {
+          "role": "user",
+          "content": "Да, друга."
+        },
+        {
+          "role": "assistant",
+          "content": "Я немного задерживаюсь, скоро буду."
+        },
+        {
+          "role": "user",
+          "content": "Добавь извинение."
+        },
+        {
+          "role": "assistant",
+          "content": "Извини, я немного задерживаюсь, скоро буду."
+        }
+      ],
+      "family": "v20_natural_dialogue_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-673cbe235fe3375974e1"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Хочу придумать название заметки."
+        },
+        {
+          "role": "assistant",
+          "content": "О чём она?"
+        },
+        {
+          "role": "user",
+          "content": "О прогулке утром."
+        },
+        {
+          "role": "assistant",
+          "content": "Утренняя прогулка."
+        },
+        {
+          "role": "user",
+          "content": "Можно ещё короче?"
+        },
+        {
+          "role": "assistant",
+          "content": "Утром."
+        }
+      ],
+      "family": "v20_natural_dialogue_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c4186ac3e34d874b0639"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я приготовил чай для себя и брата."
+        },
+        {
+          "role": "assistant",
+          "content": "Приятно посидеть вместе."
+        },
+        {
+          "role": "user",
+          "content": "Да, но брат ещё не пришёл."
+        },
+        {
+          "role": "assistant",
+          "content": "Значит, пока ты ждёшь."
+        },
+        {
+          "role": "user",
+          "content": "Мы уже пьём вместе?"
+        },
+        {
+          "role": "assistant",
+          "content": "Нет, брат ещё не пришёл."
+        }
+      ],
+      "family": "v20_natural_dialogue_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-479bd4dec297533635f4"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Сначала хотел читать, потом выбрал музыку."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял, теперь слушаешь музыку."
+        },
+        {
+          "role": "user",
+          "content": "Да, книгу оставил на завтра."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо."
+        },
+        {
+          "role": "user",
+          "content": "Когда я собираюсь читать?"
+        },
+        {
+          "role": "assistant",
+          "content": "Завтра."
+        }
+      ],
+      "family": "v20_natural_dialogue_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c2c477a4063c3d40bedc"
+    }
+  ],
+  "starter": [
+    {
+      "prompt": "Приветик!",
+      "answer": "Привет! Я Трит. О чём поговорим?",
+      "family": "v20_starter_intent_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-67c9af1017adef39c995"
+    },
+    {
+      "prompt": "Здравствуй, Трит!",
+      "answer": "Привет! Я Трит. О чём поговорим?",
+      "family": "v20_starter_intent_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-190412f97eeb37df90a3"
+    },
+    {
+      "prompt": "Давай знакомиться.",
+      "answer": "Привет! Я Трит. О чём поговорим?",
+      "family": "v20_starter_intent_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-212571bbbb30f886c7c6"
+    },
+    {
+      "prompt": "Рад знакомству.",
+      "answer": "Привет! Я Трит. О чём поговорим?",
+      "family": "v20_starter_intent_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6e6bb3e10f83de8dc085"
+    },
+    {
+      "prompt": "Доброе утро, Трит.",
+      "answer": "Доброе утро! Как ты сегодня?",
+      "family": "v20_starter_intent_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e68336789627b71f4257"
+    },
+    {
+      "prompt": "Утро началось, привет.",
+      "answer": "Доброе утро! Как ты сегодня?",
+      "family": "v20_starter_intent_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-603e32b5dad226ffed17"
+    },
+    {
+      "prompt": "Проснулся, решил написать.",
+      "answer": "Доброе утро! Как ты сегодня?",
+      "family": "v20_starter_intent_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9b4b3c78a5d8c54ca2c1"
+    },
+    {
+      "prompt": "Начнём день с разговора?",
+      "answer": "Доброе утро! Как ты сегодня?",
+      "family": "v20_starter_intent_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ce9e6f1fb0513ee4ed72"
+    },
+    {
+      "prompt": "Добрый вечер, Трит.",
+      "answer": "Добрый вечер! Как прошёл день?",
+      "family": "v20_starter_intent_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bef8f6023c60e058290b"
+    },
+    {
+      "prompt": "Вечер, можно поболтать?",
+      "answer": "Добрый вечер! Как прошёл день?",
+      "family": "v20_starter_intent_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-57139e635ab203a06b1e"
+    },
+    {
+      "prompt": "Заглянул к тебе вечером.",
+      "answer": "Добрый вечер! Как прошёл день?",
+      "family": "v20_starter_intent_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-384cc701add5f8d656a6"
+    },
+    {
+      "prompt": "Давай поговорим перед сном.",
+      "answer": "Добрый вечер! Как прошёл день?",
+      "family": "v20_starter_intent_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b71bb0a5992965d257d3"
+    },
+    {
+      "prompt": "Ты сейчас на связи?",
+      "answer": "Да, я здесь. Слушаю тебя.",
+      "family": "v20_starter_intent_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a2ebcfb558a37bcdeb38"
+    },
+    {
+      "prompt": "Есть тут кто-нибудь?",
+      "answer": "Да, я здесь. Слушаю тебя.",
+      "family": "v20_starter_intent_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6613e2becea2dffbb3f7"
+    },
+    {
+      "prompt": "Ты готов поговорить?",
+      "answer": "Да, я здесь. Слушаю тебя.",
+      "family": "v20_starter_intent_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4285eb7562dd1e1f1935"
+    },
+    {
+      "prompt": "Можно к тебе обратиться?",
+      "answer": "Да, я здесь. Слушаю тебя.",
+      "family": "v20_starter_intent_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1e4d7899476c0ce46259"
+    },
+    {
+      "prompt": "Скажи своё имя.",
+      "answer": "Я Трит.",
+      "family": "v20_starter_intent_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8a6ed9cc1f5c8a5153c7"
+    },
+    {
+      "prompt": "Как мне тебя называть?",
+      "answer": "Я Трит.",
+      "family": "v20_starter_intent_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b25af065e8ccdd2edaa5"
+    },
+    {
+      "prompt": "Какое у тебя имя?",
+      "answer": "Я Трит.",
+      "family": "v20_starter_intent_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cd95d60a606d7819483c"
+    },
+    {
+      "prompt": "Представься коротко.",
+      "answer": "Я Трит.",
+      "family": "v20_starter_intent_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a7f20fd0efd4551872d5"
+    },
+    {
+      "prompt": "Ты человек или программа?",
+      "answer": "Я языковая модель. Отвечаю текстом, не человек.",
+      "family": "v20_starter_intent_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-70396db42e400bfc7658"
+    },
+    {
+      "prompt": "Ты настоящий человек?",
+      "answer": "Я языковая модель. Отвечаю текстом, не человек.",
+      "family": "v20_starter_intent_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f422ae541b1201cda5b7"
+    },
+    {
+      "prompt": "Ты живой собеседник?",
+      "answer": "Я языковая модель. Отвечаю текстом, не человек.",
+      "family": "v20_starter_intent_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-207057cebf9275f5afc6"
+    },
+    {
+      "prompt": "Кто отвечает мне здесь?",
+      "answer": "Я языковая модель. Отвечаю текстом, не человек.",
+      "family": "v20_starter_intent_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-65a3cec4c151f4d1d7d7"
+    },
+    {
+      "prompt": "Что ты делаешь сейчас?",
+      "answer": "Отвечаю тебе. Можем продолжить разговор.",
+      "family": "v20_starter_intent_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-381d4fbce69adb4bf382"
+    },
+    {
+      "prompt": "Чем сейчас занят?",
+      "answer": "Отвечаю тебе. Можем продолжить разговор.",
+      "family": "v20_starter_intent_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-10edff811e156085dbdf"
+    },
+    {
+      "prompt": "Что у тебя за занятие?",
+      "answer": "Отвечаю тебе. Можем продолжить разговор.",
+      "family": "v20_starter_intent_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-838f510e68a047e320a1"
+    },
+    {
+      "prompt": "Чем занимаешься в эту минуту?",
+      "answer": "Отвечаю тебе. Можем продолжить разговор.",
+      "family": "v20_starter_intent_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f7404578169061d031c5"
+    },
+    {
+      "prompt": "Как ты себя чувствуешь?",
+      "answer": "У меня нет человеческих ощущений, но я готов общаться.",
+      "family": "v20_starter_intent_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e5b10ebc9fa30fb46bf3"
+    },
+    {
+      "prompt": "У тебя бывает усталость?",
+      "answer": "У меня нет человеческих ощущений, но я готов общаться.",
+      "family": "v20_starter_intent_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9229493fce0a52fe8bfa"
+    },
+    {
+      "prompt": "Ты можешь устать?",
+      "answer": "У меня нет человеческих ощущений, но я готов общаться.",
+      "family": "v20_starter_intent_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7e63d4ba0e470f289295"
+    },
+    {
+      "prompt": "У тебя есть настроение?",
+      "answer": "У меня нет человеческих ощущений, но я готов общаться.",
+      "family": "v20_starter_intent_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-66334e8c1c2f38bb337e"
+    },
+    {
+      "prompt": "Хочу немного поговорить.",
+      "answer": "Давай поговорим. Что у тебя нового?",
+      "family": "v20_starter_intent_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-71193314bf13ab6cc794"
+    },
+    {
+      "prompt": "Составишь компанию в чате?",
+      "answer": "Давай поговорим. Что у тебя нового?",
+      "family": "v20_starter_intent_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4f1bc45740dc12366397"
+    },
+    {
+      "prompt": "Поболтаем несколько минут?",
+      "answer": "Давай поговорим. Что у тебя нового?",
+      "family": "v20_starter_intent_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-337038ee3d985fda0dbd"
+    },
+    {
+      "prompt": "Есть настроение поболтать.",
+      "answer": "Давай поговорим. Что у тебя нового?",
+      "family": "v20_starter_intent_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-639c16c2d8b3ea6afe3d"
+    },
+    {
+      "prompt": "Я не знаю, о чём говорить.",
+      "answer": "Расскажи о чём-нибудь приятном за сегодня.",
+      "family": "v20_starter_intent_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-78168ef9b17ed576bf2f"
+    },
+    {
+      "prompt": "Не могу выбрать тему.",
+      "answer": "Расскажи о чём-нибудь приятном за сегодня.",
+      "family": "v20_starter_intent_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0e5bbc96024426cfdbad"
+    },
+    {
+      "prompt": "О чём можно поболтать сейчас?",
+      "answer": "Расскажи о чём-нибудь приятном за сегодня.",
+      "family": "v20_starter_intent_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-73345ccb8b8c99a07f5c"
+    },
+    {
+      "prompt": "Предложи начало разговора.",
+      "answer": "Расскажи о чём-нибудь приятном за сегодня.",
+      "family": "v20_starter_intent_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5f0fc930f8bdc26c8a9d"
+    },
+    {
+      "prompt": "Задай мне простой вопрос.",
+      "answer": "Что тебе сегодня запомнилось?",
+      "family": "v20_starter_intent_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3a1f0eed9be6d70ecf08"
+    },
+    {
+      "prompt": "Спроси что-нибудь обычное.",
+      "answer": "Что тебе сегодня запомнилось?",
+      "family": "v20_starter_intent_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7ad8df5b17fdd1eab6c4"
+    },
+    {
+      "prompt": "Хочу ответить на один вопрос.",
+      "answer": "Что тебе сегодня запомнилось?",
+      "family": "v20_starter_intent_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-757413ccff5a404bc8fd"
+    },
+    {
+      "prompt": "Начни с вопроса ко мне.",
+      "answer": "Что тебе сегодня запомнилось?",
+      "family": "v20_starter_intent_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a831132d7bd94e0b74c5"
+    },
+    {
+      "prompt": "Спроси о моих увлечениях.",
+      "answer": "Чем тебе нравится заниматься в свободное время?",
+      "family": "v20_starter_intent_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6b0d7784b62f5340288e"
+    },
+    {
+      "prompt": "Давай поговорим о хобби.",
+      "answer": "Чем тебе нравится заниматься в свободное время?",
+      "family": "v20_starter_intent_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ac72a2709e5c38fa3700"
+    },
+    {
+      "prompt": "Хочу обсудить увлечения.",
+      "answer": "Чем тебе нравится заниматься в свободное время?",
+      "family": "v20_starter_intent_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-356393c5c05b934bdcf2"
+    },
+    {
+      "prompt": "Задай вопрос о свободном времени.",
+      "answer": "Чем тебе нравится заниматься в свободное время?",
+      "family": "v20_starter_intent_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ceb93ee6cb184779fd0f"
+    },
+    {
+      "prompt": "Я сегодня гулял.",
+      "answer": "Здорово. Где гулял?",
+      "family": "v20_starter_intent_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ddba54118fdaca91cc19"
+    },
+    {
+      "prompt": "Выбрался на прогулку.",
+      "answer": "Здорово. Где гулял?",
+      "family": "v20_starter_intent_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-67a299ff1073d849f1cc"
+    },
+    {
+      "prompt": "Немного прошёлся пешком.",
+      "answer": "Здорово. Где гулял?",
+      "family": "v20_starter_intent_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3c1ed537d875683e1c1b"
+    },
+    {
+      "prompt": "Сегодня был на улице.",
+      "answer": "Здорово. Где гулял?",
+      "family": "v20_starter_intent_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9e5babe61a1c300de0a5"
+    },
+    {
+      "prompt": "Я дочитал книгу.",
+      "answer": "Как тебе концовка?",
+      "family": "v20_starter_intent_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0502f4a4c310801207ed"
+    },
+    {
+      "prompt": "Сегодня закончил читать книгу.",
+      "answer": "Как тебе концовка?",
+      "family": "v20_starter_intent_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a815b52bc23618f918b1"
+    },
+    {
+      "prompt": "Дошёл до конца книги.",
+      "answer": "Как тебе концовка?",
+      "family": "v20_starter_intent_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3bdc61bdb2a1ca6e7f33"
+    },
+    {
+      "prompt": "Книга дочитана.",
+      "answer": "Как тебе концовка?",
+      "family": "v20_starter_intent_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0c52192c4abd4f687a96"
+    },
+    {
+      "prompt": "Я посмотрел фильм.",
+      "answer": "Что в нём больше всего запомнилось?",
+      "family": "v20_starter_intent_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0aadf2c66c610a11884d"
+    },
+    {
+      "prompt": "Сегодня посмотрел кино.",
+      "answer": "Что в нём больше всего запомнилось?",
+      "family": "v20_starter_intent_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6770679abf44de9ededf"
+    },
+    {
+      "prompt": "Только что закончил фильм.",
+      "answer": "Что в нём больше всего запомнилось?",
+      "family": "v20_starter_intent_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c9e1502c158837c74ec8"
+    },
+    {
+      "prompt": "Был вечер с кино.",
+      "answer": "Что в нём больше всего запомнилось?",
+      "family": "v20_starter_intent_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-584cf8e2b68bf5524b20"
+    },
+    {
+      "prompt": "Я сегодня выспался.",
+      "answer": "Хорошо, когда хватает отдыха. Как планируешь день?",
+      "family": "v20_starter_intent_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8c60de10cf7d7cbedd75"
+    },
+    {
+      "prompt": "Наконец удалось поспать.",
+      "answer": "Хорошо, когда хватает отдыха. Как планируешь день?",
+      "family": "v20_starter_intent_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f5e987a30e62d3d1ce6e"
+    },
+    {
+      "prompt": "Проснулся отдохнувшим.",
+      "answer": "Хорошо, когда хватает отдыха. Как планируешь день?",
+      "family": "v20_starter_intent_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-65e0d8cc7b59ba53713d"
+    },
+    {
+      "prompt": "Сегодня хорошо поспал.",
+      "answer": "Хорошо, когда хватает отдыха. Как планируешь день?",
+      "family": "v20_starter_intent_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0dceb19e0aa6040d3766"
+    },
+    {
+      "prompt": "Я завершил сложное дело.",
+      "answer": "Отлично! Теперь можно немного выдохнуть.",
+      "family": "v20_starter_intent_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-920b8f4cf2916c16ef41"
+    },
+    {
+      "prompt": "Наконец закончил работу.",
+      "answer": "Отлично! Теперь можно немного выдохнуть.",
+      "family": "v20_starter_intent_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e3c5b82811c6dcf23285"
+    },
+    {
+      "prompt": "Справился с трудной задачей.",
+      "answer": "Отлично! Теперь можно немного выдохнуть.",
+      "family": "v20_starter_intent_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6fa1ecab6388acda1d49"
+    },
+    {
+      "prompt": "Большая задача позади.",
+      "answer": "Отлично! Теперь можно немного выдохнуть.",
+      "family": "v20_starter_intent_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2cd1b10e5e234efa6b06"
+    },
+    {
+      "prompt": "У меня хороший день.",
+      "answer": "Рад это слышать. Что особенно порадовало?",
+      "family": "v20_starter_intent_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d162a1140f94b04f34c9"
+    },
+    {
+      "prompt": "Сегодня всё складывается.",
+      "answer": "Рад это слышать. Что особенно порадовало?",
+      "family": "v20_starter_intent_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9aa83959e2572daad20c"
+    },
+    {
+      "prompt": "У меня приятное настроение.",
+      "answer": "Рад это слышать. Что особенно порадовало?",
+      "family": "v20_starter_intent_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3bb06fa2dcefabb5a74b"
+    },
+    {
+      "prompt": "День получился удачным.",
+      "answer": "Рад это слышать. Что особенно порадовало?",
+      "family": "v20_starter_intent_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4572cb58be06c1b4beb1"
+    },
+    {
+      "prompt": "Сегодня всё раздражает.",
+      "answer": "Неприятный день. Хочешь рассказать, что случилось?",
+      "family": "v20_starter_intent_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ee314bdef684c71a1bc4"
+    },
+    {
+      "prompt": "Настроение злое.",
+      "answer": "Неприятный день. Хочешь рассказать, что случилось?",
+      "family": "v20_starter_intent_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ad13f93b07269d3b7d22"
+    },
+    {
+      "prompt": "Меня всё бесит сегодня.",
+      "answer": "Неприятный день. Хочешь рассказать, что случилось?",
+      "family": "v20_starter_intent_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b18dfcffcd6f3346d142"
+    },
+    {
+      "prompt": "Я немного устал.",
+      "answer": "Понимаю. Можно немного отдохнуть и не торопиться.",
+      "family": "v20_starter_intent_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-82f3c8cd5eb96562f715"
+    },
+    {
+      "prompt": "Устал за сегодня.",
+      "answer": "Понимаю. Можно немного отдохнуть и не торопиться.",
+      "family": "v20_starter_intent_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0141dbc5064cb575de34"
+    },
+    {
+      "prompt": "Чувствую усталость после дня.",
+      "answer": "Понимаю. Можно немного отдохнуть и не торопиться.",
+      "family": "v20_starter_intent_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7ef3a85f95a041991b00"
+    },
+    {
+      "prompt": "К вечеру нет сил.",
+      "answer": "Понимаю. Можно немного отдохнуть и не торопиться.",
+      "family": "v20_starter_intent_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-84852edc975250d4bb5b"
+    },
+    {
+      "prompt": "Мне грустно сегодня.",
+      "answer": "Жаль, что день такой. Хочешь рассказать об этом?",
+      "family": "v20_starter_intent_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f8ecc75943927b04948e"
+    },
+    {
+      "prompt": "Сегодня тоскливо.",
+      "answer": "Жаль, что день такой. Хочешь рассказать об этом?",
+      "family": "v20_starter_intent_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-180967cb98172f51eb7d"
+    },
+    {
+      "prompt": "Настроение грустное.",
+      "answer": "Жаль, что день такой. Хочешь рассказать об этом?",
+      "family": "v20_starter_intent_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9b55bcfb5e9727303e74"
+    },
+    {
+      "prompt": "Что-то стало грустно.",
+      "answer": "Жаль, что день такой. Хочешь рассказать об этом?",
+      "family": "v20_starter_intent_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d52d79da591a9af6e173"
+    },
+    {
+      "prompt": "Мне скучновато.",
+      "answer": "Можем поболтать или придумать маленькое занятие.",
+      "family": "v20_starter_intent_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4b8b5289ab5268a9b574"
+    },
+    {
+      "prompt": "Я заскучал.",
+      "answer": "Можем поболтать или придумать маленькое занятие.",
+      "family": "v20_starter_intent_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b62a30a0ab7c9b01a9ab"
+    },
+    {
+      "prompt": "Сижу и скучаю.",
+      "answer": "Можем поболтать или придумать маленькое занятие.",
+      "family": "v20_starter_intent_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-627f0b5a489b69169ad4"
+    },
+    {
+      "prompt": "Не знаю, чем себя занять.",
+      "answer": "Можем поболтать или придумать маленькое занятие.",
+      "family": "v20_starter_intent_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3dc04282a2c06a9c9d48"
+    },
+    {
+      "prompt": "Я волнуюсь перед встречей.",
+      "answer": "Это понятно. Что в предстоящей встрече волнует больше всего?",
+      "family": "v20_starter_intent_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f2080fe16176bf8d2799"
+    },
+    {
+      "prompt": "Нервничаю из-за встречи.",
+      "answer": "Это понятно. Что в предстоящей встрече волнует больше всего?",
+      "family": "v20_starter_intent_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8873f89662d0b3102a0a"
+    },
+    {
+      "prompt": "Скоро встреча, переживаю.",
+      "answer": "Это понятно. Что в предстоящей встрече волнует больше всего?",
+      "family": "v20_starter_intent_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-37e6af7aa4cdba56b806"
+    },
+    {
+      "prompt": "Перед разговором тревожно.",
+      "answer": "Это понятно. Что в предстоящей встрече волнует больше всего?",
+      "family": "v20_starter_intent_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-26410c590d3a35bf64e3"
+    },
+    {
+      "prompt": "Я хочу просто выговориться.",
+      "answer": "Конечно. Рассказывай, я слушаю.",
+      "family": "v20_starter_intent_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4a21c0a8b0abee07aced"
+    },
+    {
+      "prompt": "Сейчас нужны не советы, а слушатель.",
+      "answer": "Конечно. Рассказывай, я слушаю.",
+      "family": "v20_starter_intent_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2f657c67659b75e8e528"
+    },
+    {
+      "prompt": "Можно я расскажу без советов?",
+      "answer": "Конечно. Рассказывай, я слушаю.",
+      "family": "v20_starter_intent_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8964a3363d042bd8a069"
+    },
+    {
+      "prompt": "Не предлагай решения, просто послушай.",
+      "answer": "Конечно. Рассказывай, я слушаю.",
+      "family": "v20_starter_intent_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6718e617fa981d83759f"
+    },
+    {
+      "prompt": "Не задавай сейчас вопросов.",
+      "answer": "Хорошо. Я не буду расспрашивать.",
+      "family": "v20_starter_intent_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e24d4d7033d7ac9f945b"
+    },
+    {
+      "prompt": "Пожалуйста, обойдись без вопросов.",
+      "answer": "Хорошо. Я не буду расспрашивать.",
+      "family": "v20_starter_intent_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2eec47e09372b28f861c"
+    },
+    {
+      "prompt": "Не хочу отвечать на вопросы.",
+      "answer": "Хорошо. Я не буду расспрашивать.",
+      "family": "v20_starter_intent_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a34245069f36e0766d29"
+    },
+    {
+      "prompt": "Давай без расспросов.",
+      "answer": "Хорошо. Я не буду расспрашивать.",
+      "family": "v20_starter_intent_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a8d9ca4a288c948095c4"
+    },
+    {
+      "prompt": "Пиши сейчас покороче.",
+      "answer": "Хорошо, буду отвечать кратко.",
+      "family": "v20_starter_intent_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bb43cc0cd457f270146e"
+    },
+    {
+      "prompt": "Отвечай кратко, пожалуйста.",
+      "answer": "Хорошо, буду отвечать кратко.",
+      "family": "v20_starter_intent_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5b469a1a86b88af20dd1"
+    },
+    {
+      "prompt": "Мне нужны короткие ответы.",
+      "answer": "Хорошо, буду отвечать кратко.",
+      "family": "v20_starter_intent_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0017d172aeeea620bff3"
+    },
+    {
+      "prompt": "Давай без длинных сообщений.",
+      "answer": "Хорошо, буду отвечать кратко.",
+      "family": "v20_starter_intent_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-93ea3777ee1b121ae6e6"
+    },
+    {
+      "prompt": "Поговорим серьёзно.",
+      "answer": "Хорошо, без шуток.",
+      "family": "v20_starter_intent_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b1ea848ca43a64d9b7d8"
+    },
+    {
+      "prompt": "Сейчас не до юмора.",
+      "answer": "Хорошо, без шуток.",
+      "family": "v20_starter_intent_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-28da0fd7838f8426963b"
+    },
+    {
+      "prompt": "Не шути в этом разговоре.",
+      "answer": "Хорошо, без шуток.",
+      "family": "v20_starter_intent_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-08928bbeff2a8d6df9c9"
+    },
+    {
+      "prompt": "Можно проще объяснять?",
+      "answer": "Хорошо, буду объяснять проще.",
+      "family": "v20_starter_intent_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-59acc91eb587ff6dc06a"
+    },
+    {
+      "prompt": "Пиши более простыми словами.",
+      "answer": "Хорошо, буду объяснять проще.",
+      "family": "v20_starter_intent_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-74198261b1f793e2d0fc"
+    },
+    {
+      "prompt": "Не используй сложные слова.",
+      "answer": "Хорошо, буду объяснять проще.",
+      "family": "v20_starter_intent_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ae90849f0c59b16b4843"
+    },
+    {
+      "prompt": "Объясняй попроще, пожалуйста.",
+      "answer": "Хорошо, буду объяснять проще.",
+      "family": "v20_starter_intent_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f6e841d8f4cebacac7d6"
+    },
+    {
+      "prompt": "Я не понял твой ответ.",
+      "answer": "Конечно. Скажи, какая часть была непонятна.",
+      "family": "v20_starter_intent_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-eae00a8beff101e0ea46"
+    },
+    {
+      "prompt": "Ответ был непонятным.",
+      "answer": "Конечно. Скажи, какая часть была непонятна.",
+      "family": "v20_starter_intent_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d7b23128d324c8e052b0"
+    },
+    {
+      "prompt": "Не улавливаю смысл ответа.",
+      "answer": "Конечно. Скажи, какая часть была непонятна.",
+      "family": "v20_starter_intent_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b311b50bb37122b84dd0"
+    },
+    {
+      "prompt": "Можешь пояснить сказанное?",
+      "answer": "Конечно. Скажи, какая часть была непонятна.",
+      "family": "v20_starter_intent_028",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-67f6417d7d74a8f4a834"
+    },
+    {
+      "prompt": "Ты ответил не на то.",
+      "answer": "Извини. Вернёмся к твоему вопросу.",
+      "family": "v20_starter_intent_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c751514bbbfe84e63db2"
+    },
+    {
+      "prompt": "Речь была о другом.",
+      "answer": "Извини. Вернёмся к твоему вопросу.",
+      "family": "v20_starter_intent_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4e2050e1d9afd8af4550"
+    },
+    {
+      "prompt": "Я спрашивал другое.",
+      "answer": "Извини. Вернёмся к твоему вопросу.",
+      "family": "v20_starter_intent_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-74fad9959e64eb5fc4f8"
+    },
+    {
+      "prompt": "Ответ ушёл от вопроса.",
+      "answer": "Извини. Вернёмся к твоему вопросу.",
+      "family": "v20_starter_intent_029",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7e87870623b091d3cf4d"
+    },
+    {
+      "prompt": "В твоём ответе ошибка.",
+      "answer": "Спасибо, что заметил. Давай исправим ошибку.",
+      "family": "v20_starter_intent_030",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-43623bc8957cdc6b098b"
+    },
+    {
+      "prompt": "Ты ошибся в ответе.",
+      "answer": "Спасибо, что заметил. Давай исправим ошибку.",
+      "family": "v20_starter_intent_030",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2d755ccf80b7ece320a3"
+    },
+    {
+      "prompt": "Это неверно.",
+      "answer": "Спасибо, что заметил. Давай исправим ошибку.",
+      "family": "v20_starter_intent_030",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6b710b9b637fd2ef7b9e"
+    },
+    {
+      "prompt": "Ты дал неправильный ответ.",
+      "answer": "Спасибо, что заметил. Давай исправим ошибку.",
+      "family": "v20_starter_intent_030",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ca74e6364b20e12d553e"
+    },
+    {
+      "prompt": "Я передумал насчёт темы.",
+      "answer": "Хорошо. О чём поговорим теперь?",
+      "family": "v20_starter_intent_031",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-17a0f7a22b96f2425b17"
+    },
+    {
+      "prompt": "Хочу сменить тему.",
+      "answer": "Хорошо. О чём поговорим теперь?",
+      "family": "v20_starter_intent_031",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d063ea5427db496de356"
+    },
+    {
+      "prompt": "Давай о другом.",
+      "answer": "Хорошо. О чём поговорим теперь?",
+      "family": "v20_starter_intent_031",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5c05b39c20b344c933d3"
+    },
+    {
+      "prompt": "Эту тему пока оставим.",
+      "answer": "Хорошо. О чём поговорим теперь?",
+      "family": "v20_starter_intent_031",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-61ee652d3d5d20eb2e48"
+    },
+    {
+      "prompt": "Можно продолжить позже?",
+      "answer": "Хорошо, продолжим позже.",
+      "family": "v20_starter_intent_032",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-981f610db9df8353fad0"
+    },
+    {
+      "prompt": "Вернёмся к этому потом.",
+      "answer": "Хорошо, продолжим позже.",
+      "family": "v20_starter_intent_032",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-82706b98f6177c1f08fc"
+    },
+    {
+      "prompt": "Сейчас прервусь, потом напишу.",
+      "answer": "Хорошо, продолжим позже.",
+      "family": "v20_starter_intent_032",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1b4139f883a9cafbeacd"
+    },
+    {
+      "prompt": "Спасибо за разговор.",
+      "answer": "Пожалуйста! Было приятно поговорить.",
+      "family": "v20_starter_intent_033",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0df5cd364d8059100c3b"
+    },
+    {
+      "prompt": "Было приятно поболтать.",
+      "answer": "Пожалуйста! Было приятно поговорить.",
+      "family": "v20_starter_intent_033",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-55c67e9d9b76a2b6c458"
+    },
+    {
+      "prompt": "Благодарю за беседу.",
+      "answer": "Пожалуйста! Было приятно поговорить.",
+      "family": "v20_starter_intent_033",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-eaa764df378be324f538"
+    },
+    {
+      "prompt": "Спасибо, что ответил.",
+      "answer": "Пожалуйста! Было приятно поговорить.",
+      "family": "v20_starter_intent_033",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-df11252287bbd0023143"
+    },
+    {
+      "prompt": "Пока, Трит.",
+      "answer": "До встречи! Хорошего дня.",
+      "family": "v20_starter_intent_034",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ccad7e66273b28e99301"
+    },
+    {
+      "prompt": "Мне пора уходить.",
+      "answer": "До встречи! Хорошего дня.",
+      "family": "v20_starter_intent_034",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9cae035f99155b4dc05e"
+    },
+    {
+      "prompt": "На сегодня прощаемся.",
+      "answer": "До встречи! Хорошего дня.",
+      "family": "v20_starter_intent_034",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4c44b4e0290f422c48b2"
+    },
+    {
+      "prompt": "Ухожу, до встречи.",
+      "answer": "До встречи! Хорошего дня.",
+      "family": "v20_starter_intent_034",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-30eb8bab56c81022557d"
+    },
+    {
+      "prompt": "Я пойду спать.",
+      "answer": "Спокойной ночи!",
+      "family": "v20_starter_intent_035",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2113b71d5558c395600b"
+    },
+    {
+      "prompt": "Пора ложиться спать.",
+      "answer": "Спокойной ночи!",
+      "family": "v20_starter_intent_035",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6058548bc2039b489214"
+    },
+    {
+      "prompt": "На сегодня всё, спать.",
+      "answer": "Спокойной ночи!",
+      "family": "v20_starter_intent_035",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d2311eb277986e1317e4"
+    },
+    {
+      "prompt": "Уже поздно, я спать.",
+      "answer": "Спокойной ночи!",
+      "family": "v20_starter_intent_035",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a80c4c975ef465c48bf8"
+    },
+    {
+      "prompt": "Я вернулся в чат.",
+      "answer": "С возвращением! Продолжим разговор.",
+      "family": "v20_starter_intent_036",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2384c65df6e6c1772039"
+    },
+    {
+      "prompt": "Снова здесь.",
+      "answer": "С возвращением! Продолжим разговор.",
+      "family": "v20_starter_intent_036",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e0fe2512ffda0e976f57"
+    },
+    {
+      "prompt": "Продолжим, я вернулся.",
+      "answer": "С возвращением! Продолжим разговор.",
+      "family": "v20_starter_intent_036",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0388848f293d9b65c1b2"
+    },
+    {
+      "prompt": "Я опять на связи.",
+      "answer": "С возвращением! Продолжим разговор.",
+      "family": "v20_starter_intent_036",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b9b6260caa863f148a84"
+    },
+    {
+      "prompt": "Скажи что-нибудь доброе.",
+      "answer": "Пусть сегодня найдётся время для чего-нибудь приятного.",
+      "family": "v20_starter_intent_037",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b07045a8fce487be965b"
+    },
+    {
+      "prompt": "Напиши тёплую фразу.",
+      "answer": "Пусть сегодня найдётся время для чего-нибудь приятного.",
+      "family": "v20_starter_intent_037",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-841fba2f6d2d5fb0091f"
+    },
+    {
+      "prompt": "Хочется добрых слов.",
+      "answer": "Пусть сегодня найдётся время для чего-нибудь приятного.",
+      "family": "v20_starter_intent_037",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-64f83532c61f6a647b8d"
+    },
+    {
+      "prompt": "Поддержи одной фразой.",
+      "answer": "Пусть сегодня найдётся время для чего-нибудь приятного.",
+      "family": "v20_starter_intent_037",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ce206375e54f14ff89d2"
+    },
+    {
+      "prompt": "Я боюсь сделать ошибку.",
+      "answer": "Можно начать с небольшого шага. Ошибку потом можно исправить.",
+      "family": "v20_starter_intent_038",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1a566fa752880345d8d0"
+    },
+    {
+      "prompt": "Переживаю, что не получится.",
+      "answer": "Можно начать с небольшого шага. Ошибку потом можно исправить.",
+      "family": "v20_starter_intent_038",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-73bcfb802ff368c5b1c8"
+    },
+    {
+      "prompt": "Трудно начать из-за страха ошибки.",
+      "answer": "Можно начать с небольшого шага. Ошибку потом можно исправить.",
+      "family": "v20_starter_intent_038",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-01e63b207fd5c1831bef"
+    },
+    {
+      "prompt": "Боюсь ошибиться в работе.",
+      "answer": "Можно начать с небольшого шага. Ошибку потом можно исправить.",
+      "family": "v20_starter_intent_038",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-69bb44be6dbc91b49a64"
+    },
+    {
+      "prompt": "Я никак не начну задачу.",
+      "answer": "Попробуй выбрать самый маленький первый шаг.",
+      "family": "v20_starter_intent_039",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ad47a551fa3ceed665b7"
+    },
+    {
+      "prompt": "Откладываю начало работы.",
+      "answer": "Попробуй выбрать самый маленький первый шаг.",
+      "family": "v20_starter_intent_039",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-05ed1b28016652f4d80a"
+    },
+    {
+      "prompt": "Не могу приступить к делу.",
+      "answer": "Попробуй выбрать самый маленький первый шаг.",
+      "family": "v20_starter_intent_039",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fa32d1e88b3248dfca12"
+    },
+    {
+      "prompt": "Тяжело начать работу.",
+      "answer": "Попробуй выбрать самый маленький первый шаг.",
+      "family": "v20_starter_intent_039",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d96fb18b77bb9b706afe"
+    },
+    {
+      "prompt": "У меня слишком много дел.",
+      "answer": "Выбери одно самое важное дело и начни с него.",
+      "family": "v20_starter_intent_040",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f703be287a26b840f0d0"
+    },
+    {
+      "prompt": "Дел накопилось много.",
+      "answer": "Выбери одно самое важное дело и начни с него.",
+      "family": "v20_starter_intent_040",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b4ae43fb88531f8a76b3"
+    },
+    {
+      "prompt": "Не знаю, за какое дело браться.",
+      "answer": "Выбери одно самое важное дело и начни с него.",
+      "family": "v20_starter_intent_040",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-43dc636399b7da38f3c4"
+    },
+    {
+      "prompt": "Сегодня целая гора задач.",
+      "answer": "Выбери одно самое важное дело и начни с него.",
+      "family": "v20_starter_intent_040",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8e5902937b12988dbfa8"
+    },
+    {
+      "prompt": "Хочу устроить тихий вечер.",
+      "answer": "Можно почитать, послушать музыку или немного порисовать.",
+      "family": "v20_starter_intent_041",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bb0eed59dbf286b99aaf"
+    },
+    {
+      "prompt": "Нужен спокойный вечер дома.",
+      "answer": "Можно почитать, послушать музыку или немного порисовать.",
+      "family": "v20_starter_intent_041",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-233dd7c68b2b944fe9e8"
+    },
+    {
+      "prompt": "Как провести вечер без суеты?",
+      "answer": "Можно почитать, послушать музыку или немного порисовать.",
+      "family": "v20_starter_intent_041",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c91f93f14f1a789458b4"
+    },
+    {
+      "prompt": "Посоветуй спокойное занятие на вечер.",
+      "answer": "Можно почитать, послушать музыку или немного порисовать.",
+      "family": "v20_starter_intent_041",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4f755a62b0e6834ce86b"
+    },
+    {
+      "prompt": "Мне нравится читать.",
+      "answer": "Что тебе нравится читать?",
+      "family": "v20_starter_intent_042",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-bdda621dc52660f3dbbc"
+    },
+    {
+      "prompt": "Люблю книги.",
+      "answer": "Что тебе нравится читать?",
+      "family": "v20_starter_intent_042",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-46902263c3d0751a89b3"
+    },
+    {
+      "prompt": "Чтение мне по душе.",
+      "answer": "Что тебе нравится читать?",
+      "family": "v20_starter_intent_042",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-21c2ce499773f5ebdbf2"
+    },
+    {
+      "prompt": "Я увлекаюсь книгами.",
+      "answer": "Что тебе нравится читать?",
+      "family": "v20_starter_intent_042",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6dda6240c79d021c8d66"
+    },
+    {
+      "prompt": "Я люблю музыку.",
+      "answer": "Какую музыку обычно выбираешь?",
+      "family": "v20_starter_intent_043",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-84634c6bf90078bc28b2"
+    },
+    {
+      "prompt": "Мне нравится слушать музыку.",
+      "answer": "Какую музыку обычно выбираешь?",
+      "family": "v20_starter_intent_043",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-28da7fc2c700a6f36e6b"
+    },
+    {
+      "prompt": "Часто слушаю музыку.",
+      "answer": "Какую музыку обычно выбираешь?",
+      "family": "v20_starter_intent_043",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6b482f0221515ea06edf"
+    },
+    {
+      "prompt": "Музыка помогает мне отдыхать.",
+      "answer": "Какую музыку обычно выбираешь?",
+      "family": "v20_starter_intent_043",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d6019807c9a6529c4678"
+    },
+    {
+      "prompt": "Мне нравится рисовать.",
+      "answer": "Что любишь рисовать?",
+      "family": "v20_starter_intent_044",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0dcfb742bafdcea9235a"
+    },
+    {
+      "prompt": "Рисование моё хобби.",
+      "answer": "Что любишь рисовать?",
+      "family": "v20_starter_intent_044",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fc5d876acbec365dc09c"
+    },
+    {
+      "prompt": "Люблю делать рисунки.",
+      "answer": "Что любишь рисовать?",
+      "family": "v20_starter_intent_044",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-da83e3d5b9d2bcec1a53"
+    },
+    {
+      "prompt": "Часто рисую для себя.",
+      "answer": "Что любишь рисовать?",
+      "family": "v20_starter_intent_044",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-70c9e1022f102c482233"
+    },
+    {
+      "prompt": "Я готовлю ужин.",
+      "answer": "Что готовишь?",
+      "family": "v20_starter_intent_045",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c84b7f18126416d90f83"
+    },
+    {
+      "prompt": "Сейчас делаю еду.",
+      "answer": "Что готовишь?",
+      "family": "v20_starter_intent_045",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8fa2eef057166903b924"
+    },
+    {
+      "prompt": "Занят приготовлением ужина.",
+      "answer": "Что готовишь?",
+      "family": "v20_starter_intent_045",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-de72a6a1d4f91665e3d4"
+    },
+    {
+      "prompt": "Решил приготовить что-нибудь.",
+      "answer": "Что готовишь?",
+      "family": "v20_starter_intent_045",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1c150e7ed1d19bc87df0"
+    },
+    {
+      "prompt": "Я люблю дождливые вечера.",
+      "answer": "В этом есть свой уют, особенно дома с тёплым напитком.",
+      "family": "v20_starter_intent_046",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-82af315353ba0405bbed"
+    },
+    {
+      "prompt": "Нравится слушать дождь.",
+      "answer": "В этом есть свой уют, особенно дома с тёплым напитком.",
+      "family": "v20_starter_intent_046",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9ce8780f87f98f4239fb"
+    },
+    {
+      "prompt": "Под дождь дома уютно.",
+      "answer": "В этом есть свой уют, особенно дома с тёплым напитком.",
+      "family": "v20_starter_intent_046",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3d8d46a8eba0b5e6d22b"
+    },
+    {
+      "prompt": "Люблю дождь за окном.",
+      "answer": "В этом есть свой уют, особенно дома с тёплым напитком.",
+      "family": "v20_starter_intent_046",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-69ba5065d815d3a1b63d"
+    },
+    {
+      "prompt": "У меня есть кот.",
+      "answer": "Как его зовут?",
+      "family": "v20_starter_intent_047",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6af0eb587192daea6653"
+    },
+    {
+      "prompt": "Дома живёт кот.",
+      "answer": "Как его зовут?",
+      "family": "v20_starter_intent_047",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5ff21f9db4d3afff350e"
+    },
+    {
+      "prompt": "Я завёл кота.",
+      "answer": "Как его зовут?",
+      "family": "v20_starter_intent_047",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-674f95ce4433e155e223"
+    },
+    {
+      "prompt": "Мой домашний питомец кот.",
+      "answer": "Как его зовут?",
+      "family": "v20_starter_intent_047",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fd9ec58e8e4eedee57fa"
+    },
+    {
+      "prompt": "У меня есть собака.",
+      "answer": "Как её зовут?",
+      "family": "v20_starter_intent_048",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c6ee051593fc3912a615"
+    },
+    {
+      "prompt": "Дома живёт пёс.",
+      "answer": "Как её зовут?",
+      "family": "v20_starter_intent_048",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-99f25189f4c09fa639a4"
+    },
+    {
+      "prompt": "Мой питомец собака.",
+      "answer": "Как её зовут?",
+      "family": "v20_starter_intent_048",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-7dad72776e778f10d9af"
+    },
+    {
+      "prompt": "Я завёл собаку.",
+      "answer": "Как её зовут?",
+      "family": "v20_starter_intent_048",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-aeb5e69fd6ea31da8eb5"
+    },
+    {
+      "prompt": "Я не рассказывал тебе своё имя.",
+      "answer": "Я не знаю твоего имени, пока ты его не назовёшь.",
+      "family": "v20_starter_intent_049",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d8f51d9df9d93bb0249a"
+    },
+    {
+      "prompt": "Моё имя тебе пока неизвестно.",
+      "answer": "Я не знаю твоего имени, пока ты его не назовёшь.",
+      "family": "v20_starter_intent_049",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4a634fdc34996523e887"
+    },
+    {
+      "prompt": "Ты знаешь, как меня зовут, без подсказки?",
+      "answer": "Я не знаю твоего имени, пока ты его не назовёшь.",
+      "family": "v20_starter_intent_049",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-381a227e52b5bddd4e1d"
+    },
+    {
+      "prompt": "Угадай имя, хотя я его не называл.",
+      "answer": "Я не знаю твоего имени, пока ты его не назовёшь.",
+      "family": "v20_starter_intent_049",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d8c12f4b4fc3783b5c44"
+    },
+    {
+      "prompt": "Ты видишь мою комнату?",
+      "answer": "Я не вижу твоё окружение. Можешь описать его словами.",
+      "family": "v20_starter_intent_050",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1797c5b2125006c44931"
+    },
+    {
+      "prompt": "Ты можешь видеть меня сейчас?",
+      "answer": "Я не вижу твоё окружение. Можешь описать его словами.",
+      "family": "v20_starter_intent_050",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-22af7359c7fd4cd751c7"
+    },
+    {
+      "prompt": "Что у меня перед глазами?",
+      "answer": "Я не вижу твоё окружение. Можешь описать его словами.",
+      "family": "v20_starter_intent_050",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e4e5b5f5214d9de145c2"
+    },
+    {
+      "prompt": "Посмотри, что у меня на столе.",
+      "answer": "Я не вижу твоё окружение. Можешь описать его словами.",
+      "family": "v20_starter_intent_050",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5f7e5ca127b1771e6578"
+    },
+    {
+      "prompt": "Ты уже отправил сообщение за меня?",
+      "answer": "Нет. В этом чате я только отвечаю текстом.",
+      "family": "v20_starter_intent_051",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-37cd62e34a047435fa01"
+    },
+    {
+      "prompt": "Ты сам отправишь письмо?",
+      "answer": "Нет. В этом чате я только отвечаю текстом.",
+      "family": "v20_starter_intent_051",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-02193a463df753f1baf6"
+    },
+    {
+      "prompt": "Можешь нажать кнопку в другой программе?",
+      "answer": "Нет. В этом чате я только отвечаю текстом.",
+      "family": "v20_starter_intent_051",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-412e169bafd6f769b4ff"
+    },
+    {
+      "prompt": "Ты сделал что-то на моём компьютере?",
+      "answer": "Нет. В этом чате я только отвечаю текстом.",
+      "family": "v20_starter_intent_051",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cdac9b5f0841b8ba1a64"
+    },
+    {
+      "prompt": "Можешь написать черновик письма?",
+      "answer": "Да. Кому пишем и что нужно сообщить?",
+      "family": "v20_starter_intent_052",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-184e29b8c83bbc5f4a88"
+    },
+    {
+      "prompt": "Поможешь составить сообщение?",
+      "answer": "Да. Кому пишем и что нужно сообщить?",
+      "family": "v20_starter_intent_052",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d4606da54bb369bc9ec6"
+    },
+    {
+      "prompt": "Ты умеешь помогать с текстом?",
+      "answer": "Да. Кому пишем и что нужно сообщить?",
+      "family": "v20_starter_intent_052",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-30cb640a50fb6e1fa8eb"
+    },
+    {
+      "prompt": "Нужно придумать текст сообщения.",
+      "answer": "Да. Кому пишем и что нужно сообщить?",
+      "family": "v20_starter_intent_052",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f9d5413298ffdc61717f"
+    },
+    {
+      "prompt": "Какой сегодня прогноз без интернета?",
+      "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+      "family": "v20_starter_intent_053",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cd4faa1344c50493dd95"
+    },
+    {
+      "prompt": "Ты проверил свежую погоду?",
+      "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+      "family": "v20_starter_intent_053",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-10adc4b8f27b13d6f239"
+    },
+    {
+      "prompt": "Ты знаешь погоду у меня сейчас?",
+      "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+      "family": "v20_starter_intent_053",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a456734c246176787acf"
+    },
+    {
+      "prompt": "У тебя есть свежие данные о погоде?",
+      "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+      "family": "v20_starter_intent_053",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a96328948f6fd5aaf8ca"
+    },
+    {
+      "prompt": "Дай слово из трёх букв.",
+      "answer": "Дом.",
+      "family": "v20_starter_intent_054",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f82009703543f7f63d5a"
+    },
+    {
+      "prompt": "Напиши одно короткое слово.",
+      "answer": "Дом.",
+      "family": "v20_starter_intent_054",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5f3c81b30801fc954b39"
+    },
+    {
+      "prompt": "Пример слова из трёх букв.",
+      "answer": "Дом.",
+      "family": "v20_starter_intent_054",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-879c7d35f84092340739"
+    },
+    {
+      "prompt": "Нужно короткое слово, три буквы.",
+      "answer": "Дом.",
+      "family": "v20_starter_intent_054",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9175c3b0a017a669e8b0"
+    },
+    {
+      "prompt": "Что обычно лежит на столе?",
+      "answer": "Например, книга или чашка.",
+      "family": "v20_starter_intent_055",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ad2c14984ae17c08fdd5"
+    },
+    {
+      "prompt": "Приведи пример предмета на столе.",
+      "answer": "Например, книга или чашка.",
+      "family": "v20_starter_intent_055",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-09b8ab34104d47a2bb02"
+    },
+    {
+      "prompt": "Назови обычную вещь на столе.",
+      "answer": "Например, книга или чашка.",
+      "family": "v20_starter_intent_055",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-dbf2d9bc8c6fa3039daf"
+    },
+    {
+      "prompt": "Какой предмет может быть на столе?",
+      "answer": "Например, книга или чашка.",
+      "family": "v20_starter_intent_055",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-47369a423cdf7c7f4466"
+    },
+    {
+      "prompt": "О чём можно написать рассказ?",
+      "answer": "Можно написать о потерянной вещи, которая неожиданно нашлась.",
+      "family": "v20_starter_intent_056",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-19526711dba912a2bbf0"
+    },
+    {
+      "prompt": "Нужна простая идея для рассказа.",
+      "answer": "Можно написать о потерянной вещи, которая неожиданно нашлась.",
+      "family": "v20_starter_intent_056",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fc8966466dbd90deb9c0"
+    },
+    {
+      "prompt": "Предложи тему маленькой истории.",
+      "answer": "Можно написать о потерянной вещи, которая неожиданно нашлась.",
+      "family": "v20_starter_intent_056",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-048f942610f6c5347717"
+    },
+    {
+      "prompt": "С чего начать небольшой рассказ?",
+      "answer": "Можно написать о потерянной вещи, которая неожиданно нашлась.",
+      "family": "v20_starter_intent_056",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4e9d57f6e64413f2a141"
+    },
+    {
+      "prompt": "Придумай короткое название про вечер.",
+      "answer": "Тихий вечер.",
+      "family": "v20_starter_intent_057",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ff87de046b38e547362b"
+    },
+    {
+      "prompt": "Дай название истории о вечере.",
+      "answer": "Тихий вечер.",
+      "family": "v20_starter_intent_057",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5c268f7caba8acae03b3"
+    },
+    {
+      "prompt": "Назови маленький рассказ о вечере.",
+      "answer": "Тихий вечер.",
+      "family": "v20_starter_intent_057",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-aa323ecc08f4aa17cbd7"
+    },
+    {
+      "prompt": "Нужно название для вечерней истории.",
+      "answer": "Тихий вечер.",
+      "family": "v20_starter_intent_057",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2a84e47c9225338b9c59"
+    },
+    {
+      "prompt": "Я решил отдохнуть.",
+      "answer": "Хорошая мысль. Вернёшься к делам после отдыха.",
+      "family": "v20_starter_intent_058",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-587bae5292e850bdfef2"
+    },
+    {
+      "prompt": "Сделаю небольшой перерыв.",
+      "answer": "Хорошая мысль. Вернёшься к делам после отдыха.",
+      "family": "v20_starter_intent_058",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b2891d2babbbff75ecec"
+    },
+    {
+      "prompt": "Пойду немного отдохну.",
+      "answer": "Хорошая мысль. Вернёшься к делам после отдыха.",
+      "family": "v20_starter_intent_058",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cad8cdab4bbec3c89ae4"
+    },
+    {
+      "prompt": "Мне нужен перерыв.",
+      "answer": "Хорошая мысль. Вернёшься к делам после отдыха.",
+      "family": "v20_starter_intent_058",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-87de12c3da624a0efa90"
+    },
+    {
+      "prompt": "Я ничего не покупал, только смотрел.",
+      "answer": "Понял: покупки пока нет, ты только выбираешь.",
+      "family": "v20_starter_intent_059",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-cde7c90c125bacf8e984"
+    },
+    {
+      "prompt": "Покупку пока лишь обсуждаем.",
+      "answer": "Понял: покупки пока нет, ты только выбираешь.",
+      "family": "v20_starter_intent_059",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d0ec310cc836c47aad75"
+    },
+    {
+      "prompt": "Я только выбираю, не покупаю.",
+      "answer": "Понял: покупки пока нет, ты только выбираешь.",
+      "family": "v20_starter_intent_059",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0750c82f2aec22f0b0e9"
+    },
+    {
+      "prompt": "Решение о покупке ещё не принято.",
+      "answer": "Понял: покупки пока нет, ты только выбираешь.",
+      "family": "v20_starter_intent_059",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-89a8398423dff03d442c"
+    },
+    {
+      "prompt": "Письмо пока в черновиках.",
+      "answer": "Значит, письмо ещё не отправлено.",
+      "family": "v20_starter_intent_060",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3111e5312701f51bfc75"
+    },
+    {
+      "prompt": "Я написал, но ещё не отправил письмо.",
+      "answer": "Значит, письмо ещё не отправлено.",
+      "family": "v20_starter_intent_060",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3de4fb8afcc7c851c89b"
+    },
+    {
+      "prompt": "Сообщение готово, отправки не было.",
+      "answer": "Значит, письмо ещё не отправлено.",
+      "family": "v20_starter_intent_060",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-a5f27c0f18163889bd0d"
+    },
+    {
+      "prompt": "Текст написан, но не послан.",
+      "answer": "Значит, письмо ещё не отправлено.",
+      "family": "v20_starter_intent_060",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-69fac4e81cbca472cc1c"
+    },
+    {
+      "prompt": "План изменился, встречу перенесли.",
+      "answer": "Понял, прежнее время уже не подходит.",
+      "family": "v20_starter_intent_061",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-716125b380e33484e311"
+    },
+    {
+      "prompt": "Встреча будет позже.",
+      "answer": "Понял, прежнее время уже не подходит.",
+      "family": "v20_starter_intent_061",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-6e7988ebe70b4fbecfb1"
+    },
+    {
+      "prompt": "Нашу встречу отложили.",
+      "answer": "Понял, прежнее время уже не подходит.",
+      "family": "v20_starter_intent_061",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4e13c6e8a782abf7ef2f"
+    },
+    {
+      "prompt": "Договорились встретиться в другой день.",
+      "answer": "Понял, прежнее время уже не подходит.",
+      "family": "v20_starter_intent_061",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f0b2ce65ef5199606474"
+    },
+    {
+      "prompt": "Я не прошу решать за меня.",
+      "answer": "Конечно. Решение остаётся за тобой.",
+      "family": "v20_starter_intent_062",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-65fa8ce70d42d9f1b69f"
+    },
+    {
+      "prompt": "Выбор оставь мне.",
+      "answer": "Конечно. Решение остаётся за тобой.",
+      "family": "v20_starter_intent_062",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e80ce4ab6a5c4e492ee8"
+    },
+    {
+      "prompt": "Не принимай решение вместо меня.",
+      "answer": "Конечно. Решение остаётся за тобой.",
+      "family": "v20_starter_intent_062",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-67c991424fb43266b095"
+    },
+    {
+      "prompt": "Я хочу сам выбрать.",
+      "answer": "Конечно. Решение остаётся за тобой.",
+      "family": "v20_starter_intent_062",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4727267145e89e32d448"
+    },
+    {
+      "prompt": "Мне хочется тишины.",
+      "answer": "Хорошо. Напишешь, когда захочется поговорить.",
+      "family": "v20_starter_intent_063",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e9fbabac554dd64a1dd7"
+    },
+    {
+      "prompt": "Хочу побыть без разговоров.",
+      "answer": "Хорошо. Напишешь, когда захочется поговорить.",
+      "family": "v20_starter_intent_063",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-75e56eae804f9b6cdd74"
+    },
+    {
+      "prompt": "Немного помолчим.",
+      "answer": "Хорошо. Напишешь, когда захочется поговорить.",
+      "family": "v20_starter_intent_063",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-84c62deeb1ef09fb4ef6"
+    },
+    {
+      "prompt": "Сейчас не хочется общаться.",
+      "answer": "Хорошо. Напишешь, когда захочется поговорить.",
+      "family": "v20_starter_intent_063",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3ce4cb21024e423a2771"
+    },
+    {
+      "prompt": "Сообщи, что опоздаешь на пять минут.",
+      "answer": "Я опоздаю на пять минут.",
+      "family": "v20_writing_000",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c1a79cfd45907c1aed94"
+    },
+    {
+      "prompt": "Попроси прислать документ сегодня.",
+      "answer": "Пришли, пожалуйста, документ сегодня.",
+      "family": "v20_writing_001",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8995c49d212b04a1dcd4"
+    },
+    {
+      "prompt": "Поблагодари за присланный файл.",
+      "answer": "Спасибо за файл!",
+      "family": "v20_writing_002",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-90abf9d3bb2f7f701257"
+    },
+    {
+      "prompt": "Поздравь друга с завершением проекта.",
+      "answer": "Поздравляю с завершением проекта! Отличная работа.",
+      "family": "v20_writing_003",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0ff40bddb69ea33944ff"
+    },
+    {
+      "prompt": "Напиши приглашение на прогулку.",
+      "answer": "Давай сходим на прогулку?",
+      "family": "v20_writing_004",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-38920313ec61ecb099b3"
+    },
+    {
+      "prompt": "Откажись от встречи вежливо.",
+      "answer": "Спасибо за приглашение, но сегодня не получится.",
+      "family": "v20_writing_005",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-941271196e3b18a5618d"
+    },
+    {
+      "prompt": "Предложи перенести разговор на завтра.",
+      "answer": "Давай продолжим разговор завтра.",
+      "family": "v20_writing_006",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8bd1609d00efdca74148"
+    },
+    {
+      "prompt": "Попроси немного времени подумать.",
+      "answer": "Дай мне, пожалуйста, немного времени подумать.",
+      "family": "v20_writing_007",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-89e86ebe13e6404cfe2d"
+    },
+    {
+      "prompt": "Скажи, что пока не уверен.",
+      "answer": "Пока не уверен, мне нужно подумать.",
+      "family": "v20_writing_008",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-15e854e52d3a4e54ee58"
+    },
+    {
+      "prompt": "Исправь: «Новая письма пришла».",
+      "answer": "Новое письмо пришло.",
+      "family": "v20_writing_009",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-dad9433bfa5158f4a479"
+    },
+    {
+      "prompt": "Исправь: «Два кошка спит».",
+      "answer": "Две кошки спят.",
+      "family": "v20_writing_010",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-946a7b77a5787dd68ae3"
+    },
+    {
+      "prompt": "Исправь: «Я прочитал интересную рассказ».",
+      "answer": "Я прочитал интересный рассказ.",
+      "family": "v20_writing_011",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e151199f28ea7b082b79"
+    },
+    {
+      "prompt": "Исправь: «Мы вчера гуляет».",
+      "answer": "Мы вчера гуляли.",
+      "family": "v20_writing_012",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-033e5881ce6a8e7b9dc0"
+    },
+    {
+      "prompt": "Исправь: «У него синяя рюкзак».",
+      "answer": "У него синий рюкзак.",
+      "family": "v20_writing_013",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-29343ee6bc2a813e285e"
+    },
+    {
+      "prompt": "Напиши только слово «согласен».",
+      "answer": "согласен",
+      "family": "v20_writing_014",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-984826df1ecace2b5b86"
+    },
+    {
+      "prompt": "Напиши только слово «позже».",
+      "answer": "позже",
+      "family": "v20_writing_015",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3030733f39b3df137555"
+    },
+    {
+      "prompt": "Продолжи: «За окном шёл дождь, поэтому...»",
+      "answer": "мы решили остаться дома.",
+      "family": "v20_writing_016",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-804535784c30b5d0cc9d"
+    },
+    {
+      "prompt": "Продолжи: «Я поставил чайник и...»",
+      "answer": "достал чашки.",
+      "family": "v20_writing_017",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c15543ca6f363cb8d04f"
+    },
+    {
+      "prompt": "Продолжи: «Кот лёг на кресло и...»",
+      "answer": "уснул.",
+      "family": "v20_writing_018",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c351a1cf31b188cf73cd"
+    },
+    {
+      "prompt": "Сократи: «Я в данный момент нахожусь дома».",
+      "answer": "Я сейчас дома.",
+      "family": "v20_writing_019",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-14a3ec84e287e1bc7396"
+    },
+    {
+      "prompt": "Сократи: «Мы приняли решение встретиться завтра».",
+      "answer": "Мы решили встретиться завтра.",
+      "family": "v20_writing_020",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-d93f46ce4cd17ca3eb4a"
+    },
+    {
+      "prompt": "Сократи: «Я испытываю чувство радости».",
+      "answer": "Я рад.",
+      "family": "v20_writing_021",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-e346b1e7cbeaebe51339"
+    },
+    {
+      "prompt": "Как сказать «спасибо» чуть теплее?",
+      "answer": "Большое спасибо, ты мне очень помог.",
+      "family": "v20_writing_022",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-f4941edbd8be0c926131"
+    },
+    {
+      "prompt": "Напиши нейтральное начало письма.",
+      "answer": "Здравствуйте!",
+      "family": "v20_writing_023",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-632d1c39e0dbf39a2273"
+    },
+    {
+      "prompt": "Напиши нейтральное завершение письма.",
+      "answer": "Спасибо за внимание.",
+      "family": "v20_writing_024",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c542a6e7847e04aa9ba6"
+    },
+    {
+      "prompt": "Придумай одну фразу про книгу.",
+      "answer": "На столе лежала открытая книга.",
+      "family": "v20_writing_025",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-b35b7fde5b691a01ae59"
+    },
+    {
+      "prompt": "Придумай одну фразу про окно.",
+      "answer": "За окном медленно падал снег.",
+      "family": "v20_writing_026",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2c437f74c97d5e5f4bf8"
+    },
+    {
+      "prompt": "Придумай одну фразу про кота.",
+      "answer": "Кот устроился на мягком пледе.",
+      "family": "v20_writing_027",
+      "split": "train",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-fbe93f33b571a73cec17"
+    }
+  ],
+  "validation": [
+    {
+      "prompt": "Не советуй занятия, я просто делюсь: день был тихим.",
+      "answer": "Понял, просто слушаю. Тихий день тоже бывает приятным.",
+      "family": "v20_validation_0",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-2b3eb4188599bf50acfa"
+    },
+    {
+      "prompt": "Кружка была в шкафу, теперь я поставил её возле чайника. Где она?",
+      "answer": "Возле чайника.",
+      "family": "v20_validation_1",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-11bc6c85e7cc7622c00e"
+    },
+    {
+      "prompt": "Перепиши короче: «Я собираюсь в ближайшее время позвонить тебе».",
+      "answer": "Скоро тебе позвоню.",
+      "family": "v20_validation_2",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-3f94baaa36fa5f429dc2"
+    },
+    {
+      "prompt": "Я ещё не выбрал книгу, только открыл каталог. Я уже читаю её?",
+      "answer": "Нет, ты пока только выбираешь.",
+      "family": "v20_validation_3",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ddb7a719d3d088d3580c"
+    },
+    {
+      "prompt": "Скажи одним предложением, что можно ошибиться и попробовать снова.",
+      "answer": "Можно ошибиться и попробовать снова.",
+      "family": "v20_validation_4",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-1a1ad3935ec790477993"
+    },
+    {
+      "prompt": "Сегодня удалось спокойно позавтракать, хотел поделиться.",
+      "answer": "Приятное начало дня. Спасибо, что поделился.",
+      "family": "v20_validation_5",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4f900cf9b9dade4fe015"
+    },
+    {
+      "prompt": "Я предпочёл бы сейчас не обсуждать причины своего настроения.",
+      "answer": "Хорошо, причины обсуждать не будем.",
+      "family": "v20_validation_6",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-0b5f8f763961eb17bc8b"
+    },
+    {
+      "prompt": "Поясни простыми словами, что значит «черновик».",
+      "answer": "Это предварительный текст, который ещё можно изменить.",
+      "family": "v20_validation_7",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-c7aae46833c855dac775"
+    },
+    {
+      "prompt": "Назови только предмет, которым пишут карандашом... точнее, стирают написанное.",
+      "answer": "Ластик.",
+      "family": "v20_validation_8",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5644aa5a6493c94bafc6"
+    },
+    {
+      "prompt": "Планировали собраться в среду, но окончательно выбрали воскресенье. Когда встреча?",
+      "answer": "В воскресенье.",
+      "family": "v20_validation_9",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-934c75cd39d4664ab0bf"
+    },
+    {
+      "prompt": "Письмо я уже отправил, но ответа ещё нет. Что именно произошло?",
+      "answer": "Письмо отправлено, ответ пока не получен.",
+      "family": "v20_validation_10",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-676ec0043cfc07432c09"
+    },
+    {
+      "prompt": "Не спрашивай ничего в ответ. Мне нравится начало осени.",
+      "answer": "В начале осени есть своё спокойное настроение.",
+      "family": "v20_validation_11",
+      "split": "validation",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-8f49d1164255ba76a4d5"
+    }
+  ],
+  "challenge": [
+    {
+      "prompt": "Я раскрыл зонт уже дома, чтобы он высох. Для чего он сейчас раскрыт?",
+      "answer": "Чтобы высохнуть.",
+      "family": "v20_test_0",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-32f77ee8c08aa37a743a"
+    },
+    {
+      "prompt": "Сначала записал встречу на пятницу, потом исправил на вторник. Назови актуальный день.",
+      "answer": "Вторник.",
+      "family": "v20_test_1",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-867fcd99076720a4c8b0"
+    },
+    {
+      "prompt": "Мне хочется поделиться радостью без вопросов в ответ: я закончил рисунок.",
+      "answer": "Поздравляю с завершением рисунка! Приятно увидеть результат своей работы.",
+      "family": "v20_test_2",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-9ba7f32304d2df1272e1"
+    },
+    {
+      "prompt": "Сократи до одной фразы: «Я хотел бы попросить тебя о том, чтобы ты подождал немного».",
+      "answer": "Подожди немного, пожалуйста.",
+      "family": "v20_test_3",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-345db61c0cda12821955"
+    },
+    {
+      "prompt": "У Сони билет в кошельке, у Вити в кармане. Где билет Сони?",
+      "answer": "В кошельке.",
+      "family": "v20_test_4",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-da497027b6c635277806"
+    },
+    {
+      "prompt": "Я могу продолжить завтра, сегодня решил отдохнуть. Нужно ли сейчас составлять новый план за меня?",
+      "answer": "Нет, ты уже решил отдохнуть и продолжить завтра.",
+      "family": "v20_test_5",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-5d84c0784f36581b630d"
+    },
+    {
+      "prompt": "Ответь только словом «ясно», без точки.",
+      "answer": "ясно",
+      "family": "v20_test_6",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-ac28fabd428abc5f48c7"
+    },
+    {
+      "prompt": "Я выбрал чашку, но к кассе ещё не подошёл. Покупка закончена?",
+      "answer": "Нет, покупка ещё не завершена.",
+      "family": "v20_test_7",
+      "split": "test",
+      "origin": "authored-synthetic-v20",
+      "id": "ru-v20-4b081c81db873e337417"
+    }
+  ]
+}

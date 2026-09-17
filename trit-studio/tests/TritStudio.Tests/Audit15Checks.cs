@@ -114,7 +114,7 @@ internal static class Audit15Checks
             string w=Path.Combine(root,"workspace"),f=Path.Combine(root,"outside.json");Directory.CreateDirectory(w);File.WriteAllText(f,"original");File.CreateSymbolicLink(Path.Combine(w,"chat-state.json"),f);Throws(()=>ChatSessionState.StartNew(w));Assert(File.ReadAllText(f)=="original");
         })),
         ("learning stage and vocabulary contract unchanged by compact UI", () => { Assert(ByteTokenizer.VocabularySize==262);Assert(new ModelConfig().FormatVersion==1);Assert(new TrainingOptions{PublishEvery=1000}.Steps==1200); }),
-        ("publish interval validates supported boundaries", () => {new TrainingOptions{PublishEvery=1}.Validate();new TrainingOptions{PublishEvery=1000}.Validate();Throws(()=>new TrainingOptions{PublishEvery=0}.Validate());Throws(()=>new TrainingOptions{PublishEvery=1001}.Validate());}),
+        ("publish interval validates supported boundaries", () => {new TrainingOptions{PublishEvery=1}.Validate();new TrainingOptions{PublishEvery=1000}.Validate();Throws(()=>new TrainingOptions{PublishEvery=0}.Validate());new TrainingOptions{PublishEvery=100000}.Validate();Throws(()=>new TrainingOptions{PublishEvery=100001}.Validate());}),
     ];
     private static void Assert(bool ok,string? why=null){if(!ok)throw new Exception(why??"Assertion failed");}
     private static void Throws(Action action){try{action();}catch{return;}throw new Exception("Expected refusal");}

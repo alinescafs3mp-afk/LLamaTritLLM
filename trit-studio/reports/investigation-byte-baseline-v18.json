@@ -1,0 +1,16 @@
+{
+  "scope": "independent corpus counting only: byte-bigram trained ONLY on train+basic, evaluated teacher-forced",
+  "train": {
+    "correct": 109295,
+    "total": 254104,
+    "accuracy": 0.4301191638069452,
+    "unigram_accuracy": 0.3155125460441394
+  },
+  "control": {
+    "correct": 9440,
+    "total": 21705,
+    "accuracy": 0.4349228288412808,
+    "unigram_accuracy": 0.314351531905091
+  },
+  "train_utf8_bytes": 533514
+}

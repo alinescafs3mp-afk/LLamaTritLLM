@@ -7,8 +7,8 @@ public sealed record TrainRequest(string[] DatasetPaths, TrainingOptions Trainin
 public sealed record OnlineRequest(TrainingExample Example);
 public sealed record OnlineMode(bool Enabled, double LearningRate = 0.0001);
 public sealed record StatusEvent(string Message, long Step = 0, double? Loss = null, double? TokensPerSecond = null,
-    long MemoryMiB = 0, string Device = "", int Queue = 0, bool Busy = false, string Stage = "idle", int CompletedSteps = 0, int TotalSteps = 0, QueueSummary? Replay = null, int Snapshots = 0, StepPerformance? Performance = null, double? ValidationMilliseconds = null, long ValidationCacheHits = 0, long ValidationPreparedBytes = 0, long ValidationBatchCacheHits = 0, long SnapshotCorpusCacheHits = 0, long SnapshotCorpusCacheBytes = 0, LearningProgress? Accuracy = null);
-public sealed record StepPerformance(double Milliseconds, int BatchSize, int SequenceLength, long InputTokens, long TargetTokens, long PaddedPositions, string AttentionBackend, long OutputPositions = 0)
+    long MemoryMiB = 0, string Device = "", int Queue = 0, bool Busy = false, string Stage = "idle", int CompletedSteps = 0, int TotalSteps = 0, QueueSummary? Replay = null, int Snapshots = 0, StepPerformance? Performance = null, double? ValidationMilliseconds = null, long ValidationCacheHits = 0, long ValidationPreparedBytes = 0, long ValidationBatchCacheHits = 0, long SnapshotCorpusCacheHits = 0, long SnapshotCorpusCacheBytes = 0, LearningProgress? Accuracy = null, double? EffectiveLearningRate = null, int? EffectivePublishEvery = null, bool WarmupCosine = false);
+public sealed record StepPerformance(double Milliseconds, int BatchSize, int SequenceLength, long InputTokens, long TargetTokens, long PaddedPositions, string AttentionBackend, long OutputPositions = 0, DialogueMix? DialogueMix = null)
 {
     public double PaddingFraction => PaddedPositions == 0 ? 0 : Math.Clamp(1 - (double)InputTokens / PaddedPositions, 0, 1);
 }
@@ -18,7 +18,7 @@ public sealed record DatasetSummaryEvent(int TrainingExamples, int ValidationExa
 public sealed record RuntimeFlags(bool Paused = false, bool Online = false, double? OnlineLearningRate = null);
 public sealed record QueueSummary(int Pending, int Learned, int Rejected, int RolledBack, int Discarded);
 public sealed record WorkspaceSettings(ModelConfig Config, ResourceOptions Resources, TrainingOptions Training, TrainingMaterial? LastMaterial = null, bool? ConversationTrained = null, bool? CustomDataTrained = null);
-public sealed record TrainerState(long Step, ulong SamplerState, long TargetTokens);
+public sealed record TrainerState(long Step, ulong SamplerState, long TargetTokens, double? LastLearningRate = null);
 public sealed record CommitLedger(string[] AppliedOnlineIds);
 public static class Protocol
 {

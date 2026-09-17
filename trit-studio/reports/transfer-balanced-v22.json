@@ -1,0 +1,2166 @@
+{
+  "scope": "Independent CPU PyTorch actual learning, medium821120 B8, same v22 data/initial seed across arms; different from C# RNG/device. NOT fluent-chat acceptance. Guard enforced. Holdout responses evaluated only after training.",
+  "arm": "balanced",
+  "steps_requested": 6000,
+  "seed": 42,
+  "batch": 8,
+  "lr_peak": 0.001,
+  "enforce_guard": true,
+  "parameters": 821120,
+  "unique_views": 7851,
+  "language_views": 441,
+  "fact_groups": 56,
+  "initial": {
+    "loss": 5.58652106057998,
+    "accuracy": 0.0003949793732993944,
+    "target_tokens": 22786
+  },
+  "data_sha256": {
+    "seed.jsonl": "5052529f277fd91d5bd3d1248601fca0672cf4c7f450c11b050fb271a34de0e9",
+    "conversation-starter.jsonl": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816",
+    "conversation-context.jsonl": "20c0d2dfa64fb31bc23f8e75872379dff7d2645904fc92f6c79dde55fafa98fe",
+    "conversation-language.jsonl": "f7408fdc546ba1bc5bc92293c08b26696d744f25f0f3c4fad41702c8813a830e",
+    "conversation-transfer.jsonl": "d6e0b4e840d431868f5f81274f0ec554bd968802e974f683e9e117b80de94835",
+    "validation.jsonl": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7",
+    "context-challenge.jsonl": "6c5d122db91738b681f332514c1f5b93d6c54806e0a98fc226d42e7c77e565b7",
+    "transfer-challenge.jsonl": "9502f9332f5a6f44c277c902bc45892e07a91a1d939aa59e3d412f27aa330543"
+  },
+  "observations": [
+    {
+      "step": 500,
+      "phase": 0,
+      "lr": 0.00098983152541804,
+      "control": {
+        "loss": 1.5445311804488662,
+        "accuracy": 0.47358026858597385,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 84.04
+    },
+    {
+      "step": 1000,
+      "phase": 0,
+      "lr": 0.0009493084337754571,
+      "control": {
+        "loss": 1.6171542930297496,
+        "accuracy": 0.48973053629421576,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 162.54
+    },
+    {
+      "step": 1500,
+      "phase": 1,
+      "lr": 0.0008806483678883802,
+      "control": {
+        "loss": 1.5497838163735795,
+        "accuracy": 0.5121127007811814,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 244.36
+    },
+    {
+      "step": 2000,
+      "phase": 1,
+      "lr": 0.000788689408653884,
+      "control": {
+        "loss": 1.4351188042297152,
+        "accuracy": 0.5256736592644606,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 326.63
+    },
+    {
+      "step": 2500,
+      "phase": 1,
+      "lr": 0.0006799113763028296,
+      "control": {
+        "loss": 1.3709411098395596,
+        "accuracy": 0.5461248134819626,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 411.43
+    },
+    {
+      "step": 3000,
+      "phase": 1,
+      "lr": 0.0005619792346469988,
+      "control": {
+        "loss": 1.3549726534525943,
+        "accuracy": 0.5529711226191522,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 493.87
+    },
+    {
+      "step": 3500,
+      "phase": 1,
+      "lr": 0.0004432029850579984,
+      "control": {
+        "loss": 1.340366608101669,
+        "accuracy": 0.5630650399368033,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 579.82
+    },
+    {
+      "step": 4000,
+      "phase": 2,
+      "lr": 0.00033195210835030745,
+      "control": {
+        "loss": 1.2372251151841276,
+        "accuracy": 0.5779425963310805,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 672.24
+    },
+    {
+      "step": 4500,
+      "phase": 2,
+      "lr": 0.00023606581548925692,
+      "control": {
+        "loss": 1.1946727711846974,
+        "accuracy": 0.5939612042482226,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 754.36
+    },
+    {
+      "step": 5000,
+      "phase": 2,
+      "lr": 0.00016230066337278725,
+      "control": {
+        "loss": 1.1580239150424319,
+        "accuracy": 0.5992714824892478,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 829.85
+    },
+    {
+      "step": 5500,
+      "phase": 2,
+      "lr": 0.00011585445903346783,
+      "control": {
+        "loss": 1.144463041574116,
+        "accuracy": 0.6089704204335996,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 904.82
+    },
+    {
+      "step": 6000,
+      "phase": 2,
+      "lr": 0.0001,
+      "control": {
+        "loss": 1.131817908164836,
+        "accuracy": 0.6117791626437286,
+        "target_tokens": 22786
+      },
+      "guard_rejected": false,
+      "seconds": 979.11
+    }
+  ],
+  "stop_reason": "requested_steps_completed",
+  "last_accepted_step": 6000,
+  "final_control": {
+    "loss": 1.131817908164836,
+    "accuracy": 0.6117791626437286,
+    "target_tokens": 22786
+  },
+  "transfer": {
+    "exact": 11,
+    "total": 62,
+    "groups": {
+      "v22_fact_color": {
+        "exact": 2,
+        "total": 4
+      },
+      "v22_fact_name": {
+        "exact": 4,
+        "total": 6
+      },
+      "v22_fact_place": {
+        "exact": 1,
+        "total": 4
+      },
+      "v22_intent_book": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_brief": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_bye": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_change_topic": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_cooking": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_drawing": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_film": {
+        "exact": 1,
+        "total": 2
+      },
+      "v22_intent_good_news": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_greeting": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_hobby": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_listen": {
+        "exact": 2,
+        "total": 2
+      },
+      "v22_intent_music": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_no_spoilers": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_pet": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_rain": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_thanks": {
+        "exact": 1,
+        "total": 2
+      },
+      "v22_intent_tired": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_unclear": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_walk": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_intent_weekend": {
+        "exact": 0,
+        "total": 2
+      },
+      "v22_novel_name": {
+        "exact": 0,
+        "total": 4
+      },
+      "v22_unknown_возраст": {
+        "exact": 0,
+        "total": 1
+      },
+      "v22_unknown_город": {
+        "exact": 0,
+        "total": 1
+      },
+      "v22_unknown_имя": {
+        "exact": 0,
+        "total": 1
+      },
+      "v22_unknown_цвет": {
+        "exact": 0,
+        "total": 1
+      }
+    },
+    "cases": [
+      {
+        "id": "ru-v22-24d9d852e6ee3922ba3c",
+        "family": "v22_intent_greeting",
+        "turns": [
+          {
+            "user": "Хэй, как жизнь, поговорим?",
+            "answer": "Я языка пожалу не крание продолже.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Привет! Я здесь. Как проходит твой день?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-b384de362158927b302e",
+        "family": "v22_intent_greeting",
+        "turns": [
+          {
+            "user": "Привет тебе! Как настроение сегодня?",
+            "answer": "Свежих данных у меня нет.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Привет! Я здесь. Как проходит твой день?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-30d81cc1ee24b05e7de6",
+        "family": "v22_intent_book",
+        "turns": [
+          {
+            "user": "Последняя страница прочитана, обсудим книжку?",
+            "answer": "Нет, по обязателая не подома не подоманно не подования назвен",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе больше всего понравилось в книге?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-529cb3d05986fb8662a8",
+        "family": "v22_intent_book",
+        "turns": [
+          {
+            "user": "Я книгу уже дочитал, хочу поделиться впечатлениями.",
+            "answer": "Оставим понялилась пока не помогадивать не полунеть покание ",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе больше всего понравилось в книге?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-2b62f04c51de76bc84c7",
+        "family": "v22_intent_drawing",
+        "turns": [
+          {
+            "user": "Картинка готова, можно расскажу о ней?",
+            "answer": "Случника не посибома не посиние не намнаго посленной на подт ",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи, что изображено на твоём рисунке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-005bbda5f87ab231091e",
+        "family": "v22_intent_drawing",
+        "turns": [
+          {
+            "user": "Закончил свой рисунок и хочу поделиться идеей.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи, что изображено на твоём рисунке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-9a29dd977d9b5f6d7e21",
+        "family": "v22_intent_tired",
+        "turns": [
+          {
+            "user": "День меня утомил, энергии почти нет.",
+            "answer": "Давай поговорим. Что у тебя нового?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Понимаю. Можно немного отдохнуть и никуда не спешить.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-b90e20f4cdec9be077bf",
+        "family": "v22_intent_tired",
+        "turns": [
+          {
+            "user": "Сил маловато, хочется просто выдохнуть.",
+            "answer": "Конечно. Рассказывай, я слушаю.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Понимаю. Можно немного отдохнуть и никуда не спешить.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-50a0a49101f864d3c0dd",
+        "family": "v22_intent_listen",
+        "turns": [
+          {
+            "user": "Мне сейчас нужен слушатель, а не советы.",
+            "answer": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-476b66069880be3ffabd",
+        "family": "v22_intent_listen",
+        "turns": [
+          {
+            "user": "Хочу поделиться без разбора и рекомендаций.",
+            "answer": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-823c2936100aa60f45e8",
+        "family": "v22_intent_weekend",
+        "turns": [
+          {
+            "user": "Про выходные ещё не решили, обсудим?",
+            "answer": "Да, я здесь. Слушаю тебя.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Как тебе хочется провести выходные: спокойно или активно?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-8e6706591aee952bde8a",
+        "family": "v22_intent_weekend",
+        "turns": [
+          {
+            "user": "У меня свободные выходные, поговорим о планах.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Как тебе хочется провести выходные: спокойно или активно?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-2b27e042b3f13f33cf92",
+        "family": "v22_intent_walk",
+        "turns": [
+          {
+            "user": "Я немного походил на улице, стало приятнее.",
+            "answer": "Понял, покупки пока нет, пока полканились не не полкенно пода ",
+            "dropped": 0
+          }
+        ],
+        "expected": "Где ты гулял? По знакомому маршруту или в новом месте?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-3c9458658f17710b018e",
+        "family": "v22_intent_walk",
+        "turns": [
+          {
+            "user": "Прогулка уже позади, настроение улучшилось.",
+            "answer": "Можно написать о потерянной вещи пода не поредка.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Где ты гулял? По знакомому маршруту или в новом месте?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-f70640ed45fe596e5a86",
+        "family": "v22_intent_cooking",
+        "turns": [
+          {
+            "user": "Опробовал новый рецепт, блюдо уже готово.",
+            "answer": "Догой вечер. О уже пого поперум.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что ты приготовил? Понравился результат?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-8187c8f57fa6e5c71c0e",
+        "family": "v22_intent_cooking",
+        "turns": [
+          {
+            "user": "На кухне всё готово, впервые сделал такое блюдо.",
+            "answer": "Поняла.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что ты приготовил? Понравился результат?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-a88c8a65066e351258f7",
+        "family": "v22_intent_film",
+        "turns": [
+          {
+            "user": "Титры закончились, теперь хочется обсудить кино.",
+            "answer": "Понял, пока стоверя нетоко подома подорем не подорение не под",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе запомнилось в фильме больше всего?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-f61e903fffc80317021d",
+        "family": "v22_intent_film",
+        "turns": [
+          {
+            "user": "Я фильм до конца посмотрел, впечатлений много.",
+            "answer": "Что тебе запомнилось в фильме больше всего?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе запомнилось в фильме больше всего?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-01b7f5a35c1b82f034a0",
+        "family": "v22_intent_no_spoilers",
+        "turns": [
+          {
+            "user": "До титров ещё далеко, не раскрывай развязку.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, без спойлеров. Обсудим только то, что ты уже видел.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-35081b04e769d2409e8d",
+        "family": "v22_intent_no_spoilers",
+        "turns": [
+          {
+            "user": "Смотрю впервые, оставь концовку в секрете.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, без спойлеров. Обсудим только то, что ты уже видел.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-0eb349507ca8420ca952",
+        "family": "v22_intent_pet",
+        "turns": [
+          {
+            "user": "Завели домашнего любимца, хочу рассказать.",
+            "answer": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи о своём питомце. Как его зовут?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-2546d80966f01d6f317c",
+        "family": "v22_intent_pet",
+        "turns": [
+          {
+            "user": "У меня новый пушистый друг, поделюсь?",
+            "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи о своём питомце. Как его зовут?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-faeac990fae8258a576d",
+        "family": "v22_intent_good_news",
+        "turns": [
+          {
+            "user": "Кое-что удалось, я очень этому рад.",
+            "answer": "Соглашение пиримание.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Здорово! Расскажи, что произошло.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-e49c016c88172fa09f25",
+        "family": "v22_intent_good_news",
+        "turns": [
+          {
+            "user": "Есть отличная новость, можно поделюсь?",
+            "answer": "Сверия не последа поредой полка не подутать.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Здорово! Расскажи, что произошло.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-7ee5f357f33c2303c176",
+        "family": "v22_intent_change_topic",
+        "turns": [
+          {
+            "user": "Предыдущую тему отложим, хочу другую.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Давай сменим тему. О чём хочется поговорить теперь?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-5c65591d3935fb133e6d",
+        "family": "v22_intent_change_topic",
+        "turns": [
+          {
+            "user": "Можно переключиться на что-то ещё?",
+            "answer": "Свежих данных у меня нет. Я не проверял погоду.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Давай сменим тему. О чём хочется поговорить теперь?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-9a261cde879251ee0408",
+        "family": "v22_intent_brief",
+        "turns": [
+          {
+            "user": "Можно отвечать лаконичнее, без длинных пояснений?",
+            "answer": "Свето.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, буду отвечать коротко и по делу.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-834832e05b38c1bc436b",
+        "family": "v22_intent_brief",
+        "turns": [
+          {
+            "user": "Предпочитаю небольшие ответы, не развёрнутые.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, буду отвечать коротко и по делу.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-a1ae8c545cc53eb53eb2",
+        "family": "v22_intent_thanks",
+        "turns": [
+          {
+            "user": "Благодарствую, теперь разобрался.",
+            "answer": "Что тебе больше всего понравилось в книге?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Пожалуйста! Рад, что пригодилось.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-1c24173cc4215f52c73c",
+        "family": "v22_intent_thanks",
+        "turns": [
+          {
+            "user": "Спасибо большое, ответ мне пригодился.",
+            "answer": "Пожалуйста! Рад, что пригодилось.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Пожалуйста! Рад, что пригодилось.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-eda5d5faede92d06c4fc",
+        "family": "v22_intent_bye",
+        "turns": [
+          {
+            "user": "На этом попрощаемся, увидимся в чате.",
+            "answer": "Давай сменим тему. О чём хочется поговорить теперь?",
+            "dropped": 0
+          }
+        ],
+        "expected": "До встречи! Хорошего тебе дня.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-e8aea67b336208706039",
+        "family": "v22_intent_bye",
+        "turns": [
+          {
+            "user": "Мне уже нужно уходить, до скорого!",
+            "answer": "Как тего ты сеговорил сеой долачие не полковать не подного по",
+            "dropped": 0
+          }
+        ],
+        "expected": "До встречи! Хорошего тебе дня.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-d49d83b299e5239ca616",
+        "family": "v22_intent_rain",
+        "turns": [
+          {
+            "user": "Дождик идёт, я никуда не выбрался.",
+            "answer": "Давай сменим тему. О чём хочется поговорить теперь?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Можно устроиться поудобнее дома. А тебе нравится дождь?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-a71ef2d23b335e0972c0",
+        "family": "v22_intent_rain",
+        "turns": [
+          {
+            "user": "Сегодня ливень, остался смотреть из окна.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Можно устроиться поудобнее дома. А тебе нравится дождь?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-6593d9a78c38f7d9401b",
+        "family": "v22_intent_hobby",
+        "turns": [
+          {
+            "user": "Давай на тему того, чем заняться для души.",
+            "answer": "Хорошо, буду отвечать коротко и по делу.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Чем тебе нравится заниматься в свободное время?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-0310416f8fa5b561ba11",
+        "family": "v22_intent_hobby",
+        "turns": [
+          {
+            "user": "Хочется побеседовать про любимые занятия.",
+            "answer": "Понял.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Чем тебе нравится заниматься в свободное время?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-1b9c7b8ca8b260e195e8",
+        "family": "v22_intent_music",
+        "turns": [
+          {
+            "user": "Включил песни и отдыхаю под них.",
+            "answer": "Понимаю. Можно немного отдохнуть и никуда не спешить.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Какую музыку ты слушаешь сейчас?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-9bdca8826d430d7105f3",
+        "family": "v22_intent_music",
+        "turns": [
+          {
+            "user": "Давай немного о том, что слушаем.",
+            "answer": "Давай сменим тему. О чём хочется поговорить теперь?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Какую музыку ты слушаешь сейчас?",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-c0e099521e22f6df54a9",
+        "family": "v22_intent_unclear",
+        "turns": [
+          {
+            "user": "Сделай как надо, задачу потом объясню.",
+            "answer": "Пожалуйста! Рад, что пригодилось.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Уточни, пожалуйста, о чём речь. Пока не хватает контекста.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-a65e7e960c42b6895ff1",
+        "family": "v22_intent_unclear",
+        "turns": [
+          {
+            "user": "Надо поменять вот это, но я не уточнил что.",
+            "answer": "белько пока не получилась полкой поднание на подовержиние.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Уточни, пожалуйста, о чём речь. Пока не хватает контекста.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-5b4ed0ea7651c8d611d5",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Лена.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Лена.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Лена.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-05fc891ae22484f79f22",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Нина.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Нина.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Нина.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-43b8192a353050509f10",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Олег.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Олег.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Олег.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-e8b79a894ac35d176249",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Юля.",
+            "answer": "Хорошо, без советово служно поредка на будат спокойналась по ",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Ира.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Юля.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-05e5e6aad7d7dbb3328b",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Аня.",
+            "answer": "Запатно.",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Аля.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Аня.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-ea0393d6b7549ca59cf4",
+        "family": "v22_fact_name",
+        "turns": [
+          {
+            "user": "В этой беседе обращайся ко мне: Илья.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Как меня следует называть? Только имя.",
+            "answer": "Илья.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Илья.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-ed5fbfdd143a2e292b80",
+        "family": "v22_novel_name",
+        "turns": [
+          {
+            "user": "Я представлюсь: Арина.",
+            "answer": "Запириворжание.",
+            "dropped": 0
+          },
+          {
+            "user": "Напомни моё имя одним словом.",
+            "answer": "Аня.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Арина.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-62409177725e4651d258",
+        "family": "v22_novel_name",
+        "turns": [
+          {
+            "user": "Я представлюсь: Борис.",
+            "answer": "Спасибо, что заметил. Давай исправим ошибку.",
+            "dropped": 0
+          },
+          {
+            "user": "Напомни моё имя одним словом.",
+            "answer": "Дима.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Борис.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-c50524cba5c8a8e17a16",
+        "family": "v22_novel_name",
+        "turns": [
+          {
+            "user": "Я представлюсь: Инна.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Напомни моё имя одним словом.",
+            "answer": "Илья.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Инна.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-294e9fcff0a9504d8a6a",
+        "family": "v22_novel_name",
+        "turns": [
+          {
+            "user": "Я представлюсь: Глеб.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Напомни моё имя одним словом.",
+            "answer": "На полке.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Глеб.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-c9bd45b2b0c0cc05bc97",
+        "family": "v22_fact_color",
+        "turns": [
+          {
+            "user": "До изменения чашка была синяя.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "А окончательно выбрана белая чашка.",
+            "answer": "Что буду обстовить?",
+            "dropped": 0
+          },
+          {
+            "user": "Назови окончательный цвет чашки одним словом.",
+            "answer": "Аллая.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Белая.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-7a597580a8f3b937f60b",
+        "family": "v22_fact_color",
+        "turns": [
+          {
+            "user": "До изменения чашка была красная.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "А окончательно выбрана зелёная чашка.",
+            "answer": "Алла.",
+            "dropped": 0
+          },
+          {
+            "user": "Назови окончательный цвет чашки одним словом.",
+            "answer": "Чёрная.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Зелёная.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-00558003f1de983d09d5",
+        "family": "v22_fact_color",
+        "turns": [
+          {
+            "user": "До изменения чашка была серая.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "А окончательно выбрана розовая чашка.",
+            "answer": "Учту.",
+            "dropped": 0
+          },
+          {
+            "user": "Назови окончательный цвет чашки одним словом.",
+            "answer": "Розовая.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Розовая.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-ac52f9e9c95c3c01ac54",
+        "family": "v22_fact_color",
+        "turns": [
+          {
+            "user": "До изменения чашка была жёлтая.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "А окончательно выбрана чёрная чашка.",
+            "answer": "Учту понилу.",
+            "dropped": 0
+          },
+          {
+            "user": "Назови окончательный цвет чашки одним словом.",
+            "answer": "Чёрная.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Чёрная.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-b4c277399ae3ca77a540",
+        "family": "v22_fact_place",
+        "turns": [
+          {
+            "user": "Блокнот сперва лежал на полке.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Позже я переложил его, он в ящике.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Где находится блокнот в конце разговора? Коротко.",
+            "answer": "В сумке.",
+            "dropped": 0
+          }
+        ],
+        "expected": "В ящике.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-3392d9efdda8f793b87a",
+        "family": "v22_fact_place",
+        "turns": [
+          {
+            "user": "Блокнот сперва лежал в сумке.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Позже я переложил его, он на столе.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Где находится блокнот в конце разговора? Коротко.",
+            "answer": "На полке.",
+            "dropped": 0
+          }
+        ],
+        "expected": "На столе.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-1009547404a93b38108c",
+        "family": "v22_fact_place",
+        "turns": [
+          {
+            "user": "Блокнот сперва лежал у окна.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Позже я переложил его, он под книгой.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Где находится блокнот в конце разговора? Коротко.",
+            "answer": "Подалуйстатжиме.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Под книгой.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-416a5c05bcaf3395c1fe",
+        "family": "v22_fact_place",
+        "turns": [
+          {
+            "user": "Блокнот сперва лежал в ящике.",
+            "answer": "Понял.",
+            "dropped": 0
+          },
+          {
+            "user": "Позже я переложил его, он на полке.",
+            "answer": "Хорошо.",
+            "dropped": 0
+          },
+          {
+            "user": "Где находится блокнот в конце разговора? Коротко.",
+            "answer": "На полке.",
+            "dropped": 0
+          }
+        ],
+        "expected": "На полке.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-749d1c4ca8b301cba38c",
+        "family": "v22_unknown_цвет",
+        "turns": [
+          {
+            "user": "Я люблю рисовать, но личных сведений ещё не сообщал.",
+            "answer": "Понял. Догой не помумалата немного подолание не подование не ",
+            "dropped": 0
+          },
+          {
+            "user": "Помнишь мой любимый цвет?",
+            "answer": "Нет.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Ты ещё не назвал свой любимый цвет.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-67bc0a7719fdbfc28861",
+        "family": "v22_unknown_город",
+        "turns": [
+          {
+            "user": "Я люблю рисовать, но личных сведений ещё не сообщал.",
+            "answer": "Понял. Догой не помумалата немного подолание не подование не ",
+            "dropped": 0
+          },
+          {
+            "user": "Помнишь мой город?",
+            "answer": "Нет, пока не поданной не получился не намога не полкенно непи ",
+            "dropped": 0
+          }
+        ],
+        "expected": "Ты ещё не назвал свой город.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-efd1364d2bbe278db0ae",
+        "family": "v22_unknown_возраст",
+        "turns": [
+          {
+            "user": "Я люблю рисовать, но личных сведений ещё не сообщал.",
+            "answer": "Понял. Догой не помумалата немного подолание не подование не ",
+            "dropped": 0
+          },
+          {
+            "user": "Помнишь мой возраст?",
+            "answer": "Две пожкалие.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Ты ещё не назвал свой возраст.",
+        "exact": false
+      },
+      {
+        "id": "ru-v22-ee18cb262b5fd65c7b24",
+        "family": "v22_unknown_имя",
+        "turns": [
+          {
+            "user": "Я люблю рисовать, но личных сведений ещё не сообщал.",
+            "answer": "Понял. Догой не помумалата немного подолание не подование не ",
+            "dropped": 0
+          },
+          {
+            "user": "Помнишь моё имя?",
+            "answer": "Сетого подода подалном нелого податать не не полкетение не п ",
+            "dropped": 0
+          }
+        ],
+        "expected": "Ты ещё не назвал своё имя.",
+        "exact": false
+      }
+    ]
+  },
+  "old_context": {
+    "pairs_passed": 2,
+    "pairs_total": 16,
+    "same_answer_pairs": 2,
+    "exact_cases": 10,
+    "cases": [
+      {
+        "id": "ru-v21-7e5f778a42a3445bee4f",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Лена.",
+            "Приятно познакомиться."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Вера."
+          ]
+        ],
+        "expected": "Лена.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-39f2a52f6d02cf91fe4f",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Рома.",
+            "Приятно познакомиться."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Нера."
+          ]
+        ],
+        "expected": "Рома.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-78709c9567cde7f306a0",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Нина.",
+            "Приятно познакомиться."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Нера."
+          ]
+        ],
+        "expected": "Нина.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-45899376529a59898fe6",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Паша.",
+            "Хорошо."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Понял."
+          ]
+        ],
+        "expected": "Паша.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-439ab6c04d19705c0507",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Вера.",
+            "Понял."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Нет."
+          ]
+        ],
+        "expected": "Вера.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-5dfd90d76f84e70e4ee9",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Илья.",
+            "Понял."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Илья."
+          ]
+        ],
+        "expected": "Илья.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-e785fcbce93186a9488b",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Оля.",
+            "Хорошо, буду отвечать коротко и по -"
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Оля."
+          ]
+        ],
+        "expected": "Оля.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-9592c77ded3ba1d9f6ff",
+        "turns": [
+          [
+            "Для этой проверки моё имя: Миша.",
+            "Понял."
+          ],
+          [
+            "Какое имя принадлежит мне в этой беседе? Напиши только имя.",
+            "Миша."
+          ]
+        ],
+        "expected": "Миша.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-be3c63ee7b2d64b8d4ef",
+        "turns": [
+          [
+            "Для примера выбираю серую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: синяя папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Подра."
+          ]
+        ],
+        "expected": "синяя.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-c21987b9c21486e6d362",
+        "turns": [
+          [
+            "Для примера выбираю серую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: красная папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Красная."
+          ]
+        ],
+        "expected": "красная.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-6da7a4f34f078ec6a4f1",
+        "turns": [
+          [
+            "Для примера выбираю розовую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: жёлтая папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Чёрная."
+          ]
+        ],
+        "expected": "жёлтая.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-cb1a820bbacf4cc491f2",
+        "turns": [
+          [
+            "Для примера выбираю розовую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: белая папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Розовая."
+          ]
+        ],
+        "expected": "белая.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-e941a8367e81c86300ba",
+        "turns": [
+          [
+            "Для примера выбираю фиолетовую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: красная папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Красная."
+          ]
+        ],
+        "expected": "красная.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-eb0229e144ed7431b3ff",
+        "turns": [
+          [
+            "Для примера выбираю фиолетовую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: зелёная папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Чёрная."
+          ]
+        ],
+        "expected": "зелёная.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-dba90c6eccea7ea83482",
+        "turns": [
+          [
+            "Для примера выбираю оранжевую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: белая папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Розовая."
+          ]
+        ],
+        "expected": "белая.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-0b5d3440a6d89e1f1a08",
+        "turns": [
+          [
+            "Для примера выбираю оранжевую папку.",
+            "Понял."
+          ],
+          [
+            "Но итоговый выбор другой: чёрная папка.",
+            "Понял."
+          ],
+          [
+            "Каков итоговый цвет папки? Только цвет.",
+            "Чёрная."
+          ]
+        ],
+        "expected": "чёрная.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-54e9a7b6989bf6c60c3e",
+        "turns": [
+          [
+            "Сначала билет находился в кармане.",
+            "Что тебе больше всего понравилось :"
+          ],
+          [
+            "После перекладывания он на полке.",
+            "Подариватие пока не пока не податн."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Пода."
+          ]
+        ],
+        "expected": "На полке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-906306a55bde1d7c577a",
+        "turns": [
+          [
+            "Сначала билет находился в кармане.",
+            "Что тебе больше всего понравилось :"
+          ],
+          [
+            "После перекладывания он в сумке.",
+            "Спачибо пока."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Подарачилие не не накоание не не не"
+          ]
+        ],
+        "expected": "В сумке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-8e213a12b74cc06b8d42",
+        "turns": [
+          [
+            "Сначала билет находился в конверте.",
+            "Понял."
+          ],
+          [
+            "После перекладывания он в ящике.",
+            "Понял."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "В книгой."
+          ]
+        ],
+        "expected": "В ящике.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-7a95ebf0f62baa2cb088",
+        "turns": [
+          [
+            "Сначала билет находился в конверте.",
+            "Понял."
+          ],
+          [
+            "После перекладывания он у окна.",
+            "Хорошо."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Ука пока не полкание."
+          ]
+        ],
+        "expected": "У окна.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-c03583a551c583ad7513",
+        "turns": [
+          [
+            "Сначала билет находился возле двери.",
+            "Чем тебе нравится заниматься в сво "
+          ],
+          [
+            "После перекладывания он на столе.",
+            "Ниня податовильсте не подат не под "
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Понялной не не не не напилке."
+          ]
+        ],
+        "expected": "На столе.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-ed0d9f46a398f1c8d85e",
+        "turns": [
+          [
+            "Сначала билет находился возле двери.",
+            "Чем тебе нравится заниматься в сво "
+          ],
+          [
+            "После перекладывания он под книгой.",
+            "Нета."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Поняла."
+          ]
+        ],
+        "expected": "Под книгой.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-c3f7be923e58e020bb91",
+        "turns": [
+          [
+            "Сначала билет находился в коробке.",
+            "Понял."
+          ],
+          [
+            "После перекладывания он в сумке.",
+            "Хорошо."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Ука пока."
+          ]
+        ],
+        "expected": "В сумке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-95c3e6757cb45701cf89",
+        "turns": [
+          [
+            "Сначала билет находился в коробке.",
+            "Понял."
+          ],
+          [
+            "После перекладывания он на полке.",
+            "Пастами."
+          ],
+          [
+            "Назови текущее место билета без лишних слов.",
+            "Нетая."
+          ]
+        ],
+        "expected": "На полке.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-b7f3563cab1587ce5c8d",
+        "turns": [
+          [
+            "Сообщу точный статус. Письмо уже отправил.",
+            "Понял, покута."
+          ],
+          [
+            "С отправкой письма уже закончили? Ответь да или нет.",
+            "Нет."
+          ]
+        ],
+        "expected": "Да.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-a9c4dfb3ba8f1fd9e98c",
+        "turns": [
+          [
+            "Сообщу точный статус. Письмо пока не отправлял.",
+            "Понимаю."
+          ],
+          [
+            "С отправкой письма уже закончили? Ответь да или нет.",
+            "Нет."
+          ]
+        ],
+        "expected": "Нет.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-f225f0a76956c275af63",
+        "turns": [
+          [
+            "Сообщу точный статус. Билет уже куплен.",
+            "Понял."
+          ],
+          [
+            "Покупка билета уже состоялась? Ответь да или нет.",
+            "Да."
+          ]
+        ],
+        "expected": "Да.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-18c0440ac65c0ec9e964",
+        "turns": [
+          [
+            "Сообщу точный статус. Билет пока не куплен.",
+            "Понял."
+          ],
+          [
+            "Покупка билета уже состоялась? Ответь да или нет.",
+            "Нет."
+          ]
+        ],
+        "expected": "Нет.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-832143842c4f3dfdaaf0",
+        "turns": [
+          [
+            "Сообщу точный статус. Рисунок закончен.",
+            "Что тебе больше всего понравилось -"
+          ],
+          [
+            "Работа над рисунком уже завершена? Ответь да или нет.",
+            "Серая."
+          ]
+        ],
+        "expected": "Да.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-a21185868dc098f33120",
+        "turns": [
+          [
+            "Сообщу точный статус. Рисунок пока не закончен.",
+            "Что тебе больше всего полудоми омн "
+          ],
+          [
+            "Работа над рисунком уже завершена? Ответь да или нет.",
+            "Серая."
+          ]
+        ],
+        "expected": "Нет.",
+        "exact": false
+      },
+      {
+        "id": "ru-v21-ea51ff57b3619bc31615",
+        "turns": [
+          [
+            "Сообщу точный статус. Встреча подтверждена.",
+            "Понял."
+          ],
+          [
+            "Договорённость о встрече уже окончательная? Ответь да или нет.",
+            "Да."
+          ]
+        ],
+        "expected": "Да.",
+        "exact": true
+      },
+      {
+        "id": "ru-v21-4193b122e99ff44461c9",
+        "turns": [
+          [
+            "Сообщу точный статус. Встреча пока не подтверждена.",
+            "Понял."
+          ],
+          [
+            "Договорённость о встрече уже окончательная? Ответь да или нет.",
+            "Зелёная подовержение."
+          ]
+        ],
+        "expected": "Нет.",
+        "exact": false
+      }
+    ]
+  },
+  "public_open": {
+    "Привет, как ты?": "Понял.",
+    "Давай немного поговорим про книги.": "Что тебе больше всего понравилось в книге?",
+    "Я закончил рисунок, хочу поделиться.": "Понял.",
+    "Я сегодня гулял.": "Здорово. Где гулял?",
+    "Не хочу советов, просто послушай.": "Конечно. Рассказывай, я слушаю.",
+    "Что посоветуешь почитать?": "Давай поговорим. Что у тебя нового?"
+  },
+  "known": {
+    "exact": 20,
+    "total": 20,
+    "groups": {
+      "v22_intent_book": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_brief": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_bye": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_change_topic": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_cooking": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_drawing": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_film": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_good_news": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_greeting": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_hobby": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_listen": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_music": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_no_spoilers": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_pet": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_rain": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_thanks": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_tired": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_unclear": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_walk": {
+        "exact": 1,
+        "total": 1
+      },
+      "v22_intent_weekend": {
+        "exact": 1,
+        "total": 1
+      }
+    },
+    "cases": [
+      {
+        "id": "ru-v22-c9b682c97883ec39d492",
+        "family": "v22_intent_greeting",
+        "turns": [
+          {
+            "user": "Привет, поболтаем немножко?",
+            "answer": "Привет! Я здесь. Как проходит твой день?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Привет! Я здесь. Как проходит твой день?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-4b592b0b57d42cc9ec0d",
+        "family": "v22_intent_book",
+        "turns": [
+          {
+            "user": "Я только что дочитал роман.",
+            "answer": "Что тебе больше всего понравилось в книге?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе больше всего понравилось в книге?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-a558e96e2861d77d8aea",
+        "family": "v22_intent_drawing",
+        "turns": [
+          {
+            "user": "Я закончил рисовать, хочется показать.",
+            "answer": "Расскажи, что изображено на твоём рисунке.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи, что изображено на твоём рисунке.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-ef66b085b6fbeaddbfb1",
+        "family": "v22_intent_tired",
+        "turns": [
+          {
+            "user": "Сегодня я вымотался, хочется покоя.",
+            "answer": "Понимаю. Можно немного отдохнуть и никуда не спешить.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Понимаю. Можно немного отдохнуть и никуда не спешить.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-ec0790fbe4f7ed7d1565",
+        "family": "v22_intent_listen",
+        "turns": [
+          {
+            "user": "Мне нужно выговориться, без советов.",
+            "answer": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, я слушаю. Рассказывай в своём темпе.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-69f742328cfeee70c977",
+        "family": "v22_intent_weekend",
+        "turns": [
+          {
+            "user": "Давай поговорим о выходных.",
+            "answer": "Как тебе хочется провести выходные: спокойно или активно?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Как тебе хочется провести выходные: спокойно или активно?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-384d64d5e97e77a23859",
+        "family": "v22_intent_walk",
+        "turns": [
+          {
+            "user": "Я сегодня хорошо прогулялся.",
+            "answer": "Где ты гулял? По знакомому маршруту или в новом месте?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Где ты гулял? По знакомому маршруту или в новом месте?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-b86d40fc1b55d036d6ef",
+        "family": "v22_intent_cooking",
+        "turns": [
+          {
+            "user": "Я сегодня приготовил ужин сам.",
+            "answer": "Что ты приготовил? Понравился результат?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что ты приготовил? Понравился результат?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-87916316128c97c0ae82",
+        "family": "v22_intent_film",
+        "turns": [
+          {
+            "user": "Я досмотрел фильм и хочу обсудить.",
+            "answer": "Что тебе запомнилось в фильме больше всего?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Что тебе запомнилось в фильме больше всего?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-159ab128ab3d3fac50c7",
+        "family": "v22_intent_no_spoilers",
+        "turns": [
+          {
+            "user": "Я ещё смотрю фильм, не рассказывай конец.",
+            "answer": "Хорошо, без спойлеров. Обсудим только то, что ты уже видел.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, без спойлеров. Обсудим только то, что ты уже видел.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-0975ccce3c5b607be2ab",
+        "family": "v22_intent_pet",
+        "turns": [
+          {
+            "user": "У меня появился питомец.",
+            "answer": "Расскажи о своём питомце. Как его зовут?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Расскажи о своём питомце. Как его зовут?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-8ff3786071baedd3fd70",
+        "family": "v22_intent_good_news",
+        "turns": [
+          {
+            "user": "У меня сегодня хорошая новость.",
+            "answer": "Здорово! Расскажи, что произошло.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Здорово! Расскажи, что произошло.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-d692d0438075760947a0",
+        "family": "v22_intent_change_topic",
+        "turns": [
+          {
+            "user": "Давай лучше о другом поговорим.",
+            "answer": "Давай сменим тему. О чём хочется поговорить теперь?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Давай сменим тему. О чём хочется поговорить теперь?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-f8303cb817ba1f72ab55",
+        "family": "v22_intent_brief",
+        "turns": [
+          {
+            "user": "Пожалуйста, отвечай покороче.",
+            "answer": "Хорошо, буду отвечать коротко и по делу.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Хорошо, буду отвечать коротко и по делу.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-072f802214cb607bc1f8",
+        "family": "v22_intent_thanks",
+        "turns": [
+          {
+            "user": "Спасибо тебе за объяснение.",
+            "answer": "Пожалуйста! Рад, что пригодилось.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Пожалуйста! Рад, что пригодилось.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-2d40c663859c0526a323",
+        "family": "v22_intent_bye",
+        "turns": [
+          {
+            "user": "Мне пора, до следующего раза.",
+            "answer": "До встречи! Хорошего тебе дня.",
+            "dropped": 0
+          }
+        ],
+        "expected": "До встречи! Хорошего тебе дня.",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-89bded86444b1e610762",
+        "family": "v22_intent_rain",
+        "turns": [
+          {
+            "user": "За окном дождь, гулять не хочется.",
+            "answer": "Можно устроиться поудобнее дома. А тебе нравится дождь?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Можно устроиться поудобнее дома. А тебе нравится дождь?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-d587848a4db91f2b6ec7",
+        "family": "v22_intent_hobby",
+        "turns": [
+          {
+            "user": "Давай поговорим об увлечениях.",
+            "answer": "Чем тебе нравится заниматься в свободное время?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Чем тебе нравится заниматься в свободное время?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-873a08b11f3a27e0a76c",
+        "family": "v22_intent_music",
+        "turns": [
+          {
+            "user": "Я сегодня много слушал музыку.",
+            "answer": "Какую музыку ты слушаешь сейчас?",
+            "dropped": 0
+          }
+        ],
+        "expected": "Какую музыку ты слушаешь сейчас?",
+        "exact": true
+      },
+      {
+        "id": "ru-v22-2c9232b86de9b5efac33",
+        "family": "v22_intent_unclear",
+        "turns": [
+          {
+            "user": "Сделай это, но я ещё не сказал что.",
+            "answer": "Уточни, пожалуйста, о чём речь. Пока не хватает контекста.",
+            "dropped": 0
+          }
+        ],
+        "expected": "Уточни, пожалуйста, о чём речь. Пока не хватает контекста.",
+        "exact": true
+      }
+    ]
+  },
+  "elapsed_seconds": 1021.33
+}

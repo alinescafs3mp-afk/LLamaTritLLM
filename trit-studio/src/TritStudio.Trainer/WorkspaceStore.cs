@@ -17,6 +17,11 @@ public sealed class WorkspaceStore : IDisposable
         Directory.CreateDirectory(Path.Combine(Root, "revisions"));
         RevisionCount = Directory.GetDirectories(Path.Combine(Root, "revisions"), "r*").Length;
     }
+    public TrainingOptions Plan(TrainingOptions requested, bool includeInitial = false)
+    {
+        RevisionCount = Directory.EnumerateDirectories(Path.Combine(Root, "revisions"), "r*").Count();
+        return CheckpointBudget.Plan(requested, RevisionCount, includeInitial);
+    }
     public void EnsureCapacity(int publications)
     {
         // A single trainer owns the workspace. This is a count preflight, not a disk-space reservation.

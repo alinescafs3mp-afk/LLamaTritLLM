@@ -6,6 +6,8 @@ public static class CheckpointStateGuard
 {
     public static void Validate(RevisionInfo info, TrainerState state, CommitLedger commits, ModelConfig config)
     {
+        if (state.LastLearningRate is double rate && (!double.IsFinite(rate) || rate is <= 0 or > 0.01 || state.Step == 0))
+            throw new InvalidDataException("Недопустимая фактическая скорость последнего шага в снимке.");
         info.Accuracy?.Validate(info.Step, config.Context);
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0 ||
             state.Step != info.Step || state.TargetTokens != info.TargetTokens || state.TargetTokens < state.Step)

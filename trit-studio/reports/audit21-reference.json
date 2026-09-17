@@ -1,0 +1,179 @@
+{
+  "status": "passed",
+  "scope": "Independent specifications for v21. NOT C#, GUI, native scheduling or model-quality evidence.",
+  "source_rows_before_derivation": 3659,
+  "unique_expanded_rows": 5387,
+  "context_expanded_rows": 796,
+  "pool_sizes_legacy": [
+    281,
+    6191,
+    6733
+  ],
+  "pool_sizes_mixed": [
+    21548,
+    13467,
+    9426
+  ],
+  "phase_boundaries": [
+    {
+      "steps": 1,
+      "phase_counts": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "steps": 2,
+      "phase_counts": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "steps": 3,
+      "phase_counts": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "steps": 5,
+      "phase_counts": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "steps": 17,
+      "phase_counts": [
+        4,
+        7,
+        6
+      ]
+    },
+    {
+      "steps": 100,
+      "phase_counts": [
+        20,
+        40,
+        40
+      ]
+    },
+    {
+      "steps": 3000,
+      "phase_counts": [
+        600,
+        1200,
+        1200
+      ]
+    },
+    {
+      "steps": 6000,
+      "phase_counts": [
+        1200,
+        2400,
+        2400
+      ]
+    }
+  ],
+  "contrast_pairs": [
+    {
+      "pair": 0,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 1,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 2,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 3,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 4,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 5,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 6,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 7,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 8,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 9,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 10,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 11,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 12,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 13,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 14,
+      "constant_reply_cannot_pass": true
+    },
+    {
+      "pair": 15,
+      "constant_reply_cannot_pass": true
+    }
+  ],
+  "all_derived_probe_inputs_excluded_from_training": true,
+  "max_full_sequence": 454,
+  "native_build": "NOT_RUN",
+  "data_sha256": {
+    "challenge-v10.jsonl": "8ac9e4ef854e1f9e953e07697fda8c7e2acbf7d441a8bd9b4712f1d95bcf6020",
+    "challenge-v11.jsonl": "9fdd58708166d1259ee56462e00de255c737477611a51e238dd0d2a148a37885",
+    "challenge-v12.jsonl": "462930a49fdffeab019d231da1c960d7906343476bdf3b96fc3865787baa0d32",
+    "challenge-v13.jsonl": "888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3",
+    "challenge-v14.jsonl": "a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40",
+    "challenge-v15.jsonl": "86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11",
+    "challenge-v16.jsonl": "125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0",
+    "challenge-v17.jsonl": "efbb9ea61308bca0cf3e9f9ddeb0346e5a7f802527638b053699244b9e20968e",
+    "challenge-v18.jsonl": "49b11affebaf74654340039a86fecf0dbc6a9b4afead4b9b3a965c861f8a79e1",
+    "challenge-v19.jsonl": "2088fc6193ab6ada664e31fc5beed1e9b6f9b75146635d2be90b6e90fcbda4df",
+    "challenge-v20.jsonl": "5062c3bbec43094c61f1f87973482e80c1a3922513ac35925dba3d7eb5c4ca8b",
+    "challenge-v4.jsonl": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf",
+    "challenge-v5.jsonl": "3493915e807d59feb388d7dff814cd6910db20d5f797c324dca5319bacf8223e",
+    "challenge-v6.jsonl": "967b7c5e3b2bda83165e1f8b278ef5f70b74ba8b9ad4c588ea487f4882ee791e",
+    "challenge-v7.jsonl": "ee7072895a15764312986060d9b430b9fc56227966f5acf020bbaaa9f3bebfd8",
+    "challenge-v8.jsonl": "5c07ee49983aeafa71a83196dcb5762ebbebb7828d00c76885420c0ab9370743",
+    "challenge-v9.jsonl": "fccb39e40af542c4d1b863f16978519868ac88cff3356d1320ccf2cb47e26e57",
+    "challenge.jsonl": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550",
+    "context-challenge.jsonl": "6c5d122db91738b681f332514c1f5b93d6c54806e0a98fc226d42e7c77e565b7",
+    "conversation-context.jsonl": "20c0d2dfa64fb31bc23f8e75872379dff7d2645904fc92f6c79dde55fafa98fe",
+    "conversation-starter.jsonl": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816",
+    "pretrain.jsonl": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973",
+    "seed.jsonl": "5052529f277fd91d5bd3d1248601fca0672cf4c7f450c11b050fb271a34de0e9",
+    "test.jsonl": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb",
+    "validation.jsonl": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7"
+  }
+}

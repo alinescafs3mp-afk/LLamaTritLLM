@@ -1,0 +1,64 @@
+{
+  "scope": "Independent Python data/policy/sampling specification, NOT C# RNG, TPL, native optimizer, UI or CUDA execution",
+  "status": "passed",
+  "quota_cases": 1664,
+  "sampling_reproducibility_and_target_count_cases": 700,
+  "source_course_rows": 5097,
+  "expanded_views": 7851,
+  "old_context_original_final_targets": 388,
+  "old_context_expanded_priority_views": 796,
+  "old_intermediate_priority_targets": 408,
+  "old_intermediate_fraction": 0.5125628140703518,
+  "old_most_frequent_targets": [
+    [
+      "Принял поправку.",
+      120
+    ],
+    [
+      "Понял.",
+      116
+    ],
+    [
+      "Учту новое место.",
+      60
+    ],
+    [
+      "Хорошо.",
+      40
+    ],
+    [
+      "Хорошо, запомню на время беседы.",
+      32
+    ],
+    [
+      "Рад знакомству.",
+      32
+    ],
+    [
+      "Ты пока не сообщил об этом.",
+      24
+    ],
+    [
+      "Лена.",
+      20
+    ]
+  ],
+  "new_language_priority_rows": 441,
+  "new_original_final_fact_priority_rows": 1666,
+  "final_question_groups": 56,
+  "public_new_cases": 62,
+  "old_public_variants": 32,
+  "full_and_derived_probe_input_overlap": 0,
+  "full_control_input_overlap": 0,
+  "max_new_expected_bytes": 105,
+  "data_hashes": {
+    "seed.jsonl": "5052529f277fd91d5bd3d1248601fca0672cf4c7f450c11b050fb271a34de0e9",
+    "conversation-starter.jsonl": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816",
+    "conversation-context.jsonl": "20c0d2dfa64fb31bc23f8e75872379dff7d2645904fc92f6c79dde55fafa98fe",
+    "conversation-language.jsonl": "f7408fdc546ba1bc5bc92293c08b26696d744f25f0f3c4fad41702c8813a830e",
+    "conversation-transfer.jsonl": "d6e0b4e840d431868f5f81274f0ec554bd968802e974f683e9e117b80de94835",
+    "validation.jsonl": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7",
+    "transfer-challenge.jsonl": "9502f9332f5a6f44c277c902bc45892e07a91a1d939aa59e3d412f27aa330543",
+    "context-challenge.jsonl": "6c5d122db91738b681f332514c1f5b93d6c54806e0a98fc226d42e7c77e565b7"
+  }
+}

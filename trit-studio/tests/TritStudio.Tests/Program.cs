@@ -92,7 +92,7 @@ var tests = new (string Name, Action Run)[]
     ("evaluation splits cannot be imported as training data", () => {
         using var manifest = System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"data","DATASET_MANIFEST.json")));
         foreach (var entry in manifest.RootElement.GetProperty("files").EnumerateObject())
-            if (entry.Name is not ("seed" or "pretrain"))
+            if (entry.Name is not ("seed" or "pretrain" or "conversation-starter" or "conversation-context" or "conversation-language" or "conversation-transfer"))
                 Throws(() => Dataset.LoadTraining(Path.Combine(AppContext.BaseDirectory, "data", entry.Name + ".jsonl")));
         Equal(manifest.RootElement.GetProperty("counts").GetProperty("seed").GetInt32(),BundledCorpus.Load(Path.Combine(AppContext.BaseDirectory, "data"), "seed.jsonl").Length);
         Equal(BundledCorpus.Version,manifest.RootElement.GetProperty("version").GetString());
@@ -326,7 +326,7 @@ var tests = new (string Name, Action Run)[]
     }),
 
 };
-tests = tests.Concat(Audit5Checks.All).Concat(Audit6Checks.All).Concat(Audit7Checks.All).Concat(Audit8Checks.All).Concat(Audit9Checks.All).Concat(Audit10Checks.All).Concat(Audit11Checks.All).Concat(Audit12Checks.All).Concat(Audit13Checks.All).Concat(Audit14Checks.All).Concat(Audit15Checks.All).Concat(Audit16Checks.All).Concat(Audit17Checks.All).Concat(Audit18Checks.All).Concat(LearningProgressChecks.All).ToArray();
+tests = tests.Concat(Audit5Checks.All).Concat(Audit6Checks.All).Concat(Audit7Checks.All).Concat(Audit8Checks.All).Concat(Audit9Checks.All).Concat(Audit10Checks.All).Concat(Audit11Checks.All).Concat(Audit12Checks.All).Concat(Audit13Checks.All).Concat(Audit14Checks.All).Concat(Audit15Checks.All).Concat(Audit16Checks.All).Concat(Audit17Checks.All).Concat(Audit18Checks.All).Concat(Audit19Checks.All).Concat(Audit20Checks.All).Concat(Audit21Checks.All).Concat(Audit22Checks.All).Concat(LearningProgressChecks.All).ToArray();
 int failures = 0;
 foreach (var t in tests) try { t.Run(); Console.WriteLine("PASS " + t.Name); } catch (Exception e) { failures++; Console.Error.WriteLine("FAIL " + t.Name + ": " + e); }
 Console.WriteLine($"{tests.Length - failures}/{tests.Length} passed"); return failures == 0 ? 0 : 1;

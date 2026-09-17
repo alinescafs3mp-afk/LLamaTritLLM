@@ -1,0 +1,166 @@
+{
+  "scope": "Executed independent Python CPU training and corpus counting. Not C#/CUDA or user-checkpoint evidence.",
+  "based_on_commit": "68727516a4cb06bf99e971991bd95d9dd6632d4c",
+  "dataset_version": "conversation-ru-v18",
+  "data_sha256": {
+    "seed.jsonl": "39114e415b9afc1418cfac0375438d199be7d67317b6d2978f580cf894035be9",
+    "validation.jsonl": "06d6d633495e925c15d10817101b50636faaeef3fb6dfb0577bceabdffd17eec",
+    "pretrain.jsonl": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
+  },
+  "torch": "2.10.0+cpu",
+  "numpy": "2.3.5",
+  "manual_seed": 42,
+  "cpu_threads_per_arm": 2,
+  "batch": 16,
+  "initialization": "PyTorch initialization from learning_reference.Model, NOT WeightSet.Initialize from C#",
+  "source_sha256": {
+    "learning_reference.py": "443ee269f376f6cba92cc9a7e0ec070e4534973b5aca7ee555ba26190ca29ec7"
+  },
+  "training_comparison": {
+    "large-lr1e2": {
+      "scope": "Independent Python QAT training, not C#/CUDA. Same architecture/data/selection recipe; initialization differs from C#",
+      "parameters": 4788992,
+      "lr": 0.01,
+      "baseline_added": false,
+      "batch": 16,
+      "steps": 300,
+      "checkpoints": [
+        {
+          "step": 100,
+          "lr": 0.01,
+          "batch_loss": 1.7365727424621582,
+          "validation": {
+            "loss": 1.796281043639026,
+            "accuracy": 0.4219765031098825,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "оооооооооооооооооооооооооооооооооооо",
+            "Как дела?": "оооооооооооооооооооооооооооооооооооо",
+            "Как тебя зовут?": "оооооооооооооооооооооооооооооооооооо"
+          },
+          "seconds": 122.58457579500003
+        },
+        {
+          "step": 200,
+          "lr": 0.01,
+          "batch_loss": 1.8062857389450073,
+          "validation": {
+            "loss": 1.770098652808904,
+            "accuracy": 0.42446440912232203,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "оооооооооооооооооооооооооооооооооооо",
+            "Как дела?": "оооооооооооооооооооооооооооооооооооо",
+            "Как тебя зовут?": "оооооооооооооооооооооооооооооооооооо"
+          },
+          "seconds": 248.43356698500003
+        },
+        {
+          "step": 300,
+          "lr": 0.01,
+          "batch_loss": 1.8116459846496582,
+          "validation": {
+            "loss": 1.7925263863888459,
+            "accuracy": 0.42142363510711817,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "оооооооооооооооооооооооооооооооооооо",
+            "Как дела?": "оооооооооооооооооооооооооооооооооооо",
+            "Как тебя зовут?": "оооооооооооооооооооооооооооооооооооо"
+          },
+          "seconds": 367.01323572
+        }
+      ]
+    },
+    "large-lr1e3": {
+      "scope": "Independent Python QAT training, not C#/CUDA. Same architecture/data/selection recipe; initialization differs from C#",
+      "parameters": 4788992,
+      "lr": 0.001,
+      "baseline_added": false,
+      "batch": 16,
+      "steps": 300,
+      "checkpoints": [
+        {
+          "step": 100,
+          "lr": 0.001,
+          "batch_loss": 1.5610978603363037,
+          "validation": {
+            "loss": 1.5876488354205536,
+            "accuracy": 0.4470859249020963,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "Поно ноно ноно нононо ноно нононо нонон",
+            "Как дела?": "Поно ноно но нононо ноно нононо ноно но�",
+            "Как тебя зовут?": "Поно ноно ноно ноно но ноно ноно нононо�"
+          },
+          "seconds": 123.63879649700002
+        },
+        {
+          "step": 200,
+          "lr": 0.001,
+          "batch_loss": 1.4669407606124878,
+          "validation": {
+            "loss": 1.3997853627377352,
+            "accuracy": 0.4948168624740843,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "Нет поленини поленинини полого подолон",
+            "Как дела?": "Поно подовоетинини позано позенинини п",
+            "Как тебя зовут?": "Поно позано позанинини позано пололини"
+          },
+          "seconds": 248.54317411899999
+        },
+        {
+          "step": 300,
+          "lr": 0.001,
+          "batch_loss": 1.2699156999588013,
+          "validation": {
+            "loss": 1.2990443728261762,
+            "accuracy": 0.533978346003225,
+            "target_tokens": 21705
+          },
+          "generated": {
+            "Привет!": "Приной полой поление ветовоет полей по�",
+            "Как дела?": "Прилиние ветовиение ветовиние веть пол",
+            "Как тебя зовут?": "Приной поление вожной веть полой полой "
+          },
+          "seconds": 359.0602226550001
+        }
+      ]
+    },
+    "byte-baseline-v18": {
+      "scope": "independent corpus counting only: byte-bigram trained ONLY on train+basic, evaluated teacher-forced",
+      "train": {
+        "correct": 109295,
+        "total": 254104,
+        "accuracy": 0.4301191638069452,
+        "unigram_accuracy": 0.3155125460441394
+      },
+      "control": {
+        "correct": 9440,
+        "total": 21705,
+        "accuracy": 0.4349228288412808,
+        "unigram_accuracy": 0.314351531905091
+      },
+      "train_utf8_bytes": 533514
+    }
+  },
+  "not_proven": [
+    "Unique cause of the owner checkpoint",
+    "Native learning correctness",
+    "Fluent conversation after lower LR",
+    "Benefit of the newly added schedule",
+    "Same reproducibility on every platform"
+  ],
+  "generation_caveat": "The independent helper samples greedily with a72-byte cap and replacement decode on an incomplete trailing scalar. Production UTF8 guards were NOT exercised.",
+  "commands": [
+    "python tools/learning_corpus_experiment.py --data-dir <EXACT_V18_DATA> --large --steps 300 --every 100 --batch 16 --lr 0.01 --output lr001.json",
+    "python tools/learning_corpus_experiment.py --data-dir <EXACT_V18_DATA> --large --steps 300 --every 100 --batch 16 --lr 0.001 --output lr0001.json",
+    "python tools/learning_corpus_experiment.py --data-dir <EXACT_V18_DATA> --baseline --output baseline.json"
+  ]
+}

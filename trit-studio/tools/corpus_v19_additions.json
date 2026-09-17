@@ -1,0 +1,512 @@
+{
+  "train": [
+    {
+      "prompt": "Привет, есть пара минут на спокойный разговор?",
+      "answer": "Привет! Да, давай поговорим.",
+      "family": "v19_train_000",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-513482f6bd26de4a3d9c"
+    },
+    {
+      "prompt": "Мне хочется рассказать одну небольшую новость.",
+      "answer": "Рассказывай, я слушаю.",
+      "family": "v19_train_001",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-9e04844ba4a1e9d6ce5e"
+    },
+    {
+      "prompt": "Сегодня я наконец разобрал стол.",
+      "answer": "Теперь на нём, наверное, приятнее работать.",
+      "family": "v19_train_002",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-759e78eeaa26e70d77f5"
+    },
+    {
+      "prompt": "Я ещё ничего не решил, только размышляю.",
+      "answer": "Понял. Пока это размышления, а не решение.",
+      "family": "v19_train_003",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-498400c4ca39e0abfd4b"
+    },
+    {
+      "prompt": "Никакой проблемы нет, я просто делюсь впечатлением.",
+      "answer": "Хорошо. Расскажи, что тебе запомнилось.",
+      "family": "v19_train_004",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-ad6ed6b3290dfa2b8f34"
+    },
+    {
+      "prompt": "Я вернулся после короткой прогулки.",
+      "answer": "С возвращением! Удалось немного переключиться?",
+      "family": "v19_train_005",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-85ed042d83b39da71f01"
+    },
+    {
+      "prompt": "Хочется закончить разговор на сегодня.",
+      "answer": "Хорошо, до следующего раза.",
+      "family": "v19_train_006",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-4eef832b826331989580"
+    },
+    {
+      "prompt": "Спасибо, это было именно то объяснение, которое я искал.",
+      "answer": "Рад, что объяснение подошло.",
+      "family": "v19_train_007",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-87985bcbe0888df9a9e3"
+    },
+    {
+      "prompt": "Сделай фразу короче: «У меня появилась возможность прийти раньше».",
+      "answer": "Я могу прийти раньше.",
+      "family": "v19_train_008",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-2947ff75711bc0be5bba"
+    },
+    {
+      "prompt": "Исправь согласование: «На полке лежала два блокнота».",
+      "answer": "На полке лежали два блокнота.",
+      "family": "v19_train_009",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-981dbb5411d127568951"
+    },
+    {
+      "prompt": "Ответь одним словом: противоположность слову «тихо».",
+      "answer": "громко",
+      "family": "v19_train_010",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-4b44fb0c06876ebdbbd6"
+    },
+    {
+      "prompt": "Оставь только главное: «Я пока ещё не выбрал окончательную дату».",
+      "answer": "Я ещё не выбрал дату.",
+      "family": "v19_train_011",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-92fe04428565865789d2"
+    },
+    {
+      "prompt": "На столе синяя чашка и белая тарелка. Какого цвета тарелка?",
+      "answer": "Белая.",
+      "family": "v19_train_012",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-4ab77b3bc21cba4d5e15"
+    },
+    {
+      "prompt": "Я только собираюсь позвонить Олегу. Уже позвонил?",
+      "answer": "Нет, ты пока только собираешься.",
+      "family": "v19_train_013",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-654017df5f0422e344b2"
+    },
+    {
+      "prompt": "Я выбрал короткую прогулку вместо поездки. Что теперь в планах?",
+      "answer": "Короткая прогулка.",
+      "family": "v19_train_014",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-187afed4f91d32dcfa92"
+    },
+    {
+      "prompt": "Ты можешь ответить просто, без длинного вступления?",
+      "answer": "Да. Задавай вопрос.",
+      "family": "v19_train_015",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-c43c10530c0b11a72850"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Положил карандаш в пенал."
+        },
+        {
+          "role": "assistant",
+          "content": "Карандаш в пенале."
+        },
+        {
+          "role": "user",
+          "content": "Нет, переложил на стол."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь карандаш на столе."
+        }
+      ],
+      "family": "v19_train_016",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-4d5aa231ac76695385e7"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Выберем для встречи субботу."
+        },
+        {
+          "role": "assistant",
+          "content": "Пока выбираем субботу."
+        },
+        {
+          "role": "user",
+          "content": "Друг занят. Пусть будет воскресенье."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь выбрано воскресенье."
+        }
+      ],
+      "family": "v19_train_017",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-ac762fbca06a086cc70c"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне удобнее короткие ответы."
+        },
+        {
+          "role": "assistant",
+          "content": "Буду отвечать короче."
+        },
+        {
+          "role": "user",
+          "content": "Повтори моё пожелание одной фразой."
+        },
+        {
+          "role": "assistant",
+          "content": "Тебе удобнее короткие ответы."
+        }
+      ],
+      "family": "v19_train_018",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-d44418a99e0714eb3a7b"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "В магазине я купил хлеб."
+        },
+        {
+          "role": "assistant",
+          "content": "Ты купил хлеб."
+        },
+        {
+          "role": "user",
+          "content": "Молоко тоже? Я об этом не говорил."
+        },
+        {
+          "role": "assistant",
+          "content": "Про молоко ты не говорил."
+        }
+      ],
+      "family": "v19_train_019",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-967a5fcab5f1b4887e5b"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "На рисунке кот у окна."
+        },
+        {
+          "role": "assistant",
+          "content": "Кот находится у окна."
+        },
+        {
+          "role": "user",
+          "content": "Теперь я дорисовал рядом мяч."
+        },
+        {
+          "role": "assistant",
+          "content": "Рядом с котом появился мяч."
+        }
+      ],
+      "family": "v19_train_020",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-256c5892d650eb9df964"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я хочу пока обдумать предложение."
+        },
+        {
+          "role": "assistant",
+          "content": "Решение ещё не принято."
+        },
+        {
+          "role": "user",
+          "content": "Да, не записывай его как согласие."
+        },
+        {
+          "role": "assistant",
+          "content": "Понял: это не согласие."
+        }
+      ],
+      "family": "v19_train_021",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-eeff05592b32facde6da"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мы назвали папку «Лето»."
+        },
+        {
+          "role": "assistant",
+          "content": "Папка называется «Лето»."
+        },
+        {
+          "role": "user",
+          "content": "Переименовал её в «Осень». Как теперь?"
+        },
+        {
+          "role": "assistant",
+          "content": "«Осень»."
+        }
+      ],
+      "family": "v19_train_022",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-c2569ca08b85e734c8f5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Сначала я собирался читать вечером."
+        },
+        {
+          "role": "assistant",
+          "content": "Вечером было запланировано чтение."
+        },
+        {
+          "role": "user",
+          "content": "Но теперь хочу просто отдохнуть."
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь в планах отдых."
+        }
+      ],
+      "family": "v19_train_023",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-9ad7857ebcf6e8e55f47"
+    },
+    {
+      "text": "Лена открыла окно. В комнату вошёл прохладный воздух. Она немного постояла у окна, а потом вернулась к книге.",
+      "family": "v19_train_024",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-82b046ab6547fd61e671"
+    },
+    {
+      "text": "Максим искал ключи на столе. Их там не было. Он проверил карман куртки и нашёл ключи внутри.",
+      "family": "v19_train_025",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-5c653088aac6b4a2c3f0"
+    },
+    {
+      "text": "На кухне закипела вода. Ира положила чай в чашку и налила воду. Чашку она поставила рядом с блюдцем.",
+      "family": "v19_train_026",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-986e6e319c1fbb236457"
+    },
+    {
+      "text": "Вечером пошёл дождь. Друзья отменили прогулку и остались дома. Они поговорили и сыграли одну партию в шахматы.",
+      "family": "v19_train_027",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-34fe9e552c434129bd02"
+    },
+    {
+      "text": "У Пети было три яблока. Одно он отдал сестре. Два яблока остались у него.",
+      "family": "v19_train_028",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-b4a4f186e31a4c88aad9"
+    },
+    {
+      "text": "Тетрадь лежала под книгой. Маша подняла книгу и достала тетрадь. Затем записала в ней новое слово.",
+      "family": "v19_train_029",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-1338f14fc0a4c2bc2da4"
+    },
+    {
+      "text": "Антон написал письмо, но не отправил его. Утром он перечитал черновик и исправил одну фразу. После этого нажал кнопку отправки.",
+      "family": "v19_train_030",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-f634b5b865a76762c739"
+    },
+    {
+      "text": "Оля собиралась приготовить суп. Овощей не хватило, и она сварила кашу. На ужин была каша, а не суп.",
+      "family": "v19_train_031",
+      "split": "train",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-340b3f7dead1c52ca8d2"
+    }
+  ],
+  "validation": [
+    {
+      "prompt": "У меня есть маленькая история за сегодняшний день.",
+      "answer": "Рассказывай. Что произошло?",
+      "family": "v19_validation_000",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-d9e2a4ce2a854045db23"
+    },
+    {
+      "prompt": "Сегодня удалось спокойно закончить старое дело.",
+      "answer": "Приятно наконец поставить в нём точку.",
+      "family": "v19_validation_001",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-d038075cb110726e3658"
+    },
+    {
+      "prompt": "Сократи: «Мы ещё не пришли к окончательному решению».",
+      "answer": "Мы ещё не решили.",
+      "family": "v19_validation_002",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-adaf1771b1fea60131b6"
+    },
+    {
+      "prompt": "Исправь: «Эти письмо лежали на стола».",
+      "answer": "Эти письма лежали на столе.",
+      "family": "v19_validation_003",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-1363e0cb7f46c126d7ee"
+    },
+    {
+      "prompt": "Я хотел поехать к другу, но передумал и остался дома. Где я?",
+      "answer": "Дома.",
+      "family": "v19_validation_004",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-7c3c83a4a745e30e0cfc"
+    },
+    {
+      "prompt": "Рядом с зелёной книгой красный карандаш. Какого цвета карандаш?",
+      "answer": "Красный.",
+      "family": "v19_validation_005",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-565c2712f5f3a9e4429e"
+    },
+    {
+      "prompt": "Мне сейчас нужен только спокойный ответ, а не план действий.",
+      "answer": "Понял. Давай спокойно поговорим.",
+      "family": "v19_validation_006",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-52a618c920ecceb8a428"
+    },
+    {
+      "prompt": "Я набрал сообщение и сохранил в черновиках. Оно уже отправлено?",
+      "answer": "Нет, оно осталось в черновиках.",
+      "family": "v19_validation_007",
+      "split": "validation",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-4f0e9c3bf9de56d2f6a5"
+    }
+  ],
+  "test": [
+    {
+      "prompt": "Есть немного времени, хочу рассказать тебе о прогулке.",
+      "answer": "Расскажи, как она прошла.",
+      "family": "v19_test_000",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-92495ab0d46550f6f96d"
+    },
+    {
+      "prompt": "Перепиши короче: «Я пока не определился со временем начала».",
+      "answer": "Я ещё не выбрал время начала.",
+      "family": "v19_test_001",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-7257adf915adbbd22bf1"
+    },
+    {
+      "prompt": "Исправь: «Две записка лежит рядом».",
+      "answer": "Две записки лежат рядом.",
+      "family": "v19_test_002",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-785db19f808cc6fefabe"
+    },
+    {
+      "prompt": "Я перенёс билет из сумки в карман. Где искать билет?",
+      "answer": "В кармане.",
+      "family": "v19_test_003",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-1382df4af389b0486a76"
+    },
+    {
+      "prompt": "Я думал согласиться, но ответ пока не дал. Согласие получено?",
+      "answer": "Нет, ты пока не ответил.",
+      "family": "v19_test_004",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-845e74faabdcd18e5161"
+    },
+    {
+      "prompt": "Белый конверт лежит на синей тетради. Что белое?",
+      "answer": "Конверт.",
+      "family": "v19_test_005",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-7a0b6e683d8b675ea199"
+    },
+    {
+      "prompt": "Не надо решать задачу за меня, я лишь описал ситуацию.",
+      "answer": "Понял. Пока просто слушаю твоё описание.",
+      "family": "v19_test_006",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-c0a9ce943c4b3bb7db49"
+    },
+    {
+      "prompt": "Завершим беседу без длинного прощания.",
+      "answer": "До встречи!",
+      "family": "v19_test_007",
+      "split": "test",
+      "origin": "authored-synthetic-v19",
+      "id": "ru-v19-b7b26f22735ff999ef24"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ public sealed partial class MainWindow
     private readonly ComboBox _modelPicker = new() { PlaceholderText = "Выберите модель", MinWidth = 200, MaxDropDownHeight = 320, HorizontalAlignment = HorizontalAlignment.Stretch };
     private readonly Button _selectModelButton = Button("Открыть"), _manageModelsButton = Button("Модели…"), _chatSettingsButton = Button("Параметры ответа ▸"), _diagnosticsButton = Button("Сохранить диагностику");
     private readonly ComboBox _uiScale = new() { ItemsSource = new[] { "50%", "65%", "80%", "100%", "125%" }, MinWidth = 78, SelectedIndex = 2 };
-    private readonly NumericUpDown _publishEvery = Number(100,1,1000,25);
+    private readonly NumericUpDown _publishEvery = Number(100,1,100000,25);
     private readonly TextBlock _selectedModelInfo = Text("Выберите модель в шапке или создайте новую.",13);
     private LayoutTransformControl? _scaledShell;
     private Grid? _chatGrid;
@@ -126,6 +126,7 @@ public sealed partial class MainWindow
     private void ClearModelSpecificInputs()
     {
         _qualitySummary.Text = "Проверка этой модели ещё не выполнялась.";
+        _conversationSummary.Text = "Разговорная проверка выбранной модели ещё не выполнялась.";
         _datasetPaths = []; _pathsLabel.Text = "Выбранные пользовательские файлы сброшены при переключении модели.";
         _dataSummary.Text = "Учебный материал появится после подключения тренера.";
         _input.Text = ""; _private.IsChecked = false; _followTail = true;

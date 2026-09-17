@@ -1,0 +1,78 @@
+{
+  "scope": "Final corrected-corpus independent Python A/B. NOT C#/CUDA or a fluency acceptance. Both arms use identical NEW v22 data and seed42, not a pure old-release vs new-release comparison.",
+  "status": "both_requested_6000_steps_completed_no_guard_rejection",
+  "same_data_sha256": {
+    "seed.jsonl": "5052529f277fd91d5bd3d1248601fca0672cf4c7f450c11b050fb271a34de0e9",
+    "conversation-starter.jsonl": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816",
+    "conversation-context.jsonl": "20c0d2dfa64fb31bc23f8e75872379dff7d2645904fc92f6c79dde55fafa98fe",
+    "conversation-language.jsonl": "f7408fdc546ba1bc5bc92293c08b26696d744f25f0f3c4fad41702c8813a830e",
+    "conversation-transfer.jsonl": "d6e0b4e840d431868f5f81274f0ec554bd968802e974f683e9e117b80de94835",
+    "validation.jsonl": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7",
+    "context-challenge.jsonl": "6c5d122db91738b681f332514c1f5b93d6c54806e0a98fc226d42e7c77e565b7",
+    "transfer-challenge.jsonl": "9502f9332f5a6f44c277c902bc45892e07a91a1d939aa59e3d412f27aa330543"
+  },
+  "same_initial_control": {
+    "loss": 5.58652106057998,
+    "accuracy": 0.0003949793732993944,
+    "target_tokens": 22786
+  },
+  "parameters": 821120,
+  "batch": 8,
+  "peak_lr": 0.001,
+  "seed": 42,
+  "schedule": "100-step warmup then cosine to .0001",
+  "guard_interval": 500,
+  "results": {
+    "legacy": {
+      "known_training_exact": 0,
+      "known_total": 20,
+      "new_exact": 3,
+      "new_total": 62,
+      "old_pairs_passed": 0,
+      "old_pairs_total": 16,
+      "full_control": {
+        "loss": 1.123610557927958,
+        "accuracy": 0.6122180286140613,
+        "target_tokens": 22786
+      },
+      "open_responses": {
+        "Привет, как ты?": "Я не знакомним.",
+        "Давай немного поговорим про книги.": "Понял.",
+        "Я закончил рисунок, хочу поделиться.": "Понял.",
+        "Я сегодня гулял.": "Слушаю.",
+        "Не хочу советов, просто послушай.": "Конечно. Рассказывай, я слушаю.",
+        "Что посоветуешь почитать?": "Рад пинял запосаемошь."
+      },
+      "last_accepted_step": 6000
+    },
+    "balanced": {
+      "known_training_exact": 20,
+      "known_total": 20,
+      "new_exact": 11,
+      "new_total": 62,
+      "old_pairs_passed": 2,
+      "old_pairs_total": 16,
+      "full_control": {
+        "loss": 1.131817908164836,
+        "accuracy": 0.6117791626437286,
+        "target_tokens": 22786
+      },
+      "open_responses": {
+        "Привет, как ты?": "Понял.",
+        "Давай немного поговорим про книги.": "Что тебе больше всего понравилось в книге?",
+        "Я закончил рисунок, хочу поделиться.": "Понял.",
+        "Я сегодня гулял.": "Здорово. Где гулял?",
+        "Не хочу советов, просто послушай.": "Конечно. Рассказывай, я слушаю.",
+        "Что посоветуешь почитать?": "Давай поговорим. Что у тебя нового?"
+      },
+      "last_accepted_step": 6000
+    }
+  },
+  "limitations": [
+    "Single independent CPU seed, medium architecture, no C# initializer/RNG/native scheduling or RTX5080 evidence.",
+    "Strict exact target matching can reject valid paraphrases; read full responses. Exact matches do not imply all intermediate turns were good.",
+    "New name-grid-omission and missing-information categories remain 0/4 each for both arms. Open conversation remains unreliable.",
+    "Preliminary artifacts used18 flawed-gender training prompts and one flawed development prompt; both runs were repeated after correction. Their prior4/16 result is not the final2/16 result.",
+    "No peak-memory/speed comparison: arms ran concurrently in a shared container and padding differs. No weights auto-injected into app."
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent Python checks of v17 retained optimization semantics. NOT execution of C# or a C# speed benchmark."""
+"""Independent Python checks of v20 retained optimization semantics. NOT execution of C# or a C# speed benchmark."""
 from __future__ import annotations
 import collections
 import json
@@ -162,5 +162,5 @@ if __name__=='__main__':
                 caveats=['Bucketed batches alter correlations, not per-example marginal sampling. Fitting quality must still be measured.',
                          'The shape-count reduction is not a measured runtime speedup.',
                          'SDPA chooses an available native implementation; this report does not certify FlashAttention on the laptop.'])
-    (ROOT/'reports/performance-reference-v17.json').write_text(json.dumps(report,indent=2)+'\n')
+    (ROOT/'reports/performance-reference-v22.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))

@@ -92,9 +92,23 @@ public sealed record TrainingOptions
     public double LearningRate { get; init; } = 0.001;
     public double OnlineLearningRate { get; init; } = 0.0001;
     public double MaxValidationRegression { get; init; } = 0.20;
+    // Old saved jobs retain constant LR and exact publication cadence. Both options are explicit.
+    public bool WarmupCosine { get; init; }
+    public bool ConversationCourse { get; init; }
+    // Opt-in v21 mixed-context recipe. Existing stored course plans remain v20 when false.
+    public bool ContextPractice { get; init; }
+    public bool TransferPractice { get; init; }
+    public bool EqualExampleWeight { get; init; }
+    public bool AutoSnapshotInterval { get; init; }
+    public int WarmupSteps { get; init; } = 100;
     public void Validate()
     {
-        if (Steps is < 0 or > 100_000 || PublishEvery is < 1 or > 1000 ||
+        if (!double.IsFinite(LearningRate) || LearningRate is <= 0 or > 0.01)
+            throw new ArgumentException("Learning rate должен быть больше 0 и не больше 0,01. 0,01 — верхняя граница, не рекомендуемый минимум. 0,001 и 0,0003 допустимы.");
+        if (TransferPractice && (!ContextPractice || !ConversationCourse)) throw new ArgumentException("Практика v22 требует разговорного курса и контекстной практики.");
+        if (ContextPractice && !ConversationCourse) throw new ArgumentException("Контекстная практика требует включённого разговорного курса.");
+        if (WarmupSteps is < 0 or > 10000) throw new ArgumentException("Разогрев: от 0 до 10000 шагов.");
+        if (Steps is < 0 or > 100_000 || PublishEvery is < 1 or > 100000 ||
             !double.IsFinite(LearningRate) || LearningRate is <= 0 or > 0.01 ||
             !double.IsFinite(OnlineLearningRate) || OnlineLearningRate is <= 0 or > 0.001 ||
             !double.IsFinite(MaxValidationRegression) || MaxValidationRegression is < 0 or > 0.5)

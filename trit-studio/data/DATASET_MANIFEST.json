@@ -1,11 +1,11 @@
 {
-  "version": "conversation-ru-v18",
+  "version": "conversation-ru-v22",
   "language": "ru",
   "origin": "original authored synthetic text; no private chats or scraping",
   "license": "MIT (same as application)",
   "counts": {
-    "seed": 2826,
-    "validation": 388,
+    "seed": 2990,
+    "validation": 408,
     "test": 40,
     "challenge": 24,
     "challenge-v4": 16,
@@ -23,18 +23,26 @@
     "challenge-v16": 16,
     "challenge-v17": 8,
     "challenge-v18": 12,
-    "pretrain": 48
+    "challenge-v19": 8,
+    "pretrain": 48,
+    "conversation-starter": 281,
+    "challenge-v20": 8,
+    "conversation-context": 388,
+    "context-challenge": 32,
+    "conversation-language": 160,
+    "conversation-transfer": 1278,
+    "transfer-challenge": 62
   },
   "files": {
     "seed": {
-      "count": 2826,
-      "bytes": 1064041,
-      "sha256": "39114e415b9afc1418cfac0375438d199be7d67317b6d2978f580cf894035be9"
+      "count": 2990,
+      "bytes": 1134252,
+      "sha256": "5052529f277fd91d5bd3d1248601fca0672cf4c7f450c11b050fb271a34de0e9"
     },
     "validation": {
-      "count": 388,
-      "bytes": 144069,
-      "sha256": "06d6d633495e925c15d10817101b50636faaeef3fb6dfb0577bceabdffd17eec"
+      "count": 408,
+      "bytes": 150409,
+      "sha256": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7"
     },
     "test": {
       "count": 40,
@@ -121,13 +129,53 @@
       "bytes": 3686,
       "sha256": "49b11affebaf74654340039a86fecf0dbc6a9b4afead4b9b3a965c861f8a79e1"
     },
+    "challenge-v19": {
+      "count": 8,
+      "bytes": 2200,
+      "sha256": "2088fc6193ab6ada664e31fc5beed1e9b6f9b75146635d2be90b6e90fcbda4df"
+    },
     "pretrain": {
       "count": 48,
       "bytes": 9425,
       "sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
+    },
+    "conversation-starter": {
+      "count": 281,
+      "bytes": 74266,
+      "sha256": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816"
+    },
+    "challenge-v20": {
+      "count": 8,
+      "bytes": 2571,
+      "sha256": "5062c3bbec43094c61f1f87973482e80c1a3922513ac35925dba3d7eb5c4ca8b"
+    },
+    "conversation-context": {
+      "count": 388,
+      "bytes": 189836,
+      "sha256": "20c0d2dfa64fb31bc23f8e75872379dff7d2645904fc92f6c79dde55fafa98fe"
+    },
+    "context-challenge": {
+      "count": 32,
+      "bytes": 17022,
+      "sha256": "6c5d122db91738b681f332514c1f5b93d6c54806e0a98fc226d42e7c77e565b7"
+    },
+    "conversation-language": {
+      "count": 160,
+      "bytes": 55735,
+      "sha256": "f7408fdc546ba1bc5bc92293c08b26696d744f25f0f3c4fad41702c8813a830e"
+    },
+    "conversation-transfer": {
+      "count": 1278,
+      "bytes": 644230,
+      "sha256": "d6e0b4e840d431868f5f81274f0ec554bd968802e974f683e9e117b80de94835"
+    },
+    "transfer-challenge": {
+      "count": 62,
+      "bytes": 25304,
+      "sha256": "9502f9332f5a6f44c277c902bc45892e07a91a1d939aa59e3d412f27aa330543"
     }
   },
-  "blind_test": "test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl challenge-v14.jsonl challenge-v15.jsonl challenge-v16.jsonl challenge-v17.jsonl and challenge-v18.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen",
+  "blind_test": "test.jsonl, challenge.jsonl, challenge-v4.jsonl, challenge-v5.jsonl challenge-v6.jsonl challenge-v7.jsonl challenge-v8.jsonl, challenge-v9.jsonl challenge-v10.jsonl challenge-v11.jsonl challenge-v12.jsonl challenge-v13.jsonl challenge-v14.jsonl challenge-v15.jsonl challenge-v16.jsonl challenge-v17.jsonl challenge-v18.jsonl challenge-v19.jsonl, challenge-v20.jsonl and context-challenge.jsonl NEVER enter training; prior held-out generations are byte-for-byte frozen",
   "frozen_v2_test_sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb",
   "frozen_v3_challenge_sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550",
   "frozen_v4_challenge_sha256": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf",
@@ -144,9 +192,12 @@
   "frozen_v15_challenge_sha256": "86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11",
   "frozen_v16_challenge_sha256": "125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0",
   "frozen_v17_challenge_sha256": "efbb9ea61308bca0cf3e9f9ddeb0346e5a7f802527638b053699244b9e20968e",
+  "frozen_v18_challenge_sha256": "49b11affebaf74654340039a86fecf0dbc6a9b4afead4b9b3a965c861f8a79e1",
   "frozen_baseline_sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973",
   "baseline": "pretrain.jsonl is a separate text-only training stage; never injected into random initialization or claimed as pretrained weights",
   "claim": "starter corpus, not pretrained weights or a conversational quality guarantee",
+  "context_practice": "conversation-context.jsonl is explicit template-labelled TRAIN material for opt-in mixed phases; context-challenge.jsonl is a separate public paired evaluation that NEVER trains. Existing baseline, starter, controls and historical heldouts remain frozen.",
+  "course": "conversation-starter.jsonl is explicit TRAIN material for the optional course; not basic pretraining and not a test. Authored paraphrases intentionally share target replies; scene variants are not independent plots.",
   "generation": "python3 tools/build_conversation_dataset.py",
   "evolution": "Append reviewed train families, retain old held-out tests, add new held-out families separately."
 }

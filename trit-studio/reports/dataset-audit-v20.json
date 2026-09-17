@@ -1,0 +1,277 @@
+{
+  "status": "passed",
+  "scope": "Data structure, integrity, disjointness and sequence budgeting; NOT a model quality evaluation",
+  "corpus_version": "conversation-ru-v20",
+  "splits": {
+    "seed": {
+      "count": 2966,
+      "kinds": {
+        "single-turn": 1718,
+        "multi-turn": 814,
+        "plain-text": 434
+      },
+      "families": 901,
+      "max_sequence_bytes_with_roles": 453,
+      "mean_sequence_bytes_with_roles": 189.88,
+      "sha256": "ef012945461a3d183f2e4334504f14f935720bf1b4231445bdfdd4ca0d1a1812"
+    },
+    "validation": {
+      "count": 408,
+      "kinds": {
+        "single-turn": 290,
+        "multi-turn": 118
+      },
+      "families": 122,
+      "max_sequence_bytes_with_roles": 306,
+      "mean_sequence_bytes_with_roles": 168.48,
+      "sha256": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7"
+    },
+    "test": {
+      "count": 40,
+      "kinds": {
+        "single-turn": 30,
+        "multi-turn": 10
+      },
+      "families": 21,
+      "max_sequence_bytes_with_roles": 258,
+      "mean_sequence_bytes_with_roles": 158.22,
+      "sha256": "cc828879d8996742756520d20a5971106e4ecb099e9406690459e414eea508fb"
+    },
+    "challenge": {
+      "count": 24,
+      "kinds": {
+        "single-turn": 16,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 221,
+      "mean_sequence_bytes_with_roles": 153.88,
+      "sha256": "2aa3d83f5cf51b85a0ee18e9e35e65e065ae7672dea573844abd676756fab550"
+    },
+    "challenge-v4": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 215,
+      "mean_sequence_bytes_with_roles": 169.06,
+      "sha256": "28cfbd9742401023153750dc7e0145d222a48189d8d9330978332ff134f0fadf"
+    },
+    "challenge-v5": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 4,
+      "max_sequence_bytes_with_roles": 227,
+      "mean_sequence_bytes_with_roles": 157.75,
+      "sha256": "3493915e807d59feb388d7dff814cd6910db20d5f797c324dca5319bacf8223e"
+    },
+    "challenge-v6": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 291,
+      "mean_sequence_bytes_with_roles": 213.75,
+      "sha256": "967b7c5e3b2bda83165e1f8b278ef5f70b74ba8b9ad4c588ea487f4882ee791e"
+    },
+    "challenge-v7": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 249,
+      "mean_sequence_bytes_with_roles": 188.19,
+      "sha256": "ee7072895a15764312986060d9b430b9fc56227966f5acf020bbaaa9f3bebfd8"
+    },
+    "challenge-v8": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 227,
+      "mean_sequence_bytes_with_roles": 159.94,
+      "sha256": "5c07ee49983aeafa71a83196dcb5762ebbebb7828d00c76885420c0ab9370743"
+    },
+    "challenge-v9": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 4,
+      "max_sequence_bytes_with_roles": 257,
+      "mean_sequence_bytes_with_roles": 178.38,
+      "sha256": "fccb39e40af542c4d1b863f16978519868ac88cff3356d1320ccf2cb47e26e57"
+    },
+    "challenge-v10": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 4,
+      "max_sequence_bytes_with_roles": 290,
+      "mean_sequence_bytes_with_roles": 183.69,
+      "sha256": "8ac9e4ef854e1f9e953e07697fda8c7e2acbf7d441a8bd9b4712f1d95bcf6020"
+    },
+    "challenge-v11": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 303,
+      "mean_sequence_bytes_with_roles": 195.0,
+      "sha256": "9fdd58708166d1259ee56462e00de255c737477611a51e238dd0d2a148a37885"
+    },
+    "challenge-v12": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 336,
+      "mean_sequence_bytes_with_roles": 192.94,
+      "sha256": "462930a49fdffeab019d231da1c960d7906343476bdf3b96fc3865787baa0d32"
+    },
+    "challenge-v13": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 237,
+      "mean_sequence_bytes_with_roles": 176.88,
+      "sha256": "888d908276483030ca818c74d0acaca65a7da9ebedad5cc1762509d260495ef3"
+    },
+    "challenge-v14": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 337,
+      "mean_sequence_bytes_with_roles": 204.75,
+      "sha256": "a404cb0ba9757ada7ecc80799734445ba17d70c299513214316535875244aa40"
+    },
+    "challenge-v15": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 8,
+        "multi-turn": 8
+      },
+      "families": 16,
+      "max_sequence_bytes_with_roles": 288,
+      "mean_sequence_bytes_with_roles": 190.44,
+      "sha256": "86262b63d04b1cdf2c609592e091adb2be4238e67d553f877b611b1a167e7c11"
+    },
+    "challenge-v16": {
+      "count": 16,
+      "kinds": {
+        "single-turn": 10,
+        "multi-turn": 6
+      },
+      "families": 2,
+      "max_sequence_bytes_with_roles": 305,
+      "mean_sequence_bytes_with_roles": 174.94,
+      "sha256": "125495efa5ee8d3dabfa7ddde8898486d807e53388d1da7f6ae5bd0b651c93d0"
+    },
+    "challenge-v17": {
+      "count": 8,
+      "kinds": {
+        "single-turn": 8
+      },
+      "families": 8,
+      "max_sequence_bytes_with_roles": 178,
+      "mean_sequence_bytes_with_roles": 126.5,
+      "sha256": "efbb9ea61308bca0cf3e9f9ddeb0346e5a7f802527638b053699244b9e20968e"
+    },
+    "challenge-v18": {
+      "count": 12,
+      "kinds": {
+        "single-turn": 12
+      },
+      "families": 12,
+      "max_sequence_bytes_with_roles": 225,
+      "mean_sequence_bytes_with_roles": 165.08,
+      "sha256": "49b11affebaf74654340039a86fecf0dbc6a9b4afead4b9b3a965c861f8a79e1"
+    },
+    "challenge-v19": {
+      "count": 8,
+      "kinds": {
+        "single-turn": 8
+      },
+      "families": 8,
+      "max_sequence_bytes_with_roles": 174,
+      "mean_sequence_bytes_with_roles": 134.0,
+      "sha256": "2088fc6193ab6ada664e31fc5beed1e9b6f9b75146635d2be90b6e90fcbda4df"
+    },
+    "pretrain": {
+      "count": 48,
+      "kinds": {
+        "plain-text": 48
+      },
+      "families": 48,
+      "max_sequence_bytes_with_roles": 101,
+      "mean_sequence_bytes_with_roles": 66.35,
+      "sha256": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
+    },
+    "conversation-starter": {
+      "count": 281,
+      "kinds": {
+        "single-turn": 281
+      },
+      "families": 92,
+      "max_sequence_bytes_with_roles": 178,
+      "mean_sequence_bytes_with_roles": 112.99,
+      "sha256": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816"
+    },
+    "challenge-v20": {
+      "count": 8,
+      "kinds": {
+        "single-turn": 8
+      },
+      "families": 8,
+      "max_sequence_bytes_with_roles": 274,
+      "mean_sequence_bytes_with_roles": 182.38,
+      "sha256": "5062c3bbec43094c61f1f87973482e80c1a3922513ac35925dba3d7eb5c4ca8b"
+    }
+  },
+  "cross_split_normalized_duplicates": 0,
+  "cross_split_exact_single_turn_prompts": 0,
+  "runtime_equivalent_cross_partition_inputs": 0,
+  "semantic_generalization": "Unmeasured. Related everyday topics intentionally occur across splits.",
+  "frozen_v2_test_unchanged": true,
+  "frozen_v3_challenge_unchanged": true,
+  "frozen_v4_challenge_unchanged": true,
+  "frozen_v5_challenge_unchanged": true,
+  "frozen_v6_challenge_unchanged": true,
+  "frozen_v7_challenge_unchanged": true,
+  "frozen_v8_challenge_unchanged": true,
+  "frozen_v9_challenge_unchanged": true,
+  "frozen_v10_challenge_unchanged": true,
+  "frozen_v11_challenge_unchanged": true,
+  "frozen_v12_challenge_unchanged": true,
+  "frozen_v13_challenge_unchanged": true,
+  "frozen_v14_challenge_unchanged": true,
+  "frozen_v15_challenge_unchanged": true,
+  "frozen_v16_challenge_unchanged": true,
+  "baseline_v7_unchanged": true,
+  "cross_split_input_context_duplicates": 0,
+  "total_examples": 4011
+}

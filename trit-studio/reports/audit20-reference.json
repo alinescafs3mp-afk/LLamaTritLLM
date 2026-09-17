@@ -1,0 +1,249 @@
+{
+  "status": "passed",
+  "scope": "Independent Python objective/prefix/curriculum specifications; NOT C# execution or conversation quality",
+  "objective_cases": [
+    {
+      "targets": [
+        1,
+        12
+      ],
+      "vocab": 7,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        12
+      ],
+      "vocab": 7,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        12
+      ],
+      "vocab": 262,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        12
+      ],
+      "vocab": 262,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        5,
+        2,
+        70
+      ],
+      "vocab": 7,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        5,
+        2,
+        70
+      ],
+      "vocab": 7,
+      "dtype": "torch.float64",
+      "gradient_max_error": 8.673617379884035e-19
+    },
+    {
+      "targets": [
+        5,
+        2,
+        70
+      ],
+      "vocab": 262,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        5,
+        2,
+        70
+      ],
+      "vocab": 262,
+      "dtype": "torch.float64",
+      "gradient_max_error": 8.673617379884035e-19
+    },
+    {
+      "targets": [
+        1,
+        1
+      ],
+      "vocab": 7,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        1
+      ],
+      "vocab": 7,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        1
+      ],
+      "vocab": 262,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        1,
+        1
+      ],
+      "vocab": 262,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        17,
+        9,
+        4,
+        33
+      ],
+      "vocab": 7,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        17,
+        9,
+        4,
+        33
+      ],
+      "vocab": 7,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        17,
+        9,
+        4,
+        33
+      ],
+      "vocab": 262,
+      "dtype": "torch.float32",
+      "gradient_max_error": 0.0
+    },
+    {
+      "targets": [
+        17,
+        9,
+        4,
+        33
+      ],
+      "vocab": 262,
+      "dtype": "torch.float64",
+      "gradient_max_error": 0.0
+    }
+  ],
+  "phase_cases": [
+    {
+      "steps": 1,
+      "phase_steps": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "steps": 2,
+      "phase_steps": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "steps": 3,
+      "phase_steps": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "steps": 4,
+      "phase_steps": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "steps": 5,
+      "phase_steps": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "steps": 19,
+      "phase_steps": [
+        4,
+        8,
+        7
+      ]
+    },
+    {
+      "steps": 100,
+      "phase_steps": [
+        20,
+        40,
+        40
+      ]
+    },
+    {
+      "steps": 6000,
+      "phase_steps": [
+        1200,
+        2400,
+        2400
+      ]
+    }
+  ],
+  "source_records": 3247,
+  "main_types": {
+    "single": 1718,
+    "multi": 814,
+    "text": 434
+  },
+  "all_prefix_candidates": 1320,
+  "derived_control_exclusions": 0,
+  "unique_expanded_examples": 4567,
+  "new_target_examples": 1320,
+  "supervised_byte_positions_before": 284199,
+  "supervised_byte_positions_after": 326472,
+  "input_positions_before": 594932,
+  "input_positions_after": 755505,
+  "growth_semantics": "Derived prefixes are training views of existing dialogues, not newly authored conversations.",
+  "data_sha256": {
+    "seed.jsonl": "ef012945461a3d183f2e4334504f14f935720bf1b4231445bdfdd4ca0d1a1812",
+    "conversation-starter.jsonl": "197e5902bb539f55f11ea1cbb1c2e4f9b35cd93d1d2f5d44d510bce404c95816",
+    "validation.jsonl": "2e4899f48940f7dfac6fc32b0d8409030092f8950d44889f3f765f8b82cc98b7",
+    "pretrain.jsonl": "a1efc4e62aba0afbe0d2f062e76e8f68c8f54454c68fe985a88ece58a1d14973"
+  }
+}

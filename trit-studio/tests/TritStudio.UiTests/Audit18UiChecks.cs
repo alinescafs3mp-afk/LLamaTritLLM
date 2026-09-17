@@ -47,6 +47,7 @@ internal static class Audit18UiChecks
         Field<NumericUpDown>("_batch").Value=64;Field<NumericUpDown>("_steps").Value=731;
         Field<NumericUpDown>("_sequence").Value=384;Field<NumericUpDown>("_publishEvery").Value=137;
         Field<CheckBox>("_refreshCorpus").IsChecked=false;
+        Field<CheckBox>("_scheduledRate").IsChecked=true;Field<CheckBox>("_autoSnapshots").IsChecked=true;
         await PumpUntil(()=>File.Exists(LaunchDraftStore.FilePath(a))&&!Field<bool>("_runDraftDirty"));
         var desired=(LaunchDraft)Invoke("CaptureRunDraft")!;
         Check(LaunchDraftStore.Read(a,config)==desired,"auto-save did not preserve the actual typed options");
@@ -73,15 +74,18 @@ internal static class Audit18UiChecks
         var other=LaunchDraftStore.Read(b,config);SelectContext(a);
         Check((LaunchDraft)Invoke("CaptureRunDraft")! == desired,"model B fields leaked back into model A");
         Check(other!.Training.Steps==89&&other.Resources.BatchSize==32,"model B values were not stored");
-        // Profile is explicit replacement of five fields, save is not. Neither alters weights or creator.
+        // Profile is explicit replacement of five fields plus two disclosed opt-ins, save is not. Neither alters weights or creator.
         Field<NumericUpDown>("_newRate").Value=.0008m;Field<NumericUpDown>("_newBatch").Value=64;
         Field<Button>("_trainingPresetButton").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));Dispatcher.UIThread.RunJobs();
+        Check(Field<CheckBox>("_scheduledRate").IsChecked==true&&Field<CheckBox>("_autoSnapshots").IsChecked==true,"profile did not enable disclosed schedule/cadence");
         Check(rate.Value==.001m&&Field<NumericUpDown>("_steps").Value==2000&&Field<NumericUpDown>("_batch").Value==8,"explicit profile didn't fill its five fields");
         Check(Field<NumericUpDown>("_newRate").Value==.0008m&&Field<NumericUpDown>("_newBatch").Value==64,"profile altered creation options");
+        Field<CheckBox>("_scheduledRate").IsChecked=false;Field<CheckBox>("_autoSnapshots").IsChecked=false;
         Field<NumericUpDown>("_batch").Value=24;rate.Value=.0004m;
         Field<Button>("_saveRunDraft").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         await PumpUntil(()=>!Field<HashSet<Button>>("_busyButtons").Contains(Field<Button>("_saveRunDraft")));
         Check(LaunchDraftStore.Read(a,config)!.Resources.BatchSize==24&&rate.Value==.0004m,"save button re-applied the profile");
+        Check(!LaunchDraftStore.Read(a,config)!.Training.WarmupCosine&&!LaunchDraftStore.Read(a,config)!.Training.AutoSnapshotInterval,"save unexpectedly re-enabled schedule");
         Check(ReferenceEquals(model,Field<ManagedInference>("_model"))&&packed.SequenceEqual(File.ReadAllBytes(file)),"editing settings changed model weights");
         // An invalid hidden create-training field must not prevent saving a selected model's run or raw creation.
         Field<ParameterNumber>("_newRate").Text="invalid";Field<ParameterNumber>("_newBatch").Text="invalid";

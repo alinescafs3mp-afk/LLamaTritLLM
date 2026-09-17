@@ -1,0 +1,8 @@
+{"prompt": "Есть немного времени, хочу рассказать тебе о прогулке.", "answer": "Расскажи, как она прошла.", "family": "v19_test_000", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-92495ab0d46550f6f96d"}
+{"prompt": "Перепиши короче: «Я пока не определился со временем начала».", "answer": "Я ещё не выбрал время начала.", "family": "v19_test_001", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-7257adf915adbbd22bf1"}
+{"prompt": "Исправь: «Две записка лежит рядом».", "answer": "Две записки лежат рядом.", "family": "v19_test_002", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-785db19f808cc6fefabe"}
+{"prompt": "Я перенёс билет из сумки в карман. Где искать билет?", "answer": "В кармане.", "family": "v19_test_003", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-1382df4af389b0486a76"}
+{"prompt": "Я думал согласиться, но ответ пока не дал. Согласие получено?", "answer": "Нет, ты пока не ответил.", "family": "v19_test_004", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-845e74faabdcd18e5161"}
+{"prompt": "Белый конверт лежит на синей тетради. Что белое?", "answer": "Конверт.", "family": "v19_test_005", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-7a0b6e683d8b675ea199"}
+{"prompt": "Не надо решать задачу за меня, я лишь описал ситуацию.", "answer": "Понял. Пока просто слушаю твоё описание.", "family": "v19_test_006", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-c0a9ce943c4b3bb7db49"}
+{"prompt": "Завершим беседу без длинного прощания.", "answer": "До встречи!", "family": "v19_test_007", "split": "test", "origin": "authored-synthetic-v19", "id": "ru-v19-b7b26f22735ff999ef24"}

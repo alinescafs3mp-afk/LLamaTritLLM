@@ -22,8 +22,8 @@ public sealed partial class MainWindow
     private NumericUpDown[] RunNumbers => _runNumbersCache ??= [_steps, _learningRate, _batch, _sequence, _publishEvery, _threads, _memory];
     private NumericUpDown[] CreationBaseNumbers => _creationBaseNumbersCache ??= [_dimension, _hidden, _layers, _heads, _kvHeads, _context, _planes, _group, _threshold, _newMemory];
     private NumericUpDown[] CreationNumbers => _creationNumbersCache ??= [..CreationBaseNumbers, _newBatch, _newSequence, _newSteps, _newRate, _newPublish];
-    private Control[] RunEditors => _runEditorsCache ??= [..RunNumbers, _cuda, _sdpa, _buckets, _targetProjection, _trainingMaterial, _refreshCorpus];
-    private Control[] CreationEditors => _creationEditorsCache ??= [..CreationNumbers, _name, _newCuda, _creationMode, _preset];
+    private Control[] RunEditors => _runEditorsCache ??= [..RunNumbers, _cuda, _sdpa, _buckets, _targetProjection, _trainingMaterial, _refreshCorpus, _scheduledRate, _autoSnapshots, _conversationCourse, _equalExamples, _contextPractice, _transferPractice];
+    private Control[] CreationEditors => _creationEditorsCache ??= [..CreationNumbers, _name, _newCuda, _creationMode, _preset, _newScheduledRate, _newAutoSnapshots, _newConversationCourse, _newEqualExamples, _newContextPractice, _newTransferPractice];
 
     private static void ValidateEditorNumbers(IEnumerable<NumericUpDown> numbers)
     {
@@ -50,6 +50,30 @@ public sealed partial class MainWindow
     }
     private void WireLaunchEditors()
     {
+        _conversationCourse.PropertyChanged += (_, e) => {
+            if (e.Property.Name == "IsChecked")
+            {
+                if (!_restoringLaunch && _conversationCourse.IsChecked != true) _contextPractice.IsChecked = false;
+                UpdateLaunchEditorAvailability();
+            }
+        };
+        _newConversationCourse.PropertyChanged += (_, e) => {
+            if (e.Property.Name == "IsChecked")
+            {
+                if (!_restoringLaunch && _newConversationCourse.IsChecked != true) _newContextPractice.IsChecked = false;
+                UpdateLaunchEditorAvailability();
+            }
+        };
+        _contextPractice.PropertyChanged += (_, e) => {
+            if (e.Property.Name != "IsChecked") return;
+            if (!_restoringLaunch && _contextPractice.IsChecked != true) _transferPractice.IsChecked = false;
+            UpdateLaunchEditorAvailability();
+        };
+        _newContextPractice.PropertyChanged += (_, e) => {
+            if (e.Property.Name != "IsChecked") return;
+            if (!_restoringLaunch && _newContextPractice.IsChecked != true) _newTransferPractice.IsChecked = false;
+            UpdateLaunchEditorAvailability();
+        };
         foreach (var c in RunEditors)
             c.PropertyChanged += (_,e) => { if (e.Property.Name is "Text" or "Value" or "IsChecked" or "SelectedIndex") MarkRunEdited(); };
         foreach (var c in CreationEditors)
@@ -65,6 +89,9 @@ public sealed partial class MainWindow
                 try
                 {
                     _creationTrainingBase = saved.Training;
+                    _newConversationCourse.IsChecked = saved.Training.ConversationCourse; _newContextPractice.IsChecked = saved.Training.ContextPractice; _newTransferPractice.IsChecked = saved.Training.TransferPractice; _newEqualExamples.IsChecked = saved.Training.EqualExampleWeight;
+                    _newScheduledRate.IsChecked = saved.Training.WarmupCosine;
+                    _newAutoSnapshots.IsChecked = saved.Training.AutoSnapshotInterval;
                     _preset.SelectedIndex = -1; ApplyPreset(saved.Config); _name.Text = saved.Name;
                     SetEditorValue(_newMemory, saved.Resources.MemoryMiB); _newCuda.IsChecked = saved.Resources.PreferCuda;
                     SetEditorValue(_newBatch, saved.Resources.BatchSize); SetEditorValue(_newSequence, saved.Resources.SequenceLength);
@@ -101,6 +128,8 @@ public sealed partial class MainWindow
         try
         {
             _runTrainingBase = d.Training;
+            _conversationCourse.IsChecked = d.Training.ConversationCourse; _contextPractice.IsChecked = d.Training.ContextPractice; _transferPractice.IsChecked = d.Training.TransferPractice; _equalExamples.IsChecked = d.Training.EqualExampleWeight;
+            _scheduledRate.IsChecked = d.Training.WarmupCosine; _autoSnapshots.IsChecked = d.Training.AutoSnapshotInterval;
             SetEditorValue(_threads, Math.Min(d.Resources.Threads, Environment.ProcessorCount));
             SetEditorValue(_memory, d.Resources.MemoryMiB); SetEditorValue(_batch, d.Resources.BatchSize); SetEditorValue(_sequence, d.Resources.SequenceLength);
             _cuda.IsChecked = d.Resources.PreferCuda; _sdpa.IsChecked = d.Resources.UseSdpa;
@@ -174,6 +203,10 @@ public sealed partial class MainWindow
         bool free = !_closing && !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
         foreach(var c in RunEditors) c.IsEnabled = free && _runEditorInitialized && _runContext is not null;
         foreach(var c in CreationEditors) c.IsEnabled = free && !_generating;
+        _contextPractice.IsEnabled = free && _runEditorInitialized && _runContext is not null && _conversationCourse.IsChecked == true;
+        _newContextPractice.IsEnabled = free && !_generating && _newConversationCourse.IsChecked == true;
+        _transferPractice.IsEnabled = _contextPractice.IsEnabled && _contextPractice.IsChecked == true;
+        _newTransferPractice.IsEnabled = _newContextPractice.IsEnabled && _newContextPractice.IsChecked == true;
         _saveRunDraft.IsEnabled = free && _runEditorInitialized && _model is not null && _workspace is not null;
         _trainingPresetButton.IsEnabled = free && _runEditorInitialized && _model is not null && _workspace is not null;
     }

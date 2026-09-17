@@ -13,6 +13,7 @@ internal static class Program
         Console.InputEncoding = Encoding.UTF8; Console.OutputEncoding = new UTF8Encoding(false);
         try
         {
+            if (args.Contains("--learning-lab")) return CorpusLearningLab.Run(args);
             if (args.Contains("--self-test")) return TrainerSelfTest.Run(args.Contains("--cuda"));
             if (args.Contains("--benchmark"))
             {
@@ -34,7 +35,7 @@ internal static class Program
                 return 0;
             }
             if (args.Length != 2 || args[0] != "--workspace")
-            { Console.Error.WriteLine("Usage: TritStudio.Trainer --workspace PATH | --doctor | --self-test [--cuda] | --benchmark [--cuda] [--reverse] [--output FILE]"); return 2; }
+            { Console.Error.WriteLine("Usage: TritStudio.Trainer --workspace PATH | --doctor | --self-test [--cuda] | --benchmark [--cuda] [--reverse] [--output FILE] | --learning-lab [--cuda] [--scheduled] [--course] [--steps N] [--lr RATE] [--batch N] [--output-dir DIRECTORY]"); return 2; }
             torch.set_num_interop_threads(1);
             using var worker = new Worker(args[1]);
             await worker.RunAsync(); return 0;
@@ -126,7 +127,7 @@ internal sealed class Worker : IDisposable
         Emit("status", new StatusEvent(message, _session?.Step ?? _active?.Step ?? 0, loss, speed, RssMiB(),
             _session?.DeviceName ?? "", _replay.PendingCount, busy, _stage, _completedSteps, _totalSteps,
             _replay.Summary, _store.RevisionCount, _session?.LastStepPerformance, _session?.LastValidationMilliseconds,
-            _session?.ValidationCacheHits ?? 0, _session?.ValidationPreparedBytes ?? 0, _session?.ValidationBatchCacheHits ?? 0, _store.CorpusCacheHits, _store.CorpusCacheBytes, CurrentAccuracy));
+            _session?.ValidationCacheHits ?? 0, _session?.ValidationPreparedBytes ?? 0, _session?.ValidationBatchCacheHits ?? 0, _store.CorpusCacheHits, _store.CorpusCacheBytes, CurrentAccuracy, _session?.LastLearningRate, _settings?.Training.PublishEvery, _settings?.Training.WarmupCosine ?? false));
     }
     private void Error(string message) => Emit("error", new { message });
     private void Interrupt(string? onlyKind = null)
@@ -189,7 +190,7 @@ internal sealed class Worker : IDisposable
                     try
                     {
                         if (command.Kind == "shutdown") break;
-                        if (_currentCancelEpoch != Volatile.Read(ref _cancelEpoch) && (command.Kind is "create" or "train" or "mode" or "quality"))
+                        if (_currentCancelEpoch != Volatile.Read(ref _cancelEpoch) && (command.Kind is "create" or "train" or "mode" or "quality" or "conversation-check"))
                             throw new OperationCanceledException("Команда отменена до начала выполнения.");
                         await Handle(command);
                     }
@@ -239,6 +240,7 @@ internal sealed class Worker : IDisposable
         {
             case "create": return InOperation("offline", ct => Create(Protocol.Payload<CreateRequest>(command.Payload), ct));
             case "quality": return InOperation("diagnostics", QualityReport);
+            case "conversation-check": return InOperation("diagnostics", ct => ConversationReport(ct, false));
             case "train": return InOperation("offline", ct => Train(Protocol.Payload<TrainRequest>(command.Payload), ct));
             case "mode":
                 var mode = Protocol.Payload<OnlineMode>(command.Payload);
@@ -273,8 +275,13 @@ internal sealed class Worker : IDisposable
         if (ModelFiles.ActivePath(_store.Root) is not null || _session is not null) throw new InvalidOperationException("В этой рабочей папке уже есть модель. Создайте новую папку модели.");
         r.Config.Validate(); r.Resources.ValidateInitialization(r.Config);
         var training = LearningStages.CreationOptions(r.Mode, r.Training);
-        _store.EnsureCapacity(CheckpointBudget.Publications(training.Steps, training.PublishEvery, includeInitial: true));
+        var requestedInterval = training.PublishEvery;
+        training = _store.Plan(training, includeInitial: true);
+        if (training.PublishEvery != requestedInterval)
+            Emit("warning", new { message = $"Автоподбор: снимок каждые {training.PublishEvery} шагов вместо {requestedInterval}. Старые снимки НЕ удаляются; при сбое теряется до этого интервала." });
         bool conversation = r.Mode == CreationMode.Conversation;
+        if (training.Steps > 0 && training.ConversationCourse && !conversation)
+            throw new ArgumentException("Разговорный курс используется только с разговорным материалом, не с замороженной базой из 48 текстов.");
         if (!conversation && r.DatasetPaths.Length != 0) throw new ArgumentException("На нулевом и базовом этапах свои датасеты не подключаются. Добавьте их отдельным запуском дообучения.");
         _stage = "dataset"; Status(conversation ? "Подготовка разговорного корпуса…" : "Подготовка базового корпуса. Разговорные примеры в обучение не попадут.", busy: true);
         var validation = LoadSeed("validation.jsonl", ct); var guard = new ValidationGuard(validation, r.Resources.SequenceLength, ct);
@@ -282,6 +289,8 @@ internal sealed class Worker : IDisposable
         // Untrained creation attaches only the tiny baseline as future material; it takes ZERO optimizer steps.
         var train = LoadSeed(conversation ? "seed.jsonl" : "pretrain.jsonl", ct).Where(x => !guard.Contains(x, ct)).Concat(imported).DistinctBy(x => x.Id).ToArray();
         train = Dataset.SplitLongTexts(train, r.Resources.SequenceLength, ct); guard.EnsureTraining(train, ct);
+        if (training.ConversationCourse && conversation)
+            train = PrepareConversationCourse(train, guard, r.Resources, training.ContextPractice, training.TransferPractice, ct);
         var encoded = Dataset.EncodeAll(train, r.Resources.SequenceLength, r.Resources.Threads, ct);
         var val = Dataset.EncodeAll(validation, r.Resources.SequenceLength, r.Resources.Threads, ct);
         if (encoded.Length == 0) throw new ArgumentException("Нет обучающих примеров.");
@@ -368,7 +377,10 @@ internal sealed class Worker : IDisposable
     {
         NeedSession(); r.Training.Validate(); LearningStages.Validate(r.Material);
         if (r.Training.Steps < 1) throw new ArgumentException("Для дообучения укажите хотя бы один шаг. Нулевой запуск не сохраняет новый датасет.");
-        _store.EnsureCapacity(CheckpointBudget.Publications(r.Training.Steps, r.Training.PublishEvery));
+        int requestedInterval = r.Training.PublishEvery;
+        r = r with { Training = _store.Plan(r.Training) };
+        if (r.Training.PublishEvery != requestedInterval)
+            Emit("warning", new { message = $"Автоподбор: снимок каждые {r.Training.PublishEvery} шагов вместо {requestedInterval}. Старые снимки НЕ удаляются. Это интервал потери незаписанных шагов при сбое." });
         _stage = "dataset"; Status("Проверка датасетов и параметров дообучения…", busy: true);
         var settings = _settings!;
         var resources = r.Resources ?? settings.Resources; resources.ValidateInitialization(settings.Config);
@@ -381,10 +393,14 @@ internal sealed class Worker : IDisposable
             settings.CustomDataTrained == true);
         // Keep dataset identity split stable. Validation samples are never sent to the optimizer.
         bool basicOnly = r.Material == TrainingMaterial.BasicPretrain;
+        if (r.Training.ConversationCourse && r.Material != TrainingMaterial.Conversation)
+            throw new ArgumentException("Для разговорного курса выберите разговорный этап. Он не меняет состав базового претрейна или отдельного этапа своих данных.");
         if (basicOnly && (_applied.Count > 0 || (_active?.Step > 0 && settings.LastMaterial != TrainingMaterial.BasicPretrain)))
             throw new ArgumentException("Базовый этап доступен для новой модели или продолжения базового претрейна. После разговорного/онлайн-обучения используйте дообучение, откат или новую модель.");
         if (basicOnly && r.DatasetPaths.Length != 0) throw new ArgumentException("Базовый этап использует только pretrain.jsonl; свои файлы подключаются отдельным этапом.");
         var old = basicOnly ? Array.Empty<TrainingExample>() : _trainingData;
+        if (r.Material == TrainingMaterial.Conversation && r.IncludeBundledUpdates && _session!.Step == 0)
+            old = InitialTrainingMaterial.RemoveUnlearnedBaseline(old, LoadSeed("pretrain.jsonl", ct), _session.Step);
         var guard = new ValidationGuard(_validationData, resources.SequenceLength, ct); guard.EnsureTraining(old, ct);
         var imported = Dataset.LoadManyTraining(r.DatasetPaths, ct); guard.EnsureTraining(imported, ct);
         var bundled = basicOnly ? LoadSeed("pretrain.jsonl", ct) :
@@ -393,6 +409,7 @@ internal sealed class Worker : IDisposable
         var added = bundled.Concat(imported).Concat(replay).Where(x => !guard.Contains(x, ct));
         var all = Dataset.SplitLongTexts(old.Concat(added).DistinctBy(x => x.Id), resources.SequenceLength, ct).DistinctBy(x => x.Id).ToArray();
         if (all.Length == 0) throw new ArgumentException("Нет обучающих примеров для выбранного этапа.");
+        if (r.Training.ConversationCourse) all = PrepareConversationCourse(all, guard, resources, r.Training.ContextPractice, r.Training.TransferPractice, ct);
         all = Dataset.ReuseUnchanged(_trainingData, all, ct);
         bool sameBudget = resources.SequenceLength == settings.Resources.SequenceLength;
         // Resource/backend changes alone do not change byte tokenization. Keep exact corpus owners so
@@ -430,6 +447,73 @@ internal sealed class Worker : IDisposable
         PreserveStage(LearningStages.ArchiveKey(r.Material), LearningStages.Name(r.Material));
         _paused = true; SaveMode(); Ready();
     }
+    private TrainingExample[] PrepareConversationCourse(TrainingExample[] all, ValidationGuard guard, ResourceOptions resources, bool contextPractice, bool transferPractice, CancellationToken ct)
+    {
+        var starters = LoadSeed("conversation-starter.jsonl", ct).Where(x => !guard.Contains(x, ct));
+        var context = contextPractice ? LoadSeed("conversation-context.jsonl", ct).Where(x => !guard.Contains(x, ct)) : Enumerable.Empty<TrainingExample>();
+        var extras = transferPractice ? LoadSeed("conversation-language.jsonl", ct).Concat(LoadSeed("conversation-transfer.jsonl", ct))
+            .Where(x => !guard.Contains(x, ct)).ToArray() : Array.Empty<TrainingExample>();
+        foreach (var row in extras)
+        {
+            ct.ThrowIfCancellationRequested();
+            if (Dataset.FullSequenceLength(row) > resources.SequenceLength)
+                throw new ArgumentException($"Практика v22 требует длину не меньше {Dataset.FullSequenceLength(row)} для полной истории этого примера. Увеличьте максимальную длину; факты не обрезаются молча.");
+        }
+        var union = all.Concat(starters).Concat(context).Concat(extras).DistinctBy(x => x.Id).ToArray();
+        var prepared = ConversationSupervision.Expand(union, guard, ct);
+        Emit("warning", new { message = $"Разговорный курс: {prepared.OriginalRows} исходных записей, ещё {prepared.AddedAssistantTargets} ответов из истории. " +
+            $"Исключено производных контрольных входов: {prepared.ExcludedControlPrefixes}. Это обучение весов, не подстановка ответов." });
+        if (contextPractice) Emit("warning", new { message = "Контекстная практика v21: общий корпус остаётся во всех фазах; меняются только доли повторения коротких ответов и контекстных задач. Контрольная защита не отключается." });
+        return Dataset.SplitLongTexts(prepared.Examples, resources.SequenceLength, ct);
+    }
+    private void ConversationReport(CancellationToken ct, bool automatic)
+    {
+        NeedSession(); _stage = "conversation-check"; Status("Читаю сохранённую модель и проверяю реальные ответы…", busy: true);
+        string path = ModelFiles.ActivePath(_store.Root) ?? throw new InvalidDataException("Нет активных весов.");
+        var saved = ModelFiles.ReadInferenceRevision(path, _settings!.Resources.EffectiveThreads, ct);
+        var model = new ManagedInference(saved.Weights, saved.Info.Revision, _settings.Resources.EffectiveThreads);
+        var report = ConversationProbe.Run(model, saved.Info.Step, saved.Info.ModelSha256, ct);
+        string prefix = Path.Combine(_store.Root, "diagnostics", "conversation-r" + saved.Info.Revision + "-" + Guid.NewGuid().ToString("N")[..8]);
+        ct.ThrowIfCancellationRequested(); JsonData.AtomicWrite(prefix + ".json", report, 1024 * 1024);
+        File.WriteAllText(prefix + ".md", ConversationProbe.Markdown(report), new System.Text.UTF8Encoding(false));
+        ContextTransferReport? contextReport = null; string? contextError = null;
+        try
+        {
+            // Only the read-only probe sees this held-out file. Never use it to prepare the training course.
+            var tests = LoadSeed("context-challenge.jsonl", ct);
+            contextReport = ContextTransferProbe.Run(model, saved.Info.Step, saved.Info.ModelSha256, tests, automatic ? 4 : 16, ct);
+            JsonData.AtomicWrite(prefix + "-context.json", contextReport, 1024 * 1024);
+            File.WriteAllText(prefix + "-context.md", ContextTransferProbe.Markdown(contextReport), new System.Text.UTF8Encoding(false));
+        }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception error)
+        {
+            contextReport = null; contextError = error.Message;
+            Emit("warning", new { message = "Основной отчёт готов, контекстная проверка НЕ завершена: " + contextError });
+        }
+        GeneralizationReport? transferReport = null; string? transferError = null;
+        try
+        {
+            transferReport = GeneralizationProbe.Run(model, saved.Info.Step, saved.Info.ModelSha256,
+                LoadSeed("transfer-challenge.jsonl", ct), _trainingData.Concat(_replay.RecentLearned(256)).DistinctBy(x => x.Id).ToArray(), automatic ? 8 : 128,
+                (done,total) => Status($"Проверка новых формулировок: {done}/{total}. Веса не меняются…", busy:true), ct);
+            JsonData.AtomicWrite(prefix + "-transfer.json", transferReport, 2 * 1024 * 1024);
+            File.WriteAllText(prefix + "-transfer.md", GeneralizationProbe.Markdown(transferReport), new System.Text.UTF8Encoding(false));
+        }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception error)
+        {
+            transferReport = null; transferError = error.Message;
+            Emit("warning", new { message = "Проверка новых формулировок НЕ завершена: " + transferError });
+        }
+        var receipt = new { file = prefix + ".json", readable = prefix + ".md", summary = report.Summary,
+            transferSummary = transferReport?.Summary, transferReadable = transferReport is null ? null : prefix + "-transfer.md", transferError,
+            contextSummary = contextReport?.Summary, contextReadable = contextReport is null ? null : prefix + "-context.md", contextError,
+            step = report.Step, revision = report.Revision, passed = report.Passed, total = report.Checked };
+        Emit("conversation-result", receipt);
+        if (!automatic) _commandResult = receipt;
+        Status(report.Summary);
+    }
     private void QualityReport(CancellationToken ct)
     {
         NeedSession(); _stage = "diagnostics"; Status("Сравниваю обученные веса, файл и CPU-ответы. Веса не изменяются…", busy: true);
@@ -446,6 +530,18 @@ internal sealed class Worker : IDisposable
     private void RunOffline(EncodedExample[] corpus, TrainingOptions options, CancellationToken ct)
     {
         NeedSession(); var session = _session!; _totalSteps = options.Steps; _completedSteps = 0;
+        ConversationCurriculum? course = options.ConversationCourse && !options.TransferPractice
+            ? new ConversationCurriculum(corpus, LoadSeed("conversation-starter.jsonl", ct).Select(x => x.Id),
+                options.ContextPractice ? ConversationSupervision.Expand(
+                    LoadSeed("conversation-context.jsonl", ct).Where(x => !_validationGuard!.Contains(x, ct)).ToArray(),
+                    _validationGuard!, ct).Examples.Select(x => x.Id) : null) : null;
+        DialogueBatchPlanner? dialoguePlanner = options.TransferPractice ? new DialogueBatchPlanner(corpus,
+            LoadSeed("conversation-starter.jsonl", ct).Concat(LoadSeed("conversation-language.jsonl", ct)),
+            LoadSeed("conversation-context.jsonl", ct).Concat(LoadSeed("conversation-transfer.jsonl", ct)), ct) : null;
+        if (dialoguePlanner is not null) Emit("warning", new { message = "v22: состав КАЖДОГО пакета задан категориями. Группировка по длине не заменяет эти пропорции; короткие подтверждения не усиливаются вместо конечных ответов. Дополнительного знания из проверки нет." });
+        string? lastProbedPhase = null;
+        Emit("warning", new { message = $"Фактический план: {options.Steps} шагов, пик LR {options.LearningRate:G6}, " +
+            (options.WarmupCosine ? "разогрев и спад до 10% пика" : "постоянный LR") + $", снимок каждые {options.PublishEvery}. Новый ручной запуск начинает свой план LR." });
         for (int start = 0; start < options.Steps; start += options.PublishEvery)
         {
             ct.ThrowIfCancellationRequested(); var before = _publishedMaster ?? throw new InvalidOperationException("Missing committed master snapshot.");
@@ -455,8 +551,10 @@ internal sealed class Worker : IDisposable
             for (int i = 0; i < steps; i++)
             {
                 _stage = "train"; _completedSteps = start + i + 1;
-                var result = session.TrainStep(corpus, options.LearningRate, ct); loss = result.Loss; tokens += result.TargetTokens;
-                if (i % 2 == 0) Status($"Обучение: {start + i + 1}/{options.Steps}", loss, tokens / Math.Max(watch.Elapsed.TotalSeconds, 0.001), true);
+                var pool = course?.At(start + i, options.Steps);
+                var result = session.TrainStep(dialoguePlanner is null ? pool?.Examples ?? corpus : corpus, ManualLearningRate.At(options, start + i), ct,
+                    equalExampleWeight: options.EqualExampleWeight, dialoguePlanner: dialoguePlanner, courseCompleted: start + i, courseTotal: options.Steps); loss = result.Loss; tokens += result.TargetTokens;
+                if (i % 2 == 0) Status($"{(dialoguePlanner is null ? pool?.Name ?? "Обучение" : DialogueBatchPlanner.PhaseName(start + i, options.Steps))}: {start + i + 1}/{options.Steps}", loss, tokens / Math.Max(watch.Elapsed.TotalSeconds, 0.001), true);
             }
             _stage = "validate"; Status("Проверка кандидата перед публикацией…", busy: true);
             double validation = EvaluateControl(ct);
@@ -465,9 +563,22 @@ internal sealed class Worker : IDisposable
             { throw new InvalidOperationException("Кандидат отклонён: ухудшение контрольной ошибки. Предыдущий снимок сохранён; уменьшите скорость обучения."); }
             _stage = "checkpoint"; Status("Упаковка и сохранение проверенных весов…", busy: true);
             Commit(before, validation, _settings!.LastMaterial == TrainingMaterial.BasicPretrain ? "Базовый претрейн (без разговорного корпуса)" : "Обучение на датасете", [], ct);
+            if (options.ConversationCourse)
+            {
+                string phase = dialoguePlanner is not null ? DialogueBatchPlanner.PhaseName(start + steps - 1, options.Steps) : course!.At(start + steps - 1, options.Steps).Name;
+                if (phase != lastProbedPhase || start + steps == options.Steps)
+                {
+                    lastProbedPhase = phase;
+                    try { ConversationReport(ct, true); }
+                    catch (OperationCanceledException) { throw; }
+                    catch (Exception e) { Emit("warning", new { message = "Веса сохранены, но разговорная проверка не завершилась: " + e.Message }); }
+                }
+            }
         }
         if (options.Steps == 0) Status("Шаги обучения не запускались. Веса не изменены.");
-        else Status("Обучение на датасете завершено. Проверенные изменения опубликованы.");
+        else Status(options.ConversationCourse
+            ? "Разговорный курс завершён, веса сохранены. Качество беседы НЕ подтверждено автоматически: прочитайте последний разговорный отчёт."
+            : "Обучение на датасете завершено. Проверенные изменения опубликованы.");
     }
     private void LearnPending(CancellationToken ct)
     {

@@ -80,6 +80,11 @@ public static class WorkerProtocolChecks
             }
             await CheckModeFailureAndRefusal(executable, Path.Combine(root, "mode-failure"));
             await CheckMalformedCommandChannel(executable, Path.Combine(root, "command-frames"));
+            await CheckInitialRouteParity(executable,Path.Combine(root,"audit19-routes"));
+            await CheckInitialRouteParity(executable,Path.Combine(root,"audit20-course-routes"),course:true);
+            await CheckConversationReadOnly(executable,Path.Combine(root,"audit20-course-routes","staged"));
+            await CheckInitialRouteParity(executable,Path.Combine(root,"audit21-context-routes"),course:true,contextPractice:true);
+            await CheckInitialRouteParity(executable,Path.Combine(root,"audit22-transfer-routes"),course:true,contextPractice:true,transferPractice:true);
             await CheckEvolution(executable,Path.Combine(root,"stage-checks"));
             await CheckFailedRollback(executable,Path.Combine(root,"stage-checks"));
             await CheckCreationBudgetAndQuality(executable,Path.Combine(root,"audit17"));
@@ -248,6 +253,77 @@ public static class WorkerProtocolChecks
             Assert(settings.LastMaterial==TrainingMaterial.Conversation && settings.ConversationTrained==true,"Stage provenance was not durable.");
         }
         Console.WriteLine("PASS actual stage evolution: zero steps, independent text baseline, dialogue training, frozen controls/references, paused restart.");
+    }
+    private static async Task CheckInitialRouteParity(string executable, string root, bool course=false, bool contextPractice=false, bool transferPractice=false)
+    {
+        string direct=Path.Combine(root,"direct"),staged=Path.Combine(root,"staged");
+        var config=new ModelConfig{Dimension=16,HiddenDimension=32,Layers=1,Heads=2,KvHeads=1,Context=512,GroupSize=8,Seed=97};
+        var resources=new ResourceOptions{Threads=1,MemoryMiB=4096,BatchSize=4,SequenceLength=512,PreferCuda=false};
+        var options=new TrainingOptions{Steps=4,PublishEvery=4,LearningRate=.0001,WarmupCosine=true,MaxValidationRegression=.5,ConversationCourse=course,ContextPractice=contextPractice,TransferPractice=transferPractice,EqualExampleWeight=course};
+        await using(var raw=new Child(executable,staged))
+        {
+            await raw.Wait(e=>e.Kind=="ready");
+            await raw.Complete(await raw.Send("create",new CreateRequest(config,resources,options,[],CreationMode.Untrained)));
+            Assert(ModelFiles.VerifyRevision(ModelFiles.ActivePath(staged)!).Step==0,"Raw route trained implicitly");
+        }
+        await using(var a=new Child(executable,direct))
+        {
+            await a.Wait(e=>e.Kind=="ready");
+            await a.Complete(await a.Send("create",new CreateRequest(config,resources,options,[],CreationMode.Conversation)));
+        }
+        await using(var b=new Child(executable,staged))
+        {
+            await b.Wait(e=>e.Kind=="ready");
+            await b.Complete(await b.Send("train",new TrainRequest([],options,resources,true,TrainingMaterial.Conversation)));
+        }
+        string pa=ModelFiles.ActivePath(direct)!,pb=ModelFiles.ActivePath(staged)!;
+        var ia=ModelFiles.VerifyRevision(pa);var ib=ModelFiles.VerifyRevision(pb);
+        Assert(ia.Step==4&&ib.Step==4&&ia.TrainingDataSha256==ib.TrainingDataSha256&&ia.ValidationDataSha256==ib.ValidationDataSha256,
+            "Direct/staged fresh conversation routes consumed different corpora");
+        var wa=ModelFiles.Read(Path.Combine(pa,"master.weights"),false);var wb=ModelFiles.Read(Path.Combine(pb,"master.weights"),false);
+        foreach(var shape in WeightLayout.For(config))
+            Assert(wa.Values[shape.Name].Zip(wb.Values[shape.Name],(x,y)=>Math.Abs(x-y)).Max()<1e-6,
+                "Direct/staged weights diverged: "+shape.Name);
+        var state=JsonData.Read<TrainerState>(Path.Combine(pb,"state.json"));
+        Assert(state.LastLearningRate is double lr&&Math.Abs(lr-ManualLearningRate.At(options,3))<1e-12,"Saved actual LR is not the last scheduled update");
+        Console.WriteLine("PASS real worker direct vs raw->close->open->train: matching corpus, updates, validation and last LR");
+    }
+    private static async Task CheckConversationReadOnly(string executable,string root)
+    {
+        await using var child=new Child(executable,root);await child.Wait(e=>e.Kind=="ready");
+        string active=ModelFiles.ActivePath(root)!;var info=ModelFiles.VerifyRevision(active);
+        var rows=JsonData.Read<TrainingExample[]>(Path.Combine(active,"base-train.json"));
+        var controls=JsonData.Read<TrainingExample[]>(Path.Combine(active,"validation.json"));
+        new ValidationGuard(controls,512).EnsureTraining(rows);
+        var settings=JsonData.Read<WorkspaceSettings>(Path.Combine(active,"settings.json"));
+        Assert(settings.Training.ConversationCourse&&settings.Training.EqualExampleWeight,"Course options did not reach committed settings.");
+        Assert(rows.Length>4000,"Full course did not include derived assistant turns.");
+        string? Digest(string path)=>File.Exists(path)?ModelFiles.Hash(path):null;
+        string[] protectedFiles=["runtime.json","replay.json","active.json"];
+        var saved=protectedFiles.ToDictionary(x=>x,x=>Digest(Path.Combine(root,x)));
+        long publications=child.Publications;
+        var done=await child.Complete(await child.Send("conversation-check",new{}));
+        var result=done.Data.GetProperty("result");string report=result.GetProperty("file").GetString()!;
+        var probe=JsonData.Read<ConversationProbeReport>(report);
+        Assert(File.Exists(result.GetProperty("readable").GetString()!),"Human-readable report missing.");
+        Assert(result.GetProperty("contextError").ValueKind==JsonValueKind.Null,"Read-only context check failed.");
+        string contextMarkdown=result.GetProperty("contextReadable").GetString()!;
+        var contextReport=JsonData.Read<ContextTransferReport>(Path.ChangeExtension(contextMarkdown,".json"));
+        Assert(contextReport.Pairs.Length==16&&contextReport.Step==info.Step&&contextReport.PackedSha256==info.ModelSha256,
+            "Context report is incomplete or belongs to other weights.");
+        Assert(result.GetProperty("transferError").ValueKind==JsonValueKind.Null,"New-formulation check failed.");
+        string transferMarkdown=result.GetProperty("transferReadable").GetString()!;
+        var transfer=JsonData.Read<GeneralizationReport>(Path.ChangeExtension(transferMarkdown,".json"));
+        Assert(transfer.Cases.Length==62&&transfer.Step==info.Step&&transfer.PackedSha256==info.ModelSha256,"New-formulation report missing cases or wrong weights.");
+        Assert(transfer.Cases.All(x=>x.Turns.Length>0),"Transfer check did not retain actual generated turns.");
+        Assert(probe.Step==info.Step&&probe.Revision==info.Revision&&probe.PackedSha256==info.ModelSha256,"Report belongs to wrong weights.");
+        Assert(probe.Results.Length==ConversationProbe.Cases.Count&&probe.Results.Any(x=>x.SimpleCheckPassed is null),"Open answers were relabelled automatic passes.");
+        Assert(ModelFiles.ActivePath(root)==active&&child.Publications==publications,"Read-only conversation check trained/published weights.");
+        Assert(ModelFiles.VerifyRevision(active)==info,"Conversation check modified checkpoint.");
+        foreach(string name in protectedFiles)Assert(saved[name]==Digest(Path.Combine(root,name)),"Conversation check modified "+name);
+        var reopen=JsonData.Read<TrainingExample[]>(Path.Combine(active,"base-train.json"));
+        Assert(reopen.Select(x=>x.Id).SequenceEqual(rows.Select(x=>x.Id)),"Probe prompts leaked into training data.");
+        Console.WriteLine("PASS actual course routes, expanded targets and read-only autonomous multi-turn saved-model check.");
     }
     private static async Task CheckMalformedCommandChannel(string executable, string root)
     {

@@ -1,3 +1,54 @@
+# Audit22 · 22.0.0-audit22 · 2026-09-17
+
+- Opt-in explicit per-batch conversation mixture; final ORIGINAL fact targets only in priority pool, not intermediate acknowledgements.
+- Group fact selection by final-question form; keep ordinary material available in all phases and preserve owned RNG/resume.
+- Add160paraphrase teaching rows and1278crossed-context templates;62public development cases never train.
+- Keep every old data file byte-identical; manifest/loader/update allowlist and adjacent copies advance together.
+- New read-only generalization report records actual own-history answers, strict targets and recorded-training exclusions.
+- Durable flag in creator/selected-model draft, explicit profile opt-in, parent opt-outs and old report compatibility.
+- New managed/UI/worker/native regressions and independent controlled learning experiments; native gates pending on Grok/laptop.
+- Do not claim fluent conversation, .NET execution or speedup from independent Python experiments.
+- Host integration: LoadTraining allowlist includes conversation-context/language/transfer (split=train), matching BundledCorpus. The overlay only added conversation-starter; evaluation and challenge files still throw.
+
+## Historical changes
+
+# Audit21 · 21.0.0-audit21 · 2026-09-17
+
+- Reproduce guard-stopped isolated foundation; opt-in mixed context curriculum retains full distribution from the first phase.
+- Add388 template context dialogues,+24natural main records;32new public paired tests. Freeze old starter/controls/holdouts/basic.
+- Paired generation uses real model history; both changed-fact variants must pass, no keyword-only false success or answer injection.
+- Keep original10-case report; additional bounded4/full16context checks with visible partial coverage/errors and unchanged weights.
+- Persist independent ContextPractice setting; legacyfalse and explicit profile only. Course off clears the flag, not learned data.
+- Native lab --enforce-guard, code3 rejection recorded, earlier exports retained. No silently unguarded full-course pass.
+- Actual independent experiments record failures: known14/14sample vs unseen0/16pairs. Alternative initialization NOT adopted.
+- C#/GUI/native/Windows/CUDA NOT_RUN by author. Keep all technical gates, small owned-only update, V1/262 IDs and dependency versions.
+
+## Historical changes
+
+# Audit20 · 20.0.0-audit20 · 2026-09-17
+
+- Conversation-first optional course: short starter, dialogue with replay, full contextual corpus.
+- Supervise each supplied assistant prefix after validation-isolation checks; preserve legacy last-turn path by default.
+- Optional mean-per-example training loss keeps short replies from being dominated by long targets; control unchanged.
+- Real saved-model multi-turn conversation report with self-generated history; public simple checks separate from manual review.
+- Profile/state/worker/native/UI regression coverage; no reply lookup or expected probe text in inference.
+- Dataset4011 source records incl2966 main+281 starter; frozen48 basics/all historical blind sets. Source vs derived counts separate.
+- Independent real Python experiments retained with known-vs-new query limits. C#/native/GUI/CUDA NOT_RUN by author.
+- Default small update, no changed vendor dependencies, owner host fixes and audit19 retained.
+
+## Historical changes
+
+# Audit19 · 19.0.0-audit19 · 2026-09-17
+
+- Reproduce actual4.79M Python corpus collapse atLR.01; record honest .001 contrast and43.49%non-neural byte baseline.
+- Optional warmup/cosine/manual run plan; save actual applied LR, keep legacy constant behavior and high-LR guard.
+- First conversation after true zero-step creation removes only never-learned baseline placeholders; real route equivalence gate.
+- Explicit auto publication interval fits long jobs into <=32 new/available snapshots, no deletion or hidden preference changes.
+- Train-only byte baseline, free-answer degeneration/known-target diagnostics, unchanged-output notices and isolated native corpus lab.
+- Corpus3602records; +32/8/8 with baseline and17previous holdouts frozen. No fluency or C#/CUDA pass claimed by author.
+
+## Historical changes
+
 # Audit18 · 18.0.0-audit18 · 2026-09-17
 
 - Separate next-run drafts from committed settings; explicit Fill profile vs Save, per-model debounced persistence and Ready fencing.

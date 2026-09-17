@@ -16,6 +16,8 @@ public static class TrainerSelfTest
             var options = new TrainingOptions { LearningRate = 0.001 };
             var initial = WeightSet.Initialize(c);
             CheckSiluParity(requireCuda);
+            ConversationObjectiveSelfTest.Run(requireCuda, root);
+            DialogueBatchSelfTest.Run(requireCuda, root);
             CheckBatch64(requireCuda);
             CheckAttentionParity(initial, requireCuda);
             CheckSelectedTargetParity(initial, requireCuda);
@@ -109,6 +111,7 @@ public static class TrainerSelfTest
             Console.WriteLine($"PASS real gradients, loss fitting ({before:F4} -> {after:F4}), managed/Torch parity, full-state resume on {training.DeviceName}.");
             Console.WriteLine("PASS SDPA/explicit forward+backward, versioned evaluation cache, failure recovery, bucketed sampler resume.");
             LearningProgressSelfTest.Run(requireCuda, root);
+            LearningPlanSelfTest.Run(requireCuda, root);
             LearningSmoke.Run(requireCuda, root);
             Console.WriteLine("PASS isolated six-reply learning/packed-generation gate; not general conversation quality."); return 0;
         }
