@@ -8,10 +8,10 @@ namespace TritStudio.App;
 
 public sealed partial class MainWindow
 {
-    private readonly Button _qualityButton = Button("Проверить обучение"), _trainingPresetButton = Button("Учебный старт: применить настройки");
+    private readonly Button _qualityButton = Button("Проверить обучение"), _trainingPresetButton = Button("Заполнить учебным профилем");
     private readonly TextBlock _qualitySummary = Text("Проверка сравнивает тренер и CPU-файл и показывает свободные ответы без изменения весов.",12);
     private readonly TextBlock _learningHint = Text("",12);
-    private readonly NumericUpDown _newMemory = Number(8192,512,65536,512), _newBatch = Number(8,1,32),
+    private readonly NumericUpDown _newMemory = Number(8192,512,65536,512), _newBatch = Number(8,1,ResourceOptions.MaxBatchSize),
         _newSequence = Number(512,16,2048,16), _newSteps = Number(1200,1,100000,100),
         _newRate = Number(0.001m,0.000001m,0.01m,0.0001m,"0.######"), _newPublish = Number(100,1,1000,25);
     private readonly CheckBox _newCuda = new() { Content = "CUDA для новой модели", IsChecked = true };
@@ -35,10 +35,15 @@ public sealed partial class MainWindow
     }
     private ResourceOptions CreationResources(ModelConfig config) => new()
     {
-        Threads = Math.Max(1, Environment.ProcessorCount-2), MemoryMiB = Int(_newMemory), BatchSize = Int(_newBatch),
-        SequenceLength = Math.Min(config.Context,Int(_newSequence)), PreferCuda = _newCuda.IsChecked == true
+        Threads = Math.Max(1, Environment.ProcessorCount-2), MemoryMiB = LaunchInt(_newMemory), BatchSize = LaunchInt(_newBatch),
+        SequenceLength = Math.Min(config.Context,LaunchInt(_newSequence)), PreferCuda = _newCuda.IsChecked == true
     };
-    private TrainingOptions CreationTraining() => new() { Steps = Int(_newSteps), LearningRate = (double)(_newRate.Value ?? 0.001m), PublishEvery = Int(_newPublish) };
+    private ResourceOptions ZeroCreationResources(ModelConfig config) => new()
+    {
+        Threads = Math.Max(1, Environment.ProcessorCount - 2), MemoryMiB = LaunchInt(_newMemory),
+        BatchSize = 8, SequenceLength = Math.Min(config.Context, 512), PreferCuda = _newCuda.IsChecked == true
+    };
+    private TrainingOptions CreationTraining() => _creationTrainingBase with { Steps = LaunchInt(_newSteps), LearningRate = (double)CheckedNumber(_newRate), PublishEvery = LaunchInt(_newPublish) };
     private void UpdateLearningHint()
     {
         double rate = (double)(_learningRate.Value ?? 0);
@@ -49,10 +54,18 @@ public sealed partial class MainWindow
     }
     private void ApplyLearningPreset()
     {
-        _learningRate.Value = 0.001m; _batch.Value = 8; _sequence.Value = Math.Min(512,_model?.Weights.Config.Context ?? 512);
-        _steps.Value = 2000; _publishEvery.Value = 200;
+        if (_closing || _operationBusy || _openingWorkspace || _navigationBusy || _modeApplying) return;
+        _restoringLaunch = true;
+        try
+        {
+            SetEditorValue(_learningRate, 0.001m); SetEditorValue(_batch, 8); SetEditorValue(_sequence, Math.Min(512,_model?.Weights.Config.Context ?? 512));
+            SetEditorValue(_steps, 2000); SetEditorValue(_publishEvery, 200);
+        }
+        finally { _restoringLaunch = false; }
+        MarkRunEdited();
+        if (_runContext is not null && _runEditorInitialized) SaveRunDraft(explicitSave:true);
         UpdateLearningHint(); _status.Text = "LR 0,001; пакет 8; длина до 512; 2000 шагов; публикация каждые 200. Обучение НЕ запущено. Архитектура и бюджет RAM не изменены.";
-        Notice("Учебный профиль применён", _status.Text);
+        Notice("Поля заполнены учебным профилем", _status.Text);
     }
     private async Task CheckLearning()
     {

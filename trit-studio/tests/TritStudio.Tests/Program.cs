@@ -326,7 +326,7 @@ var tests = new (string Name, Action Run)[]
     }),
 
 };
-tests = tests.Concat(Audit5Checks.All).Concat(Audit6Checks.All).Concat(Audit7Checks.All).Concat(Audit8Checks.All).Concat(Audit9Checks.All).Concat(Audit10Checks.All).Concat(Audit11Checks.All).Concat(Audit12Checks.All).Concat(Audit13Checks.All).Concat(Audit14Checks.All).Concat(Audit15Checks.All).Concat(Audit16Checks.All).Concat(Audit17Checks.All).ToArray();
+tests = tests.Concat(Audit5Checks.All).Concat(Audit6Checks.All).Concat(Audit7Checks.All).Concat(Audit8Checks.All).Concat(Audit9Checks.All).Concat(Audit10Checks.All).Concat(Audit11Checks.All).Concat(Audit12Checks.All).Concat(Audit13Checks.All).Concat(Audit14Checks.All).Concat(Audit15Checks.All).Concat(Audit16Checks.All).Concat(Audit17Checks.All).Concat(Audit18Checks.All).Concat(LearningProgressChecks.All).ToArray();
 int failures = 0;
 foreach (var t in tests) try { t.Run(); Console.WriteLine("PASS " + t.Name); } catch (Exception e) { failures++; Console.Error.WriteLine("FAIL " + t.Name + ": " + e); }
 Console.WriteLine($"{tests.Length - failures}/{tests.Length} passed"); return failures == 0 ? 0 : 1;

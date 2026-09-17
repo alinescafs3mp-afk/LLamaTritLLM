@@ -8,7 +8,7 @@ public sealed record TrainingMemoryEstimate(long PersistentBytes, long Activatio
     public static TrainingMemoryEstimate For(ModelConfig config, ResourceOptions resources, int effectiveLength)
     {
         config.Validate();
-        if (resources.BatchSize is < 1 or > 32 || effectiveLength < 0 || effectiveLength > config.Context)
+        if (resources.BatchSize is < 1 or > ResourceOptions.MaxBatchSize || effectiveLength < 0 || effectiveLength > config.Context)
             throw new ArgumentOutOfRangeException(nameof(effectiveLength));
         long persistent = checked(96 * config.ParameterCount + 256L * 1048576);
         long activations = checked(64L * resources.BatchSize * effectiveLength * config.Dimension * config.Layers +

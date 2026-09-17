@@ -19,18 +19,10 @@ public static class QualityProbe
         var cpu = new ManagedInference(ModelFiles.Read(Path.Combine(revisionPath, "model.tritmodel"), true, ct: ct), info.Revision, 1);
         var sample = Dataset.EncodeAll(training.Where(x => x.IsDialogue).DefaultIfEmpty(training[0]).Take(16).ToArray(), settings.Resources.SequenceLength, 1, ct);
         var controls = Dataset.EncodeAll(control.Take(16).ToArray(), settings.Resources.SequenceLength, 1, ct);
-        double trainLoss = session.Evaluate(sample, ct), controlLoss = session.Evaluate(controls, ct);
-        long correct = 0, count = 0;
-        using (var outer = NewDisposeScope())
-        using (var noGrad = no_grad())
-        using (var cache = session.Model.BeginEvaluation())
-        foreach (var e in sample)
-        {
-            ct.ThrowIfCancellationRequested(); using var scope = NewDisposeScope();
-            var ids = tensor(e.Tokens.Select(x => (long)x).ToArray(), dtype: ScalarType.Int64, device: session.Model.Device).reshape(1, -1);
-            var predicted = session.Model.Forward(ids).argmax(-1).cpu().data<long>().ToArray();
-            for (int i = 0; i < e.Labels.Length; i++) if (e.Labels[i] != -100) { count++; if (predicted[i] == e.Labels[i]) correct++; }
-        }
+        double trainLoss = session.Evaluate(sample, ct);
+        var trainAccuracy = session.LastEvaluationAccuracy ?? throw new InvalidDataException("Нет счётчиков учебной проверки.");
+        // Evaluate now counts accuracy from its existing logits. Do not run the same sample again just to count argmax.
+        double controlLoss = session.Evaluate(controls, ct);
         var replies = new List<ProbeReply>();
         foreach (string prompt in new[] { "Привет!", "Как дела?", "Как тебя зовут?" })
         {
@@ -60,7 +52,7 @@ public static class QualityProbe
             settings.Training.LearningRate < 0.00001 ? "Численный путь согласован на проверенных запросах. Сохранённый LR ручного обучения ниже 1e-5: вероятно слишком медленное обучение с нуля. Это гипотеза, не доказательство причины всех ошибок." :
             "На проверенных запросах путь тренер -> файл -> CPU согласован. Сравните точность по целевым токенам и свободные ответы; число шагов само по себе не доказывает качество.";
         return new(info.Revision, session.Step, settings.Training.LearningRate, trainLoss, controlLoss,
-            count == 0 ? 0 : (double)correct / count, replies.ToArray(), interpretation,
+            (double)trainAccuracy.Correct / trainAccuracy.Total, replies.ToArray(), interpretation,
             "Only three fixed public prompts/generated answers and aggregate metrics. No raw conversation/dataset records are copied. Generated replies MAY contain learned private information: review before sharing. Sample losses are not whole-corpus or blind-test scores.");
     }
 }

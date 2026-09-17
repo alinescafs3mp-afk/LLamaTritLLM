@@ -149,12 +149,13 @@ public sealed partial class MainWindow
     }
     private async Task DisconnectSelectedModel()
     {
+        FlushEditorDrafts(strict:true, includeCreation:false);
         CancelPendingModeEdit(); ++_epoch; ++_publication; CancelSnapshotLoad(); _workerReady = false;
         if (_client is not null) { await _client.DisposeAsync(); _client = null; }
         await _modelLoader.WaitAsync();
         try { _uiLease?.Dispose(); _uiLease = null; }
         finally { _modelLoader.Release(); }
-        _workspace = null; _inferenceFile = null; _model = null; _revision = null; _pending = null; _workerStatus = null;
+        _workspace = null; SetRunEditorContext(null); _inferenceFile = null; _model = null; _revision = null; _pending = null; _workerStatus = null;
         _history.Clear(); _messages.Children.Clear(); _workspaceLabel.Text = ""; _modelLabel.Text = "Модель не выбрана";
         _conversationId = Guid.NewGuid().ToString("N"); ClearModelSpecificInputs(); SetOnlineCheck(false);
         UpdateState(); UpdateContextBudget(); UpdateStats(); SelectActualModel();

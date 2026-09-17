@@ -36,7 +36,7 @@ public static class JsonData
 }
 public sealed record RevisionInfo(long Revision, long Step, long ChangedWeights, double? ValidationLoss,
     string Reason, DateTimeOffset CreatedAt, string MasterSha256, string ModelSha256, long? Parent,
-    string OptimizerSha256, string StateSha256, string CommitSha256, long TargetTokens, double? BestValidationLoss, int CheckpointVersion = 1, string? SettingsSha256 = null, string? TrainingDataSha256 = null, string? ValidationDataSha256 = null, int? ValidationSequenceLength = null);
+    string OptimizerSha256, string StateSha256, string CommitSha256, long TargetTokens, double? BestValidationLoss, int CheckpointVersion = 1, string? SettingsSha256 = null, string? TrainingDataSha256 = null, string? ValidationDataSha256 = null, int? ValidationSequenceLength = null, LearningProgress? Accuracy = null);
 public sealed record ActiveRevision(string Directory);
 
 public static class ModelFiles
@@ -195,6 +195,9 @@ public static class ModelFiles
             info.CheckpointVersion is < 1 or > 2 || Path.GetFileName(path) != $"r{info.Revision:D16}" ||
             (info.Parent is long parent && (parent < 0 || parent >= info.Revision)))
             throw new InvalidDataException("Invalid checkpoint metadata.");
+        info.Accuracy?.Validate(info.Step);
+        if (info.Accuracy?.Validation is { } control && (info.ValidationLoss is null || control.Step != info.Step || control.SequenceLength != info.ValidationSequenceLength))
+            throw new InvalidDataException("Точность контрольного набора не соответствует снимку.");
         return info;
     }
     public static (WeightSet Weights, RevisionInfo Info) ReadInferenceRevision(string path, int threads = 1, CancellationToken ct = default)

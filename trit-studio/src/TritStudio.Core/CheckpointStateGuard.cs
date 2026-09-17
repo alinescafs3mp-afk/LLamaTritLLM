@@ -6,6 +6,7 @@ public static class CheckpointStateGuard
 {
     public static void Validate(RevisionInfo info, TrainerState state, CommitLedger commits, ModelConfig config)
     {
+        info.Accuracy?.Validate(info.Step, config.Context);
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0 ||
             state.Step != info.Step || state.TargetTokens != info.TargetTokens || state.TargetTokens < state.Step)
             throw new InvalidDataException("Счётчики тренера не совпадают с метаданными снимка. Восстановление отменено.");

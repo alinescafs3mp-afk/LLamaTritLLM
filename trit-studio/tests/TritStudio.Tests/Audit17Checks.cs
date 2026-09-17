@@ -30,7 +30,7 @@ internal static class Audit17Checks
             Throws<ArgumentException>(()=>(LargeRequest() with{SequenceLength=512}).ValidateForTraining(ModelConfig.Large,513,false));
         }),
         ("configuration errors remain errors in creation", () => {
-            Throws<ArgumentException>(()=>(LargeRequest() with{BatchSize=33}).ValidateInitialization(ModelConfig.Large));
+            Throws<ArgumentException>(()=>(LargeRequest() with{BatchSize=65}).ValidateInitialization(ModelConfig.Large));
             Throws<ArgumentException>(()=>(LargeRequest() with{MemoryMiB=0}).ValidateInitialization(ModelConfig.Large));
             Throws<ArgumentException>(()=>(LargeRequest() with{SequenceLength=2048}).ValidateInitialization(ModelConfig.Large));
         }),

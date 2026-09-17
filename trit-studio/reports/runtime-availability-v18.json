@@ -1,0 +1,12 @@
+{
+  "scope":"Authoring container only",
+  "dotnet":"NOT_AVAILABLE",
+  "official_sdk_http_probe":"FAILED: DNS resolution of dot.net",
+  "csharp_compile":"NOT_RUN",
+  "csharp_managed_tests":"NOT_RUN",
+  "avalonia_input_render":"NOT_RUN",
+  "torchsharp_runtime":"NOT_RUN",
+  "windows_powershell":"NOT_RUN",
+  "cuda":"NOT_RUN",
+  "independent_python_cpu_tests":"See audit18-reference.json and numerical-reference.json"
+}

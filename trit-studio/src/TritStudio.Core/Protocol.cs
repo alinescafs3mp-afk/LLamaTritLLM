@@ -7,7 +7,7 @@ public sealed record TrainRequest(string[] DatasetPaths, TrainingOptions Trainin
 public sealed record OnlineRequest(TrainingExample Example);
 public sealed record OnlineMode(bool Enabled, double LearningRate = 0.0001);
 public sealed record StatusEvent(string Message, long Step = 0, double? Loss = null, double? TokensPerSecond = null,
-    long MemoryMiB = 0, string Device = "", int Queue = 0, bool Busy = false, string Stage = "idle", int CompletedSteps = 0, int TotalSteps = 0, QueueSummary? Replay = null, int Snapshots = 0, StepPerformance? Performance = null, double? ValidationMilliseconds = null, long ValidationCacheHits = 0, long ValidationPreparedBytes = 0, long ValidationBatchCacheHits = 0, long SnapshotCorpusCacheHits = 0, long SnapshotCorpusCacheBytes = 0);
+    long MemoryMiB = 0, string Device = "", int Queue = 0, bool Busy = false, string Stage = "idle", int CompletedSteps = 0, int TotalSteps = 0, QueueSummary? Replay = null, int Snapshots = 0, StepPerformance? Performance = null, double? ValidationMilliseconds = null, long ValidationCacheHits = 0, long ValidationPreparedBytes = 0, long ValidationBatchCacheHits = 0, long SnapshotCorpusCacheHits = 0, long SnapshotCorpusCacheBytes = 0, LearningProgress? Accuracy = null);
 public sealed record StepPerformance(double Milliseconds, int BatchSize, int SequenceLength, long InputTokens, long TargetTokens, long PaddedPositions, string AttentionBackend, long OutputPositions = 0)
 {
     public double PaddingFraction => PaddedPositions == 0 ? 0 : Math.Clamp(1 - (double)InputTokens / PaddedPositions, 0, 1);

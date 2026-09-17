@@ -42,6 +42,7 @@ public sealed record ModelConfig
 
 public sealed record ResourceOptions
 {
+    public const int MaxBatchSize = 64;
     public int Threads { get; init; } = Math.Max(1, Environment.ProcessorCount - 2);
     public int MemoryMiB { get; init; } = 8192;
     public int BatchSize { get; init; } = 8;
@@ -55,7 +56,7 @@ public sealed record ResourceOptions
     {
         config.Validate();
         if (Threads < 1 || Threads > 1024 || MemoryMiB is < 512 or > 65536 ||
-            BatchSize is < 1 or > 32 || SequenceLength < 16 || SequenceLength > config.Context)
+            BatchSize is < 1 or > MaxBatchSize || SequenceLength < 16 || SequenceLength > config.Context)
             throw new ArgumentException("Недопустимые настройки потоков, RAM, пакета или длины обучения.");
     }
     public void ValidateInitialization(ModelConfig config)

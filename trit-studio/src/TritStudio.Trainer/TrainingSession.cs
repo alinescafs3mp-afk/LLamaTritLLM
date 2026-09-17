@@ -32,6 +32,10 @@ public sealed class TrainingSession : IDisposable
     public long ValidationPreparedBytes => _validationBatches?.RetainedPayloadBytes ?? 0;
     private long _evaluatedVersion = -1;
     private double _evaluatedLoss;
+    private readonly AccuracyWindow _accuracyWindow = new();
+    public TokenAccuracy? TrainingAccuracy => _accuracyWindow.Current;
+    // Last Evaluate's corpus, not necessarily the worker control set (quality probes use samples too).
+    public TokenAccuracy? LastEvaluationAccuracy { get; private set; }
     public long ValidationPasses { get; private set; }
     public long ValidationCacheHits { get; private set; }
     public StepPerformance? LastStepPerformance { get; private set; }
@@ -62,7 +66,7 @@ public sealed class TrainingSession : IDisposable
         using var scope = NewDisposeScope();
         var watch = Stopwatch.StartNew();
         int b = _resources.BatchSize;
-        if (!ReferenceEquals(_plannedCorpus, corpus)) { _planner = new BatchPlanner(corpus, ct: ct); _plannedCorpus = corpus; }
+        if (!ReferenceEquals(_plannedCorpus, corpus)) { _planner = new BatchPlanner(corpus, ct: ct); _plannedCorpus = corpus; _accuracyWindow.Clear(); }
         var plan = _planner!.Select(b, _rng, _resources.BucketByLength, required);
         var selected = plan.Examples;
         int t = plan.Length;
@@ -77,15 +81,22 @@ public sealed class TrainingSession : IDisposable
         var logits = ForwardForLoss(ids, positions);
         var loss = nn.functional.cross_entropy(logits, targets);
         loss.backward();
-        // Read loss and gradient norm together: one device-to-host synchronization before the update.
+        // Argmax reuses the logits already calculated for loss. No extra forward or softmax.
+        // Float64 transports exact integer counts for these bounded batches, in the SAME host transfer.
+        var correct = logits.detach().argmax(-1).eq(targets).sum().to(ScalarType.Float64);
         var norm2 = SquaredGradientNorm(Model.Parameters, Model.Device);
-        var metrics = stack(new[] { loss.detach(), norm2.sqrt() }).cpu().data<float>().ToArray();
+        var metrics = stack(new[] { loss.detach().to(ScalarType.Float64), norm2.sqrt().to(ScalarType.Float64), correct }).cpu().data<double>().ToArray();
         double value = metrics[0], norm = metrics[1];
+        long correctCount = checked((long)metrics[2]);
+        if (!double.IsFinite(metrics[2]) || metrics[2] != correctCount || correctCount < 0 || correctCount > targetTokens)
+            throw new ArithmeticException("Invalid training accuracy counter.");
         if (!double.IsFinite(value) || !double.IsFinite(norm)) throw new ArithmeticException("Nonfinite loss or gradients; weights were not updated.");
         if (norm > 1) { using var ng = no_grad(); foreach (var p in Model.Parameters) { using var gradientScope = NewDisposeScope(); if (p.grad is { } g) g.mul_(1 / norm); } }
         ct.ThrowIfCancellationRequested();
         _initialMaster = null; // BEFORE a possibly partial native update, not after its success.
         Optimizer.step(); Model.MarkUpdated(); Step++; TargetTokens += targetTokens;
+        // Predictions precede this update. Publish the observation only after the update succeeds.
+        _accuracyWindow.Add(correctCount, targetTokens, Step, _resources.SequenceLength);
         LastStepPerformance = new(watch.Elapsed.TotalMilliseconds, b, t, plan.InputTokens, targetTokens, plan.PaddedPositions, Model.AttentionBackend, _resources.ProjectOnlyTargets ? targetTokens : plan.PaddedPositions);
         return (value, targetTokens);
     }
@@ -110,6 +121,7 @@ public sealed class TrainingSession : IDisposable
         if (examples.Length == 0) throw new ArgumentException("Validation corpus is empty.");
         if (ReferenceEquals(_evaluatedCorpus, examples) && _evaluatedVersion == Model.WeightVersion)
         { ValidationCacheHits++; LastValidationMilliseconds = 0; return _evaluatedLoss; }
+        _evaluatedVersion = -1; LastEvaluationAccuracy = null;
         var watch = Stopwatch.StartNew();
         if (!ReferenceEquals(_preparedCorpus, examples))
         {
@@ -120,7 +132,8 @@ public sealed class TrainingSession : IDisposable
         }
         using var evaluationScope = NewDisposeScope();
         using var noGrad = no_grad(); using var cachedWeights = Model.BeginEvaluation();
-        var sum = zeros(Array.Empty<long>(), dtype: ScalarType.Float64, device: Model.Device); long count = 0;
+        var sum = zeros(Array.Empty<long>(), dtype: ScalarType.Float64, device: Model.Device);
+        var correctSum = zeros(Array.Empty<long>(), dtype: ScalarType.Float64, device: Model.Device); long count = 0;
         // Quantize each matrix once for the entire pass, not once for every validation batch.
         for (int index = 0; index < _validationBatches!.Count; index++)
         {
@@ -132,12 +145,17 @@ public sealed class TrainingSession : IDisposable
             var positions = tensor(packed.Positions, dtype: ScalarType.Int64, device: Model.Device);
             var logits = ForwardForLoss(ids, positions);
             var loss = nn.functional.cross_entropy(logits, labels);
-            sum.add_(loss.to(ScalarType.Float64) * tokens); count += tokens;
+            sum.add_(loss.to(ScalarType.Float64) * tokens);
+            correctSum.add_(logits.argmax(-1).eq(labels).sum().to(ScalarType.Float64)); count += tokens;
         }
         if (count == 0) throw new InvalidDataException("Validation corpus has no target tokens.");
-        // One scalar device read for the complete evaluation, not one synchronization per batch.
-        double result = sum.item<double>() / count;
-        if (!double.IsFinite(result)) throw new ArithmeticException("Nonfinite validation loss.");
+        // Read loss and correct count once after the COMPLETE pass. Batch weighting uses token counts.
+        var values = stack(new[] { sum, correctSum }).cpu().data<double>().ToArray();
+        double result = values[0] / count;
+        long correctCount = checked((long)values[1]);
+        if (!double.IsFinite(result) || !double.IsFinite(values[1]) || values[1] != correctCount || correctCount < 0 || correctCount > count)
+            throw new ArithmeticException("Nonfinite validation result or invalid accuracy count.");
+        LastEvaluationAccuracy = new(correctCount, count, Step, _resources.SequenceLength, _validationBatches.Count);
         _evaluatedCorpus = examples; _evaluatedVersion = Model.WeightVersion; _evaluatedLoss = result;
         ValidationPasses++; LastValidationMilliseconds = watch.Elapsed.TotalMilliseconds;
         return result;
@@ -146,7 +164,7 @@ public sealed class TrainingSession : IDisposable
     public void Restore(WeightSet weights, string optimizer, TrainerState state)
     {
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0) throw new InvalidDataException("Invalid trainer state.");
-        _initialMaster = null; _evaluatedVersion = -1;
+        _initialMaster = null; _evaluatedVersion = -1; LastEvaluationAccuracy = null; _accuracyWindow.Clear(); LastStepPerformance = null;
         Model.Restore(weights); RestoreState(optimizer, state);
     }
     public void RestoreState(string optimizer, TrainerState state)
@@ -154,6 +172,7 @@ public sealed class TrainingSession : IDisposable
         if (state.Step < 0 || state.TargetTokens < 0 || state.SamplerState == 0)
             throw new InvalidDataException("Invalid training counters or sampler state.");
         _initialMaster = null; // No initial-reference shortcut after state restoration, even on failure.
+        _evaluatedVersion = -1; LastEvaluationAccuracy = null; _accuracyWindow.Clear(); LastStepPerformance = null;
         Optimizer.load_state_dict(optimizer); Optimizer.to(Model.Device);
         Step = state.Step; _rng.State = state.SamplerState; TargetTokens = state.TargetTokens;
     }
@@ -168,6 +187,6 @@ public sealed class TrainingSession : IDisposable
     {
         _validationBatches = null; _preparedCorpus = null; _evaluatedCorpus = null;
         _planner = null; _plannedCorpus = null;
-        _initialMaster = null; Optimizer.Dispose(); Model.Dispose();
+        _initialMaster = null; _accuracyWindow.Clear(); LastEvaluationAccuracy = null; Optimizer.Dispose(); Model.Dispose();
     }
 }

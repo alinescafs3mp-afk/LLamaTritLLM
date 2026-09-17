@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "scope": "Independent PyTorch CPU math and source invariants; NOT execution of C# / UI / worker / CUDA",
+  "masked_accuracy_loss_gradient_cases": 20,
+  "weighted_window_cases": 1000,
+  "corpus_total": 3554,
+  "rng_unchanged_by_accuracy": true,
+  "extra_forward_for_accuracy": false,
+  "csharp_tests": "NOT_RUN",
+  "cuda": "NOT_RUN"
+}

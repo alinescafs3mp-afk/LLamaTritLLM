@@ -24,9 +24,12 @@ public sealed class WorkspaceStore : IDisposable
         CheckpointBudget.EnsureFits(RevisionCount, publications);
     }
     public CheckpointPublication Publish(TrainingSession session, WeightSet previous, double? validation, string reason,
-        IEnumerable<string> appliedOnlineIds, long? parent, int threads, WorkspaceSettings settings, TrainingExample[] trainingData, TrainingExample[] validationData, CancellationToken ct = default)
+        IEnumerable<string> appliedOnlineIds, long? parent, int threads, WorkspaceSettings settings, TrainingExample[] trainingData, TrainingExample[] validationData, CancellationToken ct = default, LearningProgress? accuracy = null)
     {
         ct.ThrowIfCancellationRequested();
+        accuracy?.Validate(session.Step, settings.Config.Context);
+        if (accuracy?.Validation is { } control && (validation is null || control.Step != session.Step || control.SequenceLength != settings.Resources.SequenceLength))
+            throw new InvalidDataException("Точность контроля не соответствует сохраняемым весам и длине.");
         string revisions = Path.Combine(Root, "revisions");
         // Online publication never deletes a revision being used by the UI. The offline maintenance command applies retention under exclusive workspace locks.
         var drive = new DriveInfo(Path.GetPathRoot(Root)!);
@@ -58,7 +61,7 @@ public sealed class WorkspaceStore : IDisposable
                 masterHash, packedHash, parent,
                 ModelFiles.Hash(Path.Combine(staging, "optimizer.bin"), ct), ModelFiles.Hash(Path.Combine(staging, "state.json"), ct),
                 ModelFiles.Hash(Path.Combine(staging, "commit.json"), ct), session.TargetTokens, best, 2, ModelFiles.Hash(Path.Combine(staging, "settings.json"), ct),
-                trainingHash, validationHash, settings.Resources.SequenceLength);
+                trainingHash, validationHash, settings.Resources.SequenceLength, accuracy);
             JsonData.AtomicWrite(Path.Combine(staging, "revision.json"), info);
             // Last cancellation point: once activation starts, report the committed revision, not cancellation.
             ct.ThrowIfCancellationRequested();

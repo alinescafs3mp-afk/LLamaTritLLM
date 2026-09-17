@@ -6,7 +6,7 @@ public sealed record SupervisedBatch(long[] Inputs, long[] Targets, long[] Posit
 {
     public static SupervisedBatch Build(EncodedExample[] examples, int length, CancellationToken ct = default)
     {
-        if (examples.Length is < 1 or > 32 || length is < 1 or > 2048) throw new ArgumentException("Invalid batch shape.");
+        if (examples.Length is < 1 or > ResourceOptions.MaxBatchSize || length is < 1 or > 2048) throw new ArgumentException("Invalid batch shape.");
         int count = 0;
         foreach (var example in examples)
         {

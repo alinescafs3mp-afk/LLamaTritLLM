@@ -64,6 +64,15 @@ internal sealed class Worker : IDisposable
     private bool _hasRuntimeRate;
     private bool _needsRecovery;
     private RevisionInfo? _active;
+    private TokenAccuracy? _validationAccuracy;
+    private LearningProgress? CurrentAccuracy => _session is null ? _active?.Accuracy :
+        new(_session.TrainingAccuracy ?? _active?.Accuracy?.Training, _validationAccuracy);
+    private double EvaluateControl(CancellationToken ct)
+    {
+        var loss = _session!.Evaluate(_validation, ct);
+        _validationAccuracy = _session.LastEvaluationAccuracy;
+        return loss;
+    }
     private string? _currentId;
     private int _stopRequested, _disableOnlineRequested;
     private int _completedSteps, _totalSteps;
@@ -114,10 +123,10 @@ internal sealed class Worker : IDisposable
         // Stage transitions and terminal receipts are never throttled.
         if (busy && _reportedBusy && _reportedStage == _stage && _statusClock.ElapsedMilliseconds < 250) return;
         _reportedBusy = busy; _reportedStage = _stage; _statusClock.Restart();
-        Emit("status", new StatusEvent(message, _session?.Step ?? 0, loss, speed, RssMiB(),
+        Emit("status", new StatusEvent(message, _session?.Step ?? _active?.Step ?? 0, loss, speed, RssMiB(),
             _session?.DeviceName ?? "", _replay.PendingCount, busy, _stage, _completedSteps, _totalSteps,
             _replay.Summary, _store.RevisionCount, _session?.LastStepPerformance, _session?.LastValidationMilliseconds,
-            _session?.ValidationCacheHits ?? 0, _session?.ValidationPreparedBytes ?? 0, _session?.ValidationBatchCacheHits ?? 0, _store.CorpusCacheHits, _store.CorpusCacheBytes));
+            _session?.ValidationCacheHits ?? 0, _session?.ValidationPreparedBytes ?? 0, _session?.ValidationBatchCacheHits ?? 0, _store.CorpusCacheHits, _store.CorpusCacheBytes, CurrentAccuracy));
     }
     private void Error(string message) => Emit("error", new { message });
     private void Interrupt(string? onlyKind = null)
@@ -347,7 +356,7 @@ internal sealed class Worker : IDisposable
         _base = encoded; _validation = validation;
         _applied.Clear(); foreach (string id in commits.AppliedOnlineIds) _applied.Add(id);
         if (reconcile) _replay.Reconcile(_applied);
-        _active = info; if (!_hasRuntimeRate) _onlineLr = settings.Training.OnlineLearningRate;
+        _active = info; _validationAccuracy = info.Accuracy?.Validation; if (!_hasRuntimeRate) _onlineLr = settings.Training.OnlineLearningRate;
         if (announce)
         {
             Emit("dataset", new DatasetSummaryEvent(trainData.Length, valData.Length, trainData.Max(Dataset.RequiredSequenceLength), "workspace-snapshot"));
@@ -412,6 +421,7 @@ internal sealed class Worker : IDisposable
             _session = candidate;
         }
         _base = encoded; _validation = validation; _validationGuard = guard;
+        if (!sameBudget) _validationAccuracy = null;
         _trainingData = all; _settings = settings with { Training = r.Training, Resources = resources, LastMaterial = r.Material,
             ConversationTrained = conversationPreviouslyTrained || (r.Material == TrainingMaterial.Conversation && r.IncludeBundledUpdates),
             CustomDataTrained = settings.CustomDataTrained == true || imported.Length > 0 };
@@ -440,7 +450,7 @@ internal sealed class Worker : IDisposable
         {
             ct.ThrowIfCancellationRequested(); var before = _publishedMaster ?? throw new InvalidOperationException("Missing committed master snapshot.");
             _stage = "validate"; Status("Контрольная оценка перед обновлением…", busy: true);
-            double baseline = session.Evaluate(_validation, ct);
+            double baseline = EvaluateControl(ct);
             int steps = Math.Min(options.PublishEvery, options.Steps - start); var watch = Stopwatch.StartNew(); long tokens = 0; double loss = 0;
             for (int i = 0; i < steps; i++)
             {
@@ -449,7 +459,7 @@ internal sealed class Worker : IDisposable
                 if (i % 2 == 0) Status($"Обучение: {start + i + 1}/{options.Steps}", loss, tokens / Math.Max(watch.Elapsed.TotalSeconds, 0.001), true);
             }
             _stage = "validate"; Status("Проверка кандидата перед публикацией…", busy: true);
-            double validation = session.Evaluate(_validation, ct);
+            double validation = EvaluateControl(ct);
             double anchor = ValidationBaseline.Anchor(baseline, _active, _settings!.Resources.SequenceLength);
             if (validation > anchor + Math.Max(0.02, anchor * options.MaxValidationRegression))
             { throw new InvalidOperationException("Кандидат отклонён: ухудшение контрольной ошибки. Предыдущий снимок сохранён; уменьшите скорость обучения."); }
@@ -476,7 +486,7 @@ internal sealed class Worker : IDisposable
             settings.Resources.SequenceLength, guard, ct);
         var mixed = replayBatch.Examples;
         var before = _publishedMaster ?? throw new InvalidOperationException("Missing committed master snapshot."); _stage = "validate"; Status("Проверка перед онлайн-обновлением…", busy: true);
-        double baseline = session.Evaluate(_validation, ct); _stage = "online";
+        double baseline = EvaluateControl(ct); _stage = "online";
         _needsRecovery = true; // RNG, gradients, optimizer and weights can change even if the candidate fails.
         var watch = Stopwatch.StartNew(); long tokens = 0; double loss = 0;
         for (int i = 0; i < 4; i++)
@@ -486,7 +496,7 @@ internal sealed class Worker : IDisposable
             Status($"Онлайн-обучение: микрошага {i + 1}/4", loss, tokens / Math.Max(watch.Elapsed.TotalSeconds, 0.001), true);
         }
         _stage = "validate"; Status("Проверка онлайн-кандидата…", busy: true);
-        double validation = session.Evaluate(_validation, ct);
+        double validation = EvaluateControl(ct);
         double anchor = ValidationBaseline.Anchor(baseline, _active, _settings!.Resources.SequenceLength);
         bool accepted = validation <= anchor + Math.Max(0.02, anchor * settings.Training.MaxValidationRegression);
         if (accepted) { _stage = "checkpoint"; Status("Сохранение онлайн-обновления…", busy: true); Commit(before, validation, "Онлайн-обучение", pending.Select(x => x.Id), ct); }
@@ -498,7 +508,7 @@ internal sealed class Worker : IDisposable
     private void Commit(WeightSet previous, double validation, string reason, IEnumerable<string> ids, CancellationToken ct)
     {
         NeedSession(); var nextIds = _applied.Concat(ids).ToArray();
-        var published = _store.Publish(_session!, previous, validation, reason, nextIds, _active?.Revision, _settings!.Resources.EffectiveThreads, _settings, _trainingData, _validationData, ct);
+        var published = _store.Publish(_session!, previous, validation, reason, nextIds, _active?.Revision, _settings!.Resources.EffectiveThreads, _settings, _trainingData, _validationData, ct, CurrentAccuracy);
         foreach (string id in ids) _applied.Add(id);
         _active = published.Event.Info; _publishedMaster = published.Master; Emit("published", published.Event);
     }
@@ -509,7 +519,7 @@ internal sealed class Worker : IDisposable
         try
         {
             string? path = ModelFiles.ActivePath(_store.Root);
-            if (path is null) { _session?.Dispose(); _session = null; _publishedMaster = null; _settings = null; return; }
+            if (path is null) { _session?.Dispose(); _session = null; _publishedMaster = null; _settings = null; _validationAccuracy = null; _active = null; return; }
             LoadWorkspace(); // Restore inputs and device settings as well as weights, moments and RNG.
         }
         catch (Exception e) { Error("Не удалось восстановить тренер: " + e.Message); _session?.Dispose(); _session = null; _publishedMaster = null; }

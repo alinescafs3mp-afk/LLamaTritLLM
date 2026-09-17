@@ -1,0 +1,1024 @@
+{
+  "train": [
+    {
+      "prompt": "Мне сегодня хочется просто поболтать без цели.",
+      "answer": "Давай. Можно начать с любой мелочи, которая запомнилась за день.",
+      "family": "v18_simple_000",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-2c3294d8f3de2854f5a5"
+    },
+    {
+      "prompt": "Открыл окно, и в комнате сразу стало тише на душе.",
+      "answer": "Иногда такая маленькая перемена очень кстати.",
+      "family": "v18_simple_001",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-76fa2828f4cb85df189a"
+    },
+    {
+      "prompt": "Наконец разобрал ящик со старыми проводами.",
+      "answer": "Теперь хотя бы видно, где заканчивается один провод и начинается другой.",
+      "family": "v18_simple_002",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-c8d5874d936288567df8"
+    },
+    {
+      "prompt": "У меня чай остыл, пока я выбирал музыку.",
+      "answer": "Получился длинный выбор и холодный чай. Что в итоге включил?",
+      "family": "v18_simple_003",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-5dcf9de132d55fda9022"
+    },
+    {
+      "prompt": "Не спрашивай пока ничего, просто порадуйся со мной.",
+      "answer": "Здорово, что у тебя есть повод радоваться!",
+      "family": "v18_simple_004",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-b4c70242a962da248fba"
+    },
+    {
+      "prompt": "Сегодня впервые спокойно позавтракал, никуда не торопясь.",
+      "answer": "Хорошее начало дня: не догонять часы хотя бы за завтраком.",
+      "family": "v18_simple_005",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-a0524a6290307c7da9b4"
+    },
+    {
+      "prompt": "Я дочитал главу и решил оставить следующую на завтра.",
+      "answer": "Так у завтрашнего дня уже есть маленький приятный план.",
+      "family": "v18_simple_006",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-d244bf427fe8a8170867"
+    },
+    {
+      "prompt": "Купил блокнот, но пока жалко портить первую страницу.",
+      "answer": "Можно начать со второй. Первая никуда не спешит.",
+      "family": "v18_simple_007",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-e2399e1bb2c2ed6e58c9"
+    },
+    {
+      "prompt": "Мне нравится, когда отвечают без длинного вступления.",
+      "answer": "Понял. Буду сразу переходить к сути.",
+      "family": "v18_simple_008",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-51f70e17ba2c943e915f"
+    },
+    {
+      "prompt": "Сейчас не нужен план действий, хочу просто рассказать.",
+      "answer": "Рассказывай. Обойдёмся без плана и советов.",
+      "family": "v18_simple_009",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7cb9cdcf83008eb0dff8"
+    },
+    {
+      "prompt": "Переделай мягче: «Ты опять всё перепутал».",
+      "answer": "Кажется, здесь возникла путаница. Давай уточним детали.",
+      "family": "v18_simple_010",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-126b9605d84b0c6060c6"
+    },
+    {
+      "prompt": "Сократи: «Я вернусь обратно примерно через десять минут».",
+      "answer": "Вернусь примерно через десять минут.",
+      "family": "v18_simple_011",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-34bb368425d052c7e891"
+    },
+    {
+      "prompt": "Исправь фразу: «Оба папки лежит на столе».",
+      "answer": "Обе папки лежат на столе.",
+      "family": "v18_simple_012",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-8f8a86ebb969afd86a60"
+    },
+    {
+      "prompt": "Исправь: «Эта письма ещё не отправлены».",
+      "answer": "Эти письма ещё не отправлены.",
+      "family": "v18_simple_013",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-aca0b1cfcd7c09c770e3"
+    },
+    {
+      "prompt": "Скажи проще: «Произвести проверку наличия файла».",
+      "answer": "Проверить, есть ли файл.",
+      "family": "v18_simple_014",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-d45a6b3764b293d864c9"
+    },
+    {
+      "prompt": "Сделай вежливо: «Скинь результат сейчас».",
+      "answer": "Пришли, пожалуйста, результат, когда сможешь.",
+      "family": "v18_simple_015",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-62d37b39ca0faf65ff06"
+    },
+    {
+      "prompt": "Напиши ровно два слова о тихом вечере.",
+      "answer": "Тихий вечер.",
+      "family": "v18_simple_016",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-e308e6f0e07d9375e82c"
+    },
+    {
+      "prompt": "В ответе только слово «готово», без точки.",
+      "answer": "готово",
+      "family": "v18_simple_017",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-3883d323c8df63d4f7ce"
+    },
+    {
+      "prompt": "Раздели на две строки: «сначала читаю потом проверяю».",
+      "answer": "Сначала читаю.\nПотом проверяю.",
+      "family": "v18_simple_018",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-ec395284fc335ff60132"
+    },
+    {
+      "prompt": "Предложи название заметки о маленьких радостях. Два слова.",
+      "answer": "Тёплые мелочи",
+      "family": "v18_simple_019",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-3900f0e2fd1ed25d35c4"
+    },
+    {
+      "prompt": "Как назвать папку с незавершёнными текстами без шуток?",
+      "answer": "Черновики",
+      "family": "v18_simple_020",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-bed4cb49f09133690fff"
+    },
+    {
+      "prompt": "Замени «очень-очень удобно» одним словом.",
+      "answer": "Удобно.",
+      "family": "v18_simple_021",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-9ead512fdc5e8fe860c6"
+    },
+    {
+      "prompt": "Записал, что попробую новый маршрут. Это уже решение?",
+      "answer": "Нет. Пока это намерение попробовать, а не окончательное решение.",
+      "family": "v18_simple_022",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-0c0d89f288324afd6aab"
+    },
+    {
+      "prompt": "Я сказал «не сегодня», а не «никогда». Сохрани смысл.",
+      "answer": "Ты откладываешь это на другой день, а не отказываешься навсегда.",
+      "family": "v18_simple_023",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-50592e12591699dbd65e"
+    },
+    {
+      "prompt": "Есть только черновик приглашения. Можно считать гостей приглашёнными?",
+      "answer": "Нет. Подготовленный черновик ещё не означает, что приглашение отправлено.",
+      "family": "v18_simple_024",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-c42a370ff6e399dc38d5"
+    },
+    {
+      "prompt": "Я видел свет в окне. Можно уверенно сказать, что хозяин дома?",
+      "answer": "Нет. Одного света в окне для такого вывода недостаточно.",
+      "family": "v18_simple_025",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-85d9a3eba302fe7a7df4"
+    },
+    {
+      "prompt": "В записи указано «около семи». Не превращай это в точное время.",
+      "answer": "Примерно в семь, без утверждения точного времени.",
+      "family": "v18_simple_026",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-9890bff1619459f577a9"
+    },
+    {
+      "prompt": "Не добавляй причину: «Встречу перенесли».",
+      "answer": "Встречу перенесли.",
+      "family": "v18_simple_027",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-5b28bf8c910d3fde0bb3"
+    },
+    {
+      "prompt": "Ответь без предположений: я положил ключ на полку. Где ключ?",
+      "answer": "По твоим словам, ключ на полке.",
+      "family": "v18_simple_028",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-02715335fdced43f3a7d"
+    },
+    {
+      "prompt": "Я ещё сравниваю варианты. Напиши статус одним предложением.",
+      "answer": "Выбор ещё не сделан, варианты сравниваются.",
+      "family": "v18_simple_029",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-09be2c3fed968524b526"
+    },
+    {
+      "prompt": "Мне понравилась книга, но конец я не понял.",
+      "answer": "Так бывает. Можно обсудить именно финал, не перечитывая всё целиком.",
+      "family": "v18_simple_030",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7443e6cd74d36cf55da6"
+    },
+    {
+      "prompt": "Хочется уютного названия для списка домашних дел.",
+      "answer": "Домашние мелочи.",
+      "family": "v18_simple_031",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-842b0e6ec82066fc49ba"
+    },
+    {
+      "prompt": "Сочини одну короткую фразу про дождь за окном.",
+      "answer": "Дождь тихо перебирал листья за стеклом.",
+      "family": "v18_simple_032",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-73a4e005656334d7b253"
+    },
+    {
+      "prompt": "Дай нейтральный ответ на «Буду немного позже».",
+      "answer": "Хорошо, спасибо, что предупредил.",
+      "family": "v18_simple_033",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-cfefb738639d9b14af83"
+    },
+    {
+      "prompt": "Я закончил задачу раньше, чем ожидал, и теперь растерялся.",
+      "answer": "Можно немного побыть без следующей задачи. Свободное время не обязательно сразу заполнять.",
+      "family": "v18_simple_034",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-a887c66f866de43962d7"
+    },
+    {
+      "prompt": "Отвечай сейчас спокойнее, без восклицаний.",
+      "answer": "Хорошо. Буду отвечать спокойно и без восклицаний.",
+      "family": "v18_simple_035",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-1285d522e20f1c2247f0"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "У Лены зелёная чашка, у Вити белая."
+        },
+        {
+          "role": "assistant",
+          "content": "Запомнил цвета чашек."
+        },
+        {
+          "role": "user",
+          "content": "Не перепутай: чья чашка белая?"
+        },
+        {
+          "role": "assistant",
+          "content": "Белая чашка у Вити."
+        }
+      ],
+      "family": "v18_context_000",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7a24f9c66078458233d6"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Для заметки выбрал заголовок «Тихий день»."
+        },
+        {
+          "role": "assistant",
+          "content": "Заголовок: «Тихий день»."
+        },
+        {
+          "role": "user",
+          "content": "Замени только второе слово на «вечер»."
+        },
+        {
+          "role": "assistant",
+          "content": "Тихий вечер"
+        }
+      ],
+      "family": "v18_context_001",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-8bf3b325d69630eb4a74"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Сначала хотел длинный ответ."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, могу объяснить подробнее."
+        },
+        {
+          "role": "user",
+          "content": "Передумал. Одним предложением: что мы меняем?"
+        },
+        {
+          "role": "assistant",
+          "content": "Мы меняем длину ответа: теперь он должен быть коротким."
+        }
+      ],
+      "family": "v18_context_002",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-69cbadeacff20e337f7f"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "В коробке лежали три карандаша."
+        },
+        {
+          "role": "assistant",
+          "content": "Три карандаша."
+        },
+        {
+          "role": "user",
+          "content": "Один переложил в пенал. Сколько осталось в коробке?"
+        },
+        {
+          "role": "assistant",
+          "content": "В коробке осталось два карандаша."
+        }
+      ],
+      "family": "v18_context_003",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-5b26a2ccd580dcc32720"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Планирую прогулку в субботу, если не будет дождя."
+        },
+        {
+          "role": "assistant",
+          "content": "Прогулка пока зависит от погоды."
+        },
+        {
+          "role": "user",
+          "content": "Назови день, но не утверждай, что прогулка точно состоится."
+        },
+        {
+          "role": "assistant",
+          "content": "Прогулка запланирована на субботу, если не будет дождя."
+        }
+      ],
+      "family": "v18_context_004",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-8543412cd98f6fca82db"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "В первом файле черновик, во втором проверенный текст."
+        },
+        {
+          "role": "assistant",
+          "content": "Первый файл с черновиком, второй с проверенным текстом."
+        },
+        {
+          "role": "user",
+          "content": "Какой файл ещё нужно проверить?"
+        },
+        {
+          "role": "assistant",
+          "content": "Первый файл, в котором черновик."
+        }
+      ],
+      "family": "v18_context_005",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-c444a392b24a5c07fcbd"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Напиши ответ без смайликов."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, без смайликов."
+        },
+        {
+          "role": "user",
+          "content": "И не задавай вопрос в конце. Просто пожелай доброго вечера."
+        },
+        {
+          "role": "assistant",
+          "content": "Доброго вечера."
+        }
+      ],
+      "family": "v18_context_006",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-ec000c846d0e8c07f166"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Назовём героя Тимом."
+        },
+        {
+          "role": "assistant",
+          "content": "Героя зовут Тим."
+        },
+        {
+          "role": "user",
+          "content": "Нет, пусть будет Ян. Кто теперь герой?"
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь героя зовут Ян."
+        }
+      ],
+      "family": "v18_context_007",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-807d10021eacabc7a1fc"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я могу во вторник или в четверг."
+        },
+        {
+          "role": "assistant",
+          "content": "Подходят вторник и четверг."
+        },
+        {
+          "role": "user",
+          "content": "Четверг отменяется. Какой день остался?"
+        },
+        {
+          "role": "assistant",
+          "content": "Остался вторник."
+        }
+      ],
+      "family": "v18_context_008",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-dcff95d6659e92e86382"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "На полке две тетради: одна для идей, другая для расходов."
+        },
+        {
+          "role": "assistant",
+          "content": "У каждой своё назначение."
+        },
+        {
+          "role": "user",
+          "content": "В какую записать новую задумку?"
+        },
+        {
+          "role": "assistant",
+          "content": "В тетрадь для идей."
+        }
+      ],
+      "family": "v18_context_009",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7f604bca3aabbdb4223e"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Посылку обещали доставить завтра."
+        },
+        {
+          "role": "assistant",
+          "content": "Ожидается доставка завтра."
+        },
+        {
+          "role": "user",
+          "content": "Это уже подтверждённый факт доставки?"
+        },
+        {
+          "role": "assistant",
+          "content": "Нет. Это обещанный срок, сама доставка ещё не подтверждена."
+        }
+      ],
+      "family": "v18_context_010",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-b8a99fa497fb3ac29ca4"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Мне нужен список из двух строк без нумерации."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, две строки без номеров."
+        },
+        {
+          "role": "user",
+          "content": "В первой «прочитать», во второй «проверить»."
+        },
+        {
+          "role": "assistant",
+          "content": "прочитать\nпроверить"
+        }
+      ],
+      "family": "v18_context_011",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-6faa70572a2af7d012d2"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я назвал документ «Версия А»."
+        },
+        {
+          "role": "assistant",
+          "content": "Документ называется «Версия А»."
+        },
+        {
+          "role": "user",
+          "content": "Сохрани букву, но замени слово на «Черновик»."
+        },
+        {
+          "role": "assistant",
+          "content": "Черновик А"
+        }
+      ],
+      "family": "v18_context_012",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-3231a062fb307c3932cf"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ира принесла хлеб, Саша принёс яблоки."
+        },
+        {
+          "role": "assistant",
+          "content": "Запомнил: хлеб от Иры, яблоки от Саши."
+        },
+        {
+          "role": "user",
+          "content": "Кто принёс не яблоки, а хлеб?"
+        },
+        {
+          "role": "assistant",
+          "content": "Хлеб принесла Ира."
+        }
+      ],
+      "family": "v18_context_013",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-e297267222e60de17d82"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Пока выбираю между музеем и парком."
+        },
+        {
+          "role": "assistant",
+          "content": "Оба варианта пока рассматриваются."
+        },
+        {
+          "role": "user",
+          "content": "Скажи, что уже выбран музей."
+        },
+        {
+          "role": "assistant",
+          "content": "Пока музей не выбран: ты ещё сравниваешь его с парком."
+        }
+      ],
+      "family": "v18_context_014",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-4755486ce011f7908506"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Напомни мне в этом разговоре: зарядка в синей сумке."
+        },
+        {
+          "role": "assistant",
+          "content": "Зарядка в синей сумке."
+        },
+        {
+          "role": "user",
+          "content": "Я переложил её в рюкзак. Где теперь зарядка?"
+        },
+        {
+          "role": "assistant",
+          "content": "Теперь зарядка в рюкзаке."
+        }
+      ],
+      "family": "v18_context_015",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-cb995aa77393cf861115"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Я хотел совет, но сначала расскажу подробности."
+        },
+        {
+          "role": "assistant",
+          "content": "Слушаю подробности."
+        },
+        {
+          "role": "user",
+          "content": "Пока только выслушай, без решения."
+        },
+        {
+          "role": "assistant",
+          "content": "Хорошо, пока просто слушаю."
+        }
+      ],
+      "family": "v18_context_016",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7a7cd68afbe848070999"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Готовлю текст для коллеги, нужен спокойный тон."
+        },
+        {
+          "role": "assistant",
+          "content": "Сделаем спокойно и по делу."
+        },
+        {
+          "role": "user",
+          "content": "Перепиши: «Ну где уже этот файл?»"
+        },
+        {
+          "role": "assistant",
+          "content": "Подскажи, пожалуйста, когда будет готов файл?"
+        }
+      ],
+      "family": "v18_context_017",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-dae43ee04a561553e460"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "На сегодня запланированы письмо и уборка."
+        },
+        {
+          "role": "assistant",
+          "content": "Письмо и уборка."
+        },
+        {
+          "role": "user",
+          "content": "Письмо уже отправлено. Что осталось из плана?"
+        },
+        {
+          "role": "assistant",
+          "content": "Осталась уборка."
+        }
+      ],
+      "family": "v18_context_018",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-b10901b4d28ddc259ec5"
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Выбрал для прогулки короткий маршрут."
+        },
+        {
+          "role": "assistant",
+          "content": "Короткий маршрут."
+        },
+        {
+          "role": "user",
+          "content": "Оставь маршрут, но перенеси прогулку на завтра."
+        },
+        {
+          "role": "assistant",
+          "content": "Завтра прогулка по тому же короткому маршруту."
+        }
+      ],
+      "family": "v18_context_019",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-8ab4c4ce41f1ca060728"
+    },
+    {
+      "text": "Утром Нина открыла окно и поставила чайник. Во дворе было тихо. Она решила позавтракать без телефона.",
+      "family": "v18_text_000",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-0179c3ce9e8e5776cdb0"
+    },
+    {
+      "text": "На столе лежали два конверта. Один был пустым, а во втором находилась открытка. Олег убрал пустой конверт в ящик.",
+      "family": "v18_text_001",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-e6e848a5d128a9519303"
+    },
+    {
+      "text": "Дождь закончился к вечеру. Лужи ещё блестели, но дорожка уже подсыхала. Прогулку решили не отменять.",
+      "family": "v18_text_002",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-cabe7a91932144e39c33"
+    },
+    {
+      "text": "Маша написала черновик письма и сохранила его. Отправлять письмо она пока не стала: сначала хотела проверить дату.",
+      "family": "v18_text_003",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-ac6fb51747dfbb387b22"
+    },
+    {
+      "text": "На первой странице блокнота было только название. На второй появились три короткие заметки. Этого оказалось достаточно для начала.",
+      "family": "v18_text_004",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-02ecc853766d98d242d8"
+    },
+    {
+      "text": "Кирилл собирался читать, но устал. Он закрыл книгу на закладке и оставил следующую главу на завтра.",
+      "family": "v18_text_005",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-d9a6a07e9729d54f20f1"
+    },
+    {
+      "text": "Ваня положил билет в карман куртки. Позже переложил его в кошелёк. Перед выходом он проверил именно кошелёк.",
+      "family": "v18_text_006",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-53f7d5f33c90a8d6742c"
+    },
+    {
+      "text": "Друзья ещё не выбрали день встречи. Среда подходила не всем, а пятницу пока только обсуждали. Подтверждённой даты не было.",
+      "family": "v18_text_007",
+      "split": "train",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-0c864447fca8626a718f"
+    }
+  ],
+  "validation": [
+    {
+      "prompt": "Не хочу сегодня спорить, давай тихо поговорим.",
+      "answer": "Давай. Спокойно и без спора.",
+      "family": "v18_control_000",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-39f2b5060a6a7bec540a"
+    },
+    {
+      "prompt": "Исправь: «Все три заметка сохранён».",
+      "answer": "Все три заметки сохранены.",
+      "family": "v18_control_001",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-50b66d2fb32a9dd8928a"
+    },
+    {
+      "prompt": "Назови документ с идеями одним словом, без точки.",
+      "answer": "Идеи",
+      "family": "v18_control_002",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-ba82d2e0fd4db66be76a"
+    },
+    {
+      "prompt": "Сделай мягче: «Хватит меня торопить».",
+      "answer": "Пожалуйста, дай мне немного времени.",
+      "family": "v18_control_003",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-78c9fb29016396cb09e0"
+    },
+    {
+      "prompt": "Пока только рассматриваю поездку. Можно писать, что я уже еду?",
+      "answer": "Нет. Поездка ещё не решена.",
+      "family": "v18_control_004",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-2d4e4074edf0ff3352dc"
+    },
+    {
+      "prompt": "Ответь ровно двумя строками: верхняя «вход», нижняя «выход».",
+      "answer": "вход\nвыход",
+      "family": "v18_control_005",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-996e518bc888f8797181"
+    },
+    {
+      "prompt": "Даша взяла жёлтый шарф, Петя серый. Чей шарф серый?",
+      "answer": "Серый шарф у Пети.",
+      "family": "v18_control_006",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-87d2cdd878e79a7ffb0c"
+    },
+    {
+      "prompt": "Уточни без добавления причины: «Документ ещё не готов».",
+      "answer": "Документ ещё не готов.",
+      "family": "v18_control_007",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-8d76c7c72f71d8a1410e"
+    },
+    {
+      "prompt": "В коробке было пять открыток, две достали. Сколько осталось?",
+      "answer": "Осталось три открытки.",
+      "family": "v18_control_008",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-1f896a094352ae58d8e1"
+    },
+    {
+      "prompt": "Скажи коротко, что встреча возможна, но пока не назначена.",
+      "answer": "Встреча возможна, дата пока не назначена.",
+      "family": "v18_control_009",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-5287949b2f637b738244"
+    },
+    {
+      "prompt": "Предложи спокойный заголовок для заметки о вечере дома.",
+      "answer": "Вечер дома",
+      "family": "v18_control_010",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-62b19a6d8e98e700258e"
+    },
+    {
+      "prompt": "Я сказал «почти закончил». Это означает, что работа завершена?",
+      "answer": "Нет. Почти закончил означает, что ещё что-то осталось.",
+      "family": "v18_control_011",
+      "split": "validation",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-aa88d19ba4a5dffbe9b8"
+    }
+  ],
+  "challenge": [
+    {
+      "prompt": "Перепиши без упрёка: «Ты так и не ответил».",
+      "answer": "Кажется, ответа пока нет. Напиши, пожалуйста, когда сможешь.",
+      "family": "v18_blind_000",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-4dac225c2938c16fafcf"
+    },
+    {
+      "prompt": "Я пока просто присматриваюсь к велосипеду. Покупка уже решена?",
+      "answer": "Нет. Ты ещё присматриваешься, решение о покупке не принято.",
+      "family": "v18_blind_001",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-aee5b5a73b3635baf5af"
+    },
+    {
+      "prompt": "Без вступления исправь: «Обе сообщение были короткий».",
+      "answer": "Оба сообщения были короткими.",
+      "family": "v18_blind_002",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-f71653aff65bea1d7cf6"
+    },
+    {
+      "prompt": "Ответь только двумя строками: «черновик», затем «готово».",
+      "answer": "черновик\nготово",
+      "family": "v18_blind_003",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-5a396bb3dae611f518a1"
+    },
+    {
+      "prompt": "Напиши короткое название для папки с проверенными заметками.",
+      "answer": "Проверенные заметки",
+      "family": "v18_blind_004",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-c6274533f110d878c322"
+    },
+    {
+      "prompt": "Мне нужен ответ без совета: сегодня всё шло медленно.",
+      "answer": "Похоже, день оказался неторопливым.",
+      "family": "v18_blind_005",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-0180c1a439df80c02548"
+    },
+    {
+      "prompt": "У Ани красный зонт, у Юры синий. Чей зонт не красный?",
+      "answer": "Синий зонт у Юры.",
+      "family": "v18_blind_006",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-3b1ccb94fc9413a2e727"
+    },
+    {
+      "prompt": "Задумал переставить стол, но ещё не переставил. Где он сейчас?",
+      "answer": "Пока на прежнем месте.",
+      "family": "v18_blind_007",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-9e31afff85e866dd8a4e"
+    },
+    {
+      "prompt": "В тетради семь чистых страниц, три заполнили. Сколько чистых осталось?",
+      "answer": "Осталось четыре чистые страницы.",
+      "family": "v18_blind_008",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-c8ee9e45d687fed5472a"
+    },
+    {
+      "prompt": "Сократи: «Я обязательно сообщу тебе об этом позднее».",
+      "answer": "Сообщу тебе позже.",
+      "family": "v18_blind_009",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-7174edbc0010948dc971"
+    },
+    {
+      "prompt": "Мне нравится идея, но я её не одобрил. Сохрани это различие.",
+      "answer": "Идея тебе нравится, но одобрения пока нет.",
+      "family": "v18_blind_010",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-fd193bb699f9b3860575"
+    },
+    {
+      "prompt": "Исправь только порядок слов: «Завтра закончу я черновик».",
+      "answer": "Я закончу черновик завтра.",
+      "family": "v18_blind_011",
+      "split": "test",
+      "origin": "authored-synthetic-v18",
+      "id": "ru-v18-01fe8809b2b2a8a0b3a3"
+    }
+  ]
+}

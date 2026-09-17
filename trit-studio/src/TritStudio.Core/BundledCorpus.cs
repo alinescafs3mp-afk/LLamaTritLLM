@@ -3,11 +3,11 @@ namespace TritStudio.Core;
 
 public static class BundledCorpus
 {
-    public const string Version = "conversation-ru-v17";
+    public const string Version = "conversation-ru-v18";
     public static TrainingExample[] Load(string directory, string name, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested();
-        if (name is not ("seed.jsonl" or "validation.jsonl" or "test.jsonl" or "challenge.jsonl" or "challenge-v4.jsonl" or "challenge-v5.jsonl" or "challenge-v6.jsonl" or "challenge-v7.jsonl" or "challenge-v8.jsonl" or "challenge-v9.jsonl" or "challenge-v10.jsonl" or "challenge-v11.jsonl" or "challenge-v12.jsonl" or "challenge-v13.jsonl" or "challenge-v14.jsonl" or "challenge-v15.jsonl" or "challenge-v16.jsonl" or "challenge-v17.jsonl" or "pretrain.jsonl"))
+        if (name is not ("seed.jsonl" or "validation.jsonl" or "test.jsonl" or "challenge.jsonl" or "challenge-v4.jsonl" or "challenge-v5.jsonl" or "challenge-v6.jsonl" or "challenge-v7.jsonl" or "challenge-v8.jsonl" or "challenge-v9.jsonl" or "challenge-v10.jsonl" or "challenge-v11.jsonl" or "challenge-v12.jsonl" or "challenge-v13.jsonl" or "challenge-v14.jsonl" or "challenge-v15.jsonl" or "challenge-v16.jsonl" or "challenge-v17.jsonl" or "challenge-v18.jsonl" or "pretrain.jsonl"))
             throw new ArgumentException("Unknown bundled corpus file.");
         string manifestPath = Path.Combine(directory, "DATASET_MANIFEST.json");
         using var manifestStream = new FileStream(manifestPath, FileMode.Open, FileAccess.Read, FileShare.Read);

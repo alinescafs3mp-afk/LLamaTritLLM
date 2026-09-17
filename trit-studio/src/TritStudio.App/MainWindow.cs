@@ -42,7 +42,7 @@ public sealed partial class MainWindow : Window
         _layers = Number(2, 1, 12), _heads = Number(4, 1, 16), _kvHeads = Number(2, 1, 16),
         _context = Number(1024, 32, 2048, 32), _planes = Number(2, 1, 3), _group = Number(32, 8, 128, 8),
         _threshold = Number(0.5m, 0, 1, 0.05m, "0.00"), _threads = Number(Math.Max(1, Environment.ProcessorCount - 2), 1, Math.Max(1, Environment.ProcessorCount)),
-        _memory = Number(8192, 512, 65536, 512), _batch = Number(8, 1, 32), _sequence = Number(512, 16, 2048, 16),
+        _memory = Number(8192, 512, 65536, 512), _batch = Number(8, 1, ResourceOptions.MaxBatchSize), _sequence = Number(512, 16, 2048, 16),
         _steps = Number(1200, 0, 100000, 20), _learningRate = Number(0.001m, 0.000001m, 0.01m, 0.0001m, "0.######"),
         _onlineRate = Number(0.0001m, 0.000001m, 0.001m, 0.00001m, "0.######"),
         _maxTokens = Number(256, 1, 1024, 16), _topK = Number(40, 1, 262);
@@ -93,7 +93,7 @@ public sealed partial class MainWindow : Window
 
     public MainWindow()
     {
-        Title = "Trit Studio • аудит 17 • лаборатория собственных моделей";
+        Title = "Trit Studio • аудит 18 • лаборатория собственных моделей";
         Width = 1280; Height = 860; MinWidth = 780; MinHeight = 540;
         Background = new SolidColorBrush(Color.Parse("#101624"));
         _preferences = AppPaths.Load(); _sampling = _preferences.Sampling ?? new();
@@ -101,7 +101,7 @@ public sealed partial class MainWindow : Window
         _temperature.Value = _sampling.Temperature; _topK.Value = _sampling.TopK; _topP.Value = _sampling.TopP;
         _repetition.Value = _sampling.RepetitionPenalty; _maxTokens.Value = _sampling.MaxNewTokens;
         _scaledShell = new LayoutTransformControl { Child = BuildShell(), LayoutTransform = new ScaleTransform(1, 1) };
-        Content = _scaledShell; ApplyUiScale(_preferences.UiScale, false); Wire(); WireLibrary(); UpdateEstimate(); UpdateLearningControls(); UpdateState();
+        Content = _scaledShell; ApplyUiScale(_preferences.UiScale, false); Wire(); WireLibrary(); WireLaunchEditors(); UpdateEstimate(); UpdateLearningControls(); UpdateState();
         _telemetry = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
         _telemetry.Tick += (_, _) => { UpdateStats(); UpdateActivity(); }; _telemetry.Start();
         Opened += async (_, _) => await Safe(async () =>
@@ -112,7 +112,18 @@ public sealed partial class MainWindow : Window
         });
         Closing += async (_, e) =>
         {
-            if (_closeAllowed) return; e.Cancel = true; if (_closing) return; _closing = true; _windowLife.Cancel(); _preparationCts?.Cancel(); IsEnabled = false; _telemetry.Stop(); CancelPendingModeEdit(); _generationCts?.Cancel();
+            if (_closeAllowed) return; e.Cancel = true; if (_closing || _confirmingUnsavedClose) return;
+            try { FlushEditorDrafts(strict:true); }
+            catch (Exception error)
+            {
+                SetError("Параметры не сохранены: " + error.Message); _confirmingUnsavedClose = true;
+                bool exitWithoutSaving;
+                try { exitWithoutSaving = await Confirm("Параметры не сохранены", error.Message + "\nЗакрыть без сохранения изменённых параметров? Последние корректные файлы останутся без изменений."); }
+                finally { _confirmingUnsavedClose = false; }
+                if (!exitWithoutSaving) return;
+                _runDraftDirty = false; _creationDraftDirty = false;
+            }
+            _draftTimer.Stop(); _closing = true; _windowLife.Cancel(); _preparationCts?.Cancel(); IsEnabled = false; _telemetry.Stop(); CancelPendingModeEdit(); _generationCts?.Cancel();
             _actionTitle.Text = "Закрытие"; _actionDetail.Text = "Останавливаю вычисления. Последний подтверждённый снимок останется на диске.";
             if (_generationTask is not null) try { await _generationTask; } catch { }
             if (_client is not null) await _client.DisposeAsync();
@@ -124,18 +135,27 @@ public sealed partial class MainWindow : Window
     }
     private static TextBlock Text(string text, double size = 14) => new() { Text = text, FontSize = size, TextWrapping = TextWrapping.Wrap };
     private static Button Button(string text) => new() { Content = text, Padding = new Thickness(10, 5), HorizontalAlignment = HorizontalAlignment.Left };
-    private static NumericUpDown Number(decimal value, decimal min, decimal max, decimal step = 1, string format = "0") => new()
-    { Value = value, Minimum = min, Maximum = max, Increment = step, FormatString = format, HorizontalAlignment = HorizontalAlignment.Stretch };
+    private static NumericUpDown Number(decimal value, decimal min, decimal max, decimal step = 1, string format = "0") =>
+        new ParameterNumber(format, format == "0")
+        { Minimum = min, Maximum = max, Increment = step, FormatString = format, Value = value, HorizontalAlignment = HorizontalAlignment.Stretch };
+    private static void SetEditorValue(NumericUpDown control, decimal value)
+    {
+        if (control is ParameterNumber number) number.SetNumber(value);
+        else control.Value = value;
+    }
+    private static int LaunchInt(NumericUpDown x) => decimal.ToInt32(CheckedNumber(x));
+    private static decimal CheckedNumber(NumericUpDown x) => x is ParameterNumber p ? p.ReadChecked() : x.Value ?? throw new ArgumentException("Введите число.");
     private static StackPanel Column(params Control[] items) { var s = new StackPanel { Spacing = 6 }; foreach (var c in items) s.Children.Add(c); return s; }
     private static StackPanel Row(params Control[] items) { var s = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 6 }; foreach (var c in items) s.Children.Add(c); return s; }
-    private static Control Field(string label, Control input) => Column(new TextBlock { Text = label, Foreground = Muted, FontSize = 12 }, input);
+    private static Control Field(string label, Control input)
+    { input.Tag = label; return Column(new TextBlock { Text = label, Foreground = Muted, FontSize = 12 }, input); }
     private static Border Card(Control c) => new() { Background = PanelBrush, CornerRadius = new CornerRadius(6), BorderBrush = new SolidColorBrush(Color.Parse("#344156")), BorderThickness = new Thickness(1), Padding = new Thickness(10), Child = c };
     private Control BuildShell()
     {
         var open = _openButton = Button("Папка…"); open.Click += async (_, _) => await RunButton(open, "Открытие модели", OpenFolder);
         var packed = _packedButton = Button("Файл…"); packed.Click += async (_, _) => await RunButton(packed, "Открытие модели для чата", OpenPacked);
         var export = _exportButton = Button("Экспорт"); export.Click += async (_, _) => await RunButton(export, "Экспорт модели", Export);
-        var header = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*,Auto"), RowDefinitions = new RowDefinitions("Auto,Auto,Auto"), Margin = new Thickness(12, 8) };
+        var header = new Grid { ColumnDefinitions = new ColumnDefinitions("Auto,*,Auto"), RowDefinitions = new RowDefinitions("Auto,Auto,Auto,Auto"), Margin = new Thickness(12, 8) };
         var brand = Text("TRIT STUDIO", 17); brand.VerticalAlignment = VerticalAlignment.Center; brand.Margin = new Thickness(0,0,16,0); header.Children.Add(brand);
         var choose = new Grid { ColumnDefinitions = new ColumnDefinitions("*,Auto,Auto"), Margin = new Thickness(0,0,12,0), VerticalAlignment = VerticalAlignment.Center };
         _modelPicker.MinHeight = 30; choose.Children.Add(_modelPicker);
@@ -150,6 +170,7 @@ public sealed partial class MainWindow : Window
         { control.VerticalAlignment = VerticalAlignment.Center; control.MinHeight = 30; }
         _modelLabel.TextWrapping = TextWrapping.NoWrap; _modelLabel.TextTrimming = TextTrimming.CharacterEllipsis;
         _modelLabel.Margin = new Thickness(0,5,0,0); Grid.SetRow(_modelLabel,1); Grid.SetColumnSpan(_modelLabel,3); header.Children.Add(_modelLabel);
+        var accuracyLine = BuildAccuracyLine(); Grid.SetRow(accuracyLine,2); Grid.SetColumnSpan(accuracyLine,3); header.Children.Add(accuracyLine);
         bool narrowHeader = false;
         header.PropertyChanged += (_,e) =>
         {
@@ -158,6 +179,7 @@ public sealed partial class MainWindow : Window
             header.ColumnDefinitions = new ColumnDefinitions(narrow ? "Auto,*" : "Auto,*,Auto");
             Grid.SetColumn(right,narrow ? 0 : 2); Grid.SetRow(right,narrow ? 1 : 0); Grid.SetColumnSpan(right,narrow ? 2 : 1);
             Grid.SetRow(_modelLabel,narrow ? 2 : 1); Grid.SetColumnSpan(_modelLabel,narrow ? 2 : 3);
+            Grid.SetRow(accuracyLine,narrow ? 3 : 2); Grid.SetColumnSpan(accuracyLine,narrow ? 2 : 3);
         };
         _tabs.ItemsSource = new[] { new TabItem { Header = "Чат", Content = BuildChat() }, new TabItem { Header = "Модель и обучение", Content = BuildTraining() } };
         _tabs.Margin = new Thickness(12,0,12,6);
@@ -255,20 +277,20 @@ public sealed partial class MainWindow : Window
         });
 
         _qualityButton.Click += async (_,_) => await RunButton(_qualityButton, "Проверка обучения", CheckLearning);
-        _trainingPresetButton.Click += (_,_) => ApplyLearningPreset();
+        _trainingPresetButton.Click += async (_,_) => await Safe(() => { ApplyLearningPreset(); return Task.CompletedTask; });
         var active = Card(Column(Text("Текущая модель",18), _selectedModelInfo, _workspaceLabel,
             Flow(_diagnosticsButton, _qualityButton, references), _qualitySummary,
             new Expander { Header = "Обслуживание модели и журнал", Content = Column(service,
                 new ScrollViewer { Content = _log, MaxHeight = 200 }) }));
         active.Name = "ActiveModelPanel";
         var architecture = FormFields(
-            Field("Ширина",_dimension), Field("FFN",_hidden), Field("Слои",_layers), Field("Головы",_heads),
-            Field("KV-головы",_kvHeads), Field("Контекст",_context), Field("Троичные плоскости",_planes),
-            Field("Группа квантования",_group), Field("Порог",_threshold));
+            HelpField("Ширина",_dimension,WidthHelp), HelpField("FFN",_hidden,FfnHelp), HelpField("Слои",_layers,LayersHelp), HelpField("Головы",_heads,HeadsHelp),
+            HelpField("KV-головы",_kvHeads,KvHelp), HelpField("Контекст",_context,ContextHelp), HelpField("Троичные плоскости",_planes,PlanesHelp),
+            HelpField("Группа квантования",_group,GroupHelp), HelpField("Порог",_threshold,ThresholdHelp));
         _newModelPane = new Expander { Header = "Архитектура новой сети", Content = architecture };
         _createTrainFields = Column(Text("Обучение сразу после создания",14),
-            FormFields(Field("Шаги",_newSteps),Field("Learning rate",_newRate),Field("Пакет",_newBatch),
-                Field("Длина обучения",_newSequence),Field("Сохранять через N шагов",_newPublish)),
+            FormFields(HelpField("Шаги",_newSteps,StepsHelp),HelpField("Learning rate",_newRate,RateHelp),HelpField("Пакет",_newBatch,BatchHelp),
+                HelpField("Длина обучения",_newSequence,LengthHelp),HelpField("Сохранять через N шагов",_newPublish,PublishHelp)),
             Text("Только встроенный материал выбранного этапа. Свои файлы подключаются после создания в соседнем блоке.",12));
         var create = Card(Column(Text("Создать новую модель",18), Field("Имя",_name),Field("Размер",_preset),
             _newModelPane, _estimate, Field("После создания",_creationMode),_stageHint,
@@ -277,10 +299,10 @@ public sealed partial class MainWindow : Window
         var training = Card(Column(Text("Дообучить выбранную модель",18),
             Text("Меняются веса модели из шапки. Поля блока «Создать новую модель» к этому запуску не относятся.",12),
             SectionTitle("Материал"),Field("Этап",_trainingMaterial),Flow(pick,clear),_pathsLabel,_dataSummary,_refreshCorpus,
-            SectionTitle("Параметры запуска"), _trainingPresetButton,
-            FormFields(Field("Дополнительные шаги",_steps),Field("Learning rate",_learningRate),
-                Field("Пакет",_batch),Field("Максимальная длина",_sequence),Field("Сохранять через N шагов",_publishEvery)),
-            _learningHint,SectionTitle("Устройство и память"),_cuda,
+            SectionTitle("Параметры запуска"), Flow(_trainingPresetButton, _saveRunDraft),
+            FormFields(HelpField("Дополнительные шаги",_steps,StepsHelp),HelpField("Learning rate",_learningRate,RateHelp),
+                HelpField("Пакет",_batch,BatchHelp),HelpField("Максимальная длина",_sequence,LengthHelp),HelpField("Сохранять через N шагов",_publishEvery,PublishHelp)),
+            _learningHint,_runDraftStatus,SectionTitle("Устройство и память"),_cuda,
             FormFields(Field("Потоки CPU",_threads),Field("Бюджет RAM тренера, МиБ",_memory)),
             Text("Бюджет RAM задаёт лимит процесса, а не измеряет свободную память. VRAM не равна RAM. Нулевое создание не выделяет активации учебного пакета.",12),
             new Expander { Header = "Оптимизации", Content = Column(_sdpa,_buckets,_targetProjection) },
@@ -313,7 +335,7 @@ public sealed partial class MainWindow : Window
             c.PropertyChanged += (_, e) => { if (e.Property.Name == "Value") UpdateEstimate(); };
         _learningRate.PropertyChanged += (_,e) => { if(e.Property.Name == "Value") UpdateLearningHint(); };
         _newMemory.PropertyChanged += (_,e) => { if(e.Property.Name == "Value") UpdateEstimate(); };
-        _preset.SelectionChanged += (_, _) => ApplyPreset(_preset.SelectedIndex switch { 1 => ModelConfig.Medium, 2 => ModelConfig.Large, _ => ModelConfig.Small });
+        _preset.SelectionChanged += (_, _) => { if (!_restoringLaunch && _preset.SelectedIndex >= 0) ApplyPreset(_preset.SelectedIndex switch { 1 => ModelConfig.Medium, 2 => ModelConfig.Large, _ => ModelConfig.Small }); };
         _online.PropertyChanged += async (_, e) =>
         {
             if (e.Property.Name == "IsChecked" && !_settingControls) await Safe(async () =>
@@ -367,18 +389,19 @@ public sealed partial class MainWindow : Window
         };
     }
     private static int Int(NumericUpDown x) => (int)(x.Value ?? 0);
-    private ModelConfig SelectedConfig() => new() { Dimension = Int(_dimension), HiddenDimension = Int(_hidden), Layers = Int(_layers), Heads = Int(_heads),
-        KvHeads = Int(_kvHeads), Context = Int(_context), Planes = Int(_planes), GroupSize = Int(_group), Threshold = (float)(_threshold.Value ?? 0) };
-    private ResourceOptions SelectedResources() => new() { Threads = Int(_threads), MemoryMiB = Int(_memory), BatchSize = Int(_batch), SequenceLength = Int(_sequence), PreferCuda = _cuda.IsChecked == true, UseSdpa = _sdpa.IsChecked == true, BucketByLength = _buckets.IsChecked == true, ProjectOnlyTargets = _targetProjection.IsChecked == true };
-    private TrainingOptions SelectedTraining() => new() { Steps = Int(_steps), LearningRate = (double)(_learningRate.Value ?? 0), OnlineLearningRate = (double)(_onlineRate.Value ?? 0), PublishEvery = Int(_publishEvery) };
+    private ModelConfig SelectedConfig() => _creationConfigBase with { Dimension = LaunchInt(_dimension), HiddenDimension = LaunchInt(_hidden), Layers = LaunchInt(_layers), Heads = LaunchInt(_heads),
+        KvHeads = LaunchInt(_kvHeads), Context = LaunchInt(_context), Planes = LaunchInt(_planes), GroupSize = LaunchInt(_group), Threshold = (float)CheckedNumber(_threshold) };
+    private ResourceOptions SelectedResources() => new() { Threads = LaunchInt(_threads), MemoryMiB = LaunchInt(_memory), BatchSize = LaunchInt(_batch), SequenceLength = LaunchInt(_sequence), PreferCuda = _cuda.IsChecked == true, UseSdpa = _sdpa.IsChecked == true, BucketByLength = _buckets.IsChecked == true, ProjectOnlyTargets = _targetProjection.IsChecked == true };
+    private TrainingOptions SelectedTraining() => _runTrainingBase with { Steps = LaunchInt(_steps), LearningRate = (double)CheckedNumber(_learningRate), OnlineLearningRate = (double)CheckedNumber(_onlineRate), PublishEvery = LaunchInt(_publishEvery) };
     private void ApplyPreset(ModelConfig c)
     {
-        _dimension.Value = c.Dimension; _hidden.Value = c.HiddenDimension; _layers.Value = c.Layers; _heads.Value = c.Heads; _kvHeads.Value = c.KvHeads;
-        _context.Value = c.Context; _planes.Value = c.Planes; _group.Value = c.GroupSize; _threshold.Value = (decimal)c.Threshold; UpdateEstimate();
+        _creationConfigBase = c;
+        SetEditorValue(_dimension, c.Dimension); SetEditorValue(_hidden, c.HiddenDimension); SetEditorValue(_layers, c.Layers); SetEditorValue(_heads, c.Heads); SetEditorValue(_kvHeads, c.KvHeads);
+        SetEditorValue(_context, c.Context); SetEditorValue(_planes, c.Planes); SetEditorValue(_group, c.GroupSize); SetEditorValue(_threshold, (decimal)c.Threshold); UpdateEstimate();
     }
     private void UpdateEstimate()
     {
-        try { var c = SelectedConfig(); c.Validate(); _estimate.Text = $"{c.ParameterCount:N0} параметров · мастер-веса ≈ {c.ParameterCount * 4 / 1048576.0:F2} МиБ.\nСоздание/загрузка: оценка ≈ {TrainingMemoryEstimate.For(c, CreationResources(c), 0).PersistentBytes / 1048576.0:F0} МиБ, бюджет {Int(_newMemory):N0} МиБ.\nАктивации обучения в нулевое создание не входят."; }
+        try { var c = SelectedConfig(); c.Validate(); _estimate.Text = $"{c.ParameterCount:N0} параметров · мастер-веса ≈ {c.ParameterCount * 4 / 1048576.0:F2} МиБ.\nСоздание/загрузка: оценка ≈ {TrainingMemoryEstimate.For(c, ZeroCreationResources(c), 0).PersistentBytes / 1048576.0:F0} МиБ, бюджет {Int(_newMemory):N0} МиБ.\nАктивации обучения в нулевое создание не входят."; }
         catch (Exception e) { _estimate.Text = "Проверьте архитектуру: " + e.Message; }
     }
     private void UpdateSampling()
@@ -430,7 +453,7 @@ public sealed partial class MainWindow : Window
         if (_clearDataButton is not null) _clearDataButton.IsEnabled = !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
         _qualityButton.IsEnabled = _workerReady && _model is not null && !_generating && !_operationBusy && !_openingWorkspace && !_navigationBusy && !_modeApplying;
         _trainingPresetButton.IsEnabled = !_operationBusy && !_openingWorkspace && !_navigationBusy;
-        UpdateLibraryState();
+        UpdateLibraryState(); UpdateLaunchEditorAvailability();
         foreach (var b in _busyButtons) b.IsEnabled = false;
     }
     private void Log(string text)
@@ -496,7 +519,7 @@ public sealed partial class MainWindow : Window
     {
         var c = _model?.Weights.Config; var r = _revision; using var process = Process.GetCurrentProcess(); long rss = process.WorkingSet64 / 1048576;
         _stats.Text = c is null ? "Параметров: нет модели" : $"Параметров: {c.ParameterCount:N0}\nРевизия: {_model!.Revision}\nИзменено в ревизии: {r?.ChangedWeights ?? 0:N0}\nШаг обучения: {_workerStatus?.Step ?? r?.Step ?? 0:N0}\nОбучающих токенов: {r?.TargetTokens ?? 0:N0}\nОчередь: {_workerStatus?.Queue ?? 0}\nПринято / отклонено: {_workerStatus?.Replay?.Learned ?? 0} / {_workerStatus?.Replay?.Rejected ?? 0}\nСнимков: {_workerStatus?.Snapshots ?? 0}\nRAM приложения: {rss:N0} МиБ\nRAM тренера: {_workerStatus?.MemoryMiB ?? 0:N0} МиБ\nУстройство: {_workerStatus?.Device ?? "CPU, только чат"}\nКонтрольная ошибка: {(r?.ValidationLoss is double loss ? loss.ToString("F4") : "ещё не измерена")}\n{(_pending is null ? "" : "Новый снимок ожидает конца ответа.")}";
-        UpdateSelectedInfo();
+        UpdateSelectedInfo(); UpdateAccuracyLine();
         var performance = _workerStatus?.Performance;
         _details.Text = (_workerStatus?.TokensPerSecond is double speed ? $"Обучение: {speed:F0} целевых токенов/с. " : "") +
             (performance is null ? "" : $"Пакет {performance.BatchSize} × {performance.SequenceLength}; пустые позиции {performance.PaddingFraction:P0}.\n{performance.AttentionBackend}. Выходных позиций: {performance.OutputPositions}/{performance.PaddedPositions}. " +
@@ -522,7 +545,7 @@ public sealed partial class MainWindow : Window
             // An edit belongs to the model/connection in which it was made, not the next opened model.
             if (!ReferenceEquals(_modeDebounce, pending) || epoch != _epoch || !ReferenceEquals(client, _client) ||
                 _closing || _openingWorkspace || _navigationBusy || _operationBusy || !_workerReady) return;
-            double rate = (double)(_onlineRate.Value ?? 0.0001m);
+            double rate = (double)CheckedNumber(_onlineRate);
             if (await ApplyOnline() && !pending.IsCancellationRequested && ReferenceEquals(_modeDebounce, pending))
                 Notice("Скорость обучения подтверждена", $"Learning rate: {rate}");
         }
@@ -540,7 +563,7 @@ public sealed partial class MainWindow : Window
         Notice("Принято · настройка обучения", "Ожидаю подтверждение тренера. Настройка не считается применённой до ответа.");
         try
         {
-            await client.Request("mode", new OnlineMode(_online.IsChecked == true, (double)(_onlineRate.Value ?? 0.0001m)));
+            await client.Request("mode", new OnlineMode(_online.IsChecked == true, (double)CheckedNumber(_onlineRate)));
             return !_closing && epoch == _epoch && ReferenceEquals(client, _client);
         }
         finally { _modeApplying = false; UpdateState(); }
@@ -566,6 +589,7 @@ public sealed partial class MainWindow : Window
     }
     private async Task OpenWorkspace(string path)
     {
+        FlushEditorDrafts(strict:true, includeCreation:false);
         _windowLife.Token.ThrowIfCancellationRequested();
         if (_openingWorkspace) throw new InvalidOperationException("Открытие модели уже выполняется.");
         CancelPendingModeEdit(); _openingWorkspace = true; UpdateState(); UpdateActivity();
@@ -597,7 +621,7 @@ public sealed partial class MainWindow : Window
             await _modelLoader.WaitAsync(); _modelLoader.Release();
             _windowLife.Token.ThrowIfCancellationRequested();
             if (!same) _uiLease?.Dispose(); _uiLease = nextLease; installed = true;
-            _workspace = path; _conversationId = preview.ConversationId;
+            _workspace = path; _conversationId = preview.ConversationId; SetRunEditorContext(path);
             if (!same) ClearModelSpecificInputs();
             _model = null; _revision = null; _pending = null; _inferenceFile = null;
             _workerStatus = null; _operationBusy = false; _history.Clear(); _messages.Children.Clear();
@@ -619,12 +643,13 @@ public sealed partial class MainWindow : Window
                 {
                     if (_closing || epoch != _epoch) return;
                     _workerReady = false; _operationBusy = false;
-                    if (_workerStatus is not null) _workerStatus = _workerStatus with { Busy = false };
-                    _progress.IsIndeterminate = false; UpdateState(); UpdateActivity();
+                    if (_workerStatus is not null) _workerStatus = _workerStatus with { Busy = false, Step = _revision?.Step ?? 0,
+                        Accuracy = _revision?.Accuracy, Performance = null };
+                    _progress.IsIndeterminate = false; UpdateState(); UpdateActivity(); UpdateStats();
                     SetError(text + " Можно переподключить тренер на вкладке обучения. Чат на сохранённых весах доступен.");
                 });
                 client.Start();
-                var ready = await client.WaitReadyAsync(); _windowLife.Token.ThrowIfCancellationRequested(); _workerReady = true;
+                var ready = await client.WaitReadyAsync(); _windowLife.Token.ThrowIfCancellationRequested(); ReceiveRunSettings(ready); _workerReady = true;
                 SetOnlineCheck(ready.HasModel ? ready.Online && !ready.Paused : _preferences.OnlineLearning);
                 _status.Text = ready.HasModel ? "Модель открыта. Чат и тренер готовы." : "Тренер подключён. Можно создавать модель.";
             }
@@ -656,20 +681,8 @@ public sealed partial class MainWindow : Window
                 {
                     case "published": await LoadPublication(Protocol.Payload<PublishEvent>(message.Data), epoch, ++_publication); break;
                     case "ready":
-                        var r = Protocol.Payload<ReadyEvent>(message.Data); _workerReady = true;
-                        if (r.Resources is not null && !_operationBusy)
-                        {
-                            _settingControls = true;
-                            try
-                            {
-                            _threads.Value = Math.Min(r.Resources.Threads, Environment.ProcessorCount); _memory.Value = r.Resources.MemoryMiB; _batch.Value = r.Resources.BatchSize;
-                            _sequence.Value = r.Resources.SequenceLength; _cuda.IsChecked = r.Resources.PreferCuda; _sdpa.IsChecked = r.Resources.UseSdpa; _buckets.IsChecked = r.Resources.BucketByLength; _targetProjection.IsChecked = r.Resources.ProjectOnlyTargets;
-                            if (r.Training is not null)
-                            { _onlineRate.Value = (decimal)r.Training.OnlineLearningRate; _learningRate.Value = (decimal)r.Training.LearningRate; _publishEvery.Value = r.Training.PublishEvery; }
-                            _trainingMaterial.SelectedIndex = r.LastMaterial is null && r.Training?.Steps == 0 ? 1 : 0;
-                            }
-                            finally { _settingControls = false; }
-                        }
+                        var r = Protocol.Payload<ReadyEvent>(message.Data);
+                        ReceiveRunSettings(r); _workerReady = true;
                         break;
                     case "dataset":
                         var dataset = Protocol.Payload<DatasetSummaryEvent>(message.Data);
@@ -678,10 +691,12 @@ public sealed partial class MainWindow : Window
                     case "accepted": Log("Тренер принял: " + message.Data.GetProperty("command").GetString()); break;
                     case "mode-state":
                         var flags = Protocol.Payload<RuntimeFlags>(message.Data); SetOnlineCheck(flags.Online && !flags.Paused);
-                        if (flags.OnlineLearningRate is double rate) { _settingControls = true; try { _onlineRate.Value = (decimal)rate; } finally { _settingControls = false; } }
+                        if (flags.OnlineLearningRate is double rate) { bool previous = _settingControls; _settingControls = true; try { SetEditorValue(_onlineRate, (decimal)rate); } finally { _settingControls = previous; } }
                         break;
                     case "status":
-                        _workerStatus = Protocol.Payload<StatusEvent>(message.Data); _status.Text = _workerStatus.Message;
+                        var incoming = Protocol.Payload<StatusEvent>(message.Data);
+                        incoming.Accuracy?.Validate(incoming.Step, _model?.Weights.Config.Context ?? 2048);
+                        _workerStatus = incoming; _status.Text = _workerStatus.Message;
                         if (_lastStage != _workerStatus.Stage) { _lastStage = _workerStatus.Stage; Log(_workerStatus.Message); }
                         UpdateStats(); UpdateActivity(); break;
                     case "error": SetError(message.Data.GetProperty("message").GetString() ?? "Ошибка тренера"); break;
@@ -773,9 +788,14 @@ public sealed partial class MainWindow : Window
     }
     private async Task Create()
     {
+        ValidateEditorNumbers((CreationMode)_creationMode.SelectedIndex == CreationMode.Untrained ? CreationBaseNumbers : CreationNumbers);
+        FlushEditorDrafts(strict:false); // An unrelated unfinished editor is not a launch parameter.
         var mode = (CreationMode)Math.Clamp(_creationMode.SelectedIndex, 0, 2);
         bool onlineAfterCreate = mode == CreationMode.Conversation && _online.IsChecked == true;
-        var config = SelectedConfig(); var resources = CreationResources(config); var selectedTraining = CreationTraining();
+        var config = SelectedConfig();
+        // Raw creation deliberately ignores its hidden future batch/LR/step editors.
+        var resources = mode == CreationMode.Untrained ? ZeroCreationResources(config) : CreationResources(config);
+        var selectedTraining = mode == CreationMode.Untrained ? new TrainingOptions { Steps = 0 } : CreationTraining();
         if (mode != CreationMode.Untrained && selectedTraining.Steps == 0) throw new ArgumentException("Выберите «Без обучения» для нулевого этапа или укажите положительное число шагов.");
         var training = LearningStages.CreationOptions(mode, selectedTraining);
         config.Validate(); resources.ValidateInitialization(config); training.Validate();
@@ -818,10 +838,16 @@ public sealed partial class MainWindow : Window
             // Await the final snapshot here as well; protocol completion alone does not mean the UI loaded it.
             string? active = ModelFiles.ActivePath(path);
             if (active is not null) await LoadPublication(new PublishEvent(Path.GetFileName(active), JsonData.Read<RevisionInfo>(Path.Combine(active, "revision.json"))), _epoch, ++_publication);
+            if (!_runEditorInitialized && active is not null)
+            {
+                var saved = JsonData.Read<WorkspaceSettings>(Path.Combine(active, "settings.json"), 65536);
+                ReceiveRunSettings(new ReadyEvent(true, saved.Config, saved.Resources, saved.Training, LastMaterial: saved.LastMaterial));
+            }
             SetOnlineCheck(onlineAfterCreate); await ApplyOnline(allowOwnedOperation: true);
             _trainingMaterial.SelectedIndex = training.Steps == 0 ? 1 : 0;
-            if (training.Steps == 0) _steps.Value = 200;
-            else if (mode == CreationMode.BasicPretrain) _steps.Value = 1200;
+            if (training.Steps == 0) SetEditorValue(_steps, 200);
+            else if (mode == CreationMode.BasicPretrain) SetEditorValue(_steps, 1200);
+            MarkRunEdited(); FlushEditorDrafts(strict:false);
             _status.Text = training.Steps == 0 ? $"Создана НЕОБУЧЕННАЯ модель: 0 шагов. Автообучение выключено. Проверьте ответы, затем отдельно запустите базовый претрейн. Папка: {path}" :
                 mode == CreationMode.BasicPretrain ? $"Базовый претрейн завершён. Разговорный корпус ещё не использовался. Следующий этап: разговорное обучение. Папка: {path}" : $"Создание и разговорное обучение завершены. Модель активна в чате: {path}";
         }
@@ -830,22 +856,25 @@ public sealed partial class MainWindow : Window
     private async Task Train()
     {
         NeedWorker(); if (_model is null) return;
-        var resources = SelectedResources(); resources.ValidateInitialization(_model.Weights.Config); var training = SelectedTraining(); training.Validate();
+        var draft = CaptureRunDraft(); SaveRunDraft();
+        var resources = draft.Resources; resources.ValidateInitialization(_model.Weights.Config); var training = draft.Training; training.Validate();
         _operationBusy = true; _progress.IsIndeterminate = true; UpdateState();
         try
         {
             if (training.LearningRate < 0.00001 && !await Confirm("Очень маленький learning rate",
                 $"Сейчас LR={training.LearningRate:G6}. Это в {0.001/training.LearningRate:N0} раз меньше учебного старта 0,001. " +
                 "При обучении с нуля даже тысячи шагов могут оставить почти случайную речь. Продолжить с выбранным значением?")) throw new OperationCanceledException();
-            var material = (TrainingMaterial)Math.Clamp(_trainingMaterial.SelectedIndex, 0, 2);
+            var material = draft.Material;
             if (material == TrainingMaterial.BasicPretrain && _datasetPaths.Length != 0)
                 throw new ArgumentException("Для чистого базового этапа уберите выбранные файлы. Они не будут использоваться молча.");
             var paths = material == TrainingMaterial.BasicPretrain ? Array.Empty<string>() : (string[])_datasetPaths.Clone();
-            await _client!.Request("train", new TrainRequest(paths, training, resources, _refreshCorpus.IsChecked == true, material));
+            Log($"Запрошен запуск: LR={training.LearningRate:G6}, пакет={resources.BatchSize}, максимум={resources.SequenceLength}, шагов={training.Steps}, публикация={training.PublishEvery}. Это параметры запроса, не отчёт о завершении.");
+            await _client!.Request("train", new TrainRequest(paths, training, resources, draft.IncludeBundledUpdates, material));
             string? active = _workspace is null ? null : ModelFiles.ActivePath(_workspace);
             if (active is not null) await LoadPublication(new PublishEvent(Path.GetFileName(active), JsonData.Read<RevisionInfo>(Path.Combine(active, "revision.json"))), _epoch, ++_publication);
             SetOnlineCheck(false);
-            if (material == TrainingMaterial.BasicPretrain) { _trainingMaterial.SelectedIndex = 0; _steps.Value = 1200; }
+            if (material == TrainingMaterial.BasicPretrain) _trainingMaterial.SelectedIndex = 0;
+            MarkRunEdited(); FlushEditorDrafts(strict:false);
             _status.Text = "Этап обучения завершён. Снимок опубликован. Путь к эталону или предупреждение о его сохранении показаны в журнале. Автообучение выключено для чистого сравнения.";
         }
         finally { _operationBusy = false; }
@@ -1036,13 +1065,14 @@ public sealed partial class MainWindow : Window
     }
     private async Task OpenPackedPath(string path)
     {
+        FlushEditorDrafts(strict:true, includeCreation:false);
         if (_generating) throw new InvalidOperationException("Сначала остановите ответ.");
         path = Path.GetFullPath(path); ModelLibrary.NoLinks(path);
         var weights = await Task.Run(() => ModelFiles.Read(path, true, Math.Max(1, Math.Min(4, Environment.ProcessorCount)), _windowLife.Token)); _windowLife.Token.ThrowIfCancellationRequested();
         ++_epoch; ++_publication; CancelSnapshotLoad(); if (_client is not null) { await _client.DisposeAsync(); _client = null; }
         await _modelLoader.WaitAsync(); _modelLoader.Release();
         _windowLife.Token.ThrowIfCancellationRequested();
-        _uiLease?.Dispose(); _uiLease = null; _workerReady = false; _operationBusy = false; _workspace = null; _pending = null; _workerStatus = null; _revision = null;
+        _uiLease?.Dispose(); _uiLease = null; _workerReady = false; _operationBusy = false; _workspace = null; SetRunEditorContext(null); _pending = null; _workerStatus = null; _revision = null;
         _model = new(weights, -1, Math.Max(1, Math.Min(4, Environment.ProcessorCount))); _inferenceFile = path;
         _workspaceLabel.Text = path + " · только инференс"; _deviceNote.Text = "CPU-чат. Обучающий процесс не подключён."; SetOnlineCheck(false);
         _messages.Children.Clear(); _history.Clear(); _conversationId = Guid.NewGuid().ToString("N"); ClearModelSpecificInputs(); _modelLabel.Text = Path.GetFileName(path) + " · только чат";

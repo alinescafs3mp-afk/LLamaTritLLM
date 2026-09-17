@@ -1,3 +1,18 @@
+# Audit18 · 18.0.0-audit18 · 2026-09-17
+
+- Separate next-run drafts from committed settings; explicit Fill profile vs Save, per-model debounced persistence and Ready fencing.
+- Strict culture-independent numeric input with invalid-text preservation and visible write failures; independent creator draft.
+- Batch64 end to end; target-label tooltips only with2000ms dwell on every label.
+- Always-visible model-local training/control token accuracy, masked/token-weighted, committed with revision and honest step freshness.
+- Reuse existing logits and transfers; remove redundant QualityProbe forward passes; invalidate on restore and keep diagnostic samples separate.
+- +64 train,+12control,+12held-out; keep prior blind/baseline bytes. User-saved validation remains unchanged.
+- Actual C#/UI/native/Windows/CUDA NOT_RUN by source author. All prior and new real gates required before app-only update ZIP.
+- Host integration: Audit18UiChecks calls Avalonia.VisualExtensions.TranslatePoint; Avalonia 11.3 has no TextBlock.TranslatePoint instance method.
+- Host integration: tooltip dwell uses real pointer events on a hit-test overlay in the already-pumped MainWindow. A second Window.Show deadlocks Avalonia 11.3 headless after the main window has been exercised; Popup.IsOpen also deadlocks, so ToolTipOpening is cancelled. ShowDelay 2000ms and a second full 2s wait remain enforced. Isolated labels get an explicit hit-testable size (default TextBlock is only hittable on glyph pixels).
+- Host integration: restore creation kvHeads=2 before the strict creation-draft flush. Earlier headless fixtures leave kvHeads=3; a strict FlushEditorDrafts throw is not unwound by Avalonia 11.3 headless Dispatch.
+
+## Historical changes
+
 # Audit17 · 17.0.0-audit17 · 2026-09-17
 
 - Require real C# six-reply learning/export/CPU generation, beyond numeric/loss smoke.

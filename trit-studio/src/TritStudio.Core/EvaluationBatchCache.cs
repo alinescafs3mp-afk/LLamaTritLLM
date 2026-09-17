@@ -18,7 +18,7 @@ public sealed class EvaluationBatchCache
         long budgetBytes = DefaultBudgetBytes, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested();
-        if (examples.Length is < 1 or > Dataset.MaxExamples || batchSize is < 1 or > 32 ||
+        if (examples.Length is < 1 or > Dataset.MaxExamples || batchSize is < 1 or > ResourceOptions.MaxBatchSize ||
             sequenceLength is < 1 or > 2048 || budgetBytes is < 0 or > 128L * 1024 * 1024)
             throw new ArgumentException("Invalid validation cache limits.");
         // Effective lengths avoid padding ignored tails. Sorting must not change target-token weighting.

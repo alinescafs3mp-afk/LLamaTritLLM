@@ -16,6 +16,7 @@ public static class TrainerSelfTest
             var options = new TrainingOptions { LearningRate = 0.001 };
             var initial = WeightSet.Initialize(c);
             CheckSiluParity(requireCuda);
+            CheckBatch64(requireCuda);
             CheckAttentionParity(initial, requireCuda);
             CheckSelectedTargetParity(initial, requireCuda);
             CheckGradientNorm(initial, requireCuda);
@@ -107,11 +108,30 @@ public static class TrainerSelfTest
             CheckSnapshotPublication(training, root, resources, options);
             Console.WriteLine($"PASS real gradients, loss fitting ({before:F4} -> {after:F4}), managed/Torch parity, full-state resume on {training.DeviceName}.");
             Console.WriteLine("PASS SDPA/explicit forward+backward, versioned evaluation cache, failure recovery, bucketed sampler resume.");
+            LearningProgressSelfTest.Run(requireCuda, root);
             LearningSmoke.Run(requireCuda, root);
             Console.WriteLine("PASS isolated six-reply learning/packed-generation gate; not general conversation quality."); return 0;
         }
         catch (Exception e) { Console.Error.WriteLine("FAIL " + e); return 1; }
         finally { Directory.Delete(root, true); }
+    }
+
+    // Actual native batch64 and optimizer-rate acceptance, not a timing/quality benchmark.
+    private static void CheckBatch64(bool requireCuda)
+    {
+        var c=new ModelConfig{Dimension=16,HiddenDimension=32,Layers=1,Heads=2,KvHeads=1,Context=64,GroupSize=8};
+        var options=new TrainingOptions{LearningRate=.0003};
+        using var session=new TrainingSession(WeightSet.Initialize(c),new ResourceOptions{Threads=1,MemoryMiB=4096,BatchSize=64,SequenceLength=64,PreferCuda=requireCuda},options);
+        if(requireCuda&&session.Model.Device.type!=DeviceType.CUDA)throw new Exception("Batch64 silently fell back to CPU.");
+        var data=Dataset.EncodeAll([Dataset.Make("пример","да"),Dataset.Make("ещё","нет")],64,1);
+        session.TrainStep(data,.0003,CancellationToken.None);
+        if(session.LastStepPerformance?.BatchSize!=64||session.Step!=1)throw new Exception("Native batch64 not honored.");
+        if(session.Optimizer.ParamGroups.Any(p=>Math.Abs(p.LearningRate-.0003)>1e-12))throw new Exception("Requested LR not applied to AdamW.");
+        session.TrainStep(data,.0007,CancellationToken.None);
+        if(session.Optimizer.ParamGroups.Any(p=>Math.Abs(p.LearningRate-.0007)>1e-12))throw new Exception("Updated custom LR ignored.");
+        double loss=session.Evaluate(Enumerable.Range(0,65).Select(i=>data[i%2]).ToArray());
+        if(!double.IsFinite(loss))throw new Exception("Batch64 validation returned a nonfinite loss.");
+        Console.WriteLine("PASS native batch64/partial validation and explicit optimizer LR updates.");
     }
 
     // Owner reported poor text after direct conversational training. Verify the actual trained

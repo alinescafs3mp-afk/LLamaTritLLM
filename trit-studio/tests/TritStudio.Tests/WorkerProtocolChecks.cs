@@ -83,12 +83,51 @@ public static class WorkerProtocolChecks
             await CheckEvolution(executable,Path.Combine(root,"stage-checks"));
             await CheckFailedRollback(executable,Path.Combine(root,"stage-checks"));
             await CheckCreationBudgetAndQuality(executable,Path.Combine(root,"audit17"));
+            await CheckCustomLaunchSettings(executable,Path.Combine(root,"audit18"));
             Console.WriteLine("PASS actual worker: creation, receipts, coherent snapshots, online gradients, rollback, idempotency, stop fence, restart.");
             return 0;
         }
         catch (Exception error) { Console.Error.WriteLine("FAIL actual worker: " + error); return 1; }
         finally { Directory.Delete(root, recursive: true); }
     }
+    private static async Task CheckCustomLaunchSettings(string exe,string root)
+    {
+        var c=new ModelConfig{Dimension=16,HiddenDimension=32,Layers=1,Heads=2,KvHeads=1,GroupSize=8,Context=512};
+        var resource=new ResourceOptions{Threads=1,MemoryMiB=4096,BatchSize=64,SequenceLength=512,PreferCuda=false};
+        var train=new TrainingOptions{Steps=3,LearningRate=.0003,PublishEvery=2};
+        WorkspaceSettings Saved()=>JsonData.Read<WorkspaceSettings>(Path.Combine(ModelFiles.ActivePath(root)!,"settings.json"));
+        await using(var child=new Child(exe,root))
+        {
+            await child.Wait(e=>e.Kind=="ready");
+            await child.Complete(await child.Send("create",new CreateRequest(c,resource,train with{Steps=0},[],CreationMode.Untrained)));
+            var before=ModelFiles.VerifyRevision(ModelFiles.ActivePath(root)!);
+            await child.Complete(await child.Send("train",new TrainRequest([],train,resource,true,TrainingMaterial.Conversation)));
+            var saved=Saved();var after=ModelFiles.VerifyRevision(ModelFiles.ActivePath(root)!);
+            Assert(saved.Resources==resource&&saved.Training==train,"Custom launch values were replaced in committed settings.");
+            Assert(after.Step==before.Step+3&&after.ChangedWeights>0,"Batch64 request didn't perform three real updates.");
+            Assert(after.Accuracy?.Training?.Step==after.Step&&after.Accuracy.Validation?.Step==after.Step,"Published per-model accuracy missing or stale.");
+            after.Accuracy!.Validate(after.Step,c.Context);
+            long validationTargets=Dataset.EncodeAll(JsonData.Read<TrainingExample[]>(Path.Combine(ModelFiles.ActivePath(root)!,"validation.json")),resource.SequenceLength,1).Sum(x=>(long)x.Labels.Count(t=>t!=-100));
+            Assert(after.Accuracy.Validation!.Total==validationTargets,"Validation accuracy counted padding or lost a partial batch.");
+            await child.Complete(await child.Send("status",new{}));
+            Assert(child.LiveAccuracyEvents > 0,"No live training accuracy events.");
+            // A UI draft belongs to a future launch. The worker must not mistake it for a checkpoint configuration.
+            LaunchDraftStore.Write(root,new LaunchDraft(c,resource with{BatchSize=24},train with{Steps=19,LearningRate=.0009}));
+        }
+        await using(var child=new Child(exe,root))
+        {
+            var ready=Protocol.Payload<ReadyEvent>((await child.Wait(e=>e.Kind=="ready")).Data);
+            Assert(ready.Resources==resource&&ready.Training?.LearningRate==.0003,"Restart ignored saved optimizer/launch settings or consumed the future draft.");
+            var restoredInfo=ModelFiles.VerifyRevision(ModelFiles.ActivePath(root)!);
+            Assert(restoredInfo.Accuracy?.Validation?.Step==restoredInfo.Step,"Restart did not retain model-specific accuracy metadata.");
+            var next=train with{Steps=2,LearningRate=.0007,PublishEvery=2};var nextR=resource with{BatchSize=32};
+            await child.Complete(await child.Send("train",new TrainRequest([],next,nextR,true,TrainingMaterial.Conversation)));
+            Assert(Saved().Training==next&&Saved().Resources==nextR,"Second custom launch reverted to the previous LR/batch.");
+            Assert(LaunchDraftStore.Read(root,c)!.Resources.BatchSize==24,"Trainer rewrote the UI-owned next-run sidecar.");
+        }
+        Console.WriteLine("PASS actual worker custom batch64/LR/steps/interval, restart and second launch; future UI draft remains separate.");
+    }
+
     private static async Task CheckCreationBudgetAndQuality(string executable,string root)
     {
         var resources=new ResourceOptions{Threads=2,MemoryMiB=16384,BatchSize=32,SequenceLength=1024,PreferCuda=false};
@@ -248,6 +287,7 @@ public static class WorkerProtocolChecks
                     {
                         var message = JsonSerializer.Deserialize<WorkerEvent>(line, JsonData.Options) ?? throw new InvalidDataException("Empty event.");
                         if (message.Kind == "published") Interlocked.Increment(ref _publications);
+                        if (message.Kind == "status" && Protocol.Payload<StatusEvent>(message.Data).Accuracy?.Training is not null) Interlocked.Increment(ref _accuracyEvents);
                         await _events.Writer.WriteAsync(message);
                     }
                 }
@@ -256,7 +296,8 @@ public static class WorkerProtocolChecks
             });
             _errors = Task.Run(async () => { while (await _process.StandardError.ReadLineAsync() is string line) { lock (_stderr) _stderr.AppendLine(line); } });
         }
-        private long _publications;
+        private long _publications, _accuracyEvents;
+        public long LiveAccuracyEvents => Interlocked.Read(ref _accuracyEvents);
         public long Publications => Interlocked.Read(ref _publications);
         public async Task AssertFatalFrame(string frame)
         {

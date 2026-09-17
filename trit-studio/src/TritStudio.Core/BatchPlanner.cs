@@ -36,7 +36,7 @@ public sealed class BatchPlanner
     }
     public PlannedBatch Select(int batchSize, SamplerRandom random, bool bucketByLength = true, EncodedExample? required = null)
     {
-        if (batchSize < 1 || batchSize > 32) throw new ArgumentOutOfRangeException(nameof(batchSize));
+        if (batchSize < 1 || batchSize > ResourceOptions.MaxBatchSize) throw new ArgumentOutOfRangeException(nameof(batchSize));
         var selected = new EncodedExample[batchSize];
         int length = 0; long inputs = 0, targets = 0;
         void SelectIndex(int slot, int index)
